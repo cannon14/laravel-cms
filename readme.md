@@ -12,10 +12,10 @@ On-going project to create a CMS for my current employer.  It is customized and 
 
 TODO
 
-https://www.laravel.com/
-https://angularjs.org/
-https://www.mongodb.com/
-http://www.mysql.com/
+Laravel:    https://www.laravel.com/
+Angularjs:  https://angularjs.org/
+Mongo:      https://www.mongodb.com/
+MySQL:      http://www.mysql.com/
 
 ## Contributing
 
