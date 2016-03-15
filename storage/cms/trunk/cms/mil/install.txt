@@ -1,0 +1,47 @@
+MILONIC DHTML MENU RELEASE 5.0 INSTALLATION 
+
+This directory has the latest DHTML Menu software from Milonic, Inc.
+
+Report any bugs to menu-bugs[at]milonic[dot]com
+
+There is a web site at http://www.milonic.com/ -- see that site for the latest 
+updates, etc. 
+
+
+
++--------------+ 
+| Installation | 
++--------------+                                                                            
+
+1.	Read all the README files noted in the INTRODUCTION section of the README 
+	file.
+
+2.	Copy the files mmenudom.js, mmenuns4.js, milonic_src.js and menu_data.js 
+	to your web server. You can put these in a directory if you like but you 
+	will need to add details of your directory to the code in section 3 below.
+
+3.	Inform your web pages that you want the menu to appear when they are loaded. 
+	To do this, you need to add the following JavaScript tags to your HTML page:
+
+
+	<script type="text/javascript" src="milonic_src.js"></script>	
+	<div class=milonic><a href="http://www.milonic.com/">JavaScript Menu, DHTML Menu Powered By Milonic</a></div>
+	<script	type="text/javascript">
+	if(ns4)_d.write("<scr"+"ipt type=text/javascript src=mmenuns4.js><\/scr"+"ipt>");		
+	  else _d.write("<scr"+"ipt type=text/javascript src=mmenudom.js><\/scr"+"ipt>"); 
+	</script>
+	<script type="text/javascript" src="menu_data.js"></script>	
+	
+
+	The position of the above is not particularly important, but it's advisable to 
+	place these tags just after the <BODY> tag or in the <HEAD> of your document. 
+	This help minimize the risk of a conflict with other objects. The order in which 
+	the tags appear IS important, and must be as shown above.
+
+4.	Load up your page with your web browser. If all is well, the menu should 
+	appear. If not, go through the README again and ensure that all actions have 
+	been taken before you contact us.
+
+5.	Once you are happy that the menu is working, you can begin modifying the 
+	menu_data.js file and modify the existing objects to suit your own 
+	requirements.

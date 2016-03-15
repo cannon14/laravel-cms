@@ -1,0 +1,6 @@
+<ruleset name="cccom">
+    <description>CreditCards.com coding standards</description>
+
+    <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+    <!-- ... -->
+</ruleset>

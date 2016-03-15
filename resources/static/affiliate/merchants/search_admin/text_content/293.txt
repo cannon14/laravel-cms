@@ -1,0 +1,79 @@
+Warning : session_start : The session id contains invalid characters, valid
+characters are only a-z, A-Z and 0-9 in
+/usr/local/apache2/htdocs/staging1/affiliate/settings/settings2.php on
+line 7 Warning : session_start : Cannot send session cache limiter -
+headers already sent output started at
+/usr/local/apache2/htdocs/staging1/affiliate/settings/settings2.php:7 in
+/usr/local/apache2/htdocs/staging1/affiliate/settings/settings2.php on
+line 7 Warning : Cannot modify header information - headers already sent
+by output started at
+/usr/local/apache2/htdocs/staging1/affiliate/settings/settings2.php:7 in
+/usr/local/apache2/htdocs/staging1/affiliate/include/Affiliate/Scripts/Bl/CookieManager.class.php
+on line 254 Warning : Cannot modify header information - headers already
+sent by output started at
+/usr/local/apache2/htdocs/staging1/affiliate/settings/settings2.php:7 in
+/usr/local/apache2/htdocs/staging1/affiliate/include/Affiliate/Scripts/Bl/CookieManager.class.php
+on line 254  Warning : Cannot modify header information - headers already sent by output
+started at
+/usr/local/apache2/htdocs/staging1/affiliate/settings/settings2.php:7 in
+/usr/local/apache2/htdocs/staging1/affiliate/include/Affiliate/Scripts/Bl/CookieManager.class.php
+on line 254 Using a Business Credit Card to Fund Your Startup    Low Interest Credit Cards Balance Transfer Cards  Instant Approval Cards Reward Credit Cards Cash Back Credit Cards Airline
+Credit Cards Business Credit Cards Student Credit Cards Prepaid Debit
+Cards Credit Cards for Bad Credit Credit Card Specials  Advanta American Express Bank of America Chase Citi Credit Cards Discover
+First Premier  HSBC Bank MasterCard Visa Credit Card Articles News About Credit Cards
+FAQ's about Applying Online Credit Card Site Map  Credit Card Newsletter CREDIT CARD SPECIALS FOR  Credit Cards Articles Using a Business Credit Card to Fund Your Startup
+Using a Business Credit Card to Fund Your Startup Business credit cards
+have been around for many years, but have only recently explicitly
+targeted true entrepreneurs by offering special financing incentives.
+American Express established the gold standard in the genre of business
+credit cards and focused on the business executive with exclusive
+corporate card options. But, the business card market has finally taken
+notice of the backbone of the American economy – the small business
+sector.  Now, many major credit card issuers like Advanta and Citibank are
+aggressively going after the small business market with a diverse array of
+credit card products. These financial services juggernauts are offering
+everything from rewards , cash back and airline miles to huge initial
+credit lines with 0% introductory periods. What isn’t explicitly stated in
+most credit card offer’s features is the fact that small business owners
+can leverage business credit cards for startup capital. These little
+pieces of plastic can actually be the life blood to fuel and sustain a
+business startup. Once the financial pump has been primed, revenue from
+operations can be used to repay these micro-business loans before the
+finance charges become too onerous.  For example, a small eCommerce startup might need five thousand dollars to
+buy a computer, pay for a hosting service and buy an initial round of
+online advertising placements. But once the initial business revenue
+starts flowing in, the credit card balances can be repaid. And, if the
+small business credit card used features a no-preset spending limit i.e. a
+dynamic credit line the credit line will increase as larger and larger
+expenditures are made and then repaid. Everyone has heard of the brazen
+independent movie producers that have financed their first film with a
+wallet load of personal credit cards and lived to brag about it. But many
+entrepreneurs, while not exactly a risk averse group, a probably a little
+wary about putting their personal finances into play for launching their
+ventures. And this is where small business credit cards can come to the
+rescue. Beyond mere financing, these types of credit cards can provide a
+host of other benefits that are critical to small business success. These
+benefits include expense and revenue tracking and the ability to download
+statements into business budgeting software applications like Quicken.
+Expense management can be a make or break proposition for startups, so
+leveraging this aspect of a business credit card can be vital for long
+term success.  So, if you are contemplating taking control of your financial future and
+living out your dreams by launching a business startup, consider the
+benefits of using a business credit card to fund, track and reward your
+business activities. For more information on credit cards or related
+topics please see our library of articles .  Want to know more about business credit cards? Below are articles and
+resources that should be of interest to you: Reasons For A Small Business
+Credit Card - Small businesses in the U.S. are growing faster than ever
+and continue to be the backbone of the American economy. Using a Business
+Credit Card to Manage Expenses &ndash; The advantages and methods of using
+a business credit card to track and manage expense records. Business Credit
+Cards &ndash; Compare leading corporate & business credit cards side by
+side.    Terms & Conditions | Privacy Policy | About Us | Contact Us | Home Page |
+Site Map Copyright 2006 Credit Cards.com Warning : Unknown : The session
+id contains invalid characters, valid characters are only a-z, A-Z and 0-9
+in Unknown on line 0 Warning : Unknown : Failed to write session data files
+. Please verify that the current setting of session.save_path is correct
+/tmp in Unknown on line 0  Using a Business Credit Card to Fund Your Startup Article with advice if
+using a business credit card to fund your startup; examples of business
+credit cards like those from Advanta and Citibank.  business credit card,
+credit card, advanta, Citibank, business credit cards 

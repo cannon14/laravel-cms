@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   logicalFilePath="ram-1.2.xml">
+    
+    <changeSet id="remove-default-soft-delete" author="michaell">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <columnExists tableName="payin_tier_card_assignments" columnName="deleted_at"/>
+            </and>
+            <and>
+                <columnExists tableName="payin_tiers" columnName="deleted_at"/>
+            </and>
+            <and>
+                <columnExists tableName="payin_tier_website_assignments" columnName="deleted_at"/>
+            </and>
+        </preConditions>
+        <dropColumn tableName="payin_tier_card_assignments" columnName="deleted_at"/>
+        <dropColumn tableName="payin_tiers" columnName="deleted_at"/>
+        <dropColumn tableName="payin_tier_website_assignments" columnName="deleted_at"/>
+    </changeSet>
+    
+    
+</databaseChangeLog>

@@ -1,0 +1,68 @@
+<soapenv:Envelope xmlns:com="http://com.americanexpress.edge.webservice.prescreen"
+xmlns:data="http://data.prescreen.webservice.edge.americanexpress.com"
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header>
+   <wsse:Security soapenv:mustUnderstand="1"
+   xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <wsse:BinarySecurityToken
+        EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary"
+        ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"
+        wsu:Id="CertId-6C7DD7B5C32772A489137539878242564"
+        xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">MIICtjCCAh+gAwIBAgICBJAwDQYJKoZIhvcNAQEFBQAwWTELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkFaMRAwDgYDVQQHDAdQaG9lbml4MQwwCgYDVQQKDANBRVQxDDAKBgNVBAsMA0FYUDEPMA0GA1UEAwwGV1NNIENBMB4XDTEzMDExODA0MzM1NloXDTE1MDExODIzNTkwMFowZDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkFaMRAwDgYDVQQHEwdQaG9lbml4MQwwCgYDVQQKEwNXU00xDDAKBgNVBAsTA0FFVDEaMBgGA1UEAxMRd3NtcGFydG5lcnRlc3Rtc2cwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDdNnpGA85fTUfERRjMqQ1BLK26R7qCac5WkyIbgyj5cPaHR7jOJKiZnMp3JmP5bfgZ6r6v0hte9OVU1JwhS4w5iq3r7UWmhzZP5HJspWHy0kwV0xJMvv4WaalTZRDU4foB33j/UeM6u9H7VkecXYysjPtUhNNdTnYIULBZgy1w6suDGSgDgxcra/Uwjh8nmKc1Qkk8UkETkGUDTjS3oksf9TKi1Ky/jleVmx4qZBE0/aExPM9do1ZaizghnBpml8GQYDxIN1F/E4E5BHXmdtLkRTFdywGqRpmI7rgXw8kcMKFcvyJxJXOV+tdvRA5EqTv5TGKtawlBP3o5GKJyAY9LAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAXitdu6YbVxmSNiZipp2x71HM1i+rUNdMb1SwNp8PZZ+BvUXvztuSpLd1IO71w92t+H9DBhGOGM9iHCkXOfHofFHSLJt+abM2JQP+NFgx6fkghq/LEsWAN1W5ChOYP/rA2OHo/RdztYEdPj3BSXa9Eig99gUdrITOZqZK8jsfkJ0=</wsse:BinarySecurityToken>
+	<ds:Signature Id="Signature-28" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+<ds:Reference URI="#id-29">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<ds:DigestValue>SqCY5xuDDHL3q+kVrgbtXGQLWW4=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue>
+vwmvfSr48nDj0TWx9Hfd+FsIXFwJj7UtKoxQAJzc/3Qyb5UGKgnyQsQL0IyPmOz42JN4OeMyLzdG
+KT88bVf86l0xf71oD9g0yLw492VuPbt9YNqFTahUGsma0hqaamahve21du3I+vxSte/CG4hthjcB
+HA9AxaZcdSrDD6q2Djy1CM+NIgizGDOE8wOUrQAqf4UbmcsiPmY/xr8F9DLQXR1OoqGQ8wxm7Mxw
+TF1bS0P6MpFUELs9p9577TleOH2CFnX9sD9F4WMki1WFonHkkgWe/4RVC/R+H5+vEWZMFpWy5Iox
+mU9hwdPYFCCJDuiBjg8gBozbUhU6aAPH0qVJZg==
+</ds:SignatureValue>
+<ds:KeyInfo Id="KeyId-6C7DD7B5C32772A489137539878242565">
+<wsse:SecurityTokenReference wsu:Id="STRId-6C7DD7B5C32772A489137539878242566" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:Reference URI="#CertId-6C7DD7B5C32772A489137539878242564" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"/></wsse:SecurityTokenReference>
+</ds:KeyInfo>
+</ds:Signature></wsse:Security></soapenv:Header>
+   <soapenv:Body wsu:Id="id-29" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+      <com:getPreScreenOffers>
+         <com:objaApplicantInfo>
+            <data:businessAddressLine1>?</data:businessAddressLine1>
+            <data:businessAddressLine2>?</data:businessAddressLine2>
+            <data:businessCity>?</data:businessCity>
+            <data:businessName>?</data:businessName>
+            <data:businessState>?</data:businessState>
+            <data:businessZip>?</data:businessZip>
+            <data:channelId>?</data:channelId>
+            <data:firstName>?</data:firstName>
+            <data:generationCode>?</data:generationCode>
+            <data:gnaVendorCode>?</data:gnaVendorCode>
+            <data:homeAddressLine1>?</data:homeAddressLine1>
+            <data:homeAddressLine2>?</data:homeAddressLine2>
+            <data:homeCity>?</data:homeCity>
+            <data:homeState>?</data:homeState>
+            <data:homeZip>?</data:homeZip>
+            <data:last4SSN>?</data:last4SSN>
+            <data:lastName>?</data:lastName>
+            <data:leadOfferFlag>?</data:leadOfferFlag>
+            <data:middleName>?</data:middleName>
+            <data:partnerRepId>?</data:partnerRepId>
+            <data:vendorCode>?</data:vendorCode>
+            <data:requestTimeStamp>?</data:requestTimeStamp>
+            <data:vendorCustomerId>?</data:vendorCustomerId>
+            <data:tenure>?</data:tenure>
+            <data:transactionCost>?</data:transactionCost>
+            <data:paymentInd>?</data:paymentInd>
+            <data:custLocationInd>?</data:custLocationInd>
+         </com:objaApplicantInfo>
+      </com:getPreScreenOffers>
+   </soapenv:Body>
+</soapenv:Envelope>

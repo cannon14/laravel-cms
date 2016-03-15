@@ -1,0 +1,307 @@
+<?php
+$sortableLists = new csCore_UI_SLLists('../cmsCore/include/csCore/JS/scriptaculous');
+$sortableLists->addList('assignedList', 'assignedListOrder');
+$sortableLists->printTopJS();
+?>
+<script>
+	function addCard(PageID, CardID) {
+		document.location.href = "index.php?mod=<?= $_REQUEST['mod'] ?>&cardId=" + CardID + "&cardpageId=" + PageID + "&action=addCard";
+	}
+
+	function showExclude(SiteID, PageID) {
+		document.location.href = "index.php?mod=<?= $_REQUEST['mod'] ?>&siteId=" + SiteID + "&cardpageId=" + PageID + "&action=showVersion";
+	}
+</script>
+<style type="text/css" media="screen">
+	ul.sortableList {
+		list-style-type: none;
+		padding: 0px;
+		margin: 0px;
+		width: 560px;
+		font-family: Arial, sans-serif;
+	}
+
+	ul.sortableList li.blue {
+		cursor: move;
+		padding: 2px 2px;
+		margin: 2px 0px;
+
+
+	}
+
+	ul.sortableList li.red {
+		cursor: move;
+		padding: 2px 2px;
+		margin: 2px 0px;
+		border: 1px solid #000000;
+	}
+	ul.sortableList span.name {
+		cursor: move;
+		padding: 2px 2px;
+		margin: 2px 0px;
+		border: 1px solid #FFFFFF;
+		BACKGROUND: #FFFFFF url("cc-menuheader_center.gif") repeat-x top left; 
+	}
+
+	.rate-top {  
+		font-family: Arial, Helvetica, sans-serif; 
+		font-size: 10px; 
+		background-color: #d7d7d7; 
+		text-align: center; 
+		padding-right: 1px; 
+		padding-left: 1px
+	}
+
+	h1 {
+		color: #000066;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 20px;
+		text-align: left;
+		margin-right: 0px;
+		margin-left: 0px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding-bottom: 0px;
+		padding-top: 0px;
+		padding-right: 0px;
+		padding-left: 0px;
+		font-weight: bold;
+
+	}
+
+
+	.rates-bottom {  
+		font-family: Verdana, Arial, Helvetica, sans-serif; 
+		font-size: 9px; 
+		background-color: #F2F2F2; 
+		text-align: center
+	}
+
+
+	.rate-rc {  
+		width: 100%; 
+		background-color: #FFFFFF
+	}		
+
+	.cc-card-art-align {
+		text-align: right; 
+		background-color: #FFFFFF;
+		vertical-align: top;
+	}
+
+
+	.offer-left {
+		font-size: 13px;
+		background-color: #CCCCCC; 
+		text-align: left;
+		font-family: Arial, Helvetica, sans-serif; 
+		font-weight: bold;
+		width: 100%;
+		color: #0066CC;
+		padding-left: 4px;
+		BACKGROUND: #FFFFFF
+	}
+
+	.offer-left a:link {
+		color: #000999; 
+		text-decoration: none
+
+	}
+
+
+	.offer-left a:hover {
+		color: #000999; 
+		text-decoration: none
+	}
+
+
+	.offer-left a:visited {
+		color: #000999; 
+		text-decoration: none
+	}
+
+	.details {
+		background-color: #FFFFFF;
+		list-style-position: outside;
+		list-style-image: url(/images/b3-spacer.gif);
+		vertical-align: text-top
+	}
+</style>
+<?php 
+$type = $_POST['pageInfo']->fields['contentType'];
+if ($type == 'card' || $type = 'specials') {
+
+	if (!isset($_POST['runQuery'])) {
+		$_POST['siteId'] = isset($_REQUEST['siteId']) ? $_REQUEST['siteId'] : '';
+		?>
+		<div id='foo' style="width:100%">
+			<div style="float:left;">
+				<br>
+				<table class=component align='center'>
+					<tr>
+						<td colspan=2 class='componentHead'>
+							Manage Cards  [<?= $_POST['pageInfo']->fields['pageName'] ?>]
+						</td>
+					</tr>   
+					<tr>
+						<td>	
+							<br>
+					<center>
+						Change Version: <SELECT NME='version' OnChange="performAction(this)">
+							<option value='javascript:showExclude(-1,<?= $_REQUEST['cardpageId'] ?>)'>DEFAULT</option>
+							<?php
+							foreach ($this->sites as $site) {
+								echo "<option value='javascript:showExclude(" . $site->fields['siteId'] . "," . $_REQUEST['cardpageId'] . ")'";
+								if (isset($_REQUEST['siteId']) && $_REQUEST['siteId'] == $site->fields['siteId'])
+									echo ' selected';
+								echo">" . $site->fields['siteName'] . "</option>";
+							}
+							?>
+						</SELECT>
+						<br>
+						<br>
+						Add Card: <SELECT NAME="add" OnChange="performAction(this);">
+							<option value="-">----------------------------------------------------------</option>
+							<?php
+							$rs = $_POST['rs_unassignedCards'];
+							while (!$rs->EOF) {
+								?>
+								<OPTION VALUE="javascript:addCard('<?= $_REQUEST['cardpageId'] ?>', '<?= $rs->fields['cardId'] ?>')"><?= $rs->fields['cardDescription'] ?>
+									<?php
+									$rs->MoveNext();
+								}
+								?>
+						</SELECT>
+						<br>
+						<br>
+						<style type="text/css">
+							#sortableListForm  {
+								display: inline;
+							}
+						</style>
+						<script type="text/javascript">
+							function toggle(id)
+							{
+								ele = document.getElementById(id);
+								if (ele.style.display == 'block')
+									ele.style.display = 'none';
+								else
+									ele.style.display = 'block';
+							}
+						</script>
+						<?php
+						$sortableLists->printForm('index.php', 'POST', 'Commit Current Order', $_REQUEST['mod'], 'cardpageId', 'formbutton');
+						?>
+						<input class=formbutton type=button value="BACK" onClick="goToMod('CMS_view_pages')">     
+					</center>
+					<br><hr><br>
+					<table width='100%'>
+						<td valign="top"> 
+							<div align="center">
+								<table width="90%" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+
+
+
+									<tr>
+										<?if($_POST['pageInfo']->fields['pageHeaderImage'] != ""){ ?>
+										<td rowspan="2" valign="top"><img src="/content/extras/<?= $_POST['pageInfo']->fields['pageHeaderImage'] ?>" border="0" ></td>
+										<? } ?>
+										<td rowspan="2"><img src='/content/extras/10-10-spacer.gif' width="10" height="10"></td>
+										<td>
+											<h1><?= $_POST['pageInfo']->fields['pageHeaderString'] ?></h1></td>
+									</tr>
+									<tr>
+										<td><p> <?= $_POST['pageInfo']->fields['pageDescription'] ?></p></td>
+									</tr>
+								</table>	
+					</table>
+					<br>
+
+					<ul id="assignedList" class="sortableList">
+						<?php
+						$rsCards = $_POST['rs_assignedCards'];
+						$count = 1;
+						while ($rsCards && !$rsCards->EOF) {
+							?>
+
+
+							<li class='blue' id="item_<?= $rsCards->fields['id'] ?>">		
+								<table class="rc" align="center" width=760 cellpadding="0" cellspacing="0" style="border-width:3px;border-style:solid;border-color:#cccccc;">
+									<tr> 
+										<th colspan="2" class="offer-left">  
+									<div style="float:left"><font color='#000999'>
+										<span id="rank_<?= $rsCards->fields['id'] ?>"><?= $count ?></span>. 
+			<?= $rsCards->fields['cardDescription'] ?> 
+										[ <?= $rsCards->fields['cardId'] ?> ]
+										<?if($rsCards->fields['active'] != 1) print "[ INACTIVE ]"?>
+									</div>
+									<div style="float:right;">
+										<a href="javascript:toggle('detail_<?= $rsCards->fields['id'] ?>')">Details<a> | <a href='index.php?mod=<?= $_REQUEST['mod'] ?>&action=removeCard&cardpageId=<?= $_REQUEST['cardpageId'] ?>&cardId=<?= $rsCards->fields['cardId'] ?>'>Remove</a>
+												</div>
+												</th>
+												</tr>
+												</table>
+												<table class="rc" align="center" width=760 cellpadding="0" cellspacing="0" style="border-width:3px;border-style:solid;border-color:#cccccc;display:none;" id="detail_<?= $rsCards->fields['id'] ?>">
+													<tr> 
+														<td width="15%" class="cc-card-art-align">
+															<img src="<?= $this->imageRepository ?>/<?= $rsCards->fields['imagePath'] ?>" width="95" height="60" border="0" ><br />
+														<td width="85%" class="details"> 	
+			<?= $rsCards->fields['cardDetailText'] ?>
+														</td>
+													</tr>
+												</table>
+												</li>
+												<?php
+												$rsCards->MoveNext();
+												$active = "";
+												$count++;
+											}
+											?>
+
+
+											</ul>
+											</td>
+											</tr>
+											</table>
+											</div>		
+
+											</div>
+											<br>
+											<br>	
+
+
+											<script type="text/javascript">
+												// <![CDATA[
+												Sortable.create("assignedList", {
+													tag: 'li',
+													dropOnEmpty: true,
+													handle: 'handle',
+													containment: ["assignedList"],
+													constraint: false,
+													onUpdate: function() {
+														ele = document.getElementById('assignedList');
+														for (var i = 0; i < ele.childNodes.length; i++)
+														{
+															id = ele.childNodes[i].id;
+															idparts = id.split("_");
+															idnum = idparts[1];
+															document.getElementById('rank_' + idnum).innerHTML = i + 1;
+														}
+													}
+												});
+												// ]]>
+											</script>
+
+
+											<input type=hidden name=tmdl_status value="<?= isset($_REQUEST['tmdl_status']) ? $_REQUEST['tmdl_status'] : '' ?>">
+											<input type=hidden name=mod value='<?= $_REQUEST['mod'] ?>'>
+											<input type=hidden name=cardpageId value='<?= $_REQUEST['cardpageId'] ?>'>
+											<input type=hidden name=commited value='yes'>
+											</form>
+
+											<br><br>
+										<?php } ?>
+									<?php } else {
+										echo "The items you are trying to add and the content type for the page do not match.<br>Please try another item type.";
+									} ?>

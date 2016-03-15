@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<database name="cms_test">
+		<table_data name="cms_test.link_types">
+			<row>
+				<field name="link_type_id">1</field>
+				<field name="name">card</field>
+				<field name="description" xsi:nil="true" />
+			</row>
+			<row>
+				<field name="link_type_id">2</field>
+				<field name="name">account</field>
+				<field name="description" xsi:nil="true" />
+			</row>
+			<row>
+				<field name="link_type_id">3</field>
+				<field name="name">website</field>
+				<field name="description" xsi:nil="true" />
+			</row>
+			<row>
+				<field name="link_type_id">4</field>
+				<field name="name">terms</field>
+				<field name="description" xsi:nil="true"/>
+			</row>
+		</table_data>
+	</database>
+</mysqldump>

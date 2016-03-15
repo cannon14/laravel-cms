@@ -1,0 +1,9 @@
+# This user needs to have write access to all the databases
+username=dba
+password=dba
+
+# The database name will be appended to this url
+url=jdbc:mysql://localhost:3306/
+
+driver=com.mysql.jdbc.Driver
+classpath=lib/mysql-connector-java-5.1.27-bin.jar

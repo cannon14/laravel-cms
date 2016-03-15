@@ -1,0 +1,91 @@
+[
+
+	{
+		"first": "MACK",
+		"last": "TINTS",
+		"street": "234 OILY",
+		"city": "HIBBS",
+		"state": "AL",
+		"zip": "88833",
+		"ssn": "1713",
+		"status": 0,
+		"offers": ["A00000EALD", "A00000EGJE"]
+	},
+	{
+		"first": "MARGO",
+		"last": "Reger",
+		"street": "442 TUNA",
+		"city": "ALMA",
+		"state": "IN",
+		"zip": "47803",
+		"ssn": "1071",
+		"status": 0,
+		"offers": ["A00000DX4K", "A00000DX4A", "A00000ENXP"]
+	},
+	{
+		"first": "TINA",
+		"last": "TURNER",
+		"street": "72 SOUTH",
+		"city": "PHOENIX",
+		"state": "AZ",
+		"zip": "78344",
+		"ssn": "1510",
+		"status": 0,
+		"offers": ["A00000EGJE", "A00000DX4K"]
+	},
+	{
+		"first": "THOMAS",
+		"last": "KINCAID",
+		"street": "823 PENCIL",
+		"city": "BOSTON",
+		"state": "MA",
+		"zip": "83223",
+		"ssn": "9999",
+		"status": 0,
+		"offers": ["A00000EGJE", "A00000DX4K"]
+	},
+	{
+		"first": "MICHAEL",
+		"last": "MYERS",
+		"street": "9284 FRONT",
+		"city": "BUTLER",
+		"state": "MO",
+		"zip": "73321",
+		"ssn": "1234",
+		"status": 2,
+		"offers": false
+	},
+	{
+		"first": "MINDY",
+		"last": "MEYERS",
+		"street": "342 SCHOOL",
+		"city": "TULSA",
+		"state": "OK",
+		"zip": "87423",
+		"ssn": "9999",
+		"status": 2,
+		"offers": false
+	},
+	{
+		"first": "RILEY",
+		"last": "Aldinger",
+		"street": "9348 PERCH",
+		"city": "MONETTE",
+		"state": "RI",
+		"zip": "28710",
+		"ssn": "7674",
+		"status": 2,
+		"offers": false
+	},
+	{
+		"first": "PETER",
+		"last": "PAN",
+		"street": "93 WAYOUT",
+		"city": "KILLEN",
+		"state": "",
+		"zip": "",
+		"ssn": "8789",
+		"status": 1,
+		"offers": false
+	}
+]

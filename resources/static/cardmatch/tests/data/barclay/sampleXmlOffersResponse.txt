@@ -1,0 +1,27 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:ProactivePrescreenResponse xmlns:ns2="http://barclaycardus.com/svc/prescreen/v1/request">
+         <ns2:prescreenProducts>
+            <ns2:applyURL>https://dev01-www.barclaycardus.com/apply/Landing.action?campaignId=1730&amp;cellId=27&amp;prescreenId=PS000844220&amp;prescreenOfferId=1bcb9e4e363749bbfa0c5a67b5745dcfae25e3e319fef787b1296f700729c76e&amp;referrerid=123123</ns2:applyURL>
+            <ns2:productName>Barclaycard Arrival</ns2:productName>
+            <ns2:productId>22086118</ns2:productId>
+            <ns2:campaignId>1730</ns2:campaignId>
+            <ns2:cellId>2720</ns2:cellId>
+            <ns2:referrerId>123123</ns2:referrerId>
+            <ns2:tncURL>https://dev01-www.barclaycardus.com/app/japply/lp/TnCs.jsp?prodidreq=CCMWC55104</ns2:tncURL>
+            <ns2:prescreenId>PS000844220</ns2:prescreenId>
+         </ns2:prescreenProducts>
+         <ns2:prescreenProducts>
+            <ns2:applyURL>https://dev01-www.barclaycardus.com/apply/Landing.action?campaignId=1665&amp;cellId=40&amp;prescreenId=PS000844221&amp;prescreenOfferId=ba679c228ffca3aa3f79449991000170afddd080e8f1af174b748f792d547772&amp;referrerid=123123</ns2:applyURL>
+            <ns2:productName>Barclaycard Ring</ns2:productName>
+            <ns2:productId>22034411</ns2:productId>
+            <ns2:campaignId>1665</ns2:campaignId>
+            <ns2:cellId>4024</ns2:cellId>
+            <ns2:referrerId>123123</ns2:referrerId>
+            <ns2:tncURL>https://dev01-www.barclaycardus.com/app/japply/lp/TnCs.jsp?prodidreq=CCMPS49107</ns2:tncURL>
+            <ns2:prescreenId>PS000844221</ns2:prescreenId>
+         </ns2:prescreenProducts>
+      </ns2:ProactivePrescreenResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

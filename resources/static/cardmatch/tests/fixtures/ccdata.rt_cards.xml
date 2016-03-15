@@ -1,0 +1,299 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <database name="ccdata_test">
+        <table_data name="ccdata_test.rt_cards">
+            <row>
+                <field name="id">1</field>
+                <field name="cardId">1</field>
+                <field name="site_code">USEN</field>
+                <field name="cardTitle">Unit Testing Card 1</field>
+                <field name="cardDescription">Unit Testing Card 1</field>
+                <field name="merchant">1</field>
+                <field name="introApr">@@introApr@@%*</field>
+                <field name="active_introApr">0</field>
+                <field name="introAprPeriod">@@introAprPeriod@@*</field>
+                <field name="active_introAprPeriod">0</field>
+                <field name="regularApr">@@regularApr@@%*</field>
+                <field name="variable">0</field>
+                <field name="active_regularApr">0</field>
+                <field name="annualFee">$@@annualFee@@*</field>
+                <field name="active_annualFee">0</field>
+                <field name="monthlyFee">$@@monthlyFee@@*</field>
+                <field name="active_monthlyFee">0</field>
+                <field name="balanceTransfers">@@balanceTransfers@@*</field>
+                <field name="active_balanceTransfers">0</field>
+                <field name="balanceTransferFee">@@balanceTransferFee@@*</field>
+                <field name="active_balanceTransferFee" xsi:nil="true"/>
+                <field name="balanceTransferIntroApr">@@balanceTransferIntroApr@@*</field>
+                <field name="active_balanceTransferIntroApr" xsi:nil="true"/>
+                <field name="balanceTransferIntroAprPeriod">@@balanceTransferIntroAprPeriod@@*</field>
+                <field name="active_balanceTransferIntroAprPeriod" xsi:nil="true"/>
+                <field name="creditNeeded">@@creditNeeded@@*</field>
+                <field name="active_creditNeeded" xsi:nil="true"/>
+                <field name="imagePath" xsi:nil="true"/>
+                <field name="ratesAndFees" xsi:nil="true"/>
+                <field name="rewards" xsi:nil="true"/>
+                <field name="cardBenefits" xsi:nil="true"/>
+                <field name="onlineServices" xsi:nil="true"/>
+                <field name="footNotes" xsi:nil="true"/>
+                <field name="layout" xsi:nil="true"/>
+                <field name="dateCreated" xsi:nil="true"/>
+                <field name="dateUpdated" xsi:nil="true"/>
+                <field name="subCat">0</field>
+                <field name="catTitle" xsi:nil="true"/>
+                <field name="catDescription" xsi:nil="true"/>
+                <field name="catImage" xsi:nil="true"/>
+                <field name="catImageAltText" xsi:nil="true"/>
+                <field name="syndicate">1</field>
+                <field name="url" xsi:nil="true"/>
+                <field name="applyByPhoneNumber" xsi:nil="true"/>
+                <field name="tPageText" xsi:nil="true"/>
+                <field name="private">0</field>
+                <field name="active">1</field>
+                <field name="deleted">0</field>
+                <field name="active_epd_pages" xsi:nil="true"/>
+                <field name="active_show_epd_rates" xsi:nil="true"/>
+                <field name="show_verify" xsi:nil="true"/>
+                <field name="commission_label">PER_APPROVAL</field>
+                <field name="payout_cap" xsi:nil="true"/>
+                <field name="card_level_id" xsi:nil="true"/>
+                <field name="requires_approval">1</field>
+                <field name="secured">0</field>
+            </row>
+            <row>
+                <field name="id">2</field>
+                <field name="cardId">2</field>
+                <field name="site_code">USEN</field>
+                <field name="cardTitle">Unit Testing Card 2 </field>
+                <field name="cardDescription">Unit Testing Card 2</field>
+                <field name="merchant">2</field>
+                <field name="introApr">@@introApr@@%*</field>
+                <field name="active_introApr">0</field>
+                <field name="introAprPeriod">@@introAprPeriod@@*</field>
+                <field name="active_introAprPeriod">0</field>
+                <field name="regularApr">@@regularApr@@%*</field>
+                <field name="variable">0</field>
+                <field name="active_regularApr">0</field>
+                <field name="annualFee">$@@annualFee@@*</field>
+                <field name="active_annualFee">0</field>
+                <field name="monthlyFee">$@@monthlyFee@@*</field>
+                <field name="active_monthlyFee">0</field>
+                <field name="balanceTransfers">@@balanceTransfers@@*</field>
+                <field name="active_balanceTransfers">0</field>
+                <field name="balanceTransferFee">@@balanceTransferFee@@*</field>
+                <field name="active_balanceTransferFee" xsi:nil="true"/>
+                <field name="balanceTransferIntroApr">@@balanceTransferIntroApr@@*</field>
+                <field name="active_balanceTransferIntroApr" xsi:nil="true"/>
+                <field name="balanceTransferIntroAprPeriod">@@balanceTransferIntroAprPeriod@@*</field>
+                <field name="active_balanceTransferIntroAprPeriod" xsi:nil="true"/>
+                <field name="creditNeeded">@@creditNeeded@@*</field>
+                <field name="active_creditNeeded" xsi:nil="true"/>
+                <field name="imagePath" xsi:nil="true"/>
+                <field name="ratesAndFees" xsi:nil="true"/>
+                <field name="rewards" xsi:nil="true"/>
+                <field name="cardBenefits" xsi:nil="true"/>
+                <field name="onlineServices" xsi:nil="true"/>
+                <field name="footNotes" xsi:nil="true"/>
+                <field name="layout" xsi:nil="true"/>
+                <field name="dateCreated" xsi:nil="true"/>
+                <field name="dateUpdated" xsi:nil="true"/>
+                <field name="subCat">0</field>
+                <field name="catTitle" xsi:nil="true"/>
+                <field name="catDescription" xsi:nil="true"/>
+                <field name="catImage" xsi:nil="true"/>
+                <field name="catImageAltText" xsi:nil="true"/>
+                <field name="syndicate">1</field>
+                <field name="url" xsi:nil="true"/>
+                <field name="applyByPhoneNumber" xsi:nil="true"/>
+                <field name="tPageText" xsi:nil="true"/>
+                <field name="private">0</field>
+                <field name="active">1</field>
+                <field name="deleted">0</field>
+                <field name="active_epd_pages" xsi:nil="true"/>
+                <field name="active_show_epd_rates" xsi:nil="true"/>
+                <field name="show_verify" xsi:nil="true"/>
+                <field name="commission_label">PER_APPROVAL</field>
+                <field name="payout_cap" xsi:nil="true"/>
+                <field name="card_level_id" xsi:nil="true"/>
+                <field name="requires_approval">1</field>
+                <field name="secured">0</field>
+            </row>
+
+            <row>
+                <field name="id">3</field>
+                <field name="cardId">3</field>
+                <field name="site_code">USEN</field>
+                <field name="cardTitle">Inactive Card</field>
+                <field name="cardDescription">Inactive Card</field>
+                <field name="merchant">2</field>
+                <field name="introApr">@@introApr@@%*</field>
+                <field name="active_introApr">0</field>
+                <field name="introAprPeriod">@@introAprPeriod@@*</field>
+                <field name="active_introAprPeriod">0</field>
+                <field name="regularApr">@@regularApr@@%*</field>
+                <field name="variable">0</field>
+                <field name="active_regularApr">0</field>
+                <field name="annualFee">$@@annualFee@@*</field>
+                <field name="active_annualFee">0</field>
+                <field name="monthlyFee">$@@monthlyFee@@*</field>
+                <field name="active_monthlyFee">0</field>
+                <field name="balanceTransfers">@@balanceTransfers@@*</field>
+                <field name="active_balanceTransfers">0</field>
+                <field name="balanceTransferFee">@@balanceTransferFee@@*</field>
+                <field name="active_balanceTransferFee" xsi:nil="true"/>
+                <field name="balanceTransferIntroApr">@@balanceTransferIntroApr@@*</field>
+                <field name="active_balanceTransferIntroApr" xsi:nil="true"/>
+                <field name="balanceTransferIntroAprPeriod">@@balanceTransferIntroAprPeriod@@*</field>
+                <field name="active_balanceTransferIntroAprPeriod" xsi:nil="true"/>
+                <field name="creditNeeded">@@creditNeeded@@*</field>
+                <field name="active_creditNeeded" xsi:nil="true"/>
+                <field name="imagePath" xsi:nil="true"/>
+                <field name="ratesAndFees" xsi:nil="true"/>
+                <field name="rewards" xsi:nil="true"/>
+                <field name="cardBenefits" xsi:nil="true"/>
+                <field name="onlineServices" xsi:nil="true"/>
+                <field name="footNotes" xsi:nil="true"/>
+                <field name="layout" xsi:nil="true"/>
+                <field name="dateCreated" xsi:nil="true"/>
+                <field name="dateUpdated" xsi:nil="true"/>
+                <field name="subCat">0</field>
+                <field name="catTitle" xsi:nil="true"/>
+                <field name="catDescription" xsi:nil="true"/>
+                <field name="catImage" xsi:nil="true"/>
+                <field name="catImageAltText" xsi:nil="true"/>
+                <field name="syndicate">1</field>
+                <field name="url" xsi:nil="true"/>
+                <field name="applyByPhoneNumber" xsi:nil="true"/>
+                <field name="tPageText" xsi:nil="true"/>
+                <field name="private">0</field>
+                <field name="active">0</field>
+                <field name="deleted">0</field>
+                <field name="active_epd_pages" xsi:nil="true"/>
+                <field name="active_show_epd_rates" xsi:nil="true"/>
+                <field name="show_verify" xsi:nil="true"/>
+                <field name="commission_label">PER_APPROVAL</field>
+                <field name="payout_cap" xsi:nil="true"/>
+                <field name="card_level_id" xsi:nil="true"/>
+                <field name="requires_approval">1</field>
+                <field name="secured">0</field>
+            </row>
+
+            <row>
+                <field name="id">4</field>
+                <field name="cardId">4</field>
+                <field name="site_code">USEN</field>
+                <field name="cardTitle">Deleted Card</field>
+                <field name="cardDescription">Deleted Card</field>
+                <field name="merchant">2</field>
+                <field name="introApr">@@introApr@@%*</field>
+                <field name="active_introApr">0</field>
+                <field name="introAprPeriod">@@introAprPeriod@@*</field>
+                <field name="active_introAprPeriod">0</field>
+                <field name="regularApr">@@regularApr@@%*</field>
+                <field name="variable">0</field>
+                <field name="active_regularApr">0</field>
+                <field name="annualFee">$@@annualFee@@*</field>
+                <field name="active_annualFee">0</field>
+                <field name="monthlyFee">$@@monthlyFee@@*</field>
+                <field name="active_monthlyFee">0</field>
+                <field name="balanceTransfers">@@balanceTransfers@@*</field>
+                <field name="active_balanceTransfers">0</field>
+                <field name="balanceTransferFee">@@balanceTransferFee@@*</field>
+                <field name="active_balanceTransferFee" xsi:nil="true"/>
+                <field name="balanceTransferIntroApr">@@balanceTransferIntroApr@@*</field>
+                <field name="active_balanceTransferIntroApr" xsi:nil="true"/>
+                <field name="balanceTransferIntroAprPeriod">@@balanceTransferIntroAprPeriod@@*</field>
+                <field name="active_balanceTransferIntroAprPeriod" xsi:nil="true"/>
+                <field name="creditNeeded">@@creditNeeded@@*</field>
+                <field name="active_creditNeeded" xsi:nil="true"/>
+                <field name="imagePath" xsi:nil="true"/>
+                <field name="ratesAndFees" xsi:nil="true"/>
+                <field name="rewards" xsi:nil="true"/>
+                <field name="cardBenefits" xsi:nil="true"/>
+                <field name="onlineServices" xsi:nil="true"/>
+                <field name="footNotes" xsi:nil="true"/>
+                <field name="layout" xsi:nil="true"/>
+                <field name="dateCreated" xsi:nil="true"/>
+                <field name="dateUpdated" xsi:nil="true"/>
+                <field name="subCat">0</field>
+                <field name="catTitle" xsi:nil="true"/>
+                <field name="catDescription" xsi:nil="true"/>
+                <field name="catImage" xsi:nil="true"/>
+                <field name="catImageAltText" xsi:nil="true"/>
+                <field name="syndicate">1</field>
+                <field name="url" xsi:nil="true"/>
+                <field name="applyByPhoneNumber" xsi:nil="true"/>
+                <field name="tPageText" xsi:nil="true"/>
+                <field name="private">0</field>
+                <field name="active">0</field>
+                <field name="deleted">1</field>
+                <field name="active_epd_pages" xsi:nil="true"/>
+                <field name="active_show_epd_rates" xsi:nil="true"/>
+                <field name="show_verify" xsi:nil="true"/>
+                <field name="commission_label">PER_APPROVAL</field>
+                <field name="payout_cap" xsi:nil="true"/>
+                <field name="card_level_id" xsi:nil="true"/>
+                <field name="requires_approval">1</field>
+                <field name="secured">0</field>
+            </row>
+            <row>
+                <field name="id">5</field>
+                <field name="cardId">5</field>
+                <field name="site_code">USEN</field>
+                <field name="cardTitle">One More Card</field>
+                <field name="cardDescription">One More Card</field>
+                <field name="merchant">2</field>
+                <field name="introApr">@@introApr@@%*</field>
+                <field name="active_introApr">0</field>
+                <field name="introAprPeriod">@@introAprPeriod@@*</field>
+                <field name="active_introAprPeriod">0</field>
+                <field name="regularApr">@@regularApr@@%*</field>
+                <field name="variable">0</field>
+                <field name="active_regularApr">0</field>
+                <field name="annualFee">$@@annualFee@@*</field>
+                <field name="active_annualFee">0</field>
+                <field name="monthlyFee">$@@monthlyFee@@*</field>
+                <field name="active_monthlyFee">0</field>
+                <field name="balanceTransfers">@@balanceTransfers@@*</field>
+                <field name="active_balanceTransfers">0</field>
+                <field name="balanceTransferFee">@@balanceTransferFee@@*</field>
+                <field name="active_balanceTransferFee" xsi:nil="true"/>
+                <field name="balanceTransferIntroApr">@@balanceTransferIntroApr@@*</field>
+                <field name="active_balanceTransferIntroApr" xsi:nil="true"/>
+                <field name="balanceTransferIntroAprPeriod">@@balanceTransferIntroAprPeriod@@*</field>
+                <field name="active_balanceTransferIntroAprPeriod" xsi:nil="true"/>
+                <field name="creditNeeded">@@creditNeeded@@*</field>
+                <field name="active_creditNeeded" xsi:nil="true"/>
+                <field name="imagePath" xsi:nil="true"/>
+                <field name="ratesAndFees" xsi:nil="true"/>
+                <field name="rewards" xsi:nil="true"/>
+                <field name="cardBenefits" xsi:nil="true"/>
+                <field name="onlineServices" xsi:nil="true"/>
+                <field name="footNotes" xsi:nil="true"/>
+                <field name="layout" xsi:nil="true"/>
+                <field name="dateCreated" xsi:nil="true"/>
+                <field name="dateUpdated" xsi:nil="true"/>
+                <field name="subCat">0</field>
+                <field name="catTitle" xsi:nil="true"/>
+                <field name="catDescription" xsi:nil="true"/>
+                <field name="catImage" xsi:nil="true"/>
+                <field name="catImageAltText" xsi:nil="true"/>
+                <field name="syndicate">1</field>
+                <field name="url" xsi:nil="true"/>
+                <field name="applyByPhoneNumber" xsi:nil="true"/>
+                <field name="tPageText" xsi:nil="true"/>
+                <field name="private">0</field>
+                <field name="active">1</field>
+                <field name="deleted">0</field>
+                <field name="active_epd_pages" xsi:nil="true"/>
+                <field name="active_show_epd_rates" xsi:nil="true"/>
+                <field name="show_verify" xsi:nil="true"/>
+                <field name="commission_label">PER_APPROVAL</field>
+                <field name="payout_cap" xsi:nil="true"/>
+                <field name="card_level_id" xsi:nil="true"/>
+                <field name="requires_approval">1</field>
+                <field name="secured">0</field>
+            </row>
+        </table_data>
+    </database>
+</mysqldump>

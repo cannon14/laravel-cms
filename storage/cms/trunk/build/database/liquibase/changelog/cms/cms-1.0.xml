@@ -1,0 +1,2238 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet author="liquibase" id="initial-setup">
+        <createTable tableName="additional_benefits">
+            <column autoIncrement="true" name="additional_benefit_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="benefit" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="additional_fees">
+            <column autoIncrement="true" name="additional_fee_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fee" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="additional_notes">
+            <column autoIncrement="true" name="additional_note_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="note" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="alternate_links">
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clickable_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="website_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="approved_promotional_content">
+            <column autoIncrement="true" name="approved_promotional_content_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="arch_build_history_detail_all">
+            <column defaultValueNumeric="0" name="build_history_detail_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="build_history_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="web_page_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sub_page_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="web_page_position" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sub_page_position" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="web_page_number" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estimated_epc" type="DECIMAL(8, 5)"/>
+        </createTable>
+
+
+        <createTable tableName="balance_transfers">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="accept_partial_balance_transfer" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_end_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="max_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="fee_rate" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_transfer_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="max_transfer_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="display_text" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="build_history">
+            <column autoIncrement="true" name="build_history_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="site_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="build_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="published" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="publish_time" type="datetime"/>
+            <column name="note" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="build_history_detail">
+            <column autoIncrement="true" name="build_history_detail_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="build_history_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="web_page_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sub_page_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="web_page_position" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sub_page_position" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="web_page_number" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estimated_epc" type="DECIMAL(8, 5)"/>
+        </createTable>
+
+
+        <createTable tableName="card_apr_history">
+            <column autoIncrement="true" name="card_apr_history_id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="insert_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="regular_apr" type="DECIMAL(6, 3)"/>
+            <column name="card_status" type="ENUM('Active','Inactive')"/>
+        </createTable>
+
+
+        <createTable tableName="card_boost">
+            <column name="card_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="boost" type="DOUBLE"/>
+        </createTable>
+
+
+        <createTable tableName="card_categories">
+            <column autoIncrement="true" name="card_category_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_category_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_display_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="card_category_contexts">
+            <column autoIncrement="true" name="card_category_context_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_category_context_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="card_category_group_to_category">
+            <column name="card_category_group_id" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_id" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_group_rank" remarks="Stores ordering value of category within a group"
+                    type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="card_category_groups">
+            <column autoIncrement="true" name="id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_category_group_name" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="context_id" type="SMALLINT(5)"/>
+            <column defaultValueComputed="'0000-00-00 00:00:00'" name="inserted" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="updated" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="card_category_ranks">
+            <column autoIncrement="true" name="card_category_rank_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_category_rank" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_context_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="card_placement_history">
+            <column name="cardpageId" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cardId" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rank" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="INT(10)"/>
+            <column name="time_snapped" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="card_ranks">
+            <column autoIncrement="true" name="card_rank_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_rank" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_context_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="card_tags">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_tag" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cardhistory">
+            <column name="campaigntype_id" type="VARCHAR(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="'0000-00-00'" name="dateinserted" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="campaigntype_name" type="VARCHAR(255)"/>
+            <column name="intro_apr" type="FLOAT(4, 2)"/>
+            <column name="delta_intro_apr" type="FLOAT(4, 2)"/>
+            <column name="intro_apr_movement" type="VARCHAR(255)"/>
+            <column name="intro_apr_period" type="FLOAT(4, 2)"/>
+            <column name="delta_intro_apr_period" type="FLOAT(4, 2)"/>
+            <column name="intro_apr_period_movement" type="VARCHAR(255)"/>
+            <column name="regular_apr" type="FLOAT(4, 2)"/>
+            <column name="delta_regular_apr" type="FLOAT(4, 2)"/>
+            <column name="regular_apr_movement" type="VARCHAR(255)"/>
+            <column name="card_count" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="cards">
+            <column autoIncrement="true" name="card_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_sku" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer" type="INT(10)"/>
+            <column name="effective_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="NEW" name="status" type="VARCHAR(15)"/>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="coissuing_organization" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="network" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="initial_setup_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_annual_fee" type="DECIMAL(12, 2)"/>
+            <column name="ongoing_annual_fee" type="DECIMAL(12, 2)"/>
+            <column name="annual_fee_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.00" name="monthly_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_late_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="max_late_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="late_payment_fee_percent" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="over_limit_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="returned_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="dishonored_convenience_check_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="convenience_check_stop_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="balance_transfer_cancellation_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="bank_wire_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="statement_copy_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="inactivity_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="intro_apr_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_display_text" type="LONGTEXT"/>
+            <column name="intro_period_end_date" type="date"/>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="ongoing_apr_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance_compute_method" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit_needed" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit_needed_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.00" name="min_credit_line" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="max_credit_line" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_income" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="min_between_applications_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="interest_rate_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="used_index_rate" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="index_rate_definition" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="apply_payment" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_min_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_max_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="foreign_exchange_fee_rate" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="custom_prepaid_display_text" type="VARCHAR(50)"/>
+            <column name="modified_date" type="date"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bt_intro_apr_display_text" type="LONGTEXT"/>
+            <column name="bt_intro_period_display_text" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cash_advances">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_end_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="max_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_grace_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_finance_charge" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_fixed_rate_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fee_rate" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_convenience_check_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_payment_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_payment_percentage" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cash_advance_limit" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cash_back">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_round_bonus" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="annual_bonus" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="commercial_features">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reporting_features" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="travel_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchasing_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fleet_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cs_amenities">
+            <column autoIncrement="true" name="amenityid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="label" type="LONGTEXT"/>
+            <column name="description" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)"/>
+        </createTable>
+
+
+        <createTable tableName="cs_banners">
+            <column name="bannerid" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="LONGTEXT"/>
+            <column name="destinationurl" type="LONGTEXT"/>
+            <column name="sourceurl" type="LONGTEXT"/>
+            <column name="bannertype" type="TINYINT(3)"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(3)"/>
+            <column name="campaignid" type="VARCHAR(8)"/>
+        </createTable>
+
+
+        <createTable tableName="cs_cardamenitymap">
+            <column name="cardid" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amenityid" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cs_carddata">
+            <column defaultValue="0" name="cardId" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="introApr" type="DOUBLE"/>
+            <column name="introAprPeriod" type="TINYINT(3)"/>
+            <column name="regularApr" type="DOUBLE"/>
+            <column name="annualFee" type="DOUBLE"/>
+            <column name="balanceTransfers" type="TINYINT(1)"/>
+            <column name="balanceTransferFee" type="DOUBLE"/>
+            <column name="balanceTransferIntroApr" type="DOUBLE"/>
+            <column name="balanceTransferIntroAprPeriod" type="TINYINT(3)"/>
+            <column name="monthlyFee" type="DOUBLE"/>
+            <column name="creditNeeded" type="TINYINT(3)"/>
+            <column name="dateModified" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="cs_cardhistory">
+            <column name="cardid" type="VARCHAR(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="introApr" type="DOUBLE"/>
+            <column name="introAprPeriod" type="INT(10)"/>
+            <column name="regularApr" type="DOUBLE"/>
+            <column name="monthlyFee" type="DOUBLE"/>
+            <column name="annualFee" type="DOUBLE"/>
+            <column name="date" type="date"/>
+        </createTable>
+
+
+        <createTable tableName="cs_diffTable">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="url" type="VARCHAR(255)"/>
+            <column name="content" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="changed" type="TINYINT(1)"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="ignoreLines" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cs_history">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="dateinserted" type="datetime"/>
+            <column name="user" type="VARCHAR(255)"/>
+            <column name="action" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="cs_merchants">
+            <column autoIncrement="true" name="merchantid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="merchantname" type="VARCHAR(255)"/>
+            <column name="merchantcardpage" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="display_name" type="VARCHAR(255)"/>
+            <column name="logo" type="VARCHAR(255)"/>
+            <column name="site_code" type="VARCHAR(5)"/>
+            <column name="category_id" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="cs_pagecardexclusionmap">
+            <column autoIncrement="true" name="mapid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteid" type="INT(10)"/>
+            <column name="pageid" type="INT(10)"/>
+            <column name="cardid" type="VARCHAR(15)"/>
+        </createTable>
+
+
+        <createTable tableName="cs_pagecomponentmap">
+            <column autoIncrement="true" name="mapid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteid" type="INT(10)"/>
+            <column name="pagetype" type="VARCHAR(50)"/>
+            <column name="pageid" type="INT(10)"/>
+            <column defaultValueNumeric="-1" name="itemid" type="INT(10)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="cs_pagecomponents">
+            <column autoIncrement="true" name="itemid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="item" type="VARCHAR(50)"/>
+            <column name="render" type="MEDIUMTEXT"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="cs_rights">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="label" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="VARCHAR(75)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cs_settings">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="type" type="INT(10)"/>
+            <column name="key" type="VARCHAR(255)"/>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="data1" type="VARCHAR(255)"/>
+            <column name="data2" type="VARCHAR(255)"/>
+            <column name="settingLabel" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cs_sitearticlecategorymap">
+            <column autoIncrement="true" name="mapid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteid" type="INT(10)"/>
+            <column name="articlecategoryid" type="INT(10)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="cs_userrights">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="userid" type="INT(10)"/>
+            <column name="rightid" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="cs_users">
+            <column autoIncrement="true" name="userid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="firstName" type="VARCHAR(25)"/>
+            <column name="lastName" type="VARCHAR(25)"/>
+            <column name="password" type="VARCHAR(32)"/>
+            <column name="username" type="VARCHAR(25)"/>
+            <column defaultValueNumeric="0" name="userGroup" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="export_cs_cccom">
+            <column name="campaignid" type="VARCHAR(15)"/>
+            <column name="introApr" type="VARCHAR(156)"/>
+            <column name="q_introApr" type="DOUBLE"/>
+            <column name="introAprPeriod" type="VARCHAR(100)"/>
+            <column name="q_introAprPeriod" type="TINYINT(3)"/>
+            <column name="regularApr" type="VARCHAR(135)"/>
+            <column name="q_regularApr" type="DOUBLE"/>
+            <column name="annualFee" type="VARCHAR(142)"/>
+            <column name="q_annualFee" type="DOUBLE"/>
+            <column name="monthlyFee" type="VARCHAR(345)"/>
+            <column name="q_monthlyFee" type="LONGBLOB"/>
+            <column name="balanceTransfers" type="VARCHAR(100)"/>
+            <column name="q_balanceTransfers" type="TINYINT(1)"/>
+            <column name="creditNeeded" type="VARCHAR(100)"/>
+            <column name="q_creditNeeded" type="TINYINT(3)"/>
+            <column name="imagePath" type="VARCHAR(255)"/>
+            <column name="url" type="VARCHAR(355)"/>
+        </createTable>
+
+
+        <createTable tableName="export_wd_pa_banners">
+            <column name="bannerid" type="VARCHAR(15)"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="destinationurl" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="type" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="campaignid" type="VARCHAR(15)"/>
+        </createTable>
+
+
+        <createTable tableName="export_wd_pa_campaigncategories">
+            <column name="campaignid" type="VARCHAR(15)"/>
+            <column name="name" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_id" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="export_wd_pa_campaigns">
+            <column name="campaignid" type="VARCHAR(15)"/>
+            <column name="accountid" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="shortDescription" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="export_wd_pa_campaigntypemap">
+            <column defaultValueNumeric="0" name="cardcategorymapId" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cardId" type="VARCHAR(15)"/>
+            <column name="cardpageId" type="INT(10)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="export_wd_pa_campaigntypes">
+            <column defaultValueNumeric="0" name="id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="disclaimer" type="LONGTEXT"/>
+            <column name="displayorder" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="frequent_flier">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="which_airlines" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject_to_blackout_dates" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_purchase_bonus" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="hbx_data">
+            <column autoIncrement="true" name="hbx_data_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="site_id" type="VARCHAR(255)"/>
+            <column name="item_fid" type="VARCHAR(255)"/>
+            <column name="group_name" type="VARCHAR(255)"/>
+            <column name="class_name" type="VARCHAR(255)"/>
+            <column name="category_name" type="VARCHAR(255)"/>
+            <column name="product_name" type="VARCHAR(255)"/>
+        </createTable>
+
+
+        <createTable tableName="hbx_elements">
+            <column autoIncrement="true" name="hbx_option_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="type" type="ENUM('hbx_product','hbx_category','hbx_class','hbx_group')"/>
+        </createTable>
+
+
+        <createTable tableName="merchant_data">
+            <column name="merchant_data_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="merchant_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="setup_fee" type="FLOAT(12)"/>
+            <column name="monthly_minimum" type="FLOAT(12)"/>
+            <column name="gateway_fee" type="FLOAT(12)"/>
+            <column name="statement_fee" type="FLOAT(12)"/>
+            <column name="transaction_fee" type="FLOAT(12)"/>
+            <column name="discount_rate" type="FLOAT(12)"/>
+            <column name="tech_support_fee" type="FLOAT(12)"/>
+            <column name="date_modified" type="date"/>
+        </createTable>
+
+
+        <createTable tableName="merchant_details">
+            <column defaultValueNumeric="0" name="merchant_detail_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="merchant_id" type="INT(10)"/>
+            <column defaultValueNumeric="-1" name="merchant_detail_version" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="merchant_link" type="VARCHAR(100)"/>
+            <column name="app_link" type="VARCHAR(100)"/>
+            <column name="merchant_detail_label" type="VARCHAR(50)"/>
+            <column name="merchant_image_path" type="VARCHAR(50)"/>
+            <column name="merchant_image_alt_text" type="VARCHAR(100)"/>
+            <column name="apply_button_image" type="VARCHAR(100)"/>
+            <column name="apply_button_alt_text" type="VARCHAR(100)"/>
+            <column name="date_created" type="date"/>
+            <column name="date_modified" type="date"/>
+            <column defaultValueNumeric="1" name="active" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="merchant_service_data">
+            <column autoIncrement="true" name="merchant_service_data_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="merchant_service_id" type="VARCHAR(20)"/>
+            <column name="setup_fee" type="FLOAT(12)"/>
+            <column name="monthly_minimum" type="FLOAT(12)"/>
+            <column name="gateway_fee" type="FLOAT(12)"/>
+            <column name="statement_fee" type="FLOAT(12)"/>
+            <column name="transaction_fee" type="FLOAT(12)"/>
+            <column name="discount_rate" type="FLOAT(12)"/>
+            <column name="tech_support_fee" type="FLOAT(12)"/>
+            <column name="date_modified" type="date"/>
+            <column name="internet_discount_rate" type="DECIMAL(7, 4)"/>
+            <column name="internet_transaction_fee" type="DECIMAL(12, 2)"/>
+            <column name="address_verification_fee" type="DECIMAL(12, 2)"/>
+            <column name="application_fee" type="DECIMAL(12, 2)"/>
+            <column name="reserve" type="DECIMAL(12, 2)"/>
+            <column name="chargeback_fee" type="DECIMAL(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="merchant_service_details">
+            <column autoIncrement="true" name="merchant_service_detail_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="merchant_service_id" type="VARCHAR(20)"/>
+            <column defaultValueNumeric="-1" name="merchant_service_detail_version" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="merchant_service_detail_label" type="VARCHAR(255)"/>
+            <column name="category_image_path" type="VARCHAR(100)"/>
+            <column name="category_image_alt_text" type="VARCHAR(100)"/>
+            <column name="merchant_service_link" type="VARCHAR(100)"/>
+            <column name="app_link" type="VARCHAR(100)"/>
+            <column name="merchant_service_image_path" type="VARCHAR(255)"/>
+            <column name="merchant_service_image_alt_text" type="VARCHAR(100)"/>
+            <column name="apply_button_alt_text" type="VARCHAR(100)"/>
+            <column name="merchant_service_header_string" type="VARCHAR(100)"/>
+            <column name="page_meta" type="LONGTEXT"/>
+            <column name="disclaimer" type="LONGTEXT"/>
+            <column name="merchant_service_detail_text" type="LONGBLOB"/>
+            <column name="merchant_service_intro_detail" type="LONGBLOB"/>
+            <column name="merchant_service_more_detail" type="LONGBLOB"/>
+            <column name="fid" type="INT(10)"/>
+            <column name="date_created" type="date"/>
+            <column name="date_updated" type="date"/>
+            <column defaultValueNumeric="1" name="active" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="merchant_services">
+            <column name="merchant_service_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="merchant_service_name" type="VARCHAR(255)"/>
+            <column name="url" type="VARCHAR(200)"/>
+            <column name="description" type="LONGBLOB"/>
+            <column defaultValue="$@@one_time_setup_fee@@" name="setup_fee" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="active_setup_fee" type="INT(10)"/>
+            <column defaultValue="$@@monthly_minimum@@" name="monthly_minimum" type="VARCHAR(100)"/>
+            <column name="active_monthly_minimum" type="INT(10)"/>
+            <column defaultValue="$@@gateway_fee@@" name="gateway_fee" type="VARCHAR(100)"/>
+            <column name="active_gateway_fee" type="INT(10)"/>
+            <column defaultValue="$@@statement_fee@@" name="statement_fee" type="VARCHAR(100)"/>
+            <column name="active_statement_fee" type="INT(10)"/>
+            <column defaultValue="@@discount_rate@@%" name="discount_rate" type="VARCHAR(100)"/>
+            <column name="active_discount_rate" type="INT(10)"/>
+            <column defaultValue="$@@transaction_fee@@" name="transaction_fee" type="VARCHAR(100)"/>
+            <column name="active_transaction_fee" type="INT(10)"/>
+            <column defaultValue="$@@tech_support_fee@@" name="tech_support_fee" type="VARCHAR(100)"/>
+            <column name="active_tech_support_fee" type="INT(10)"/>
+            <column name="date_created" type="date"/>
+            <column name="date_updated" type="date"/>
+            <column defaultValueNumeric="1" name="active" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)"/>
+            <column defaultValue="@@internet_discount_rate@@%" name="internet_discount_rate" type="VARCHAR(100)"/>
+            <column defaultValue="$@@internet_transaction_fee@@" name="internet_transaction_fee" type="VARCHAR(100)"/>
+            <column defaultValue="$@@address_verification_fee@@" name="address_verification_fee" type="VARCHAR(100)"/>
+            <column defaultValue="$@@application_fee@@" name="application_fee" type="VARCHAR(100)"/>
+            <column defaultValue="$@@reserve@@" name="reserve" type="VARCHAR(100)"/>
+            <column defaultValue="$@@chargeback_fee@@" name="chargeback_fee" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="active_internet_transaction_fee" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="active_address_verification_fee" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="active_application_fee" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="active_reserve" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="active_chargeback_fee" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="active_internet_discount_rate" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="merchant_services_page_map">
+            <column autoIncrement="true" name="merchant_service_page_map_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="page_id" type="INT(10)"/>
+            <column name="merchant_service_id" type="VARCHAR(20)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="merchants">
+            <column autoIncrement="true" name="merchant_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="merchant_name" type="VARCHAR(50)"/>
+            <column name="url" type="VARCHAR(200)"/>
+            <column name="description" type="LONGBLOB"/>
+            <column name="date_created" type="date"/>
+            <column name="date_updated" type="date"/>
+            <column defaultValueNumeric="1" name="active" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="other_benefits">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="insurance" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="retail_discounts" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="extended_warranties" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roadside_assistance" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="security_identity_solution" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_protection" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="consierge_service" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_design" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mini_card" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="photo_security" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="personalization" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="point_rewards">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="where_points_redeemed" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value_of_points" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_purchase_bonus" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="prepaid_card_fees">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="replacement_card_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atm_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="live_teller_withdrawal_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atm_balance_inquiry_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="monthly_inactive_account_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="automated_telephone_inquiry_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_service_live_call_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cancel_card_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="application_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_merchant_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_online_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_telephone_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="signature_transaction_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pin_transaction_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="load_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="profiles_data">
+            <column name="profile_id" remarks="ID# for this profile" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" remarks="Appears on this profile\'s page heading" type="VARCHAR(255)"/>
+            <column name="sub_title" remarks="Appears under this profile\'s title" type="VARCHAR(255)"/>
+            <column name="content_sub_title" remarks="Subtitle displayed on inner content pages" type="VARCHAR(255)"/>
+            <column name="background_color_code_light" remarks="Hex code for this profile\'s background light color"
+                    type="VARCHAR(25)"/>
+            <column defaultValue="NULL" name="background_color_code_dark"
+                    remarks="Hex code for this profile\'s background dark color" type="VARCHAR(25)"/>
+            <column name="profile_description" remarks="Short description of this profile\'s average user"
+                    type="VARCHAR(255)"/>
+            <column name="profile_card_types" remarks="List of the types of cards the user would be interested in"
+                    type="VARCHAR(255)"/>
+            <column name="profile_tip" remarks="Profile tip message" type="VARCHAR(255)"/>
+            <column name="news_static_content" remarks="Static HTML code displayed at the bottom of the profile"
+                    type="LONGTEXT"/>
+            <column name="calculator_url" remarks="URL for calculator SWF file" type="VARCHAR(255)"/>
+            <column name="image_path" remarks="Path and filename to this profile\'s image file" type="VARCHAR(255)"/>
+            <column name="media_url" remarks="URL for embedded swf file at top of profile page" type="VARCHAR(255)"/>
+            <column name="card_category_1" remarks="ID# of main card category of interest" type="INT(10)"/>
+            <column name="card_category_2" remarks="ID# of secondary card category of interest" type="INT(10)"/>
+            <column name="card_category_3" remarks="ID# of tertiary card category of interest" type="INT(10)"/>
+            <column name="tag_category_1" type="INT(10)"/>
+            <column name="tag_category_2" type="INT(10)"/>
+            <column name="tag_category_3" type="INT(10)"/>
+            <column name="update_time" remarks="timestamp for last record update" type="TIMESTAMP"/>
+            <column name="insert_time" remarks="timestamp for record creation" type="TIMESTAMP"/>
+            <column name="rank" remarks="This profile\'s ranking in the index" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="published_card_history">
+            <column name="card_id" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_title" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="'0000-00-00'" name="date_inserted" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time_inserted" type="time"/>
+        </createTable>
+
+
+        <createTable tableName="redirects">
+            <column autoIncrement="true" name="redirect_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="site_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="filename" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="destination_url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="rt_articlepagecategorymap">
+            <column autoIncrement="true" name="mapId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="cardpageId" type="INT(10)"/>
+            <column name="categoryId" type="INT(10)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_articlepagemap">
+            <column autoIncrement="true" name="mapId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="cardpageId" type="INT(10)"/>
+            <column name="articleId" type="INT(10)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_articles">
+            <column autoIncrement="true" name="articleId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="subCat" type="TINYINT(1)"/>
+            <column name="articleTitle" type="VARCHAR(100)"/>
+            <column name="articleIntroText" type="VARCHAR(250)"/>
+            <column name="articleLink" type="VARCHAR(250)"/>
+            <column name="articleLinkName" type="VARCHAR(20)"/>
+            <column name="articleBody" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)"/>
+            <column defaultValueNumeric="1" name="active" type="INT(10)"/>
+            <column name="catTitle" type="VARCHAR(100)"/>
+            <column name="catDescription" type="LONGTEXT"/>
+            <column name="catImage" type="VARCHAR(100)"/>
+            <column name="catImageAltText" type="VARCHAR(100)"/>
+            <column name="dateUpdated" type="datetime"/>
+            <column name="dateCreated" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="rt_cardcategorymap">
+            <column autoIncrement="true" name="cardcategorymapId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="categoryId" type="INT(10)"/>
+            <column name="cardId" type="VARCHAR(11)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_carddetails">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="cardShortName" type="VARCHAR(30)"/>
+            <column name="cardLink" type="VARCHAR(100)"/>
+            <column name="appLink" type="VARCHAR(100)"/>
+            <column name="cardDetailVersion" type="INT(10)"/>
+            <column name="cardDetailLabel" type="VARCHAR(50)"/>
+            <column name="cardId" type="VARCHAR(15)"/>
+            <column name="campaignLink" type="VARCHAR(32)"/>
+            <column name="cardPageMeta" type="LONGTEXT"/>
+            <column name="cardDetailText" type="LONGTEXT"/>
+            <column name="cardIntroDetail" type="LONGTEXT"/>
+            <column name="cardMoreDetail" type="LONGTEXT"/>
+            <column name="cardSeeDetails" type="LONGTEXT"/>
+            <column name="categoryImage" type="VARCHAR(255)"/>
+            <column name="categoryAltText" type="VARCHAR(255)"/>
+            <column name="cardIOImage" type="VARCHAR(255)"/>
+            <column name="cardIOAltText" type="VARCHAR(255)"/>
+            <column name="cardButtonImage" type="VARCHAR(255)"/>
+            <column name="cardButtonAltText" type="VARCHAR(255)"/>
+            <column name="cardIOButtonAltText" type="VARCHAR(255)"/>
+            <column name="cardIconSmall" type="VARCHAR(255)"/>
+            <column name="cardIconMid" type="VARCHAR(255)"/>
+            <column name="cardIconLarge" type="VARCHAR(255)"/>
+            <column name="detailOrder" type="INT(10)"/>
+            <column name="dateCreated" type="datetime"/>
+            <column defaultValueComputed="'0000-00-00 00:00:00'" name="dateUpdated" type="datetime"/>
+            <column name="fid" type="VARCHAR(50)"/>
+            <column name="cardListingString" type="VARCHAR(100)"/>
+            <column name="cardPageHeaderString" type="VARCHAR(100)"/>
+            <column name="imageAltText" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="active" type="TINYINT(1)"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)"/>
+            <column name="specialsDescription" type="VARCHAR(255)"/>
+            <column name="specialsAdditionalLink" type="VARCHAR(255)"/>
+            <column name="cardTeaserText" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="rt_cardpagemap">
+            <column autoIncrement="true" name="cardcategorymapId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="pageInsert" type="INT(10)"/>
+            <column name="cardpageId" type="INT(10)"/>
+            <column name="cardId" type="VARCHAR(15)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_cardpagemap_affiliate">
+            <column autoIncrement="true" name="cardcategorymapId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="pageInsert" type="INT(10)"/>
+            <column name="cardpageId" type="INT(10)"/>
+            <column name="cardId" type="VARCHAR(15)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_cardpagemap_bankrate">
+            <column autoIncrement="true" name="cardcategorymapId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="pageInsert" type="INT(10)"/>
+            <column name="cardpageId" type="INT(10)"/>
+            <column name="cardId" type="VARCHAR(15)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_cardpagemap_ccg">
+            <column autoIncrement="true" name="cardcategorymapId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="pageInsert" type="INT(10)"/>
+            <column name="cardpageId" type="INT(10)"/>
+            <column name="cardId" type="VARCHAR(15)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_cardpages">
+            <column autoIncrement="true" name="cardpageId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="pageName" type="VARCHAR(255)"/>
+            <column name="pageType" type="ENUM('TYPE','CREDIT','BANK')"/>
+            <column name="contentType" type="VARCHAR(255)"/>
+            <column name="alternate_tracking_flag" type="TINYINT(1)"/>
+            <column defaultValue="STANDARD" name="schumerType" type="VARCHAR(20)"/>
+            <column name="dateCreated" type="datetime"/>
+            <column name="dateUpdated" type="datetime"/>
+            <column defaultValueNumeric="0" name="type" type="TINYINT(1)"/>
+            <column defaultValueNumeric="1" name="active" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="rollup" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_id" remarks="References cms.card_categories.card_category_id" type="INT(10)"/>
+            <column name="active_introApr" type="INT(10)"/>
+            <column name="active_introAprPeriod" type="INT(10)"/>
+            <column name="active_regularApr" type="INT(10)"/>
+            <column name="active_annualFee" type="INT(10)"/>
+            <column name="active_monthlyFee" type="INT(10)"/>
+            <column name="active_balanceTransfers" type="INT(10)"/>
+            <column name="active_balanceTransferFee" type="INT(10)"/>
+            <column name="active_balanceTransferIntroApr" type="INT(10)"/>
+            <column name="active_balanceTransferIntroAprPeriod" type="INT(10)"/>
+            <column name="active_creditNeeded" type="INT(10)"/>
+            <column name="active_transactionFeeSignature" type="INT(10)"/>
+            <column name="active_transactionFeePin" type="INT(10)"/>
+            <column name="active_atmFee" type="INT(10)"/>
+            <column name="active_prepaidText" type="INT(10)"/>
+            <column name="active_loadFee" type="INT(10)"/>
+            <column name="active_activationFee" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_cards">
+            <column name="id" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cardId" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="USEN" name="site_code" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cardTitle" type="VARCHAR(100)"/>
+            <column name="cardDescription" remarks="Internal name" type="LONGTEXT"/>
+            <column name="merchant" type="INT(10)"/>
+            <column defaultValue="@@introApr@@%*" name="introApr" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="active_introApr" type="INT(10)"/>
+            <column defaultValue="@@introAprPeriod@@*" name="introAprPeriod" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="active_introAprPeriod" type="INT(10)"/>
+            <column defaultValue="@@regularApr@@%*" name="regularApr" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="variable" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="active_regularApr" type="INT(10)"/>
+            <column defaultValue="$@@annualFee@@*" name="annualFee" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="active_annualFee" type="INT(10)"/>
+            <column defaultValue="$@@monthlyFee@@*" name="monthlyFee" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="active_monthlyFee" type="INT(10)"/>
+            <column defaultValue="@@balanceTransfers@@*" name="balanceTransfers" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="active_balanceTransfers" type="INT(10)"/>
+            <column defaultValue="@@balanceTransferFee@@*" name="balanceTransferFee" type="VARCHAR(100)"/>
+            <column name="active_balanceTransferFee" type="INT(10)"/>
+            <column defaultValue="@@balanceTransferIntroApr@@*" name="balanceTransferIntroApr" type="VARCHAR(100)"/>
+            <column name="active_balanceTransferIntroApr" type="INT(10)"/>
+            <column defaultValue="@@balanceTransferIntroAprPeriod@@*" name="balanceTransferIntroAprPeriod"
+                    type="VARCHAR(100)"/>
+            <column name="active_balanceTransferIntroAprPeriod" type="INT(10)"/>
+            <column defaultValue="@@creditNeeded@@*" name="creditNeeded" type="VARCHAR(100)"/>
+            <column name="active_creditNeeded" type="INT(10)"/>
+            <column name="imagePath" type="VARCHAR(255)"/>
+            <column name="ratesAndFees" type="LONGTEXT"/>
+            <column name="rewards" type="LONGTEXT"/>
+            <column name="cardBenefits" type="LONGTEXT"/>
+            <column name="onlineServices" type="LONGTEXT"/>
+            <column name="footNotes" type="LONGTEXT"/>
+            <column name="layout" type="VARCHAR(50)"/>
+            <column name="dateCreated" type="datetime"/>
+            <column name="dateUpdated" type="datetime"/>
+            <column defaultValueNumeric="0" name="subCat" type="TINYINT(1)"/>
+            <column name="catTitle" type="VARCHAR(100)"/>
+            <column name="catDescription" type="LONGTEXT"/>
+            <column name="catImage" type="VARCHAR(100)"/>
+            <column name="catImageAltText" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="syndicate" type="TINYINT(1)"/>
+            <column name="url" type="VARCHAR(255)"/>
+            <column name="applyByPhoneNumber" type="VARCHAR(20)"/>
+            <column name="tPageText" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="private" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="active" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active_epd_pages" type="INT(10)"/>
+            <column name="active_show_epd_rates" type="INT(10)"/>
+            <column name="show_verify" type="VARCHAR(255)"/>
+            <column defaultValue="PER_APPROVAL" name="commission_label"
+                    type="ENUM('PER_APPLICATION','PER_APPROVAL','PER_CLICK')"/>
+            <column name="payout_cap" type="DECIMAL(6, 5) UNSIGNED"/>
+            <column name="card_level_id" remarks="References cccomus.card_levels.card_level_id" type="INT(10)"/>
+            <column name="requires_approval" remarks="Card requires issuer approval before it may be syndicated."
+                    type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="secured" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="rt_categories">
+            <column autoIncrement="true" name="categoryId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="categoryName" type="VARCHAR(100)"/>
+            <column name="shortName" type="VARCHAR(25)"/>
+            <column name="categoryDescription" type="LONGTEXT"/>
+            <column name="order" type="INT(10)"/>
+            <column name="parentId" type="INT(10)"/>
+            <column name="siteId" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="type" type="TINYINT(1)"/>
+            <column name="dateCreated" type="datetime"/>
+            <column defaultValueComputed="'0000-00-00 00:00:00'" name="dateUpdated" type="datetime"/>
+            <column defaultValueNumeric="1" name="active" type="TINYINT(1)"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_keywords">
+            <column autoIncrement="true" name="entryId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="keywordId" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="keyword" type="VARCHAR(255)"/>
+            <column name="dateinserted" type="datetime"/>
+            <column defaultValueNumeric="0" name="ordering" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="rt_merchants">
+            <column autoIncrement="true" name="merchantId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="shortName" type="VARCHAR(20)"/>
+            <column name="longName" type="VARCHAR(100)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(100)"/>
+            <column name="acctId" type="VARCHAR(50)"/>
+            <column name="addressLine1" type="VARCHAR(100)"/>
+            <column name="addressLine2" type="VARCHAR(100)"/>
+            <column name="city" type="VARCHAR(50)"/>
+            <column name="state" type="CHAR(2)"/>
+            <column name="zipCode" type="VARCHAR(10)"/>
+            <column name="phone" type="VARCHAR(15)"/>
+            <column name="contact" type="VARCHAR(100)"/>
+            <column name="notes" type="LONGTEXT"/>
+            <column name="dateinserted" type="datetime"/>
+            <column name="deleted" type="INT(10) UNSIGNED"/>
+            <column defaultValueNumeric="1" name="active" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_pagecategorymap">
+            <column autoIncrement="true" name="categoryPageMapId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="cardpageId" type="INT(10)"/>
+            <column name="categoryId" type="INT(10)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_pagedetails">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="-1" name="pageDetailVersion" type="INT(10)"/>
+            <column name="pageDetailLabel" type="VARCHAR(100)"/>
+            <column name="cardpageId" type="INT(10)"/>
+            <column name="pageTitle" type="VARCHAR(100)"/>
+            <column name="pageIntroDescription" type="LONGTEXT"/>
+            <column name="pageDescription" type="LONGTEXT"/>
+            <column name="pageSpecial" type="LONGTEXT"/>
+            <column name="pageMeta" type="LONGTEXT"/>
+            <column name="pageLearnMore" type="LONGTEXT"/>
+            <column name="pageDisclaimer" type="LONGTEXT"/>
+            <column name="pageHeaderImage" type="VARCHAR(100)"/>
+            <column name="pageHeaderImageAltText" type="VARCHAR(100)"/>
+            <column name="pageSpecialOfferImage" type="VARCHAR(100)"/>
+            <column name="pageSpecialOfferImageAltText" type="VARCHAR(100)"/>
+            <column name="pageSpecialOfferLink" type="VARCHAR(100)"/>
+            <column name="pageSmallImage" type="VARCHAR(100)"/>
+            <column name="pageSmallImageAltText" type="VARCHAR(100)"/>
+            <column name="dateCreated" type="datetime"/>
+            <column name="dateUpdated" type="datetime"/>
+            <column name="pageLink" type="VARCHAR(100)"/>
+            <column name="fid" type="INT(10)"/>
+            <column name="pageHeaderString" type="VARCHAR(255)"/>
+            <column name="primaryNavString" type="VARCHAR(100)"/>
+            <column name="secondaryNavString" type="VARCHAR(100)"/>
+            <column name="topPickAltText" type="VARCHAR(100)"/>
+            <column name="flagTopPick" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="flagAdditionalOffer" type="INT(10)"/>
+            <column name="associatedArticleCategory" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="3" name="articlesPerPage" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="enableSort" type="INT(10)"/>
+            <column defaultValueNumeric="99999" name="itemsPerPage" type="INT(10)"/>
+            <column name="pageSeeAlso" type="LONGTEXT"/>
+            <column name="siteMapDescription" type="VARCHAR(255)"/>
+            <column name="siteMapTitle" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="active" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)"/>
+            <column defaultValueNumeric="1" name="sitemapLink" type="INT(10)"/>
+            <column name="navBarString" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="subPageNav" type="INT(10)"/>
+            <column name="landingPage" type="INT(10)"/>
+            <column name="landingPageFid" type="INT(10)"/>
+            <column name="landingPageImage" type="VARCHAR(100)"/>
+            <column name="landingPageHeaderString" type="LONGBLOB"/>
+            <column defaultValueNumeric="99999" name="itemsOnFirstPage" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="showMainCatOnFirstPage" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="rt_pages">
+            <column autoIncrement="true" name="entryId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="pageId" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pageName" type="VARCHAR(255)"/>
+            <column name="dateInserted" type="datetime"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="ordering" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="rt_pagesubpagemap">
+            <column autoIncrement="true" name="mapid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteid" type="INT(10)"/>
+            <column name="masterpageid" type="INT(10)"/>
+            <column name="subpageid" type="INT(10)"/>
+            <column name="hide" type="INT(10)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_pagesubpagemap_affiliate">
+            <column autoIncrement="true" name="mapid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteid" type="INT(10)"/>
+            <column name="masterpageid" type="INT(10)"/>
+            <column name="subpageid" type="INT(10)"/>
+            <column name="hide" type="INT(10)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_pagesubpagemap_bankrate">
+            <column autoIncrement="true" name="mapid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteid" type="INT(10)"/>
+            <column name="masterpageid" type="INT(10)"/>
+            <column name="subpageid" type="INT(10)"/>
+            <column name="hide" type="INT(10)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_pagesubpagemap_ccg">
+            <column autoIncrement="true" name="mapid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteid" type="INT(10)"/>
+            <column name="masterpageid" type="INT(10)"/>
+            <column name="subpageid" type="INT(10)"/>
+            <column name="hide" type="INT(10)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_sitecategorymap">
+            <column autoIncrement="true" name="sitecategorymapId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteId" type="INT(10)"/>
+            <column name="categoryId" type="INT(10)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="rt_sites">
+            <column autoIncrement="true" name="siteId" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteName" type="VARCHAR(100)"/>
+            <column name="siteTitle" type="VARCHAR(100)"/>
+            <column name="siteDescription" type="LONGTEXT"/>
+            <column defaultValue="EN" name="language" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="layout" type="VARCHAR(50)"/>
+            <column name="pagetype" type="VARCHAR(5)"/>
+            <column name="applyLogo" type="VARCHAR(250)"/>
+            <column name="ftpSite" type="VARCHAR(250)"/>
+            <column name="ftpPath" type="VARCHAR(250)"/>
+            <column name="sourcePath" type="VARCHAR(250)"/>
+            <column name="corePath" type="VARCHAR(255)"/>
+            <column name="publishPath" type="VARCHAR(250)"/>
+            <column name="publishurl" type="VARCHAR(250)"/>
+            <column name="hostname" type="VARCHAR(100)"/>
+            <column name="postBuildScript" type="VARCHAR(255)"/>
+            <column name="publishScript" type="VARCHAR(255)"/>
+            <column name="order" type="INT(10)"/>
+            <column name="dateCreated" type="datetime"/>
+            <column defaultValueComputed="'0000-00-00 00:00:00'" name="dateUpdated" type="datetime"/>
+            <column name="dateLastBuilt" type="datetime"/>
+            <column name="dblocation" type="VARCHAR(255)"/>
+            <column name="dbname" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="ccbuildPublish" type="TINYINT(1)"/>
+            <column name="individualcards" type="INT(10)"/>
+            <column name="individualcarddir" type="VARCHAR(255)"/>
+            <column name="individualmerchantservices" type="INT(10)"/>
+            <column name="individualmerchantservicesdir" type="VARCHAR(255)"/>
+            <column name="createSeoDoc" type="INT(10)"/>
+            <column name="sitemap" type="INT(10)"/>
+            <column defaultValueNumeric="1" name="active" type="TINYINT(1)"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)"/>
+            <column name="articledb" type="VARCHAR(80)"/>
+            <column name="articledbhost" type="VARCHAR(255)"/>
+            <column name="articletableprefix" type="VARCHAR(80)"/>
+            <column name="articledbun" type="VARCHAR(80)"/>
+            <column name="articledbpw" type="VARCHAR(80)"/>
+            <column name="articleindexlink" type="VARCHAR(255)"/>
+            <column name="sitemaplink" type="VARCHAR(255)"/>
+            <column name="articleSiteMapFile" type="VARCHAR(255)"/>
+            <column name="yahooArticleFile" type="VARCHAR(255)"/>
+            <column name="yahooArticleCategoryFile" type="VARCHAR(255)"/>
+            <column name="googleArticleFile" type="VARCHAR(255)"/>
+            <column name="dbun" type="VARCHAR(255)"/>
+            <column name="dbpw" type="VARCHAR(255)"/>
+            <column name="landingPageDir" type="VARCHAR(255)"/>
+            <column name="editorialLandingPgPath" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creditCardNewsPg" type="VARCHAR(120)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alternativecardpages" type="TINYINT(3)"/>
+            <column name="alternativecardpagesdir" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="-1" name="version_id" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="sc_card_page_data">
+            <column name="page_details_id" remarks="Detail level id for pages.  Should FK to rt_pagedetails.id"
+                    type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="var_name" remarks="Site Catalyst variable name, see FK for relation." type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="var_value" remarks="Site Catalyst variable value." type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="sc_individual_card_page_data">
+            <column name="card_details_id"
+                    remarks="Detail level id for individual card pages.  Should FK to rt_carddetails.id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="var_name" remarks="Site Catalyst variable name, see FK for relation." type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="var_value" remarks="Site Catalyst variable value." type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="sc_merchant_page_data">
+            <column name="merchant_service_details_id"
+                    remarks="Detail level id for merchant service pages. Should FK to merchant_service_details.merchant_service_detail_id"
+                    type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="var_name" remarks="Site Catalyst variable name.  See FK for column relation."
+                    type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="var_value" remarks="Site Catalyst variable value." type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="sc_page_vars">
+            <column name="var_name" remarks="The name of each site catalyst page variable." type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="site_card_map">
+            <column name="site_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="insert_date" type="date"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(3)"/>
+        </createTable>
+
+
+        <createTable tableName="site_codes">
+            <column name="site_code" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="site_description" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="specials_page_map">
+            <column autoIncrement="true" name="mapid" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="specialspageid" type="VARCHAR(50)"/>
+            <column name="pageid" type="VARCHAR(50)"/>
+            <column name="rank" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="versions">
+            <column autoIncrement="true" name="version_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="version_name" type="VARCHAR(255)"/>
+            <column name="version_description" type="VARCHAR(255)"/>
+            <column name="deleted" type="TINYINT(3) UNSIGNED"/>
+            <column name="insert_time" type="datetime"/>
+            <column name="update_time" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="wd_pa_banners_mal">
+            <column name="bannerid" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="LONGTEXT"/>
+            <column name="destinationurl" type="LONGTEXT"/>
+            <column name="sourceurl" type="LONGTEXT"/>
+            <column name="bannertype" type="TINYINT(3)"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(3)"/>
+            <column name="campaignid" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dimension" type="VARCHAR(25)"/>
+            <column name="bannertitle" type="VARCHAR(150)"/>
+        </createTable>
+
+
+        <addPrimaryKey columnNames="affiliate_id, clickable_id, website_id" constraintName="PRIMARY"
+                       tableName="alternate_links"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="balance_transfers"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="card_boost"/>
+
+
+        <addPrimaryKey columnNames="card_category_group_id, card_category_id" constraintName="PRIMARY"
+                       tableName="card_category_group_to_category"/>
+
+
+        <addPrimaryKey columnNames="cardpageId, cardId, rank, time_snapped" constraintName="PRIMARY"
+                       tableName="card_placement_history"/>
+
+
+        <addPrimaryKey columnNames="card_id, card_tag" constraintName="PRIMARY" tableName="card_tags"/>
+
+
+        <addPrimaryKey columnNames="campaigntype_id, dateinserted" constraintName="PRIMARY" tableName="cardhistory"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="cash_advances"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="cash_back"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="commercial_features"/>
+
+
+        <addPrimaryKey columnNames="bannerid" constraintName="PRIMARY" tableName="cs_banners"/>
+
+
+        <addPrimaryKey columnNames="cardId" constraintName="PRIMARY" tableName="cs_carddata"/>
+
+
+        <addPrimaryKey columnNames="cardid" constraintName="PRIMARY" tableName="cs_cardhistory"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="frequent_flier"/>
+
+
+        <addPrimaryKey columnNames="merchant_data_id" constraintName="PRIMARY" tableName="merchant_data"/>
+
+
+        <addPrimaryKey columnNames="merchant_detail_id" constraintName="PRIMARY" tableName="merchant_details"/>
+
+
+        <addPrimaryKey columnNames="merchant_service_id" constraintName="PRIMARY" tableName="merchant_services"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="other_benefits"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="point_rewards"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="prepaid_card_fees"/>
+
+
+        <addPrimaryKey columnNames="profile_id" constraintName="PRIMARY" tableName="profiles_data"/>
+
+
+        <addPrimaryKey columnNames="card_id, card_title, date_inserted" constraintName="PRIMARY"
+                       tableName="published_card_history"/>
+
+
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="rt_cards"/>
+
+
+        <addPrimaryKey columnNames="page_details_id, var_name" constraintName="PRIMARY" tableName="sc_card_page_data"/>
+
+
+        <addPrimaryKey columnNames="card_details_id, var_name" constraintName="PRIMARY"
+                       tableName="sc_individual_card_page_data"/>
+
+
+        <addPrimaryKey columnNames="merchant_service_details_id, var_name" constraintName="PRIMARY"
+                       tableName="sc_merchant_page_data"/>
+
+
+        <addPrimaryKey columnNames="var_name" constraintName="PRIMARY" tableName="sc_page_vars"/>
+
+
+        <addPrimaryKey columnNames="site_id, card_id" constraintName="PRIMARY" tableName="site_card_map"/>
+
+
+        <addPrimaryKey columnNames="site_code" constraintName="PRIMARY" tableName="site_codes"/>
+
+
+        <addPrimaryKey columnNames="bannerid" constraintName="PRIMARY" tableName="wd_pa_banners_mal"/>
+
+
+        <addForeignKeyConstraint baseColumnNames="var_name" baseTableName="sc_merchant_page_data"
+                                 constraintName="FK_var_name" deferrable="false" initiallyDeferred="false"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="var_name"
+                                 referencedTableName="sc_page_vars"/>
+
+
+        <addForeignKeyConstraint baseColumnNames="build_history_id" baseTableName="build_history_detail"
+                                 constraintName="build_history_detail_ibfk_1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="build_history_id" referencedTableName="build_history"/>
+
+
+        <addForeignKeyConstraint baseColumnNames="var_name" baseTableName="sc_card_page_data"
+                                 constraintName="sc_card_page_data_ibfk_1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="var_name"
+                                 referencedTableName="sc_page_vars"/>
+
+
+        <addForeignKeyConstraint baseColumnNames="var_name" baseTableName="sc_individual_card_page_data"
+                                 constraintName="sc_individual_card_page_data_ibfk_1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="var_name" referencedTableName="sc_page_vars"/>
+
+
+        <addUniqueConstraint columnNames="card_sku, issuer" constraintName="IDX_SKU_Issuer" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="cards"/>
+
+
+        <addUniqueConstraint columnNames="build_history_id, sub_page_id, card_id, sub_page_position"
+                             constraintName="IDX_SUB" deferrable="false" disabled="false" initiallyDeferred="false"
+                             tableName="build_history_detail"/>
+
+
+        <addUniqueConstraint columnNames="build_history_id, web_page_id, card_id, web_page_position"
+                             constraintName="IDX_WEB" deferrable="false" disabled="false" initiallyDeferred="false"
+                             tableName="build_history_detail"/>
+
+
+        <addUniqueConstraint columnNames="cardpageId, cardId" constraintName="IDX_cardpage" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="rt_cardpagemap_bankrate"/>
+
+
+        <addUniqueConstraint columnNames="pageDetailVersion, cardpageId, deleted" constraintName="IDX_pagedetaildeleted"
+                             deferrable="false" disabled="false" initiallyDeferred="false" tableName="rt_pagedetails"/>
+
+
+        <addUniqueConstraint columnNames="cardpageId, categoryId" constraintName="IDX_sitepage" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="rt_pagecategorymap"/>
+
+
+        <addUniqueConstraint columnNames="card_id, benefit" constraintName="IDX_sku_issuer_benefit" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="additional_benefits"/>
+
+
+        <addUniqueConstraint columnNames="card_id, fee" constraintName="IDX_sku_issuer_fee" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="additional_fees"/>
+
+
+        <addUniqueConstraint columnNames="card_id, note" constraintName="IDX_sku_issuer_note" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="additional_notes"/>
+
+
+        <addUniqueConstraint columnNames="bannerid" constraintName="IDX_wd_pa_banners2" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="cs_banners"/>
+
+
+        <addUniqueConstraint columnNames="cardId" constraintName="idx_cardId" deferrable="false" disabled="false"
+                             initiallyDeferred="false" tableName="rt_cards"/>
+
+
+        <addUniqueConstraint columnNames="card_id, insert_time" constraintName="idx_card_date" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="card_apr_history"/>
+
+
+        <createIndex indexName="IDX_carddetaildeleted" tableName="rt_carddetails" unique="false">
+            <column name="cardId"/>
+            <column name="cardDetailVersion"/>
+            <column name="deleted"/>
+        </createIndex>
+
+
+        <createIndex indexName="IDX_cardpage" tableName="rt_cardpagemap" unique="true">
+            <column name="cardpageId"/>
+            <column name="cardId"/>
+        </createIndex>
+
+
+        <createIndex indexName="IDX_cardpage" tableName="rt_cardpagemap_affiliate" unique="true">
+            <column name="cardpageId"/>
+            <column name="cardId"/>
+        </createIndex>
+
+
+        <createIndex indexName="IDX_cardpage" tableName="rt_cardpagemap_ccg" unique="true">
+            <column name="cardpageId"/>
+            <column name="cardId"/>
+        </createIndex>
+
+
+        <createIndex indexName="IDX_pa_banners_1" tableName="cs_banners" unique="false">
+            <column name="campaignid"/>
+        </createIndex>
+
+
+        <createIndex indexName="IDX_pa_banners_1" tableName="wd_pa_banners_mal" unique="false">
+            <column name="campaignid"/>
+        </createIndex>
+
+
+        <createIndex indexName="IDX_sitepagecard" tableName="cs_pagecardexclusionmap" unique="false">
+            <column name="siteid"/>
+            <column name="pageid"/>
+            <column name="cardid"/>
+        </createIndex>
+
+
+        <createIndex indexName="card_cat_idx" tableName="card_ranks" unique="false">
+            <column name="card_category_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="card_id_cat_idx" tableName="card_ranks" unique="false">
+            <column name="card_id"/>
+            <column name="card_category_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="dateinserted" tableName="cardhistory" unique="false">
+            <column name="dateinserted"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_build_time" tableName="build_history" unique="false">
+            <column name="build_time"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_cardId" tableName="card_placement_history" unique="false">
+            <column name="cardId"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_publish_time" tableName="build_history" unique="false">
+            <column name="publish_time"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_time_snapped" tableName="card_placement_history" unique="false">
+            <column name="time_snapped"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

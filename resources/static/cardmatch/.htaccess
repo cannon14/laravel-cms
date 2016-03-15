@@ -1,0 +1,4 @@
+RewriteEngine On
+# RewriteRule ^config/(.*)$ /cardmatch
+RewriteRule ^(index\.php|css|images|js|captcha|test) - [L]
+RewriteRule . /cardmatch [NE,L]

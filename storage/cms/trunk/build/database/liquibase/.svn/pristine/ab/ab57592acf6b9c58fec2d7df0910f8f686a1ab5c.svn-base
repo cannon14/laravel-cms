@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   logicalFilePath="ram-1.2.xml">
+
+
+    <changeSet id="set-db-engines-to-innodb" author="michaell">
+        <sql>
+            ALTER TABLE `ram`.`payin_tier_website_assignments`
+            ENGINE = InnoDB
+        </sql>
+        <sql>
+            ALTER TABLE `ram`.`payin_tiers`
+            ENGINE = InnoDB
+        </sql>
+    </changeSet>
+    <changeSet id="set-foreign-keys" author="michaell">
+        <addForeignKeyConstraint baseColumnNames="payin_tier_id"
+                                 baseTableName="payin_tier_card_assignments"
+                                 constraintName="fk_payin_tier_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="payin_tier_id"
+                                 referencedTableName="payin_tiers"/>
+
+        <addForeignKeyConstraint baseColumnNames="payin_tier_id"
+                                 baseTableName="payin_tier_website_assignments"
+                                 constraintName="fk_payin_tier_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="payin_tier_id"
+                                 referencedTableName="payin_tiers"/>
+    </changeSet>
+</databaseChangeLog>

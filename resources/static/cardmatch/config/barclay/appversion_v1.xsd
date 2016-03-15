@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ver="http://barclaycardus.com/util/appversion/schema/v1" elementFormDefault="qualified" targetNamespace="http://barclaycardus.com/util/appversion/schema/v1" version="1.0">
+
+   <xs:element name="VersionRequest">
+      <xs:complexType>
+         <xs:all>
+            <xs:element maxOccurs="1" minOccurs="0" name="unused" type="xs:string"/>
+         </xs:all>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="VersionResponse">
+      <xs:complexType>
+         <xs:all>
+            <xs:element maxOccurs="1" minOccurs="1" name="version" type="xs:string"/>
+         </xs:all>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

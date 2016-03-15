@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="ccdata_test">
+	<table_data name="ccdata_test.card_ranks">
+	<row>
+		<field name="card_rank_id">1</field>
+		<field name="card_rank">1</field>
+		<field name="card_category_context_id">1</field>
+		<field name="card_category_id">1</field>
+		<field name="card_id">1</field>
+	</row>
+	<row>
+		<field name="card_rank_id">2</field>
+		<field name="card_rank">2</field>
+		<field name="card_category_context_id">1</field>
+		<field name="card_category_id">1</field>
+		<field name="card_id">5</field>
+	</row>
+	<row>
+		<field name="card_rank_id">3</field>
+		<field name="card_rank">1</field>
+		<field name="card_category_context_id">1</field>
+		<field name="card_category_id">2</field>
+		<field name="card_id">2</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

@@ -1,0 +1,339 @@
+MILONIC DHTML MENU RELEASE 5.0 MENU DESIGN 
+
+
+
++----------------+ 
+| Building Menus | 
++----------------+                                                                                   
+
+Menus are built by manually editing a plain text file: menu_data.js. A good 
+quality text editor is an essential tool for this purpose. Notepad will work but 
+does have issues.
+
+When building your own menus it's always better to use copy and paste. This way, 
+your syntax errors are reduced and typing is kept to a minimum.
+
+Menu builders are currently being worked on, but in the mean time the only way 
+to build menus is with a plain text editor.
+
+Once you have your downloaded menu working on your development environment you 
+can begin editing the menu_data.js file.
+
+
+
++-------------+ 
+| Menu Styles | 
++-------------+                                                                                   
+
+The visible properties of menus, such as colors and fonts, etc., are declared 
+within menu styles. These need to go at the top of your menu definition file, or, 
+at the very least, be positioned before the first menu that uses the style is 
+declared.
+
+The object definition for a style is in this format:
+
+with(myMenuStyle=new mm_style()){ 
+  PARAMETERS. . . . 
+  PARAMETERS. . . . 
+}                                                                                   
+
+This will create a style object called myMenuStyle that can be used in as many 
+menus as required. Parameters are declared within style objects in a 2 pair 
+format: NAME="PROPERTY". This allows for a very flexible method of property 
+declaration. There are no rules about the position of properties within the 
+style object definition, and as long as the property is recognized it will be 
+used. If the system does not recognize a property it will simply ignore it.
+
+Note: You can declare as many menu styles as you need.
+
+Let's say that we wanted our menu items to have a black background and white 
+text. In order to do this, we would declare 2 properties within the style object 
+- offbgcolor="#000000" and offcolor="#FFFFFF".
+
+For the mouseOver colors we would declare onbgcolor="#FFFFFF" and 
+oncolor="#000000". This would create a black menu with white text, and as each 
+menu item was moused over would change the color to white background with black 
+text. 
+
+Note: You can use color names, but it isn't compatible with older browsers and 
+isn't recommended.
+
+With the parameters declared inside our style object definition, it would look 
+something like this:
+
+with(myMenuStyle=new mm_style()){ 
+  onbgcolor="#FFFFFF"; 
+  oncolor="#000000"; 
+  offbgcolor="#000000"; 
+  offcolor="#FFFFFF"; 
+  }                                                                                   
+
+Note the addition of semi-colons after each property definition. This is not a 
+mandatory requirement in JavaScript and is optional, and merely denotes a new 
+line.
+
+In order to customize the menus style even further, you would add more style 
+properties to the style object. Here is a list of the available style properties 
+that you can declare inside a style object:
+
+align 
+bordercolor 
+borderstyle 
+borderwidth 
+decoration 
+fontfamily 
+fontsize 
+fontstyle 
+fontweight 
+headerbgcolor 
+headercolor 
+high3dcolor 
+image 
+low3dcolor 
+offbgcolor 
+offborder 
+offclass 
+offcolor 
+onbgcolor 
+onbold 
+onborder 
+onclass 
+oncolor 
+ondecoration 
+onitalic 
+onsubimage 
+outfilter 
+overfilter 
+padding 
+pagebgcolor 
+pagecolor 
+pageimage 
+separatoralign 
+separatorcolor 
+separatorheight 
+separatorpadding 
+separatorsize 
+separatorwidth 
+subimage 
+subimagepadding 
+subimageposition                                                                                   
+
+More details about each property can be found here: 
+http://www.milonic.com/styleproperties.php
+
+Note that each property must be enclosed in quotes unless it is completely 
+numeric. 10px will need to be "10px", but 10 will be fine without the quotes.
+
+
+
++-------+ 
+| Menus | 
++-------+                                                                                   
+
+Now that you have declared your styles you can create some menus.
+
+The Milonic DHTML Menu is NOT a hierarchical menu system, and each menu is 
+classed as equal. The way the menu works is by setting one or more menus to be 
+"Always Visible". Your sub menus then fall off this main menu and display as 
+required.
+
+Normally, your main menu is the first menu that you would declare. Although this 
+is not a mandatory requirement, it just makes the menu data file easier to 
+understand when you come back to it in a year or two.
+
+To declare our first menu we have to include the properties inside a Menu object 
+definition. Here is a menu object definition:
+
+with(milonic=new menuname("mainmenu")){ 
+  PARAMETERS. . . . 
+  PARAMETERS. . . . 
+  }                                                                                   
+
+This creates a new menu called "mainmenu". Within this object we will need to 
+declare a few parameters. One of them is telling the menu to be visible at all 
+times. The "alwaysvisible" property is used for this purpose. This property is a 
+logic property, and to enable this property it must be equal to 1. So, 
+alwaysvisible=1; is what we need.
+
+As this menu will be visible at all times, it will need to be positioned on your 
+HTML page in the correct place relative to other HTML objects on your page. By 
+default, all menus are positioned absolute, and, therefore, we will need to give 
+this menu a TOP and a LEFT position. If we want this menu to be positioned 10 
+pixels down and 10 pixels across we would use top=10; and left=10;. 
+
+Finally, we need to declare the style we want to use for this menu. Style is a 
+mandatory value that ALL menus must contain. All other properties can be omitted 
+if need be.
+
+Our new menu object definition should look something like this.
+
+with(milonic=new menuname("mainmenu")){ 
+  syle=myMenuStyle; 
+  alwaysvisible=1; 
+  left=10; 
+  top=10; 
+  }                                                                                   
+
+The available properties for use within a menu object definition are: 
+
+name 
+top 
+left 
+itemwidth 
+borderwidth 
+screenposition 
+style 
+alwaysvisible 
+align 
+borderstyle 
+orientation 
+keepalive 
+overallwidth 
+openstyle 
+openonclick 
+bordercolor 
+bgimage 
+scrollable 
+margin 
+overflow 
+position 
+overfilter 
+outfilter 
+itemheight 
+followscroll                                                                                   
+
+
+
++------------+ 
+| Menu Items | 
++------------+                                                                                   
+
+Now that you have an idea of how to add a menu, you need to know how to add menu 
+items. After all, a menu will not show anything without menu items, so it's vital 
+to get a list of menu items inside the menu definition.
+
+Menu items need to be added after the menu properties have been declared. The 
+order is quite important for menus. The Menu properties first, then menu items.
+
+Menu items are added using a special function embedded within the menu object 
+definition. The function is aI() (case sensitive), and all menu item parameters 
+are passed within a text string.
+
+For example, to include a menu item that will take the user back to the home 
+page, but does not open a sub menu, you would declare a menu item like this:
+
+aI("text=home;url=/index.html");                                                                                   
+
+This is perhaps the simplest of menu items that only has two properties, text 
+and url. The text property declares the text that will be displayed inside the 
+menu item, and the url is the page that the user will go to if he or she clicks 
+on the menu item.
+
+Note: All properties are included inside a single text string, separated by a 
+semi colon. Properties can also be added in any order. This makes building menus 
+easier than using conventional array values. With arrays, even if the value is 
+omitted, you still need to separate the array element with a comma. Plus, they 
+need to be in the correct order. This is not the case with the Milonic DHTML 
+Menu. Any order will do, and if a value is not required you just delete it. The 
+menu will automatically use the default value.
+
+There are instances, however, when you may want to add HTML Entities such as 
+&nbsp;. This would normally cause a problem due to the addition of a semi colon. 
+However, the menu is smart enough to know that &nbsp; is not the end of the 
+parameter, and will include it, leaving you with nothing more to do if you need to 
+add HTML Entities. In addition to this, if you did declare text that was a 
+little too much for the Menu parser to work out, you could enclose your parameter 
+inside back quotes. This is useful for including HTML within a menu item for a 
+form, etc.
+
+aI("text=`<form style=\"prop:val;\"><input name=txt></form>`;");
+
+Is one example of how you would use back quotes.                                                                                   
+
+In order to get the menu item to open a sub menu, you need to declare the name of 
+the menu that you want associated with the menu item. The showmenu parameter is 
+used for this. The following sample shows how the Home link could also open a 
+submenu:
+
+aI("text=home;url=/index.html;showmenu=submenu;");                                                                                   
+
+Again, any order of the above properties is perfectly acceptable, and, as you can 
+see, to add more properties, you just need to include the value within the aI 
+text string separated by a semi colon.
+
+The list of properties for menu items is: 
+
+text 
+url 
+showmenu 
+status 
+onbgcolor 
+oncolor 
+offbgcolor 
+offcolor 
+offborder 
+separatorcolor 
+padding 
+fontsize 
+fontstyle 
+fontweight 
+fontfamily 
+high3dcolor 
+low3dcolor 
+pagecolor 
+pagebgcolor 
+headercolor 
+headerbgcolor 
+subimagepadding 
+subimageposition 
+subimage 
+onborder 
+ondecoration 
+separatorsize 
+itemheight 
+image 
+imageposition 
+imagealign 
+overimage 
+decoration 
+type 
+target 
+align 
+imageheight 
+imagewidth 
+openonclick 
+closeonclick 
+keepalive 
+onfunction 
+offfunction 
+onbold 
+onitalic 
+bgimage 
+overbgimage 
+onsubimage 
+separatorheight 
+separatorwidth 
+separatorpadding 
+separatoralign 
+onclass 
+offclass 
+itemwidth 
+pageimage 
+targetfeatures                                                                                   
+
+
+The following is a sample menu that includes several menu items.
+
+with(milonic=new menuname("mainmenu")){ 
+  style=myMenuStyle; 
+  alwaysvisible=1; 
+  left=10; 
+  top=10; 
+  aI("text=Home;url=/index.html;"); 
+  aI("text=About Us;url=/aboutus.html;showmenu=About Us;"); 
+  aI("text=Contact Us;url=/contactus.html;showmenu=contact;"); 
+  aI("text=Google;url=http://www.google.com/index.html;"); 
+  }                                                                                   
+
+In order to build your menu up you could copy and paste the above, making 
+modifications as required.

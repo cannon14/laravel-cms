@@ -1,0 +1,79 @@
+.poller_results {
+	display: none;
+}
+
+.pollerTitle {
+    padding-bottom: 5px;
+    font-weight:bold;
+}
+
+.poller_question .label {
+    padding-bottom: 5px;
+	color:#000 !important;
+}
+
+a.poller_formButton
+{
+    font-family: "Arial Black", Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    text-transform: uppercase;
+	text-decoration:none !important;
+    color: #CC0000 !important;
+    background-color: #FFF;
+    padding: 2px;
+    margin: 5px 0;
+    border: 1px solid #CC0000;
+    CURSOR: pointer;
+    CURSOR: hand;
+}
+
+a.poller_formButton:hover {
+    color: #FFF !important;
+    background-color: #CC0000 !important;
+    padding: 2px;
+    margin: 5px 0;
+    CURSOR: pointer;
+    CURSOR: hand;
+}
+
+.result_pollGraph div {
+    float:left;
+    height:14px;
+    background-repeat:repeat-x;
+    color:#FFF;
+    font-size:0.8em;
+}
+
+.result_pollGraph { 
+    height:14px;
+}
+
+.result_pollerOption{
+    margin: 2px 0 0 0;
+    font-size:0.8em;
+}
+
+.result_pollerTitle{
+    padding-bottom:5px;
+    font-weight:bold;
+    font-size:12px;
+}
+
+.result_pollGraph img{
+    float:left;
+    padding:0;
+    margin:0;
+    height: 14px;
+}
+
+.poller_waitMessage{
+    display:none;   
+}
+
+.result_totalVotes {
+    clear:both;
+    margin: 8px 0 0 0;
+    font-style:italic;
+}
+

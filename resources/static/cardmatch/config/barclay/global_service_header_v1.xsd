@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://barclaycardus.com/core/ws/header/v1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://barclaycardus.com/core/ws/header/v1" version="1.0.1">
+
+   <xs:annotation>
+      <xs:documentation>This SOAP Header file defines the basic values that are necessary for each call to the BCUS web
+         services. They are necessary for logging and traceability between systems and calls.
+      </xs:documentation>
+   </xs:annotation>
+   <xs:element name="MessageHeader">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="Context">
+               <xs:annotation>
+                  <xs:documentation>The context of the call that allows traceability between systems and calls.
+                  </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element maxOccurs="unbounded" minOccurs="1" name="Caller" type="tns:String32TypeReq">
+                        <xs:annotation>
+                           <xs:documentation>This is an ordered list of the callers that are part of the call tree from
+                              the originating application. This list should be added to each time a recursive call is
+                              made, the last value represents the most recent call.
+                           </xs:documentation>
+                        </xs:annotation>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="ContextID" type="tns:String32TypeReq" use="required">
+                     <xs:annotation>
+                        <xs:documentation>The unique context of the call across all applications and service calls. In
+                           the case of the servicing website, this value would be a hashed version of the session ID.
+                           This same value will then be used in all calls recursively, thus allowing full traceability
+                           of the call between systems.
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="Operator">
+               <xs:annotation>
+                  <xs:documentation>This element is where information about the originator of the call. This could be
+                     information about the CCD user or website use for example.
+                  </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="BcusSystem" type="tns:BcusSystem" use="required">
+                     <xs:annotation>
+                        <xs:documentation>An enumeration of the system type that made the call. This might be used for
+                           system specific rules and guidelines.
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="Application" type="tns:String32Type" use="optional">
+                     <xs:annotation>
+                        <xs:documentation>The name of the application that specifically made the originating call.
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="UserID" type="tns:String32TypeReq" use="required">
+                     <xs:annotation>
+                        <xs:documentation>The username of the person making the request. For the CCD, this is the CCD
+                           Active Directory user. For the servicing website, this is the username of the user. This
+                           information must be maintained between calls.
+                           This username will be used when performing inserts or updates in the database.
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="TSYSUserID" type="tns:String32Type" use="optional">
+                     <xs:annotation>
+                        <xs:documentation>The username of the CCD user on TSYS if applicable.</xs:documentation>
+                     </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="Site" type="tns:String32Type" use="optional">
+                     <xs:annotation>
+                        <xs:documentation>The site that originated the request. This could be the US, Philippines, Pune
+                           etc.
+                        </xs:documentation>
+                     </xs:annotation>
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:simpleType name="String32Type">
+      <xs:annotation>
+         <xs:documentation>A string with a max. length of 32 characters.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="32"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="String32TypeReq">
+      <xs:annotation>
+         <xs:documentation>A string with a max. length of 32 characters.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:token">
+         <xs:pattern value="[\S]{1,32}"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="BcusSystem">
+      <xs:annotation>
+         <xs:documentation>The type of system that originated the call.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="DESKTOP"/>
+         <xs:enumeration value="WEB"/>
+         <xs:enumeration value="IVR"/>
+         <xs:enumeration value="BATCH"/>
+         <xs:enumeration value="SVC"/>
+         <xs:enumeration value="EXTERNAL"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

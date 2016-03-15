@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2015-02-23-catch-up" author="cconey">
+        <createTable tableName="card_rank_changes_temp">
+            <column autoIncrement="true" name="change_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="action" type="VARCHAR(10)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="change_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_rank_id" type="INT"/>
+            <column name="card_rank" type="INT"/>
+            <column name="card_category_context_id" type="INT"/>
+            <column name="card_category_id" type="INT"/>
+            <column name="card_id" type="VARCHAR(15)"/>
+            <column name="session_user" type="VARCHAR(20)"/>
+        </createTable>
+
+        <createTable tableName="cs_secured_merchants">
+            <column autoIncrement="true" name="sercured_merchant_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="merchant_id" type="INT"/>
+            <column name="insulator_class" type="VARCHAR(45)"/>
+        </createTable>
+
+        <createTable tableName="product_types">
+            <column autoIncrement="true" name="product_type_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="product_type_name" type="VARCHAR(100)"/>
+            <column defaultValue="0000-00-00 00:00:00" name="date_inserted" type="TIMESTAMP"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT"/>
+        </createTable>
+
+        <createTable tableName="programs">
+            <column autoIncrement="true" name="program_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="program_name" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="program_default" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="private" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="rt_cardpagemap_mobile">
+            <column autoIncrement="true" name="cardcategorymapId" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="pageInsert" type="INT"/>
+            <column name="cardpageId" type="INT"/>
+            <column name="cardId" type="VARCHAR(15)"/>
+            <column name="rank" type="INT"/>
+        </createTable>
+
+        <createTable tableName="rt_pagesubpagemap_mobile">
+            <column autoIncrement="true" name="mapid" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteid" type="INT"/>
+            <column name="masterpageid" type="INT"/>
+            <column name="subpageid" type="INT"/>
+            <column name="hide" type="INT"/>
+            <column name="rank" type="INT"/>
+        </createTable>
+
+        <addColumn tableName="cs_merchants">
+            <column name="default_payin_tier_id" type="INT(10)"/>
+        </addColumn>
+
+        <addColumn tableName="cards">
+            <column name="product_type_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <addColumn tableName="rt_cards">
+            <column name="product_type_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <addColumn tableName="cards">
+            <column name="program_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <addColumn tableName="rt_cards">
+            <column name="program_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <createIndex indexName="IDX_cardpage" tableName="rt_cardpagemap_mobile" unique="true">
+            <column name="cardpageId"/>
+            <column name="cardId"/>
+        </createIndex>
+
+        <modifyDataType columnName="account_protection" newDataType="boolean" tableName="other_benefits"/>
+        <addDefaultValue columnDataType="varchar(8)" columnName="accountid" defaultValue="" tableName="export_wd_pa_campaigns"/>
+        <modifyDataType columnName="active" newDataType="boolean" tableName="rt_carddetails"/>
+        <modifyDataType columnName="active" newDataType="boolean" tableName="rt_cards"/>
+        <modifyDataType columnName="active" newDataType="boolean" tableName="rt_categories"/>
+        <modifyDataType columnName="active" newDataType="boolean" tableName="rt_sites"/>
+        <modifyDataType columnName="alternate_tracking_flag" newDataType="boolean" tableName="rt_cardpages"/>
+        <modifyDataType columnName="annualFee" newDataType="double(11,2)" tableName="cs_carddata"/>
+        <addDefaultValue columnDataType="varchar(25)" columnName="background_color_code_dark" defaultValue="NULL" tableName="profiles_data"/>
+        <modifyDataType columnName="balanceTransferFee" newDataType="double(11,2)" tableName="cs_carddata"/>
+        <modifyDataType columnName="balanceTransferIntroApr" newDataType="double(11,2)" tableName="cs_carddata"/>
+        <modifyDataType columnName="balanceTransfers" newDataType="boolean" tableName="cs_carddata"/>
+        <addDefaultValue columnDataType="varchar(8)" columnName="bannerid" defaultValue="" tableName="cs_banners"/>
+        <addDefaultValue columnDataType="varchar(50)" columnName="bannerid" defaultValue="" tableName="wd_pa_banners_mal"/>
+        <addDefaultValue columnDataType="varchar(50)" columnName="campaignid" defaultValue="" tableName="wd_pa_banners_mal"/>
+        <addDefaultValue columnDataType="varchar(16)" columnName="campaigntype_id" defaultValue="" tableName="cardhistory"/>
+        <modifyDataType columnName="card_apr_history_id" newDataType="int(10) UNSIGNED" tableName="card_apr_history"/>
+        <modifyDataType columnName="card_category_group_id" newDataType="int(10) UNSIGNED" tableName="card_category_group_to_category"/>
+        <modifyDataType columnName="card_category_id" newDataType="int(10) UNSIGNED" tableName="card_category_group_to_category"/>
+        <modifyDataType columnName="card_design" newDataType="boolean" tableName="other_benefits"/>
+        <addDefaultValue columnDataType="varchar(20)" columnName="card_id" defaultValue="" tableName="card_boost"/>
+        <addDefaultValue columnDataType="varchar(15)" columnName="card_id" defaultValue="" tableName="published_card_history"/>
+        <addDefaultValue columnDataType="varchar(100)" columnName="card_title" defaultValue="" tableName="published_card_history"/>
+        <addDefaultValue columnDataType="varchar(64)" columnName="category_id" defaultValue="" tableName="export_wd_pa_campaigncategories"/>
+        <modifyDataType columnName="ccbuildPublish" newDataType="boolean" tableName="rt_sites"/>
+        <modifyDataType columnName="changed" newDataType="boolean" tableName="cs_diffTable"/>
+        <modifyDataType columnName="consierge_service" newDataType="boolean" tableName="other_benefits"/>
+        <addNotNullConstraint columnDataType="timestamp(19)" columnName="create_time" tableName="default_network_keys"/>
+        <addNotNullConstraint columnDataType="timestamp(19)" columnName="create_time" tableName="networks"/>
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="cards"/>
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="cs_amenities"/>
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="cs_diffTable"/>
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="networks"/>
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="redirects"/>
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="rt_carddetails"/>
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="rt_cards"/>
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="rt_categories"/>
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="rt_keywords"/>
+        <modifyDataType columnName="deleted" newDataType="int(10) UNSIGNED" tableName="rt_merchants"/>
+        <modifyDataType columnName="deleted" newDataType="int(10) UNSIGNED" tableName="rt_pages"/>
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="rt_sites"/>
+        <modifyDataType columnName="deleted" newDataType="tinyint(3) UNSIGNED" tableName="versions"/>
+        <modifyDataType columnName="description" newDataType="blob(65535)" tableName="merchant_services"/>
+        <modifyDataType columnName="description" newDataType="blob(65535)" tableName="merchants"/>
+        <modifyDataType columnName="extended_warranties" newDataType="boolean" tableName="other_benefits"/>
+        <modifyDataType columnName="id" newDataType="int(10) UNSIGNED" tableName="card_category_groups"/>
+        <addNotNullConstraint columnDataType="timestamp(19)" columnName="insert_timestamp" tableName="application_log"/>
+        <modifyDataType columnName="insurance" newDataType="boolean" tableName="other_benefits"/>
+        <modifyDataType columnName="introApr" newDataType="double(11,2)" tableName="cs_carddata"/>
+        <modifyDataType columnName="landingPageHeaderString" newDataType="blob(65535)" tableName="rt_pagedetails"/>
+        <modifyDataType columnName="merchant_service_detail_text" newDataType="blob(65535)" tableName="merchant_service_details"/>
+        <addDefaultValue columnDataType="varchar(20)" columnName="merchant_service_id" defaultValue="" tableName="merchant_services"/>
+        <modifyDataType columnName="merchant_service_intro_detail" newDataType="blob(65535)" tableName="merchant_service_details"/>
+        <modifyDataType columnName="merchant_service_more_detail" newDataType="blob(65535)" tableName="merchant_service_details"/>
+        <modifyDataType columnName="mini_card" newDataType="boolean" tableName="other_benefits"/>
+        <modifyDataType columnName="monthlyFee" newDataType="double(11,2)" tableName="cs_carddata"/>
+        <addDefaultValue columnDataType="varchar(20)" columnName="name" defaultValue="" tableName="export_wd_pa_campaigncategories"/>
+        <modifyDataType columnName="personalization" newDataType="boolean" tableName="other_benefits"/>
+        <modifyDataType columnName="photo_security" newDataType="boolean" tableName="other_benefits"/>
+        <modifyDataType columnName="private" newDataType="boolean" tableName="rt_cards"/>
+        <addDefaultValue columnDataType="varchar(255)" columnName="profile_tip" defaultValue="" tableName="profiles_data"/>
+        <modifyDataType columnName="published" newDataType="boolean" tableName="build_history"/>
+        <modifyDataType columnName="q_annualFee" newDataType="double(53,2)" tableName="export_cs_cccom"/>
+        <modifyDataType columnName="q_balanceTransfers" newDataType="boolean" tableName="export_cs_cccom"/>
+        <modifyDataType columnName="q_introApr" newDataType="double(11,2)" tableName="export_cs_cccom"/>
+        <modifyDataType columnName="q_monthlyFee" newDataType="blob(53)" tableName="export_cs_cccom"/>
+        <modifyDataType columnName="q_regularApr" newDataType="double(11,2)" tableName="export_cs_cccom"/>
+        <modifyDataType columnName="regularApr" newDataType="double(11,2)" tableName="cs_carddata"/>
+        <modifyDataType columnName="requires_approval" newDataType="boolean" tableName="rt_cards"/>
+        <modifyDataType columnName="retail_discounts" newDataType="boolean" tableName="other_benefits"/>
+        <modifyDataType columnName="roadside_assistance" newDataType="boolean" tableName="other_benefits"/>
+        <modifyDataType columnName="rollup" newDataType="boolean" tableName="rt_cardpages"/>
+        <modifyDataType columnName="security_identity_solution" newDataType="boolean" tableName="other_benefits"/>
+        <modifyDataType columnName="subCat" newDataType="boolean" tableName="rt_articles"/>
+        <modifyDataType columnName="subCat" newDataType="boolean" tableName="rt_cards"/>
+        <modifyDataType columnName="syndicate" newDataType="boolean" tableName="rt_cards"/>
+        <modifyDataType columnName="type" newDataType="boolean" tableName="rt_cardpages"/>
+        <modifyDataType columnName="type" newDataType="boolean" tableName="rt_categories"/>
+    </changeSet>
+
+
+	<changeSet id="CMS-9" author="kenneth.skertchly">
+		<createTable tableName="product_links">
+			<column autoIncrement="true" name="link_id" type="INT(10)">
+				<constraints primaryKey="true"/>
+			</column>
+			<column name="product_id" type="VARCHAR(20)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="link_type_id" type="INT(10)"/>
+			<column name="device_type_id" type="INT(10)"/>
+			<column name="website_id" type="INT(10)"/>
+			<column name="account_type_id" type="INT(10)"/>
+			<column name="url" type="TEXT"/>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="date_created" type="TIMESTAMP">
+				<constraints nullable="false"/>
+			</column>
+			<column name="date_updated" type="TIMESTAMP"/>
+			<column name="updated_by" type="VARCHAR(50)"/>
+		</createTable>
+
+		<createTable tableName="link_types">
+			<column autoIncrement="true" name="link_type_id" type="INT(10)">
+				<constraints primaryKey="true"/>
+			</column>
+			<column name="name" type="VARCHAR(50)"/>
+			<column name="description" type="VARCHAR(255)"/>
+		</createTable>
+
+		<createTable tableName="device_types">
+			<column autoIncrement="true" name="device_type_id" type="INT(10)">
+				<constraints primaryKey="true"/>
+			</column>
+			<column name="name" type="VARCHAR(50)"/>
+			<column name="description" type="VARCHAR(255)"/>
+		</createTable>
+	</changeSet>
+
+    <changeSet id="CCCOM-293" author="michael.lawson">
+        <addColumn tableName="rt_cards">
+            <column name="suppress_mobile" type="TINYINT(1)"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

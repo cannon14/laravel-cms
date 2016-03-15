@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet id="FA38626" author="kenneths">
+        <createTable tableName="networks">
+            <column name="network_id" type="INT(11)" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_time" type="timestamp" defaultValue="0000-00-00 00:00:00"/>
+            <column name="update_time" type="timestamp"/>
+            <column name="deleted" type="tinyint(1)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="default_network_keys">
+            <column name="network_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_type" type="enum('NCS','CS','LO')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_network_key" type="varchar(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_time" type="timestamp" defaultValue="0000-00-00 00:00:00"/>
+            <column name="update_time" type="timestamp"/>
+        </createTable>
+
+        <addPrimaryKey tableName="default_network_keys" columnNames="network_id, account_type"/>
+
+        <addColumn tableName="cards">
+            <column name="network_id" type="int(11)"/>
+        </addColumn>
+
+        <addColumn tableName="rt_cards">
+            <column name="network_id" type="int(11)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="FA41441" author="cconey">
+        <createTable tableName="application_log">
+            <column name="application_log_id" type="INT(11)" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="log_message" type="varchar(255)" />
+            <column name="log_data" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_referer" type="varchar(350)" />
+            <column name="app_user" type="varchar(100)" />
+            <column name="insert_timestamp" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP" />
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,101 @@
+{{!--
+
+Note: This template needs to be precompiled before being uploaded to the server for optimal runtime performance. Refer to the following documentation on confluence:
+
+http://info.in.creditcards.com/display/DT/Handlebarsjs
+
+Also refer to official handelbarsjs documentation as needed:
+
+http://handlebarsjs.com/precompilation.html
+
+--}}
+<div class="res-schumer-box">
+	<div class="row">
+		<div class="col-sm-24 col-md-18 col-lg-18">
+
+		{{#if isFeatured}}
+			<div class="res-offer-left-featured">
+				<span class="res-top-pick2"></span>
+		{{else}}
+			<div class="res-offer-left">
+		{{/if}}
+				<a href="/oc/?pid={{cardId}}&amp;pg={{pageFid}}&amp;pgpos={{pagePosition}}" target="_blank" name="&amp;lid={{cardLinkId}}">{{cardTitle}}</a>
+			</div>
+
+			<div class="row">
+
+				<div class="col-xs-24 col-sm-24 col-md-9 col-lg-7">
+					<div class="row">
+						<div class="col-xs-12 col-sm-8 col-md-24 col-lg-24">
+							<div class="res-cc-card-art-align">
+								<a href="/oc/?pid={{cardId}}&amp;pg={{pageFid}}&amp;pgpos={{pagePosition}}" target="_blank" name="&amp;lid={{cardLinkId}}">
+									<img src="http://imgsynergy.com/191x120/{{imageFileName}}" border="0" class="img-responsive" alt="{{imageAltTag}}">
+								</a>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-16 col-md-24 col-lg-24">
+							<div class="res-field-apply-now-768">
+								<a class="btn btn-apply btn-lg btn-block" href="/oc/?pid={{cardId}}&amp;pg={{pageFid}}&amp;pgpos={{pagePosition}}" target="_blank" name="&amp;lid={{cardLinkId}}">
+									<i class="fa fa-lock fa-lg"></i> &nbsp;APPLY ONLINE
+								</a>
+								<br>
+								<br>
+								<a class="btn btn-primary btn-lg btn-block" href="tel:{{issuerPhoneNumber}}" onclick="var s=s_gi('ccardsccmobile'); s.linkTrackVars='eVar33,events'; s.linktrackevents='event9'; s.events='event9'; s.eVar33='{{cardId}}'; s.tl(this,'o','Apply by Phone');">
+									<i class="fa fa-phone fa-lg"></i> &nbsp;APPLY BY PHONE
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xs-24 col-sm-24 col-md-15 col-lg-17">
+					<div class="res-details">
+						<ul>
+							{{#each cardDetailBulletsInitial}}
+								<li>{{this}}</li>
+							{{/each}}
+						</ul>
+						<div style="height:0px" id="{{cardId}}" class="collapse">
+							<ul>
+								{{#each cardDetailBulletsMore}}
+									<li>{{this}}</li>
+								{{/each}}
+							</ul>
+						</div>
+						
+
+						<div class="category-showhide-btn">
+							<a class="collapsed" data-toggle="collapse" data-target="#{{cardId}}">
+							Show More </a> &nbsp;&nbsp;<i class="fa fa-chevron-down"></i>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<div class="col-sm-24 col-md-6 col-lg-6 apply-now-btn-padding">
+			<div class="res-field-apply-now">
+				<a class="btn btn-apply btn-lg" href="/oc/?pid={{cardId}}&amp;pg={{pageFid}}&amp;pgpos={{pagePosition}}" target="_blank" name="&amp;lid={{cardLinkId}}">
+					<i class="fa fa-lock fa-lg"></i>
+					&nbsp;APPLY NOW
+				</a>
+				<br>
+				<p>At {{cardIssuer}}&#39;s <br>
+					secure site</p>
+					<p class="apply-call">
+						<span>or call {{cardIssuer}} at <br><b>{{issuerPhoneNumber}}</b></span>
+					</p>
+					<br>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-24 col-md-24 col-lg-24">
+			<div class="res-card-data-hldr">
+				{{{tabularDataHelper this}}}
+			</div>
+		</div>
+	</div>
+</div>

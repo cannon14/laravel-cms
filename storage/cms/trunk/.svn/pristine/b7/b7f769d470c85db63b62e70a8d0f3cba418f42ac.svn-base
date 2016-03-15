@@ -1,0 +1,84 @@
+<?php
+/*
+ * Created on May 18, 2007
+ *
+ * To change the template for this generated file go to
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+ */
+?>
+<url>
+	<loc>http://www.creditcards.com/</loc> 
+	<changefreq>daily</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/credit-report-monitoring.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/free-credit-report.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/about-us.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/SSL-Security.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/advertising.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/business-development.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/customer-support-department.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/newsletter.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/partnership.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/public-relations.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/publishing-department.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/contact.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/terms.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.creditcards.com/privacy.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+

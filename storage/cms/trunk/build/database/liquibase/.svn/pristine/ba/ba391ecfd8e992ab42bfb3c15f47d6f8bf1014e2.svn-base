@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="liquibase" id="initial-setup-views">
+        <createView viewName="cccomus_page_reference">
+            select
+            `cccomus${database.suffix}`.`page_reference`.`page_reference_id` AS `page_reference_id`,
+            `cccomus${database.suffix}`.`page_reference`.`page_id` AS `page_id`,
+            `cccomus${database.suffix}`.`page_reference`.`page_id_orig` AS `page_id_orig`
+            from `cccomus${database.suffix}`.`page_reference`
+        </createView>
+
+
+        <createView viewName="cccomus_pages">
+            select
+            `cccomus${database.suffix}`.`pages`.`page_id` AS `page_id`,
+            `cccomus${database.suffix}`.`pages`.`page_name` AS `page_name`,
+            `cccomus${database.suffix}`.`pages`.`insert_time` AS `insert_time`,
+            `cccomus${database.suffix}`.`pages`.`deleted` AS `deleted`,
+            `cccomus${database.suffix}`.`pages`.`ordering` AS `ordering`,
+            `cccomus${database.suffix}`.`pages`.`page_url` AS `page_url`,
+            `cccomus${database.suffix}`.`pages`.`page_type` AS `page_type`
+            from `cccomus${database.suffix}`.`pages`
+        </createView>
+
+
+        <createView viewName="ccx_cms_map">
+            select
+            `cardbank${database.suffix}`.`ccx_cms_map`.`ccx_card_id` AS `ccx_card_id`,
+            `cardbank${database.suffix}`.`ccx_cms_map`.`cms_card_id` AS `cms_card_id`
+            from `cardbank${database.suffix}`.`ccx_cms_map`
+        </createView>
+
+
+        <createView viewName="vw_ccx_issuers">
+            select
+            `cardbank${database.suffix}`.`issuers`.`issuer_id` AS `issuer_id`,
+            `cardbank${database.suffix}`.`issuers`.`name` AS `name`,
+            `cardbank${database.suffix}`.`issuers`.`logo` AS `logo`,
+            `cardbank${database.suffix}`.`issuers`.`site_code` AS `site_code`,
+            `cardbank${database.suffix}`.`issuers`.`deleted` AS `deleted`
+            from `cardbank${database.suffix}`.`issuers`
+        </createView>
+
+
+        <createView viewName="vw_publish_history">
+            select
+            `build_history`.`build_history_id` AS `build_history_id`,
+            `build_history`.`site_id` AS `site_id`,
+            `build_history`.`build_time` AS `build_time`,
+            `build_history`.`user_id` AS `user_id`,
+            `build_history`.`published` AS `published`,
+            `build_history`.`publish_time` AS `publish_time`,
+            `build_history`.`note` AS `note`
+            from `build_history`
+            where (`build_history`.`published` = 1)
+        </createView>
+
+
+        <createView viewName="vw_publish_history_detail">
+            select
+            `build_history_detail`.`build_history_detail_id` AS `build_history_detail_id`,
+            `build_history_detail`.`build_history_id` AS `build_history_id`,
+            `build_history_detail`.`web_page_id` AS `web_page_id`,
+            `build_history_detail`.`sub_page_id` AS `sub_page_id`,
+            `build_history_detail`.`card_id` AS `card_id`,
+            `build_history_detail`.`web_page_position` AS `web_page_position`,
+            `build_history_detail`.`sub_page_position` AS `sub_page_position`,
+            `build_history_detail`.`web_page_number` AS `web_page_number`,
+            `build_history_detail`.`estimated_epc` AS `estimated_epc`
+            from `build_history_detail`
+            join `build_history` on `build_history_detail`.`build_history_id` = `build_history`.`build_history_id`
+            where `build_history`.`published` = 1
+        </createView>
+
+    </changeSet>
+
+	<changeSet id="CMS-9" author="kenneth.skertchly">
+		<createView viewName="cccomus_partner_websites">
+			SELECT * FROM cccomus${database.suffix}.partner_websites
+		</createView>
+		<createView viewName="cccomus_partner_account_types">
+			SELECT * FROM cccomus${database.suffix}.partner_account_types
+		</createView>
+	</changeSet>
+</databaseChangeLog>

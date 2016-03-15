@@ -1,0 +1,18 @@
+<div id="leftnav">
+    <img width="191" height="31" alt="Credit Cards Menu" src="/images/menu.gif">
+    <ul>
+        <li><a href="https://www.creditcards.com/cardmatch">Offers Matched for You</a></li><li><a href="/low-interest.php">Low Interest</a></li><li><a href="/balance-transfer.php">Balance Transfers</a></li><li><a href="/0-apr-credit-cards.php">0% APR</a></li><li><a href="/reward.php">Rewards</a></li><ul><li><a href="/points-rewards.php">Points</a></li><li><a href="/gas-cards.php">Gas Cards</a></li><li><a href="/retail-rewards.php">Retail</a></li></ul><li><a href="/cash-back.php">Cash Back</a></li><li><a href="/airline-miles.php">Travel &amp; Airline</a></li><li><a href="/no-foreign-transaction-fee.php">No Foreign Transaction Fee</a></li><li><a href="/business.php">Cards for Business</a></li><li><a href="/college-students.php">Cards for Students</a></li><li><a href="/prepaid.php">Prepaid &amp; Debit Cards</a></li><li><a href="/secured-credit-cards.php">Secured Credit Cards</a></li><li><a href="/instant-approval.php">Instant Approval Offers</a></li><li><a href="/top-credit-cards.php">Top Offers</a></li><li><a href="/personal-loans.php">Other Options</a></li>
+<li><a href="/Mastercard.php">MasterCard&reg;</a></li>
+<ul>
+  <li><a href="/mastercard" class="current">World MasterCard&reg;</a></li></ul>
+
+    </ul>
+
+    <img width="191" height="31" alt="Search by Credit Quality" src="/images/search-by-credit-quality.gif">
+    <ul>
+        <li><a href="/excellent-credit.php">Excellent Credit</a></li><li><a href="/good-credit.php">Good Credit</a></li><li><a href="/fair-credit.php">Fair Credit</a></li><li><a href="/bad-credit.php">Bad Credit</a></li><li><a href="/no-credit-history.php">Limited or No Credit History</a></li><li><a href="/credit-score-estimator/">Not Sure?</a></li>    </ul>
+
+    
+
+    <a href="/credit-card-news.php"><img border="0" alt="Credit Card News and Advice" src="/images/credit-card-news-and-advice.gif"></a><ul><li><a href="/credit-card-news.php">Latest News</a></li><li><a href="/credit-card-news">News Archive</a></li><li><a target="_blank" href="http://blogs.creditcards.com">Taking Charge&trade; Blog</a></li>
+					   <li><a target="_blank" href="http://video.creditcards.com/">Latest Videos</a></li><li><a href="/credit-card-news/help">Basics &amp; Help</a></li><li><a href="/rss-feed-credit-card-news-headlines.php">Subscribe: RSS News Feeds</a></li><li><a href="/newsletter.php">Subscribe: email Newsletter</a></li></ul><a href="/credit-card-tools/"><img width="191" height="31" border="0" alt="Credit Card Tools" src="/images/credit-card-tools.gif"></a><ul><li><a href="https://www.creditcards.com/cardmatch/?action=show_form">CARDMATCH&trade;</a></li><li><a href="/credit-score-estimator">Credit Score Estimator</a></li><li><a href="/checkup">Credit Card CheckUp</a></li><li><a href="/calculators">Calculators</a></li><li><a href="/credit-card-finder">Card Finder</a></li><li><a href="/credit-card-profiles">Shop by Profile</a></li><li><a href="/privacy-security-suite">PrivacyWise&trade;</a></li><li><a href="/best-credit-cards.php">Best Credit Cards</a></li><li><a href="/glossary">Credit Card Terms Glossary</a></li><li><a href="/site-map.php">Site Map</a></li></ul><img width="191" height="31" border="0" alt="Accept Credit Cards" src="/images/accept-credit-cards.gif"><ul><li><a target="_blank" href="http://www.merchantaccountguide.com">Merchant Accounts</a></li></ul></div>

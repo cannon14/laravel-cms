@@ -1,0 +1,10 @@
+# Tables pointing from ram to other databases
+federated.ram.ccdata=mysql://dba:dba@127.0.0.1:3306
+federated.ram.cccomus=mysql://dba:dba@127.0.0.1:3306
+
+# Tables pointing from cccomus to ram
+federated.cccomus.ram=mysql://dba:dba@127.0.0.1:3306
+
+# Output file for db dumps
+# Run ant with -DoutputFile=yourfilename.sql to override this value
+database.outputFile = db.sql

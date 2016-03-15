@@ -1,0 +1,547 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="ccdata_test">
+	<table_data name="ccdata_test.cards">
+	<row>
+		<field name="card_id">712</field>
+		<field name="card_sku">A00000EGJE</field>
+		<field name="issuer">2</field>
+		<field name="effective_date">2013-10-17</field>
+		<field name="status" xsi:nil="true" />
+		<field name="type">charge</field>
+		<field name="image"></field>
+		<field name="coissuing_organization"></field>
+		<field name="network">american express</field>
+		<field name="title">American Express&amp;#174; Premier Rewards Gold Card</field>
+		<field name="category">consumer</field>
+		<field name="color">n/a</field>
+		<field name="initial_setup_fee">0.00</field>
+		<field name="first_annual_fee">0.13</field>
+		<field name="ongoing_annual_fee">0.00</field>
+		<field name="annual_fee_display_text"></field>
+		<field name="monthly_fee">0.00</field>
+		<field name="min_late_payment_fee">0.00</field>
+		<field name="max_late_payment_fee">0.00</field>
+		<field name="late_payment_fee_percent">0.000</field>
+		<field name="over_limit_fee">0.00</field>
+		<field name="returned_payment_fee">0.00</field>
+		<field name="dishonored_convenience_check_fee">0.00</field>
+		<field name="convenience_check_stop_payment_fee">0.00</field>
+		<field name="balance_transfer_cancellation_fee">0.00</field>
+		<field name="bank_wire_payment_fee">0.00</field>
+		<field name="statement_copy_fee">0.00</field>
+		<field name="inactivity_fee">0.00</field>
+		<field name="intro_apr">999.000</field>
+		<field name="intro_apr_used_rate_type">fixed</field>
+		<field name="intro_apr_display_text"></field>
+		<field name="min_intro_period">0</field>
+		<field name="max_intro_period">0</field>
+		<field name="intro_period_display_text"></field>
+		<field name="intro_period_end_date">0000-00-00</field>
+		<field name="min_ongoing_apr">999.000</field>
+		<field name="min_ongoing_apr_used_rate_type">fixed</field>
+		<field name="max_ongoing_apr">999.000</field>
+		<field name="max_ongoing_apr_used_rate_type">fixed</field>
+		<field name="ongoing_apr_display_text"></field>
+		<field name="min_default_apr">0.000</field>
+		<field name="min_default_apr_used_rate_type">fixed</field>
+		<field name="max_default_apr">0.000</field>
+		<field name="max_default_apr_used_rate_type">fixed</field>
+		<field name="min_grace_period">0</field>
+		<field name="min_finance_charge">0.00</field>
+		<field name="min_fixed_rate_period">0</field>
+		<field name="balance_compute_method">average daily balance including new purchases</field>
+		<field name="min_payment_amount">0.00</field>
+		<field name="min_payment_percentage">0.000</field>
+		<field name="credit_needed">excellent</field>
+		<field name="credit_needed_display_text"></field>
+		<field name="min_credit_line">0.00</field>
+		<field name="max_credit_line">0.00</field>
+		<field name="min_income">0.00</field>
+		<field name="min_between_applications_period">0</field>
+		<field name="interest_rate_type">fixed</field>
+		<field name="used_index_rate">prime</field>
+		<field name="index_rate_definition"></field>
+		<field name="apply_payment">lowest to highest rate</field>
+		<field name="foreign_exchange_min_fee">0.00</field>
+		<field name="foreign_exchange_max_fee">0.00</field>
+		<field name="foreign_exchange_fee_rate">0.000</field>
+		<field name="custom_prepaid_display_text"></field>
+		<field name="modified_date">2013-10-17</field>
+		<field name="deleted">0</field>
+		<field name="bt_intro_apr_display_text"></field>
+		<field name="bt_intro_period_display_text"></field>
+		<field name="network_id" xsi:nil="true" />
+	</row>
+	<row>
+		<field name="card_id">713</field>
+		<field name="card_sku">A00000EALD</field>
+		<field name="issuer">2</field>
+		<field name="effective_date">2013-10-17</field>
+		<field name="status" xsi:nil="true" />
+		<field name="type">charge</field>
+		<field name="image"></field>
+		<field name="coissuing_organization">N/A</field>
+		<field name="network">american express</field>
+		<field name="title">The Platinum Card&amp;#174; from American Express</field>
+		<field name="category">consumer</field>
+		<field name="color">n/a</field>
+		<field name="initial_setup_fee">0.00</field>
+		<field name="first_annual_fee">450.00</field>
+		<field name="ongoing_annual_fee">0.00</field>
+		<field name="annual_fee_display_text"></field>
+		<field name="monthly_fee">0.00</field>
+		<field name="min_late_payment_fee">0.00</field>
+		<field name="max_late_payment_fee">0.00</field>
+		<field name="late_payment_fee_percent">0.000</field>
+		<field name="over_limit_fee">0.00</field>
+		<field name="returned_payment_fee">0.00</field>
+		<field name="dishonored_convenience_check_fee">0.00</field>
+		<field name="convenience_check_stop_payment_fee">0.00</field>
+		<field name="balance_transfer_cancellation_fee">0.00</field>
+		<field name="bank_wire_payment_fee">0.00</field>
+		<field name="statement_copy_fee">0.00</field>
+		<field name="inactivity_fee">0.00</field>
+		<field name="intro_apr">999.000</field>
+		<field name="intro_apr_used_rate_type">fixed</field>
+		<field name="intro_apr_display_text"></field>
+		<field name="min_intro_period">0</field>
+		<field name="max_intro_period">0</field>
+		<field name="intro_period_display_text"></field>
+		<field name="intro_period_end_date">0000-00-00</field>
+		<field name="min_ongoing_apr">999.000</field>
+		<field name="min_ongoing_apr_used_rate_type">fixed</field>
+		<field name="max_ongoing_apr">999.000</field>
+		<field name="max_ongoing_apr_used_rate_type">fixed</field>
+		<field name="ongoing_apr_display_text"></field>
+		<field name="min_default_apr">0.000</field>
+		<field name="min_default_apr_used_rate_type">fixed</field>
+		<field name="max_default_apr">0.000</field>
+		<field name="max_default_apr_used_rate_type">fixed</field>
+		<field name="min_grace_period">0</field>
+		<field name="min_finance_charge">0.00</field>
+		<field name="min_fixed_rate_period">0</field>
+		<field name="balance_compute_method">average daily balance including new purchases</field>
+		<field name="min_payment_amount">0.00</field>
+		<field name="min_payment_percentage">0.000</field>
+		<field name="credit_needed">excellent</field>
+		<field name="credit_needed_display_text"></field>
+		<field name="min_credit_line">0.00</field>
+		<field name="max_credit_line">0.00</field>
+		<field name="min_income">0.00</field>
+		<field name="min_between_applications_period">0</field>
+		<field name="interest_rate_type">fixed</field>
+		<field name="used_index_rate">prime</field>
+		<field name="index_rate_definition"></field>
+		<field name="apply_payment">lowest to highest rate</field>
+		<field name="foreign_exchange_min_fee">0.00</field>
+		<field name="foreign_exchange_max_fee">0.00</field>
+		<field name="foreign_exchange_fee_rate">0.000</field>
+		<field name="custom_prepaid_display_text"></field>
+		<field name="modified_date">2013-10-17</field>
+		<field name="deleted">0</field>
+		<field name="bt_intro_apr_display_text"></field>
+		<field name="bt_intro_period_display_text"></field>
+		<field name="network_id" xsi:nil="true" />
+	</row>
+	<row>
+		<field name="card_id">738</field>
+		<field name="card_sku">A00000EQ8W</field>
+		<field name="issuer">2</field>
+		<field name="effective_date">2013-10-17</field>
+		<field name="status" xsi:nil="true" />
+		<field name="type">credit</field>
+		<field name="image"></field>
+		<field name="coissuing_organization"></field>
+		<field name="network">visa</field>
+		<field name="title">Blue Cash Everyday&amp;#174; Card from American Express</field>
+		<field name="category">consumer</field>
+		<field name="color">n/a</field>
+		<field name="initial_setup_fee">0.00</field>
+		<field name="first_annual_fee">0.00</field>
+		<field name="ongoing_annual_fee">0.00</field>
+		<field name="annual_fee_display_text"></field>
+		<field name="monthly_fee">0.00</field>
+		<field name="min_late_payment_fee">0.00</field>
+		<field name="max_late_payment_fee">0.00</field>
+		<field name="late_payment_fee_percent">0.000</field>
+		<field name="over_limit_fee">0.00</field>
+		<field name="returned_payment_fee">0.00</field>
+		<field name="dishonored_convenience_check_fee">0.00</field>
+		<field name="convenience_check_stop_payment_fee">0.00</field>
+		<field name="balance_transfer_cancellation_fee">0.00</field>
+		<field name="bank_wire_payment_fee">0.00</field>
+		<field name="statement_copy_fee">0.00</field>
+		<field name="inactivity_fee">0.00</field>
+		<field name="intro_apr">999.000</field>
+		<field name="intro_apr_used_rate_type">fixed</field>
+		<field name="intro_apr_display_text"></field>
+		<field name="min_intro_period">0</field>
+		<field name="max_intro_period">0</field>
+		<field name="intro_period_display_text"></field>
+		<field name="intro_period_end_date">0000-00-00</field>
+		<field name="min_ongoing_apr">0.000</field>
+		<field name="min_ongoing_apr_used_rate_type">fixed</field>
+		<field name="max_ongoing_apr">0.000</field>
+		<field name="max_ongoing_apr_used_rate_type">fixed</field>
+		<field name="ongoing_apr_display_text"></field>
+		<field name="min_default_apr">0.000</field>
+		<field name="min_default_apr_used_rate_type">fixed</field>
+		<field name="max_default_apr">0.000</field>
+		<field name="max_default_apr_used_rate_type">fixed</field>
+		<field name="min_grace_period">0</field>
+		<field name="min_finance_charge">0.00</field>
+		<field name="min_fixed_rate_period">0</field>
+		<field name="balance_compute_method">average daily balance including new purchases</field>
+		<field name="min_payment_amount">0.00</field>
+		<field name="min_payment_percentage">0.000</field>
+		<field name="credit_needed">excellent</field>
+		<field name="credit_needed_display_text"></field>
+		<field name="min_credit_line">0.00</field>
+		<field name="max_credit_line">0.00</field>
+		<field name="min_income">0.00</field>
+		<field name="min_between_applications_period">0</field>
+		<field name="interest_rate_type">fixed</field>
+		<field name="used_index_rate">prime</field>
+		<field name="index_rate_definition"></field>
+		<field name="apply_payment">lowest to highest rate</field>
+		<field name="foreign_exchange_min_fee">0.00</field>
+		<field name="foreign_exchange_max_fee">0.00</field>
+		<field name="foreign_exchange_fee_rate">0.000</field>
+		<field name="custom_prepaid_display_text"></field>
+		<field name="modified_date">2013-10-17</field>
+		<field name="deleted">0</field>
+		<field name="bt_intro_apr_display_text"></field>
+		<field name="bt_intro_period_display_text"></field>
+		<field name="network_id" xsi:nil="true" />
+	</row>
+	<row>
+		<field name="card_id">717</field>
+		<field name="card_sku">A00000EQ8Y</field>
+		<field name="issuer">2</field>
+		<field name="effective_date">2013-10-17</field>
+		<field name="status" xsi:nil="true" />
+		<field name="type">credit</field>
+		<field name="image"></field>
+		<field name="coissuing_organization"></field>
+		<field name="network">american express</field>
+		<field name="title">Blue Cash Preferred&amp;#174; Card from American Express</field>
+		<field name="category">consumer</field>
+		<field name="color">n/a</field>
+		<field name="initial_setup_fee">0.00</field>
+		<field name="first_annual_fee">450.00</field>
+		<field name="ongoing_annual_fee">0.00</field>
+		<field name="annual_fee_display_text"></field>
+		<field name="monthly_fee">0.00</field>
+		<field name="min_late_payment_fee">0.00</field>
+		<field name="max_late_payment_fee">0.00</field>
+		<field name="late_payment_fee_percent">0.000</field>
+		<field name="over_limit_fee">0.00</field>
+		<field name="returned_payment_fee">0.00</field>
+		<field name="dishonored_convenience_check_fee">0.00</field>
+		<field name="convenience_check_stop_payment_fee">0.00</field>
+		<field name="balance_transfer_cancellation_fee">0.00</field>
+		<field name="bank_wire_payment_fee">0.00</field>
+		<field name="statement_copy_fee">0.00</field>
+		<field name="inactivity_fee">0.00</field>
+		<field name="intro_apr">0.000</field>
+		<field name="intro_apr_used_rate_type">fixed</field>
+		<field name="intro_apr_display_text"></field>
+		<field name="min_intro_period">0</field>
+		<field name="max_intro_period">0</field>
+		<field name="intro_period_display_text"></field>
+		<field name="intro_period_end_date">2009-02-25</field>
+		<field name="min_ongoing_apr">13.240</field>
+		<field name="min_ongoing_apr_used_rate_type">fixed</field>
+		<field name="max_ongoing_apr">13.240</field>
+		<field name="max_ongoing_apr_used_rate_type">fixed</field>
+		<field name="ongoing_apr_display_text"></field>
+		<field name="min_default_apr">0.000</field>
+		<field name="min_default_apr_used_rate_type">fixed</field>
+		<field name="max_default_apr">0.000</field>
+		<field name="max_default_apr_used_rate_type">fixed</field>
+		<field name="min_grace_period">0</field>
+		<field name="min_finance_charge">0.00</field>
+		<field name="min_fixed_rate_period">0</field>
+		<field name="balance_compute_method">average daily balance including new purchases</field>
+		<field name="min_payment_amount">0.00</field>
+		<field name="min_payment_percentage">0.000</field>
+		<field name="credit_needed">excellent</field>
+		<field name="credit_needed_display_text"></field>
+		<field name="min_credit_line">0.00</field>
+		<field name="max_credit_line">0.00</field>
+		<field name="min_income">0.00</field>
+		<field name="min_between_applications_period">0</field>
+		<field name="interest_rate_type">fixed</field>
+		<field name="used_index_rate">prime</field>
+		<field name="index_rate_definition"></field>
+		<field name="apply_payment">lowest to highest rate</field>
+		<field name="foreign_exchange_min_fee">0.00</field>
+		<field name="foreign_exchange_max_fee">0.00</field>
+		<field name="foreign_exchange_fee_rate">0.000</field>
+		<field name="custom_prepaid_display_text"></field>
+		<field name="modified_date">2013-10-17</field>
+		<field name="deleted">0</field>
+		<field name="bt_intro_apr_display_text"></field>
+		<field name="bt_intro_period_display_text"></field>
+		<field name="network_id" xsi:nil="true" />
+	</row>
+	</table_data>
+	<table_data name="ccdata_test.rt_cards">
+	<row>
+		<field name="id">22034979</field>
+		<field name="cardId">22034979</field>
+		<field name="site_code">USEN</field>
+		<field name="cardTitle">American Express&amp;#174; Premier Rewards Gold Card</field>
+		<field name="cardDescription">American Express® Premier Rewards Gold Card_API Test Card_CM</field>
+		<field name="merchant">2</field>
+		<field name="introApr">N/A</field>
+		<field name="active_introApr">0</field>
+		<field name="introAprPeriod">N/A</field>
+		<field name="active_introAprPeriod">0</field>
+		<field name="regularApr">N/A</field>
+		<field name="variable">0</field>
+		<field name="active_regularApr">0</field>
+		<field name="annualFee">$0 1&lt;sup&gt;st&lt;/sup&gt; year, then $0</field>
+		<field name="active_annualFee">0</field>
+		<field name="monthlyFee">$@@monthlyFee@@*</field>
+		<field name="active_monthlyFee">0</field>
+		<field name="balanceTransfers">@@balanceTransfers@@</field>
+		<field name="active_balanceTransfers">0</field>
+		<field name="balanceTransferFee">@@balanceTransferFee@@%*</field>
+		<field name="active_balanceTransferFee">0</field>
+		<field name="balanceTransferIntroApr">N/A</field>
+		<field name="active_balanceTransferIntroApr">0</field>
+		<field name="balanceTransferIntroAprPeriod">N/A</field>
+		<field name="active_balanceTransferIntroAprPeriod">0</field>
+		<field name="creditNeeded">@@creditNeeded@@</field>
+		<field name="active_creditNeeded">0</field>
+		<field name="imagePath"></field>
+		<field name="ratesAndFees"></field>
+		<field name="rewards"></field>
+		<field name="cardBenefits"></field>
+		<field name="onlineServices"></field>
+		<field name="footNotes"></field>
+		<field name="layout"></field>
+		<field name="dateCreated">2009-03-16 08:50:55</field>
+		<field name="dateUpdated">2013-10-18 09:58:20</field>
+		<field name="subCat">0</field>
+		<field name="catTitle" xsi:nil="true" />
+		<field name="catDescription" xsi:nil="true" />
+		<field name="catImage" xsi:nil="true" />
+		<field name="catImageAltText" xsi:nil="true" />
+		<field name="syndicate">1</field>
+		<field name="url">http://www.jdoqocy.com/click-1469133-11505038</field>
+		<field name="applyByPhoneNumber"></field>
+		<field name="tPageText"></field>
+		<field name="private">0</field>
+		<field name="active">1</field>
+		<field name="deleted">0</field>
+		<field name="active_epd_pages">1</field>
+		<field name="active_show_epd_rates">0</field>
+		<field name="show_verify"></field>
+		<field name="commission_label">PER_APPROVAL</field>
+		<field name="payout_cap" xsi:nil="true" />
+		<field name="card_level_id" xsi:nil="true" />
+		<field name="requires_approval">1</field>
+		<field name="secured">1</field>
+		<field name="network_id">0</field>
+	</row>
+	<row>
+		<field name="id">22034980</field>
+		<field name="cardId">22034980</field>
+		<field name="site_code">USEN</field>
+		<field name="cardTitle">The Platinum Card&amp;#174; from American Express</field>
+		<field name="cardDescription">The Platinum Card® from American Express_API Test Card_CM</field>
+		<field name="merchant">2</field>
+		<field name="introApr">N/A</field>
+		<field name="active_introApr">0</field>
+		<field name="introAprPeriod">N/A</field>
+		<field name="active_introAprPeriod">0</field>
+		<field name="regularApr">N/A</field>
+		<field name="variable">0</field>
+		<field name="active_regularApr">0</field>
+		<field name="annualFee">$450 1&lt;sup&gt;st&lt;/sup&gt; year, then $0</field>
+		<field name="active_annualFee">0</field>
+		<field name="monthlyFee">$@@monthlyFee@@*</field>
+		<field name="active_monthlyFee">0</field>
+		<field name="balanceTransfers">@@balanceTransfers@@</field>
+		<field name="active_balanceTransfers">0</field>
+		<field name="balanceTransferFee">@@balanceTransferFee@@%*</field>
+		<field name="active_balanceTransferFee">0</field>
+		<field name="balanceTransferIntroApr">N/A</field>
+		<field name="active_balanceTransferIntroApr">0</field>
+		<field name="balanceTransferIntroAprPeriod">N/A</field>
+		<field name="active_balanceTransferIntroAprPeriod">0</field>
+		<field name="creditNeeded">@@creditNeeded@@</field>
+		<field name="active_creditNeeded">0</field>
+		<field name="imagePath"></field>
+		<field name="ratesAndFees"></field>
+		<field name="rewards"></field>
+		<field name="cardBenefits"></field>
+		<field name="onlineServices"></field>
+		<field name="footNotes"></field>
+		<field name="layout"></field>
+		<field name="dateCreated">2009-03-16 08:52:30</field>
+		<field name="dateUpdated">2013-10-18 09:58:04</field>
+		<field name="subCat">0</field>
+		<field name="catTitle" xsi:nil="true" />
+		<field name="catDescription" xsi:nil="true" />
+		<field name="catImage" xsi:nil="true" />
+		<field name="catImageAltText" xsi:nil="true" />
+		<field name="syndicate">1</field>
+		<field name="url">http://www.jdoqocy.com/click-1469133-11505041</field>
+		<field name="applyByPhoneNumber"></field>
+		<field name="tPageText"></field>
+		<field name="private">0</field>
+		<field name="active">1</field>
+		<field name="deleted">0</field>
+		<field name="active_epd_pages">1</field>
+		<field name="active_show_epd_rates">0</field>
+		<field name="show_verify"></field>
+		<field name="commission_label">PER_APPROVAL</field>
+		<field name="payout_cap" xsi:nil="true" />
+		<field name="card_level_id" xsi:nil="true" />
+		<field name="requires_approval">1</field>
+		<field name="secured">1</field>
+		<field name="network_id">0</field>
+	</row>
+	<row>
+		<field name="id">22034984</field>
+		<field name="cardId">22034984</field>
+		<field name="site_code">USEN</field>
+		<field name="cardTitle">Blue Cash Preferred&amp;#174; Card from American Express</field>
+		<field name="cardDescription">Blue Cash Preferred® Card from American Express_API Test_CM</field>
+		<field name="merchant">2</field>
+		<field name="introApr">@@introApr@@%</field>
+		<field name="active_introApr">0</field>
+		<field name="introAprPeriod">Until 02/25/2009*</field>
+		<field name="active_introAprPeriod">0</field>
+		<field name="regularApr">@@regularApr@@%</field>
+		<field name="variable">0</field>
+		<field name="active_regularApr">0</field>
+		<field name="annualFee">$450 1&lt;sup&gt;st&lt;/sup&gt; year, then $0</field>
+		<field name="active_annualFee">0</field>
+		<field name="monthlyFee">$@@monthlyFee@@*</field>
+		<field name="active_monthlyFee">0</field>
+		<field name="balanceTransfers">@@balanceTransfers@@</field>
+		<field name="active_balanceTransfers">0</field>
+		<field name="balanceTransferFee">@@balanceTransferFee@@%*</field>
+		<field name="active_balanceTransferFee">0</field>
+		<field name="balanceTransferIntroApr">N/A</field>
+		<field name="active_balanceTransferIntroApr">0</field>
+		<field name="balanceTransferIntroAprPeriod">N/A</field>
+		<field name="active_balanceTransferIntroAprPeriod">0</field>
+		<field name="creditNeeded">@@creditNeeded@@</field>
+		<field name="active_creditNeeded">0</field>
+		<field name="imagePath"></field>
+		<field name="ratesAndFees"></field>
+		<field name="rewards"></field>
+		<field name="cardBenefits"></field>
+		<field name="onlineServices"></field>
+		<field name="footNotes"></field>
+		<field name="layout"></field>
+		<field name="dateCreated">2009-03-16 08:57:47</field>
+		<field name="dateUpdated">2013-10-18 09:58:09</field>
+		<field name="subCat">0</field>
+		<field name="catTitle" xsi:nil="true" />
+		<field name="catDescription" xsi:nil="true" />
+		<field name="catImage" xsi:nil="true" />
+		<field name="catImageAltText" xsi:nil="true" />
+		<field name="syndicate">1</field>
+		<field name="url">http://www.jdoqocy.com/click-1469133-11488822</field>
+		<field name="applyByPhoneNumber"></field>
+		<field name="tPageText"></field>
+		<field name="private">0</field>
+		<field name="active">1</field>
+		<field name="deleted">0</field>
+		<field name="active_epd_pages">1</field>
+		<field name="active_show_epd_rates">0</field>
+		<field name="show_verify"></field>
+		<field name="commission_label">PER_APPROVAL</field>
+		<field name="payout_cap" xsi:nil="true" />
+		<field name="card_level_id" xsi:nil="true" />
+		<field name="requires_approval">1</field>
+		<field name="secured">1</field>
+		<field name="network_id">0</field>
+	</row>
+	<row>
+		<field name="id">22034996</field>
+		<field name="cardId">22034996</field>
+		<field name="site_code">USEN</field>
+		<field name="cardTitle">Blue Cash Everyday&amp;#174; Card from American Express</field>
+		<field name="cardDescription">Blue Cash Everyday® Card from American Express_API Test_CM</field>
+		<field name="merchant">2</field>
+		<field name="introApr">N/A</field>
+		<field name="active_introApr">0</field>
+		<field name="introAprPeriod">N/A</field>
+		<field name="active_introAprPeriod">0</field>
+		<field name="regularApr">@@regularApr@@%</field>
+		<field name="variable">0</field>
+		<field name="active_regularApr">0</field>
+		<field name="annualFee">$0</field>
+		<field name="active_annualFee">0</field>
+		<field name="monthlyFee">$@@monthlyFee@@*</field>
+		<field name="active_monthlyFee">0</field>
+		<field name="balanceTransfers">@@balanceTransfers@@</field>
+		<field name="active_balanceTransfers">0</field>
+		<field name="balanceTransferFee">@@balanceTransferFee@@%*</field>
+		<field name="active_balanceTransferFee">0</field>
+		<field name="balanceTransferIntroApr">N/A</field>
+		<field name="active_balanceTransferIntroApr">0</field>
+		<field name="balanceTransferIntroAprPeriod">N/A</field>
+		<field name="active_balanceTransferIntroAprPeriod">0</field>
+		<field name="creditNeeded">@@creditNeeded@@</field>
+		<field name="active_creditNeeded">0</field>
+		<field name="imagePath"></field>
+		<field name="ratesAndFees"></field>
+		<field name="rewards"></field>
+		<field name="cardBenefits"></field>
+		<field name="onlineServices"></field>
+		<field name="footNotes"></field>
+		<field name="layout"></field>
+		<field name="dateCreated">2009-04-08 10:05:28</field>
+		<field name="dateUpdated">2013-10-18 09:58:14</field>
+		<field name="subCat">0</field>
+		<field name="catTitle" xsi:nil="true" />
+		<field name="catDescription" xsi:nil="true" />
+		<field name="catImage" xsi:nil="true" />
+		<field name="catImageAltText" xsi:nil="true" />
+		<field name="syndicate">1</field>
+		<field name="url">http://www.jdoqocy.com/click-1469133-11489095</field>
+		<field name="applyByPhoneNumber"></field>
+		<field name="tPageText"></field>
+		<field name="private">0</field>
+		<field name="active">1</field>
+		<field name="deleted">0</field>
+		<field name="active_epd_pages">0</field>
+		<field name="active_show_epd_rates">0</field>
+		<field name="show_verify"></field>
+		<field name="commission_label">PER_APPROVAL</field>
+		<field name="payout_cap" xsi:nil="true" />
+		<field name="card_level_id" xsi:nil="true" />
+		<field name="requires_approval">1</field>
+		<field name="secured">1</field>
+		<field name="network_id">0</field>
+	</row>
+	</table_data>
+	<table_data name="ccdata_test.ccx_cms_map">
+	<row>
+		<field name="ccx_card_id">712</field>
+		<field name="cms_card_id">22034979</field>
+	</row>
+	<row>
+		<field name="ccx_card_id">713</field>
+		<field name="cms_card_id">22034980</field>
+	</row>
+	<row>
+		<field name="ccx_card_id">717</field>
+		<field name="cms_card_id">22034984</field>
+	</row>
+	<row>
+		<field name="ccx_card_id">738</field>
+		<field name="cms_card_id">22034996</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

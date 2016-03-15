@@ -1,0 +1,62 @@
+<soapenv:Envelope xmlns:com="http://com.americanexpress.edge.webservice.prescreen" xmlns:data="http://data.prescreen.webservice.edge.americanexpress.com" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header>
+   <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" soapenv:mustUnderstand="1">
+   <wsse:BinarySecurityToken xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3" wsu:Id="CertId-6C7DD7B5C32772A489137539878242564">MIIFFDCCA/ygAwIBAgIOAgAAAAABQKXHTtQIZiIwDQYJKoZIhvcNAQEFBQAwRzEXMBUGA1UEChMOQ3liZXJ0cnVzdCBJbmMxLDAqBgNVBAMTI0N5YmVydHJ1c3QgUHVibGljIFN1cmVDcmVkZW50aWFsIENBMB4XDTEzMDgyMjExMzgwNVoXDTE2MDgyMjExMzgwNVowgfgxCzAJBgNVBAYTAlVTMQ4wDAYDVQQIEwVUZXhhczEPMA0GA1UEBxMGQXVzdGluMRgwFgYDVQQKEw9DcmVkaXRDYXJkcy5jb20xITAfBgkqhkiG9w0BCQEWEmNnQGNyZWRpdGNhcmRzLmNvbTEjMCEGA1UEAxMaQW1leCBQcmVzY3JlZW4gU2VydmljZSBBUEkxGDAWBgNVBAkTD01lc3NhZ2UgU2lnbmluZzETMBEGA1UECxMKVGVjaG5vbG9neTEjMCEGA1UEBRMaQW1leCBQcmVzY3JlZW4gU2VydmljZSBBUEkxEjAQBgNVBBETCTIwMDAwMDkxMDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALgpfbCi9jkPprbaE6LzXpENWXIOedAXaTnKwgD+ojGyyT/q8navtvatJiEqddnDBHOF0gZeHwcHe/oVqEr5T1kGOiP1hxF72nZCwdg3IVVzt9FdDMVQrXdraloaQF44hTuivjSRSKzw/ro6TMLZ5U1r+1YmUkEMnY7z7oK7wBdRB5KFo2MesyGnCSeoY7ytwFormzrqGf5Ca5JqX16pumytEAu+NORvf8f3hSyECbEldf3nkYPLJgDF8C5iPew1OyTZMYJgaiW7pI6z5dlfjQ+RBq9k0NTizg3ZN6k3ko9SL2YJYVbDj9t7sj4ImbpsfyYL3wH9NeiVSrh2yvXZLW0CAwEAAaOCAUowggFGMB8GA1UdIwQYMBaAFDqXGWfB+51uXOyjXEz09AqmIrUrMEEGA1UdHwQ6MDgwNqA0oDKGMGh0dHA6Ly9jcmwub21uaXJvb3QuY29tL1B1YmxpY1N1cmVDcmVkZW50aWFsLmNybDAdBgNVHQ4EFgQUx7Cjj7goNxnWtr0Ax40EELWWREkwDwYDVR0TAQH/BAUwAwIBADAOBgNVHQ8BAf8EBAMCBPAwEQYJYIZIAYb4QgEBBAQDAgWgME8GCCsGAQUFBwEBBEMwQTA/BggrBgEFBQcwAoYzaHR0cDovL2NhY2VydC5vbW5pcm9vdC5jb20vUHVibGljU3VyZUNyZWRlbnRpYWwuY3J0MB0GA1UdEQQWMBSBEmNnQGNyZWRpdGNhcmRzLmNvbTAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwDQYJKoZIhvcNAQEFBQADggEBAB+ZBo9NkywvFgthajvFu2WjmR0/GRKMuF758BbA0GAvXj94ThMMwdGXt6rrHdShEJ892QNxwpYtA4IqIOi9e0EcVxcRIjLhglBC6N7HduZvG+cuLnfkatEsSP4U4rCPm4Wj75zat4aL9hRv7+GVHKxjhLfJ1u2REfWdzYtvMv+ktLh35U/NgsyG/sFHCpia67F2XEymyZGG2JRdOgDAGxQSlEj+AH4xZ/vYwV5xf+1uGsL/xyaZgaNH2lh3IG18nFP2VPUxC/XgzlCm5REuAdLrj1bChVZZXL8tnZJ/Qi0s50GP0R6ufj3r4CHAkHsA8kz/KzgCoX+uUWDdGZv5tKc=</wsse:BinarySecurityToken>
+	<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="Signature-28">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+<ds:Reference URI="#request">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<ds:DigestValue>6HWU/smJXOy3L2H52vTMg0E7zqw=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue>
+npjUbrrhGtX6tm/ss5pIpIePDC+i2YPdw05O60Jct2iPt1dpDN3e/EB81XZd9XLo
+tICATDlceY1yU2mhwV9GKUTAY4lTUewQNJ+DSuFXcQpD++hFowrrfsjD5/9Ke/Yu
+3TuN0AwU3/L9iWPk3gUWnoh4BZqwBUJfLN81ranakeUYY3iVqZprj7lX5+gRsnwh
+AxrqWVASAGLT4AiULlOYPNutJNVLJJ6680Oh4Q1QAIdpSydmhFKbqnyM5ZPmxWJu
+GSiPZWSEZMp5ma3MAhEjnh+aKZq2Isy7D4lVw1OZDZAQLCkTq1kRx4krSUVA59bL
+uI5iVjPjtMgUnlUm3F7R7A==
+</ds:SignatureValue>
+<ds:KeyInfo Id="KeyId-6C7DD7B5C32772A489137539878242565">
+<wsse:SecurityTokenReference xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="STRId-6C7DD7B5C32772A489137539878242566"><wsse:Reference URI="#CertId-6C7DD7B5C32772A489137539878242564" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"/></wsse:SecurityTokenReference>
+</ds:KeyInfo>
+</ds:Signature></wsse:Security></soapenv:Header>
+   <soapenv:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="request">
+      <com:getPreScreenOffers>
+         <com:objaApplicantInfo>
+            <data:businessAddressLine1>Research Blvd</data:businessAddressLine1>
+            <data:businessAddressLine2>Suite 4 Bldg 4</data:businessAddressLine2>
+            <data:businessCity>Austin</data:businessCity>
+            <data:businessName>CreditCards.com</data:businessName>
+            <data:businessState>TX</data:businessState>
+            <data:businessZip>78759</data:businessZip>
+            <data:channelId>1</data:channelId>
+            <data:firstName>Testing</data:firstName>
+            <data:generationCode>1</data:generationCode>
+            <data:gnaVendorCode>1</data:gnaVendorCode>
+            <data:homeAddressLine1>Test</data:homeAddressLine1>
+            <data:homeAddressLine2>Test</data:homeAddressLine2>
+            <data:homeCity>Austin</data:homeCity>
+            <data:homeState>TX</data:homeState>
+            <data:homeZip>78759</data:homeZip>
+            <data:last4SSN>1234</data:last4SSN>
+            <data:lastName>Test</data:lastName>
+            <data:leadOfferFlag>1</data:leadOfferFlag>
+            <data:middleName>T</data:middleName>
+            <data:partnerRepId>1</data:partnerRepId>
+            <data:vendorCode>1</data:vendorCode>
+            <data:requestTimeStamp>2013-09-26 02:32:00</data:requestTimeStamp>
+            <data:vendorCustomerId>1</data:vendorCustomerId>
+            <data:tenure>1</data:tenure>
+            <data:transactionCost>1</data:transactionCost>
+            <data:paymentInd>1</data:paymentInd>
+            <data:custLocationInd>1</data:custLocationInd>
+         </com:objaApplicantInfo>
+      </com:getPreScreenOffers>
+   </soapenv:Body>
+</soapenv:Envelope>

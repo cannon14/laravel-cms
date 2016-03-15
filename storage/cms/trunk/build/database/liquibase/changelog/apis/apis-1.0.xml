@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="justing" id="initial-setup">
+
+        <createTable tableName="app_settings">
+            <column name="app_setting_id" type="INT(11)" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="name" type="VARCHAR(45)">
+                <constraints unique="true" />
+            </column>
+            <column name="value" type="VARCHAR(45)"></column>
+            <column name="modified_date" type="DATETIME"></column>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

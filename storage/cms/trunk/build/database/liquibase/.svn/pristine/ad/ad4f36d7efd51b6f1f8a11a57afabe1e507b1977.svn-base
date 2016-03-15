@@ -1,0 +1,1683 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="liquibase" id="initial-setup-views">
+
+        <createView viewName="card_boost">
+            select `ccdata${database.suffix}`.`card_boost`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`card_boost`.`boost` AS `boost`
+            from `ccdata${database.suffix}`.`card_boost`
+        </createView>
+
+        <createView viewName="cms_alternate_links">
+            select `ccdata${database.suffix}`.`alternate_links`.`affiliate_id` AS `affiliate_id`,
+            `ccdata${database.suffix}`.`alternate_links`.`clickable_id` AS `clickable_id`,
+            `ccdata${database.suffix}`.`alternate_links`.`url` AS `url`,
+            `ccdata${database.suffix}`.`alternate_links`.`website_id` AS `website_id`
+            from `ccdata${database.suffix}`.`alternate_links`
+        </createView>
+
+        <createView viewName="cms_card_categories">
+            select `ccdata${database.suffix}`.`card_categories`.`card_category_id` AS `card_category_id`,
+            `ccdata${database.suffix}`.`card_categories`.`card_category_name` AS `card_category_name`,
+            `ccdata${database.suffix}`.`card_categories`.`card_category_display_name` AS `card_category_display_name`,
+            `ccdata${database.suffix}`.`card_categories`.`deleted` AS `deleted`
+            from `ccdata${database.suffix}`.`card_categories`
+        </createView>
+
+
+        <createView viewName="cms_card_category_contexts">
+            select
+            `ccdata${database.suffix}`.`card_category_contexts`.`card_category_context_id` AS
+            `card_category_context_id`,
+            `ccdata${database.suffix}`.`card_category_contexts`.`card_category_context_name` AS
+            `card_category_context_name`
+            from `ccdata${database.suffix}`.`card_category_contexts`
+        </createView>
+
+
+        <createView viewName="cms_card_category_group_to_category">
+            select
+            `ccdata${database.suffix}`.`card_category_group_to_category`.`card_category_group_id` AS
+            `card_category_group_id`,
+            `ccdata${database.suffix}`.`card_category_group_to_category`.`card_category_id` AS `card_category_id`,
+            `ccdata${database.suffix}`.`card_category_group_to_category`.`card_category_group_rank` AS
+            `card_category_group_rank`
+            from `ccdata${database.suffix}`.`card_category_group_to_category`
+        </createView>
+
+
+        <createView viewName="cms_card_category_groups">
+            select `ccdata${database.suffix}`.`card_category_groups`.`id` AS `id`,
+            `ccdata${database.suffix}`.`card_category_groups`.`card_category_group_name` AS `card_category_group_name`,
+            `ccdata${database.suffix}`.`card_category_groups`.`context_id` AS `context_id`,
+            `ccdata${database.suffix}`.`card_category_groups`.`inserted` AS `inserted`,
+            `ccdata${database.suffix}`.`card_category_groups`.`updated` AS `updated`
+            from `ccdata${database.suffix}`.`card_category_groups`
+        </createView>
+
+
+        <createView viewName="cms_card_category_ranks">
+            select `ccdata${database.suffix}`.`card_category_ranks`.`card_category_rank_id` AS `card_category_rank_id`,
+            `ccdata${database.suffix}`.`card_category_ranks`.`card_category_rank` AS `card_category_rank`,
+            `ccdata${database.suffix}`.`card_category_ranks`.`card_category_context_id` AS `card_category_context_id`,
+            `ccdata${database.suffix}`.`card_category_ranks`.`card_category_id` AS `card_category_id`
+            from `ccdata${database.suffix}`.`card_category_ranks`
+        </createView>
+
+
+        <createView viewName="cms_card_data">
+            select `ccdata${database.suffix}`.`cs_carddata`.`cardId` AS `cardId`,
+            `ccdata${database.suffix}`.`cs_carddata`.`introApr` AS `introApr`,
+            `ccdata${database.suffix}`.`cs_carddata`.`introAprPeriod` AS `introAprPeriod`,
+            `ccdata${database.suffix}`.`cs_carddata`.`regularApr` AS `regularApr`,
+            `ccdata${database.suffix}`.`cs_carddata`.`annualFee` AS `annualFee`,
+            `ccdata${database.suffix}`.`cs_carddata`.`balanceTransfers` AS `balanceTransfers`,
+            `ccdata${database.suffix}`.`cs_carddata`.`balanceTransferFee` AS `balanceTransferFee`,
+            `ccdata${database.suffix}`.`cs_carddata`.`balanceTransferIntroApr` AS `balanceTransferIntroApr`,
+            `ccdata${database.suffix}`.`cs_carddata`.`balanceTransferIntroAprPeriod` AS `balanceTransferIntroAprPeriod`,
+            `ccdata${database.suffix}`.`cs_carddata`.`monthlyFee` AS `monthlyFee`,
+            `ccdata${database.suffix}`.`cs_carddata`.`creditNeeded` AS `creditNeeded`,
+            `ccdata${database.suffix}`.`cs_carddata`.`dateModified`
+            AS `dateModified`
+            from `ccdata${database.suffix}`.`cs_carddata`
+        </createView>
+
+
+        <createView viewName="cms_card_details">
+            select `ccdata${database.suffix}`.`rt_carddetails`.`id` AS `id`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardShortName` AS `cardShortName`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardLink` AS `cardLink`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`appLink` AS `appLink`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardDetailVersion` AS `cardDetailVersion`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardDetailLabel` AS `cardDetailLabel`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardId` AS `cardId`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`campaignLink` AS `campaignLink`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardPageMeta` AS `cardPageMeta`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardDetailText` AS `cardDetailText`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardIntroDetail` AS `cardIntroDetail`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardMoreDetail` AS `cardMoreDetail`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardSeeDetails` AS `cardSeeDetails`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`categoryImage` AS `categoryImage`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`categoryAltText` AS `categoryAltText`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardIOImage` AS `cardIOImage`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardIOAltText` AS `cardIOAltText`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardButtonImage` AS `cardButtonImage`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardButtonAltText` AS `cardButtonAltText`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardIOButtonAltText` AS `cardIOButtonAltText`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardIconSmall` AS `cardIconSmall`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardIconMid` AS `cardIconMid`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardIconLarge` AS `cardIconLarge`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`detailOrder` AS `detailOrder`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`dateCreated` AS `dateCreated`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`dateUpdated` AS `dateUpdated`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`fid` AS `fid`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardListingString` AS `cardListingString`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardPageHeaderString` AS `cardPageHeaderString`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`imageAltText` AS `imageAltText`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`active` AS `active`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`deleted` AS `deleted`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`specialsDescription` AS `specialsDescription`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`specialsAdditionalLink` AS `specialsAdditionalLink`,
+            `ccdata${database.suffix}`.`rt_carddetails`.`cardTeaserText` AS `cardTeaserText`
+            from `ccdata${database.suffix}`.`rt_carddetails`
+        </createView>
+
+
+        <createView viewName="cms_card_exclusion_map">
+            select `ccdata${database.suffix}`.`cs_pagecardexclusionmap`.`mapid` AS `mapid`,
+            `ccdata${database.suffix}`.`cs_pagecardexclusionmap`.`siteid` AS `siteid`,
+            `ccdata${database.suffix}`.`cs_pagecardexclusionmap`.`pageid`
+            AS `pageid`,
+            `ccdata${database.suffix}`.`cs_pagecardexclusionmap`.`cardid` AS `cardid`
+            from `ccdata${database.suffix}`.`cs_pagecardexclusionmap`
+        </createView>
+
+
+        <createView viewName="cms_card_history">
+            select `ccdata${database.suffix}`.`cardhistory`.`campaigntype_id` AS `campaigntype_id`,
+            `ccdata${database.suffix}`.`cardhistory`.`dateinserted` AS `dateinserted`,
+            `ccdata${database.suffix}`.`cardhistory`.`campaigntype_name` AS `campaigntype_name`,
+            `ccdata${database.suffix}`.`cardhistory`.`intro_apr` AS `intro_apr`,
+            `ccdata${database.suffix}`.`cardhistory`.`delta_intro_apr` AS `delta_intro_apr`,
+            `ccdata${database.suffix}`.`cardhistory`.`intro_apr_movement` AS `intro_apr_movement`,
+            `ccdata${database.suffix}`.`cardhistory`.`intro_apr_period` AS `intro_apr_period`,
+            `ccdata${database.suffix}`.`cardhistory`.`delta_intro_apr_period` AS `delta_intro_apr_period`,
+            `ccdata${database.suffix}`.`cardhistory`.`intro_apr_period_movement` AS `intro_apr_period_movement`,
+            `ccdata${database.suffix}`.`cardhistory`.`regular_apr` AS `regular_apr`,
+            `ccdata${database.suffix}`.`cardhistory`.`delta_regular_apr` AS `delta_regular_apr`,
+            `ccdata${database.suffix}`.`cardhistory`.`regular_apr_movement` AS `regular_apr_movement`
+            from `ccdata${database.suffix}`.`cardhistory`
+        </createView>
+
+
+        <createView viewName="cms_card_page_map">
+            select `ccdata${database.suffix}`.`rt_cardpagemap`.`cardcategorymapId` AS `cardcategorymapId`,
+            `ccdata${database.suffix}`.`rt_cardpagemap`.`pageInsert` AS `pageInsert`,
+            `ccdata${database.suffix}`.`rt_cardpagemap`.`cardpageId` AS `cardpageId`,
+            `ccdata${database.suffix}`.`rt_cardpagemap`.`cardId` AS `cardId`,
+            `ccdata${database.suffix}`.`rt_cardpagemap`.`rank` AS `rank`
+            from `ccdata${database.suffix}`.`rt_cardpagemap`
+        </createView>
+
+
+        <createView viewName="cms_card_page_map_affiliate">
+            select
+            `ccdata${database.suffix}`.`rt_cardpagemap_affiliate`.`cardcategorymapId` AS `cardcategorymapId`,
+            `ccdata${database.suffix}`.`rt_cardpagemap_affiliate`.`pageInsert` AS `pageInsert`,
+            `ccdata${database.suffix}`.`rt_cardpagemap_affiliate`.`cardpageId` AS `cardpageId`,
+            `ccdata${database.suffix}`.`rt_cardpagemap_affiliate`.`cardId` AS `cardId`,
+            `ccdata${database.suffix}`.`rt_cardpagemap_affiliate`.`rank` AS `rank`
+            from `ccdata${database.suffix}`.`rt_cardpagemap_affiliate`
+        </createView>
+
+
+        <createView viewName="cms_card_page_map_bankrate">
+            select `ccdata${database.suffix}`.`rt_cardpagemap_bankrate`.`cardcategorymapId`
+            AS `cardcategorymapId`,
+            `ccdata${database.suffix}`.`rt_cardpagemap_bankrate`.`pageInsert` AS `pageInsert`,
+            `ccdata${database.suffix}`.`rt_cardpagemap_bankrate`.`cardpageId` AS `cardpageId`,
+            `ccdata${database.suffix}`.`rt_cardpagemap_bankrate`.`cardId` AS `cardId`,
+            `ccdata${database.suffix}`.`rt_cardpagemap_bankrate`.`rank` AS `rank`
+            from `ccdata${database.suffix}`.`rt_cardpagemap_bankrate`
+        </createView>
+
+
+        <createView viewName="cms_card_placement_history">
+            select `cms${database.suffix}`.`card_placement_history`.`cardpageId` AS `cardpageId`,
+            `cms${database.suffix}`.`card_placement_history`.`cardId` AS `cardId`,
+            `cms${database.suffix}`.`card_placement_history`.`rank` AS `rank`,
+            `cms${database.suffix}`.`card_placement_history`.`active` AS `active`,
+            `cms${database.suffix}`.`card_placement_history`.`time_snapped` AS `time_snapped`
+            from `cms${database.suffix}`.`card_placement_history`
+        </createView>
+
+
+        <createView viewName="cms_card_ranks">
+            select `ccdata${database.suffix}`.`card_ranks`.`card_rank_id` AS `card_rank_id`,
+            `ccdata${database.suffix}`.`card_ranks`.`card_rank` AS `card_rank`,
+            `ccdata${database.suffix}`.`card_ranks`.`card_category_context_id` AS `card_category_context_id`,
+            `ccdata${database.suffix}`.`card_ranks`.`card_category_id` AS `card_category_id`,
+            `ccdata${database.suffix}`.`card_ranks`.`card_id` AS `card_id`
+            from `ccdata${database.suffix}`.`card_ranks`
+        </createView>
+
+
+        <createView viewName="cms_cards">
+            select `ccdata${database.suffix}`.`rt_cards`.`id` AS `id`,
+            `ccdata${database.suffix}`.`rt_cards`.`cardId` AS `cardId`,
+            `ccdata${database.suffix}`.`rt_cards`.`site_code` AS `site_code`,
+            `ccdata${database.suffix}`.`rt_cards`.`cardTitle` AS `cardTitle`,
+            `ccdata${database.suffix}`.`rt_cards`.`cardDescription` AS `cardDescription`,
+            `ccdata${database.suffix}`.`rt_cards`.`merchant` AS `merchant`,
+            `ccdata${database.suffix}`.`rt_cards`.`introApr` AS `introApr`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_introApr` AS `active_introApr`,
+            `ccdata${database.suffix}`.`rt_cards`.`introAprPeriod` AS `introAprPeriod`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_introAprPeriod` AS `active_introAprPeriod`,
+            `ccdata${database.suffix}`.`rt_cards`.`regularApr` AS `regularApr`,
+            `ccdata${database.suffix}`.`rt_cards`.`variable` AS `variable`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_regularApr` AS `active_regularApr`,
+            `ccdata${database.suffix}`.`rt_cards`.`annualFee` AS `annualFee`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_annualFee` AS `active_annualFee`,
+            `ccdata${database.suffix}`.`rt_cards`.`monthlyFee` AS `monthlyFee`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_monthlyFee` AS `active_monthlyFee`,
+            `ccdata${database.suffix}`.`rt_cards`.`balanceTransfers` AS `balanceTransfers`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_balanceTransfers` AS `active_balanceTransfers`,
+            `ccdata${database.suffix}`.`rt_cards`.`balanceTransferFee` AS `balanceTransferFee`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_balanceTransferFee` AS `active_balanceTransferFee`,
+            `ccdata${database.suffix}`.`rt_cards`.`balanceTransferIntroApr` AS `balanceTransferIntroApr`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_balanceTransferIntroApr` AS `active_balanceTransferIntroApr`,
+            `ccdata${database.suffix}`.`rt_cards`.`balanceTransferIntroAprPeriod` AS `balanceTransferIntroAprPeriod`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_balanceTransferIntroAprPeriod` AS
+            `active_balanceTransferIntroAprPeriod`,
+            `ccdata${database.suffix}`.`rt_cards`.`creditNeeded` AS `creditNeeded`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_creditNeeded` AS `active_creditNeeded`,
+            `ccdata${database.suffix}`.`rt_cards`.`imagePath` AS `imagePath`,
+            `ccdata${database.suffix}`.`rt_cards`.`ratesAndFees` AS `ratesAndFees`,
+            `ccdata${database.suffix}`.`rt_cards`.`rewards` AS `rewards`,
+            `ccdata${database.suffix}`.`rt_cards`.`cardBenefits` AS `cardBenefits`,
+            `ccdata${database.suffix}`.`rt_cards`.`onlineServices` AS `onlineServices`,
+            `ccdata${database.suffix}`.`rt_cards`.`footNotes` AS `footNotes`,
+            `ccdata${database.suffix}`.`rt_cards`.`layout` AS `layout`,
+            `ccdata${database.suffix}`.`rt_cards`.`dateCreated` AS `dateCreated`,
+            `ccdata${database.suffix}`.`rt_cards`.`dateUpdated` AS `dateUpdated`,
+            `ccdata${database.suffix}`.`rt_cards`.`subCat` AS `subCat`,
+            `ccdata${database.suffix}`.`rt_cards`.`catTitle` AS `catTitle`,
+            `ccdata${database.suffix}`.`rt_cards`.`catDescription` AS `catDescription`,
+            `ccdata${database.suffix}`.`rt_cards`.`catImage` AS `catImage`,
+            `ccdata${database.suffix}`.`rt_cards`.`catImageAltText` AS `catImageAltText`,
+            `ccdata${database.suffix}`.`rt_cards`.`syndicate` AS `syndicate`,
+            `ccdata${database.suffix}`.`rt_cards`.`url` AS `url`,
+            `ccdata${database.suffix}`.`rt_cards`.`applyByPhoneNumber` AS `applyByPhoneNumber`,
+            `ccdata${database.suffix}`.`rt_cards`.`tPageText` AS `tPageText`,
+            `ccdata${database.suffix}`.`rt_cards`.`private` AS `private`,
+            `ccdata${database.suffix}`.`rt_cards`.`active` AS `active`,
+            `ccdata${database.suffix}`.`rt_cards`.`deleted` AS `deleted`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_epd_pages` AS `active_epd_pages`,
+            `ccdata${database.suffix}`.`rt_cards`.`active_show_epd_rates` AS `active_show_epd_rates`,
+            `ccdata${database.suffix}`.`rt_cards`.`show_verify` AS `show_verify`,
+            `ccdata${database.suffix}`.`rt_cards`.`commission_label` AS `commission_label`,
+            `ccdata${database.suffix}`.`rt_cards`.`payout_cap`
+            AS `payout_cap`,
+            `ccdata${database.suffix}`.`rt_cards`.`card_level_id` AS `card_level_id`,
+            `ccdata${database.suffix}`.`rt_cards`.`requires_approval` AS `requires_approval`,
+            `ccdata${database.suffix}`.`rt_cards`.`secured`
+            AS `secured`
+            from `ccdata${database.suffix}`.`rt_cards`
+        </createView>
+
+
+        <createView viewName="cms_merchant_service_details">
+            select
+            `ccdata${database.suffix}`.`merchant_service_details`.`merchant_service_detail_id` AS
+            `merchant_service_detail_id`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`merchant_service_id` AS `merchant_service_id`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`merchant_service_detail_version` AS
+            `merchant_service_detail_version`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`merchant_service_detail_label` AS
+            `merchant_service_detail_label`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`category_image_path` AS `category_image_path`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`category_image_alt_text` AS
+            `category_image_alt_text`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`merchant_service_link` AS `merchant_service_link`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`app_link` AS `app_link`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`merchant_service_image_path` AS
+            `merchant_service_image_path`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`merchant_service_image_alt_text` AS
+            `merchant_service_image_alt_text`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`apply_button_alt_text` AS `apply_button_alt_text`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`merchant_service_header_string` AS
+            `merchant_service_header_string`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`merchant_service_detail_text` AS
+            `merchant_service_detail_text`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`merchant_service_intro_detail` AS
+            `merchant_service_intro_detail`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`merchant_service_more_detail` AS
+            `merchant_service_more_detail`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`fid` AS `fid`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`date_created` AS `date_created`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`date_updated` AS `date_updated`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`active` AS `active`,
+            `ccdata${database.suffix}`.`merchant_service_details`.`deleted` AS `deleted`
+            from `ccdata${database.suffix}`.`merchant_service_details`
+        </createView>
+
+
+        <createView viewName="cms_merchant_services">
+            select `ccdata${database.suffix}`.`merchant_services`.`merchant_service_id` AS `merchant_service_id`,
+            `ccdata${database.suffix}`.`merchant_services`.`merchant_service_name` AS `merchant_service_name`,
+            `ccdata${database.suffix}`.`merchant_services`.`url` AS `url`,
+            `ccdata${database.suffix}`.`merchant_services`.`description` AS `description`,
+            `ccdata${database.suffix}`.`merchant_services`.`setup_fee`
+            AS `setup_fee`,
+            `ccdata${database.suffix}`.`merchant_services`.`active_setup_fee` AS `active_setup_fee`,
+            `ccdata${database.suffix}`.`merchant_services`.`monthly_minimum` AS `monthly_minimum`,
+            `ccdata${database.suffix}`.`merchant_services`.`active_monthly_minimum` AS `active_monthly_minimum`,
+            `ccdata${database.suffix}`.`merchant_services`.`gateway_fee` AS `gateway_fee`,
+            `ccdata${database.suffix}`.`merchant_services`.`active_gateway_fee` AS `active_gateway_fee`,
+            `ccdata${database.suffix}`.`merchant_services`.`statement_fee` AS `statement_fee`,
+            `ccdata${database.suffix}`.`merchant_services`.`active_statement_fee` AS `active_statement_fee`,
+            `ccdata${database.suffix}`.`merchant_services`.`discount_rate` AS `discount_rate`,
+            `ccdata${database.suffix}`.`merchant_services`.`active_discount_rate` AS `active_discount_rate`,
+            `ccdata${database.suffix}`.`merchant_services`.`transaction_fee` AS `transaction_fee`,
+            `ccdata${database.suffix}`.`merchant_services`.`active_transaction_fee` AS `active_transaction_fee`,
+            `ccdata${database.suffix}`.`merchant_services`.`tech_support_fee` AS `tech_support_fee`,
+            `ccdata${database.suffix}`.`merchant_services`.`active_tech_support_fee` AS `active_tech_support_fee`,
+            `ccdata${database.suffix}`.`merchant_services`.`date_created` AS `date_created`,
+            `ccdata${database.suffix}`.`merchant_services`.`date_updated` AS `date_updated`,
+            `ccdata${database.suffix}`.`merchant_services`.`active` AS `active`,
+            `ccdata${database.suffix}`.`merchant_services`.`deleted` AS `deleted`
+            from `ccdata${database.suffix}`.`merchant_services`
+        </createView>
+
+
+        <createView viewName="cms_merchants">
+            select `ccdata${database.suffix}`.`cs_merchants`.`merchantid` AS `merchantid`,
+            `ccdata${database.suffix}`.`cs_merchants`.`merchantname` AS `merchantname`,
+            `ccdata${database.suffix}`.`cs_merchants`.`merchantcardpage` AS `merchantcardpage`,
+            `ccdata${database.suffix}`.`cs_merchants`.`deleted` AS `deleted`,
+            `ccdata${database.suffix}`.`cs_merchants`.`default_payin_tier_id` AS `default_payin_tier_id`
+            from `ccdata${database.suffix}`.`cs_merchants`
+        </createView>
+
+
+        <createView viewName="cms_page_details">
+            select `ccdata${database.suffix}`.`rt_pagedetails`.`id` AS `id`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageDetailVersion` AS `pageDetailVersion`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageDetailLabel` AS `pageDetailLabel`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`cardpageId` AS `cardpageId`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageTitle` AS `pageTitle`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageIntroDescription` AS `pageIntroDescription`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageDescription` AS `pageDescription`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageSpecial` AS `pageSpecial`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageMeta` AS `pageMeta`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageLearnMore`
+            AS `pageLearnMore`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageDisclaimer` AS `pageDisclaimer`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageHeaderImage` AS `pageHeaderImage`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageHeaderImageAltText` AS `pageHeaderImageAltText`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageSpecialOfferImage` AS `pageSpecialOfferImage`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageSpecialOfferImageAltText` AS
+            `pageSpecialOfferImageAltText`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageSpecialOfferLink` AS `pageSpecialOfferLink`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageSmallImage` AS `pageSmallImage`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageSmallImageAltText` AS `pageSmallImageAltText`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`dateCreated` AS `dateCreated`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`dateUpdated` AS `dateUpdated`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageLink`
+            AS `pageLink`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`fid` AS `fid`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageHeaderString` AS `pageHeaderString`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`primaryNavString` AS `primaryNavString`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`secondaryNavString` AS `secondaryNavString`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`topPickAltText` AS `topPickAltText`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`flagTopPick` AS `flagTopPick`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`flagAdditionalOffer` AS `flagAdditionalOffer`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`associatedArticleCategory` AS `associatedArticleCategory`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`articlesPerPage` AS `articlesPerPage`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`enableSort` AS `enableSort`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`itemsPerPage` AS `itemsPerPage`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`pageSeeAlso` AS `pageSeeAlso`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`siteMapDescription` AS `siteMapDescription`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`siteMapTitle` AS `siteMapTitle`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`active` AS `active`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`deleted` AS `deleted`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`sitemapLink` AS `sitemapLink`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`navBarString`
+            AS `navBarString`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`subPageNav` AS `subPageNav`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`landingPage` AS `landingPage`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`landingPageFid` AS `landingPageFid`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`landingPageImage` AS `landingPageImage`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`landingPageHeaderString` AS `landingPageHeaderString`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`itemsOnFirstPage` AS `itemsOnFirstPage`,
+            `ccdata${database.suffix}`.`rt_pagedetails`.`showMainCatOnFirstPage` AS `showMainCatOnFirstPage`
+            from `ccdata${database.suffix}`.`rt_pagedetails`
+        </createView>
+
+
+        <createView viewName="cms_page_site_map">
+            select `ccdata${database.suffix}`.`rt_pagecategorymap`.`categoryPageMapId` AS `categoryPageMapId`,
+            `ccdata${database.suffix}`.`rt_pagecategorymap`.`cardpageId` AS `cardpageId`,
+            `ccdata${database.suffix}`.`rt_pagecategorymap`.`categoryId` AS `categoryId`,
+            `ccdata${database.suffix}`.`rt_pagecategorymap`.`rank`
+            AS `rank`
+            from `ccdata${database.suffix}`.`rt_pagecategorymap`
+        </createView>
+
+
+        <createView viewName="cms_pages">
+            select `ccdata${database.suffix}`.`rt_cardpages`.`cardpageId` AS `cardpageId`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`pageName` AS `pageName`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`pageType` AS `pageType`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`contentType` AS `contentType`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`alternate_tracking_flag` AS `alternate_tracking_flag`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`schumerType` AS `schumerType`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`dateCreated` AS `dateCreated`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`dateUpdated`
+            AS `dateUpdated`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`type` AS `type`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active` AS `active`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`deleted` AS `deleted`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`rollup` AS `rollup`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`card_category_id` AS `card_category_id`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_introApr` AS `active_introApr`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_introAprPeriod` AS `active_introAprPeriod`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_regularApr` AS `active_regularApr`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_annualFee` AS `active_annualFee`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_monthlyFee` AS `active_monthlyFee`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_balanceTransfers` AS `active_balanceTransfers`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_balanceTransferFee` AS `active_balanceTransferFee`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_balanceTransferIntroApr` AS
+            `active_balanceTransferIntroApr`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_balanceTransferIntroAprPeriod` AS
+            `active_balanceTransferIntroAprPeriod`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_creditNeeded` AS `active_creditNeeded`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_transactionFeeSignature` AS
+            `active_transactionFeeSignature`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_transactionFeePin` AS `active_transactionFeePin`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_atmFee` AS `active_atmFee`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_prepaidText` AS `active_prepaidText`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_loadFee` AS `active_loadFee`,
+            `ccdata${database.suffix}`.`rt_cardpages`.`active_activationFee` AS `active_activationFee`
+            from `ccdata${database.suffix}`.`rt_cardpages`
+        </createView>
+
+
+        <createView viewName="cms_subpage_page_map">
+            select `ccdata${database.suffix}`.`rt_pagesubpagemap`.`mapid` AS `mapid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap`.`siteid` AS `siteid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap`.`masterpageid` AS `masterpageid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap`.`subpageid` AS `subpageid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap`.`hide`
+            AS `hide`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap`.`rank` AS `rank`
+            from `ccdata${database.suffix}`.`rt_pagesubpagemap`
+        </createView>
+
+
+        <createView viewName="cms_subpage_page_map_affiliate">
+            select `ccdata${database.suffix}`.`rt_pagesubpagemap_affiliate`.`mapid` AS `mapid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap_affiliate`.`siteid` AS `siteid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap_affiliate`.`masterpageid` AS `masterpageid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap_affiliate`.`subpageid` AS `subpageid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap_affiliate`.`hide` AS `hide`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap_affiliate`.`rank` AS `rank`
+            from `ccdata${database.suffix}`.`rt_pagesubpagemap_affiliate`
+        </createView>
+
+
+        <createView viewName="cms_subpage_page_map_bankrate">
+            select `ccdata${database.suffix}`.`rt_pagesubpagemap_bankrate`.`mapid` AS `mapid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap_bankrate`.`siteid` AS `siteid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap_bankrate`.`masterpageid` AS `masterpageid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap_bankrate`.`subpageid` AS `subpageid`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap_bankrate`.`hide` AS `hide`,
+            `ccdata${database.suffix}`.`rt_pagesubpagemap_bankrate`.`rank` AS `rank`
+            from `ccdata${database.suffix}`.`rt_pagesubpagemap_bankrate`
+        </createView>
+
+
+        <createView viewName="cms_versions">
+            select `ccdata${database.suffix}`.`versions`.`version_id` AS `version_id`,
+            `ccdata${database.suffix}`.`versions`.`version_name` AS `version_name`,
+            `ccdata${database.suffix}`.`versions`.`version_description`
+            AS `version_description`,
+            `ccdata${database.suffix}`.`versions`.`deleted` AS `deleted`,
+            `ccdata${database.suffix}`.`versions`.`insert_time` AS `insert_time`,
+            `ccdata${database.suffix}`.`versions`.`update_time` AS `update_time`
+            from `ccdata${database.suffix}`.`versions`
+        </createView>
+
+
+        <createView viewName="cp_authors">
+            select `cardpress${database.suffix}`.`cp_authors`.`author_id` AS `author_id`,
+            `cardpress${database.suffix}`.`cp_authors`.`first_name` AS `first_name`,
+            `cardpress${database.suffix}`.`cp_authors`.`last_name` AS `last_name`,
+            `cardpress${database.suffix}`.`cp_authors`.`address` AS `address`,
+            `cardpress${database.suffix}`.`cp_authors`.`business_name` AS `business_name`,
+            `cardpress${database.suffix}`.`cp_authors`.`author_page_link` AS `author_page_link`,
+            `cardpress${database.suffix}`.`cp_authors`.`external_profile_link` AS `external_profile_link`,
+            `cardpress${database.suffix}`.`cp_authors`.`author_photo_location` AS `author_photo_location`,
+            `cardpress${database.suffix}`.`cp_authors`.`author_page_site_content_id` AS `author_page_site_content_id`,
+            `cardpress${database.suffix}`.`cp_authors`.`local_author_page_filename` AS `local_author_page_filename`
+            from `cardpress${database.suffix}`.`cp_authors`
+        </createView>
+
+
+        <createView viewName="cp_document_groups">
+            select `cardpress${database.suffix}`.`cp_document_groups`.`id` AS `id`,
+            `cardpress${database.suffix}`.`cp_document_groups`.`document_group` AS `document_group`,
+            `cardpress${database.suffix}`.`cp_document_groups`.`document` AS `document`
+            from `cardpress${database.suffix}`.`cp_document_groups`
+        </createView>
+
+
+        <createView viewName="cp_documentgroup_names">
+            select `cardpress${database.suffix}`.`cp_documentgroup_names`.`id` AS `id`,
+            `cardpress${database.suffix}`.`cp_documentgroup_names`.`name` AS `name`,
+            `cardpress${database.suffix}`.`cp_documentgroup_names`.`private_memgroup` AS `private_memgroup`,
+            `cardpress${database.suffix}`.`cp_documentgroup_names`.`private_webgroup` AS `private_webgroup`,
+            `cardpress${database.suffix}`.`cp_documentgroup_names`.`fid` AS `fid`,
+            `cardpress${database.suffix}`.`cp_documentgroup_names`.`index_page_id` AS `index_page_id`
+            from `cardpress${database.suffix}`.`cp_documentgroup_names`
+        </createView>
+
+
+        <createView viewName="cp_glossary">
+            select `cardpress${database.suffix}`.`cp_glossary`.`id` AS `id`,
+            `cardpress${database.suffix}`.`cp_glossary`.`term` AS `term`,
+            `cardpress${database.suffix}`.`cp_glossary`.`definition` AS `definition`,
+            `cardpress${database.suffix}`.`cp_glossary`.`disabled` AS `disabled`,
+            `cardpress${database.suffix}`.`cp_glossary`.`createdon` AS `createdon`,
+            `cardpress${database.suffix}`.`cp_glossary`.`editedon` AS `editedon`
+            from `cardpress${database.suffix}`.`cp_glossary`
+        </createView>
+
+
+        <createView viewName="cp_homepage_module">
+            select `cardpress${database.suffix}`.`cp_homepage_module`.`id` AS `id`,
+            `cardpress${database.suffix}`.`cp_homepage_module`.`name` AS `name`,
+            `cardpress${database.suffix}`.`cp_homepage_module`.`caption` AS `caption`,
+            `cardpress${database.suffix}`.`cp_homepage_module`.`related` AS `related`,
+            `cardpress${database.suffix}`.`cp_homepage_module`.`story`
+            AS `story`
+            from `cardpress${database.suffix}`.`cp_homepage_module`
+        </createView>
+
+
+        <createView viewName="cp_membergroup_access">
+            select `cardpress${database.suffix}`.`cp_membergroup_access`.`id` AS `id`,
+            `cardpress${database.suffix}`.`cp_membergroup_access`.`membergroup` AS `membergroup`,
+            `cardpress${database.suffix}`.`cp_membergroup_access`.`documentgroup` AS `documentgroup`
+            from `cardpress${database.suffix}`.`cp_membergroup_access`
+        </createView>
+
+
+        <createView viewName="cp_membergroup_names">
+            select `cardpress${database.suffix}`.`cp_membergroup_names`.`id` AS `id`,
+            `cardpress${database.suffix}`.`cp_membergroup_names`.`name` AS `name`,
+            `cardpress${database.suffix}`.`cp_membergroup_names`.`aff_id` AS `aff_id`
+            from `cardpress${database.suffix}`.`cp_membergroup_names`
+        </createView>
+
+
+        <createView viewName="cp_site_content">
+            select `cardpress${database.suffix}`.`cp_site_content`.`id` AS `id`,
+            `cardpress${database.suffix}`.`cp_site_content`.`type` AS `type`,
+            `cardpress${database.suffix}`.`cp_site_content`.`contentType` AS `contentType`,
+            `cardpress${database.suffix}`.`cp_site_content`.`author` AS `author`,
+            `cardpress${database.suffix}`.`cp_site_content`.`pagetitle`
+            AS `pagetitle`,
+            `cardpress${database.suffix}`.`cp_site_content`.`longtitle` AS `longtitle`,
+            `cardpress${database.suffix}`.`cp_site_content`.`description` AS `description`,
+            `cardpress${database.suffix}`.`cp_site_content`.`alias` AS `alias`,
+            `cardpress${database.suffix}`.`cp_site_content`.`link_attributes` AS `link_attributes`,
+            `cardpress${database.suffix}`.`cp_site_content`.`published` AS `published`,
+            `cardpress${database.suffix}`.`cp_site_content`.`publish_to_affiliates` AS `publish_to_affiliates`,
+            `cardpress${database.suffix}`.`cp_site_content`.`publish_to_cccom` AS `publish_to_cccom`,
+            `cardpress${database.suffix}`.`cp_site_content`.`pub_date` AS `pub_date`,
+            `cardpress${database.suffix}`.`cp_site_content`.`unpub_date` AS `unpub_date`,
+            `cardpress${database.suffix}`.`cp_site_content`.`repub_date` AS `repub_date`,
+            `cardpress${database.suffix}`.`cp_site_content`.`parent` AS `parent`,
+            `cardpress${database.suffix}`.`cp_site_content`.`isfolder` AS `isfolder`,
+            `cardpress${database.suffix}`.`cp_site_content`.`introtext` AS `introtext`,
+            `cardpress${database.suffix}`.`cp_site_content`.`content`
+            AS `content`,
+            `cardpress${database.suffix}`.`cp_site_content`.`richtext` AS `richtext`,
+            `cardpress${database.suffix}`.`cp_site_content`.`template`
+            AS `template`,
+            `cardpress${database.suffix}`.`cp_site_content`.`menuindex` AS `menuindex`,
+            `cardpress${database.suffix}`.`cp_site_content`.`searchable` AS `searchable`,
+            `cardpress${database.suffix}`.`cp_site_content`.`cacheable` AS `cacheable`,
+            `cardpress${database.suffix}`.`cp_site_content`.`createdby` AS `createdby`,
+            `cardpress${database.suffix}`.`cp_site_content`.`createdon` AS `createdon`,
+            `cardpress${database.suffix}`.`cp_site_content`.`editedby` AS `editedby`,
+            `cardpress${database.suffix}`.`cp_site_content`.`editedon`
+            AS `editedon`,
+            `cardpress${database.suffix}`.`cp_site_content`.`deleted` AS `deleted`,
+            `cardpress${database.suffix}`.`cp_site_content`.`deletedon`
+            AS `deletedon`,
+            `cardpress${database.suffix}`.`cp_site_content`.`deletedby` AS `deletedby`,
+            `cardpress${database.suffix}`.`cp_site_content`.`publishedon` AS `publishedon`,
+            `cardpress${database.suffix}`.`cp_site_content`.`publishedby` AS `publishedby`,
+            `cardpress${database.suffix}`.`cp_site_content`.`menutitle` AS `menutitle`,
+            `cardpress${database.suffix}`.`cp_site_content`.`donthit` AS `donthit`,
+            `cardpress${database.suffix}`.`cp_site_content`.`haskeywords`
+            AS `haskeywords`,
+            `cardpress${database.suffix}`.`cp_site_content`.`hasmetatags` AS `hasmetatags`,
+            `cardpress${database.suffix}`.`cp_site_content`.`privateweb` AS `privateweb`,
+            `cardpress${database.suffix}`.`cp_site_content`.`privatemgr` AS `privatemgr`,
+            `cardpress${database.suffix}`.`cp_site_content`.`content_dispo` AS `content_dispo`,
+            `cardpress${database.suffix}`.`cp_site_content`.`hidemenu` AS `hidemenu`,
+            `cardpress${database.suffix}`.`cp_site_content`.`pageid` AS `pageid`,
+            `cardpress${database.suffix}`.`cp_site_content`.`story_keywords`
+            AS `story_keywords`,
+            `cardpress${database.suffix}`.`cp_site_content`.`homepage_headline` AS `homepage_headline`,
+            `cardpress${database.suffix}`.`cp_site_content`.`homepage_summary` AS `homepage_summary`,
+            `cardpress${database.suffix}`.`cp_site_content`.`homepage_thumb` AS `homepage_thumb`,
+            `cardpress${database.suffix}`.`cp_site_content`.`homepage_alt` AS `homepage_alt`,
+            `cardpress${database.suffix}`.`cp_site_content`.`homepage_linktext` AS `homepage_linktext`,
+            `cardpress${database.suffix}`.`cp_site_content`.`homepage_image_external` AS `homepage_image_external`,
+            `cardpress${database.suffix}`.`cp_site_content`.`pubgroup` AS `pubgroup`,
+            `cardpress${database.suffix}`.`cp_site_content`.`maincategory` AS `maincategory`,
+            `cardpress${database.suffix}`.`cp_site_content`.`archived` AS `archived`,
+            `cardpress${database.suffix}`.`cp_site_content`.`temp_wp_post_id` AS `temp_wp_post_id`,
+            `cardpress${database.suffix}`.`cp_site_content`.`notes` AS `notes`,
+            `cardpress${database.suffix}`.`cp_site_content`.`actual_page_title` AS `actual_page_title`,
+            `cardpress${database.suffix}`.`cp_site_content`.`approved` AS `approved`,
+            `cardpress${database.suffix}`.`cp_site_content`.`invoiced` AS `invoiced`,
+            `cardpress${database.suffix}`.`cp_site_content`.`invoiced_amount` AS `invoiced_amount`
+            from `cardpress${database.suffix}`.`cp_site_content`
+        </createView>
+
+
+        <createView viewName="cp_site_htmlsnippets">
+            select `cardpress${database.suffix}`.`cp_site_htmlsnippets`.`id` AS `id`,
+            `cardpress${database.suffix}`.`cp_site_htmlsnippets`.`name` AS `name`,
+            `cardpress${database.suffix}`.`cp_site_htmlsnippets`.`description` AS `description`,
+            `cardpress${database.suffix}`.`cp_site_htmlsnippets`.`editor_type` AS `editor_type`,
+            `cardpress${database.suffix}`.`cp_site_htmlsnippets`.`category` AS `category`,
+            `cardpress${database.suffix}`.`cp_site_htmlsnippets`.`cache_type` AS `cache_type`,
+            `cardpress${database.suffix}`.`cp_site_htmlsnippets`.`snippet` AS `snippet`,
+            `cardpress${database.suffix}`.`cp_site_htmlsnippets`.`locked` AS `locked`
+            from `cardpress${database.suffix}`.`cp_site_htmlsnippets`
+        </createView>
+
+
+        <createView viewName="cp_story_authors">
+            select `cardpress${database.suffix}`.`cp_story_authors`.`story_id` AS `story_id`,
+            `cardpress${database.suffix}`.`cp_story_authors`.`author_id` AS `author_id`
+            from `cardpress${database.suffix}`.`cp_story_authors`
+        </createView>
+
+
+        <createView viewName="page_subpage_ranking">
+            select `pd`.`cardpageId` AS `page_id`,
+            `pd`.`fid` AS `fid`,
+            -(1) AS `sub_page_rank`
+            from (`cccomus${database.suffix}`.`cms_page_site_map` `psm` join
+            `cccomus${database.suffix}`.`cms_page_details` `pd`
+            on((`psm`.`cardpageId` = `pd`.`cardpageId`))) where ((`pd`.`pageDetailVersion` = -(1)) and
+            (`psm`.`categoryId` = 35)) union select `spm`.`subpageid` AS `page_id`,
+            `pd`.`fid` AS `fid`,
+            `spm`.`rank` AS `sub_page_rank`
+            from (`cccomus${database.suffix}`.`cms_subpage_page_map` `spm` join
+            `cccomus${database.suffix}`.`cms_page_details` `pd`
+            on((`spm`.`masterpageid` = `pd`.`cardpageId`))) where ((`pd`.`pageDetailVersion` = -(1)) and (`spm`.`siteid`
+            = 35))
+        </createView>
+
+
+        <createView viewName="partner_affiliate_click_reporting">
+            select `cl`.`affiliate_id` AS `affiliate_id`,
+            `cl`.`website_id` AS `website_id`,
+            `cl`.`card_id` AS `card_id`,
+            `cl`.`date` AS `date_inserted`,
+            ifnull(`co`.`approvalSalesCount`,
+            0) AS `saleClickCount`,
+            '0' AS `nonSaleClickCount`,
+            ifnull(`co`.`applicationSalesCount`,
+            0) AS `applicationsCount`,
+            ifnull(`co`.`crossSaleCount`,
+            0) AS `crossSaleCount`,
+            ifnull(`cl`.`totalclicks`,
+            0) AS `totalClicks`,
+            ifnull(`co`.`totalcommission`,
+            0) AS `totalCommission`,
+            '0' AS `nonSalesClickCommission`,
+            '0' AS `salesClickCommission`
+            from (`cccomus${database.suffix}`.`click_summary` `cl` left join
+            `cccomus${database.suffix}`.`commission_summary` `co`
+            on(((`co`.`affiliate_id` = `cl`.`affiliate_id`) and (`co`.`card_id` = `cl`.`card_id`) and (`co`.`date` =
+            `cl`.`date`) and (`co`.`website_id` = `cl`.`website_id`))))
+        </createView>
+
+
+        <createView viewName="partner_affiliate_click_reporting_internal">
+            select `cl`.`affiliate_id` AS `affiliate_id`,
+            `cl`.`website_id` AS `website_id`,
+            `cl`.`card_id` AS `card_id`,
+            `cl`.`date` AS `date_inserted`,
+            ifnull(`co`.`approvalSalesCount`,
+            0) AS `saleClickCount`,
+            '0' AS `nonSaleClickCount`,
+            ifnull(`co`.`applicationSalesCount`,
+            0) AS `applicationsCount`,
+            ifnull(`co`.`crossSaleCount`,
+            0) AS `crossSaleCount`,
+            ifnull(`cl`.`totalclicks`,
+            0) AS `totalClicks`,
+            ifnull(`co`.`totalcommission`,
+            0) AS `totalCommission`,
+            ifnull(`rs`.`sales_rev`,
+            0) AS `totalRevenue`,
+            ifnull(`co`.`totalAdjustment`,
+            0) AS `totalAdjustment`,
+            '0' AS `nonSalesClickCommission`,
+            '0' AS `salesClickCommission`
+            from ((`cccomus${database.suffix}`.`click_summary` `cl` left join
+            `cccomus${database.suffix}`.`commission_summary` `co`
+            on(((`co`.`affiliate_id` = `cl`.`affiliate_id`) and (`co`.`card_id` = `cl`.`card_id`) and (`co`.`date` =
+            `cl`.`date`) and (`co`.`website_id` = `cl`.`website_id`)))) left join
+            `cccomus${database.suffix}`.`revenue_summary` `rs`
+            on(((`rs`.`affiliate_id` = `cl`.`affiliate_id`) and (`rs`.`card_id` = `cl`.`card_id`) and (`rs`.`post_date`
+            = `cl`.`date`) and (`rs`.`website_id` = `cl`.`website_id`))))
+        </createView>
+
+
+        <createView viewName="summary_day_clicks_by_aid">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid`.`click_day` AS `click_day`,
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid`.`affiliate_id` AS `affiliate_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid`.`count_of_clicks` AS `count_of_clicks`
+
+            from `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid`
+        </createView>
+
+
+        <createView viewName="summary_day_clicks_by_aid_card_id">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid_card_id`.`click_day` AS `click_day`,
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid_card_id`.`affiliate_id` AS `affiliate_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid_card_id`.`card_id` AS `card_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid_card_id`.`count_of_clicks` AS
+            `count_of_clicks`
+
+            from `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid_card_id`
+        </createView>
+
+
+        <createView viewName="summary_day_clicks_by_aid_did">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid_did`.`click_day` AS `click_day`,
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid_did`.`affiliate_id` AS `affiliate_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid_did`.`keyword_id` AS `keyword_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid_did`.`count_of_clicks` AS `count_of_clicks`
+
+            from `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_aid_did`
+        </createView>
+
+
+        <createView viewName="summary_day_clicks_by_cid">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_cid`.`click_day` AS `click_day`,
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_cid`.`external_campaign_id` AS
+            `external_campaign_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_cid`.`count_of_clicks` AS `count_of_clicks`
+
+            from `cccomus_reporting${database.suffix}`.`summary_day_clicks_by_cid`
+        </createView>
+
+
+        <createView viewName="summary_day_legacy_page_views_by_aid">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_legacy_page_views_by_aid`.`legacy_page_view_day` AS
+            `legacy_page_view_day`,
+            `cccomus_reporting${database.suffix}`.`summary_day_legacy_page_views_by_aid`.`affiliate_id` AS
+            `affiliate_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_legacy_page_views_by_aid`.`count_of_unique_page_views` AS
+            `count_of_unique_page_views`
+            from `cccomus_reporting${database.suffix}`.`summary_day_legacy_page_views_by_aid`
+        </createView>
+
+
+        <createView viewName="summary_day_unique_visits_by_aid">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_unique_visits_by_aid`.`visit_day` AS `visit_day`,
+            `cccomus_reporting${database.suffix}`.`summary_day_unique_visits_by_aid`.`affiliate_id` AS `affiliate_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_unique_visits_by_aid`.`count_of_visits` AS
+            `count_of_visits`
+
+            from `cccomus_reporting${database.suffix}`.`summary_day_unique_visits_by_aid`
+        </createView>
+
+
+        <createView viewName="summary_day_visits_by_aid">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid`.`visit_day` AS `visit_day`,
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid`.`affiliate_id` AS `affiliate_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid`.`count_of_visits` AS `count_of_visits`
+
+            from `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid`
+        </createView>
+
+
+        <createView viewName="summary_day_visits_by_aid_bid">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid_bid`.`visit_day` AS `visit_day`,
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid_bid`.`affiliate_id` AS `affiliate_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid_bid`.`ad_id` AS `ad_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid_bid`.`count_of_visits` AS `count_of_visits`
+
+            from `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid_bid`
+        </createView>
+
+
+        <createView viewName="summary_day_visits_by_aid_did">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid_did`.`visit_day` AS `visit_day`,
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid_did`.`affiliate_id` AS `affiliate_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid_did`.`keyword_id` AS `keyword_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid_did`.`count_of_visits` AS `count_of_visits`
+
+            from `cccomus_reporting${database.suffix}`.`summary_day_visits_by_aid_did`
+        </createView>
+
+
+        <createView viewName="summary_day_visits_by_cid">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_cid`.`visit_day` AS `visit_day`,
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_cid`.`external_campaign_id` AS
+            `external_campaign_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_visits_by_cid`.`count_of_visits` AS `count_of_visits`
+
+            from `cccomus_reporting${database.suffix}`.`summary_day_visits_by_cid`
+        </createView>
+
+
+        <createView viewName="vw_bankrate_transactions">
+            select `cccomus${database.suffix}`.`transactions_recent`.`transid` AS `transid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`accountid` AS `accountid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`rstatus` AS `rstatus`,
+            `cccomus${database.suffix}`.`transactions_recent`.`dateinserted` AS `dateinserted`,
+            `cccomus${database.suffix}`.`transactions_recent`.`dateapproved` AS `dateapproved`,
+            `cccomus${database.suffix}`.`transactions_recent`.`transtype` AS `transtype`,
+            `cccomus${database.suffix}`.`transactions_recent`.`payoutstatus` AS `payoutstatus`,
+            `cccomus${database.suffix}`.`transactions_recent`.`datepayout` AS `datepayout`,
+            `cccomus${database.suffix}`.`transactions_recent`.`cookiestatus` AS `cookiestatus`,
+            `cccomus${database.suffix}`.`transactions_recent`.`orderid` AS `orderid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`totalcost` AS `totalcost`,
+            `cccomus${database.suffix}`.`transactions_recent`.`bannerid` AS `bannerid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`transkind` AS `transkind`,
+            `cccomus${database.suffix}`.`transactions_recent`.`refererurl` AS `refererurl`,
+            `cccomus${database.suffix}`.`transactions_recent`.`affiliateid` AS `affiliateid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`campcategoryid` AS `campcategoryid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`parenttransid` AS `parenttransid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`commission` AS `commission`,
+            `cccomus${database.suffix}`.`transactions_recent`.`ip` AS `ip`,
+            `cccomus${database.suffix}`.`transactions_recent`.`recurringcommid` AS `recurringcommid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`accountingid` AS `accountingid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`productid` AS `productid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`data1` AS `data1`,
+            `cccomus${database.suffix}`.`transactions_recent`.`data2` AS `data2`,
+            `cccomus${database.suffix}`.`transactions_recent`.`data3` AS `data3`,
+            `cccomus${database.suffix}`.`transactions_recent`.`channel` AS `channel`,
+            `cccomus${database.suffix}`.`transactions_recent`.`episode` AS `episode`,
+            `cccomus${database.suffix}`.`transactions_recent`.`timeslot`
+            AS `timeslot`,
+            `cccomus${database.suffix}`.`transactions_recent`.`exit` AS `exit`,
+            `cccomus${database.suffix}`.`transactions_recent`.`page_position` AS `page_position`,
+            `cccomus${database.suffix}`.`transactions_recent`.`provideractionname` AS `provideractionname`,
+            `cccomus${database.suffix}`.`transactions_recent`.`providerorderid` AS `providerorderid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`providertype` AS `providertype`,
+            `cccomus${database.suffix}`.`transactions_recent`.`providereventdate` AS `providereventdate`,
+            `cccomus${database.suffix}`.`transactions_recent`.`providerprocessdate` AS `providerprocessdate`,
+            `cccomus${database.suffix}`.`transactions_recent`.`merchantname` AS `merchantname`,
+            `cccomus${database.suffix}`.`transactions_recent`.`providerid` AS `providerid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`merchantsales` AS `merchantsales`,
+            `cccomus${database.suffix}`.`transactions_recent`.`quantity` AS `quantity`,
+            `cccomus${database.suffix}`.`transactions_recent`.`providerchannel` AS `providerchannel`,
+            `cccomus${database.suffix}`.`transactions_recent`.`estimatedrevenue` AS `estimatedrevenue`,
+            `cccomus${database.suffix}`.`transactions_recent`.`dateestimated` AS `dateestimated`,
+            `cccomus${database.suffix}`.`transactions_recent`.`dateactual` AS `dateactual`,
+            `cccomus${database.suffix}`.`transactions_recent`.`estimateddatafilename` AS `estimateddatafilename`,
+            `cccomus${database.suffix}`.`transactions_recent`.`actualdatafilename` AS `actualdatafilename`,
+            `cccomus${database.suffix}`.`transactions_recent`.`providerstatus` AS `providerstatus`,
+            `cccomus${database.suffix}`.`transactions_recent`.`providercorrected` AS `providercorrected`,
+            `cccomus${database.suffix}`.`transactions_recent`.`providerwebsiteid` AS `providerwebsiteid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`providerwebsitename` AS `providerwebsitename`,
+            `cccomus${database.suffix}`.`transactions_recent`.`provideractionid` AS `provideractionid`,
+            `cccomus${database.suffix}`.`transactions_recent`.`modifiedby` AS `modifiedby`,
+            `cccomus${database.suffix}`.`transactions_recent`.`reftrans` AS `reftrans`,
+            `cccomus${database.suffix}`.`transactions_recent`.`reversed` AS `reversed`,
+            `cccomus${database.suffix}`.`transactions_recent`.`dateadjusted` AS `dateadjusted`,
+            `cccomus${database.suffix}`.`transactions_recent`.`currref` AS `currref`,
+            `cccomus${database.suffix}`.`transactions_recent`.`prevref` AS `prevref`,
+            `cccomus${database.suffix}`.`transactions_recent`.`thirdref`
+            AS `thirdref`,
+            `cccomus${database.suffix}`.`transactions_recent`.`external_visit_id` AS `external_visit_id`,
+            `cccomus${database.suffix}`.`transactions_recent`.`refinceptiondate` AS `refinceptiondate`
+            from `cccomus${database.suffix}`.`transactions_recent` union select
+            `cccomus${database.suffix}`.`ncs_transactions`.`transid` AS `transid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`accountid` AS `accountid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`rstatus` AS `rstatus`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`dateinserted` AS `dateinserted`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`dateapproved` AS `dateapproved`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`transtype` AS `transtype`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`payoutstatus` AS `payoutstatus`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`datepayout` AS `datepayout`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`cookiestatus` AS `cookiestatus`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`orderid` AS `orderid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`totalcost`
+            AS `totalcost`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`bannerid` AS `bannerid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`transkind` AS `transkind`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`refererurl`
+            AS `refererurl`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`affiliateid` AS `affiliateid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`campcategoryid` AS `campcategoryid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`parenttransid` AS `parenttransid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`commission` AS `commission`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`ip`
+            AS `ip`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`recurringcommid` AS `recurringcommid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`accountingid` AS `accountingid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`productid` AS `productid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`data1`
+            AS `data1`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`data2` AS `data2`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`data3` AS `data3`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`channel` AS `channel`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`episode` AS `episode`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`timeslot` AS `timeslot`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`exit` AS `exit`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`page_position` AS `page_position`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`provideractionname` AS `provideractionname`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`providerorderid` AS `providerorderid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`providertype` AS `providertype`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`providereventdate` AS `providereventdate`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`providerprocessdate` AS `providerprocessdate`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`merchantname` AS `merchantname`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`providerid` AS `providerid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`merchantsales` AS `merchantsales`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`quantity` AS `quantity`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`providerchannel` AS `providerchannel`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`estimatedrevenue` AS `estimatedrevenue`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`dateestimated` AS `dateestimated`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`dateactual` AS `dateactual`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`estimateddatafilename` AS `estimateddatafilename`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`actualdatafilename` AS `actualdatafilename`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`providerstatus` AS `providerstatus`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`providercorrected` AS `providercorrected`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`providerwebsiteid` AS `providerwebsiteid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`providerwebsitename` AS `providerwebsitename`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`provideractionid` AS `provideractionid`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`modifiedby` AS `modifiedby`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`reftrans` AS `reftrans`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`reversed`
+            AS `reversed`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`dateadjusted` AS `dateadjusted`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`currref` AS `currref`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`prevref` AS `prevref`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`thirdref` AS `thirdref`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`external_visit_id` AS `external_visit_id`,
+            `cccomus${database.suffix}`.`ncs_transactions`.`refinceptiondate` AS `refinceptiondate`
+            from `cccomus${database.suffix}`.`ncs_transactions`
+        </createView>
+
+
+        <createView viewName="vw_ccx_cms_map">
+            select `ccdata${database.suffix}`.`ccx_cms_map`.`ccx_card_id` AS `ccx_card_id`,
+            `ccdata${database.suffix}`.`ccx_cms_map`.`cms_card_id` AS `cms_card_id`
+            from `ccdata${database.suffix}`.`ccx_cms_map`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_additional_benefits">
+            select
+            `ccdata${database.suffix}`.`additional_benefits`.`additional_benefit_id` AS `additional_benefit_id`,
+            `ccdata${database.suffix}`.`additional_benefits`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`additional_benefits`.`benefit` AS `benefit`
+            from `ccdata${database.suffix}`.`additional_benefits`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_additional_fees">
+            select `ccdata${database.suffix}`.`additional_fees`.`additional_fee_id` AS `additional_fee_id`,
+            `ccdata${database.suffix}`.`additional_fees`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`additional_fees`.`fee` AS `fee`
+            from `ccdata${database.suffix}`.`additional_fees`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_additional_notes">
+            select `ccdata${database.suffix}`.`additional_notes`.`additional_note_id` AS `additional_note_id`,
+            `ccdata${database.suffix}`.`additional_notes`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`additional_notes`.`note`
+            AS `note`
+            from `ccdata${database.suffix}`.`additional_notes`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_approved_promotional_content">
+            select
+            `ccdata${database.suffix}`.`approved_promotional_content`.`approved_promotional_content_id` AS
+            `approved_promotional_content_id`,
+            `ccdata${database.suffix}`.`approved_promotional_content`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`approved_promotional_content`.`content` AS `content`
+            from `ccdata${database.suffix}`.`approved_promotional_content`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_balance_transfers">
+            select `ccdata${database.suffix}`.`balance_transfers`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`balance_transfers`.`accept_partial_balance_transfer` AS
+            `accept_partial_balance_transfer`,
+            `ccdata${database.suffix}`.`balance_transfers`.`intro_apr` AS `intro_apr`,
+            `ccdata${database.suffix}`.`balance_transfers`.`intro_apr_used_rate_type` AS `intro_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_intro_period` AS `min_intro_period`,
+            `ccdata${database.suffix}`.`balance_transfers`.`max_intro_period` AS `max_intro_period`,
+            `ccdata${database.suffix}`.`balance_transfers`.`intro_period_end_date` AS `intro_period_end_date`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_ongoing_apr` AS `min_ongoing_apr`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_ongoing_apr_used_rate_type` AS
+            `min_ongoing_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`balance_transfers`.`max_ongoing_apr` AS `max_ongoing_apr`,
+            `ccdata${database.suffix}`.`balance_transfers`.`max_ongoing_apr_used_rate_type` AS
+            `max_ongoing_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_default_apr` AS `min_default_apr`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_default_apr_used_rate_type` AS
+            `min_default_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`balance_transfers`.`max_default_apr` AS `max_default_apr`,
+            `ccdata${database.suffix}`.`balance_transfers`.`max_default_apr_used_rate_type` AS
+            `max_default_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_grace_period` AS `min_grace_period`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_finance_charge` AS `min_finance_charge`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_fixed_rate_period` AS `min_fixed_rate_period`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_fee` AS `min_fee`,
+            `ccdata${database.suffix}`.`balance_transfers`.`max_fee` AS `max_fee`,
+            `ccdata${database.suffix}`.`balance_transfers`.`fee_rate` AS `fee_rate`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_transfer_amount` AS `min_transfer_amount`,
+            `ccdata${database.suffix}`.`balance_transfers`.`max_transfer_amount` AS `max_transfer_amount`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_payment_amount` AS `min_payment_amount`,
+            `ccdata${database.suffix}`.`balance_transfers`.`min_payment_percentage` AS `min_payment_percentage`,
+            `ccdata${database.suffix}`.`balance_transfers`.`display_text` AS `display_text`
+            from `ccdata${database.suffix}`.`balance_transfers`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_card_tags">
+            select `ccdata${database.suffix}`.`card_tags`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`card_tags`.`card_tag` AS `card_tag`
+            from `ccdata${database.suffix}`.`card_tags`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_cards">
+            select `ccdata${database.suffix}`.`cards`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`cards`.`card_sku` AS `card_sku`,
+            `ccdata${database.suffix}`.`cards`.`issuer` AS `issuer`,
+            `ccdata${database.suffix}`.`cards`.`effective_date` AS `effective_date`,
+            `ccdata${database.suffix}`.`cards`.`status` AS `status`,
+            `ccdata${database.suffix}`.`cards`.`type` AS `type`,
+            `ccdata${database.suffix}`.`cards`.`image` AS `image`,
+            `ccdata${database.suffix}`.`cards`.`coissuing_organization` AS `coissuing_organization`,
+            `ccdata${database.suffix}`.`cards`.`network` AS `network`,
+            `ccdata${database.suffix}`.`cards`.`title` AS `title`,
+            `ccdata${database.suffix}`.`cards`.`category` AS `category`,
+            `ccdata${database.suffix}`.`cards`.`color` AS `color`,
+            `ccdata${database.suffix}`.`cards`.`initial_setup_fee` AS `initial_setup_fee`,
+            `ccdata${database.suffix}`.`cards`.`first_annual_fee` AS `first_annual_fee`,
+            `ccdata${database.suffix}`.`cards`.`ongoing_annual_fee` AS `ongoing_annual_fee`,
+            `ccdata${database.suffix}`.`cards`.`annual_fee_display_text` AS `annual_fee_display_text`,
+            `ccdata${database.suffix}`.`cards`.`monthly_fee` AS `monthly_fee`,
+            `ccdata${database.suffix}`.`cards`.`min_late_payment_fee` AS `min_late_payment_fee`,
+            `ccdata${database.suffix}`.`cards`.`max_late_payment_fee` AS `max_late_payment_fee`,
+            `ccdata${database.suffix}`.`cards`.`late_payment_fee_percent` AS `late_payment_fee_percent`,
+            `ccdata${database.suffix}`.`cards`.`over_limit_fee` AS `over_limit_fee`,
+            `ccdata${database.suffix}`.`cards`.`returned_payment_fee` AS `returned_payment_fee`,
+            `ccdata${database.suffix}`.`cards`.`dishonored_convenience_check_fee` AS `dishonored_convenience_check_fee`,
+            `ccdata${database.suffix}`.`cards`.`convenience_check_stop_payment_fee` AS
+            `convenience_check_stop_payment_fee`,
+            `ccdata${database.suffix}`.`cards`.`balance_transfer_cancellation_fee` AS
+            `balance_transfer_cancellation_fee`,
+            `ccdata${database.suffix}`.`cards`.`bank_wire_payment_fee` AS `bank_wire_payment_fee`,
+            `ccdata${database.suffix}`.`cards`.`statement_copy_fee` AS `statement_copy_fee`,
+            `ccdata${database.suffix}`.`cards`.`inactivity_fee` AS `inactivity_fee`,
+            `ccdata${database.suffix}`.`cards`.`intro_apr` AS `intro_apr`,
+            `ccdata${database.suffix}`.`cards`.`intro_apr_used_rate_type` AS `intro_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`cards`.`intro_apr_display_text` AS `intro_apr_display_text`,
+            `ccdata${database.suffix}`.`cards`.`min_intro_period` AS `min_intro_period`,
+            `ccdata${database.suffix}`.`cards`.`max_intro_period` AS `max_intro_period`,
+            `ccdata${database.suffix}`.`cards`.`intro_period_display_text` AS `intro_period_display_text`,
+            `ccdata${database.suffix}`.`cards`.`intro_period_end_date` AS `intro_period_end_date`,
+            `ccdata${database.suffix}`.`cards`.`min_ongoing_apr` AS `min_ongoing_apr`,
+            `ccdata${database.suffix}`.`cards`.`min_ongoing_apr_used_rate_type` AS `min_ongoing_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`cards`.`max_ongoing_apr` AS `max_ongoing_apr`,
+            `ccdata${database.suffix}`.`cards`.`max_ongoing_apr_used_rate_type` AS `max_ongoing_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`cards`.`ongoing_apr_display_text` AS `ongoing_apr_display_text`,
+            `ccdata${database.suffix}`.`cards`.`min_default_apr` AS `min_default_apr`,
+            `ccdata${database.suffix}`.`cards`.`min_default_apr_used_rate_type` AS `min_default_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`cards`.`max_default_apr` AS `max_default_apr`,
+            `ccdata${database.suffix}`.`cards`.`max_default_apr_used_rate_type` AS `max_default_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`cards`.`min_grace_period` AS `min_grace_period`,
+            `ccdata${database.suffix}`.`cards`.`min_finance_charge` AS `min_finance_charge`,
+            `ccdata${database.suffix}`.`cards`.`min_fixed_rate_period` AS `min_fixed_rate_period`,
+            `ccdata${database.suffix}`.`cards`.`balance_compute_method` AS `balance_compute_method`,
+            `ccdata${database.suffix}`.`cards`.`min_payment_amount` AS `min_payment_amount`,
+            `ccdata${database.suffix}`.`cards`.`min_payment_percentage` AS `min_payment_percentage`,
+            `ccdata${database.suffix}`.`cards`.`credit_needed` AS `credit_needed`,
+            `ccdata${database.suffix}`.`cards`.`credit_needed_display_text` AS `credit_needed_display_text`,
+            `ccdata${database.suffix}`.`cards`.`min_credit_line` AS `min_credit_line`,
+            `ccdata${database.suffix}`.`cards`.`max_credit_line` AS `max_credit_line`,
+            `ccdata${database.suffix}`.`cards`.`min_income` AS `min_income`,
+            `ccdata${database.suffix}`.`cards`.`min_between_applications_period` AS `min_between_applications_period`,
+            `ccdata${database.suffix}`.`cards`.`interest_rate_type` AS `interest_rate_type`,
+            `ccdata${database.suffix}`.`cards`.`used_index_rate` AS `used_index_rate`,
+            `ccdata${database.suffix}`.`cards`.`index_rate_definition` AS `index_rate_definition`,
+            `ccdata${database.suffix}`.`cards`.`apply_payment` AS `apply_payment`,
+            `ccdata${database.suffix}`.`cards`.`foreign_exchange_min_fee` AS `foreign_exchange_min_fee`,
+            `ccdata${database.suffix}`.`cards`.`foreign_exchange_max_fee` AS `foreign_exchange_max_fee`,
+            `ccdata${database.suffix}`.`cards`.`foreign_exchange_fee_rate` AS `foreign_exchange_fee_rate`,
+            `ccdata${database.suffix}`.`cards`.`custom_prepaid_display_text` AS `custom_prepaid_display_text`,
+            `ccdata${database.suffix}`.`cards`.`modified_date` AS `modified_date`,
+            `ccdata${database.suffix}`.`cards`.`deleted`
+            AS `deleted`,
+            `ccdata${database.suffix}`.`cards`.`bt_intro_apr_display_text` AS `bt_intro_apr_display_text`,
+            `ccdata${database.suffix}`.`cards`.`bt_intro_period_display_text` AS `bt_intro_period_display_text`
+            from `ccdata${database.suffix}`.`cards`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_cash_advances">
+            select `ccdata${database.suffix}`.`cash_advances`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`cash_advances`.`intro_apr` AS `intro_apr`,
+            `ccdata${database.suffix}`.`cash_advances`.`intro_apr_used_rate_type` AS `intro_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`cash_advances`.`min_intro_period` AS `min_intro_period`,
+            `ccdata${database.suffix}`.`cash_advances`.`max_intro_period` AS `max_intro_period`,
+            `ccdata${database.suffix}`.`cash_advances`.`intro_period_end_date` AS `intro_period_end_date`,
+            `ccdata${database.suffix}`.`cash_advances`.`min_ongoing_apr` AS `min_ongoing_apr`,
+            `ccdata${database.suffix}`.`cash_advances`.`min_ongoing_apr_used_rate_type` AS
+            `min_ongoing_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`cash_advances`.`max_ongoing_apr` AS `max_ongoing_apr`,
+            `ccdata${database.suffix}`.`cash_advances`.`max_ongoing_apr_used_rate_type` AS
+            `max_ongoing_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`cash_advances`.`min_default_apr` AS `min_default_apr`,
+            `ccdata${database.suffix}`.`cash_advances`.`min_default_apr_used_rate_type` AS
+            `min_default_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`cash_advances`.`max_default_apr` AS `max_default_apr`,
+            `ccdata${database.suffix}`.`cash_advances`.`max_default_apr_used_rate_type` AS
+            `max_default_apr_used_rate_type`,
+            `ccdata${database.suffix}`.`cash_advances`.`min_grace_period` AS `min_grace_period`,
+            `ccdata${database.suffix}`.`cash_advances`.`min_finance_charge` AS `min_finance_charge`,
+            `ccdata${database.suffix}`.`cash_advances`.`min_fixed_rate_period` AS `min_fixed_rate_period`,
+            `ccdata${database.suffix}`.`cash_advances`.`min_fee` AS `min_fee`,
+            `ccdata${database.suffix}`.`cash_advances`.`max_fee`
+            AS `max_fee`,
+            `ccdata${database.suffix}`.`cash_advances`.`fee_rate` AS `fee_rate`,
+            `ccdata${database.suffix}`.`cash_advances`.`max_convenience_check_fee` AS `max_convenience_check_fee`,
+            `ccdata${database.suffix}`.`cash_advances`.`min_payment_amount` AS `min_payment_amount`,
+            `ccdata${database.suffix}`.`cash_advances`.`min_payment_percentage` AS `min_payment_percentage`,
+            `ccdata${database.suffix}`.`cash_advances`.`cash_advance_limit` AS `cash_advance_limit`
+            from `ccdata${database.suffix}`.`cash_advances`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_cash_back">
+            select `ccdata${database.suffix}`.`cash_back`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`cash_back`.`base_reward_amount` AS `base_reward_amount`,
+            `ccdata${database.suffix}`.`cash_back`.`special_reward_amount` AS `special_reward_amount`,
+            `ccdata${database.suffix}`.`cash_back`.`special_reward_description` AS `special_reward_description`,
+            `ccdata${database.suffix}`.`cash_back`.`first_round_bonus` AS `first_round_bonus`,
+            `ccdata${database.suffix}`.`cash_back`.`annual_bonus` AS `annual_bonus`,
+            `ccdata${database.suffix}`.`cash_back`.`other_bonus`
+            AS `other_bonus`,
+            `ccdata${database.suffix}`.`cash_back`.`intro_reward_period` AS `intro_reward_period`,
+            `ccdata${database.suffix}`.`cash_back`.`intro_reward_amount` AS `intro_reward_amount`,
+            `ccdata${database.suffix}`.`cash_back`.`intro_special_reward_amount` AS `intro_special_reward_amount`,
+            `ccdata${database.suffix}`.`cash_back`.`max_annual_reward` AS `max_annual_reward`
+            from `ccdata${database.suffix}`.`cash_back`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_commercial_features">
+            select `ccdata${database.suffix}`.`commercial_features`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`commercial_features`.`reporting_features` AS `reporting_features`,
+            `ccdata${database.suffix}`.`commercial_features`.`travel_expense_management` AS `travel_expense_management`,
+            `ccdata${database.suffix}`.`commercial_features`.`purchasing_expense_management` AS
+            `purchasing_expense_management`,
+            `ccdata${database.suffix}`.`commercial_features`.`fleet_expense_management` AS `fleet_expense_management`
+
+            from `ccdata${database.suffix}`.`commercial_features`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_frequent_flier">
+            select `ccdata${database.suffix}`.`frequent_flier`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`frequent_flier`.`base_reward_amount` AS `base_reward_amount`,
+            `ccdata${database.suffix}`.`frequent_flier`.`special_reward_amount` AS `special_reward_amount`,
+            `ccdata${database.suffix}`.`frequent_flier`.`special_reward_description` AS `special_reward_description`,
+            `ccdata${database.suffix}`.`frequent_flier`.`which_airlines` AS `which_airlines`,
+            `ccdata${database.suffix}`.`frequent_flier`.`subject_to_blackout_dates` AS `subject_to_blackout_dates`,
+            `ccdata${database.suffix}`.`frequent_flier`.`first_purchase_bonus` AS `first_purchase_bonus`,
+            `ccdata${database.suffix}`.`frequent_flier`.`other_bonus` AS `other_bonus`,
+            `ccdata${database.suffix}`.`frequent_flier`.`intro_reward_period` AS `intro_reward_period`,
+            `ccdata${database.suffix}`.`frequent_flier`.`intro_reward_amount` AS `intro_reward_amount`,
+            `ccdata${database.suffix}`.`frequent_flier`.`intro_special_reward_amount` AS `intro_special_reward_amount`,
+            `ccdata${database.suffix}`.`frequent_flier`.`max_annual_reward` AS `max_annual_reward`
+            from `ccdata${database.suffix}`.`frequent_flier`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_other_benefits">
+            select `ccdata${database.suffix}`.`other_benefits`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`other_benefits`.`insurance` AS `insurance`,
+            `ccdata${database.suffix}`.`other_benefits`.`retail_discounts`
+            AS `retail_discounts`,
+            `ccdata${database.suffix}`.`other_benefits`.`extended_warranties` AS `extended_warranties`,
+            `ccdata${database.suffix}`.`other_benefits`.`roadside_assistance` AS `roadside_assistance`,
+            `ccdata${database.suffix}`.`other_benefits`.`security_identity_solution` AS `security_identity_solution`,
+            `ccdata${database.suffix}`.`other_benefits`.`account_protection` AS `account_protection`,
+            `ccdata${database.suffix}`.`other_benefits`.`consierge_service` AS `consierge_service`,
+            `ccdata${database.suffix}`.`other_benefits`.`card_design` AS `card_design`,
+            `ccdata${database.suffix}`.`other_benefits`.`mini_card` AS `mini_card`,
+            `ccdata${database.suffix}`.`other_benefits`.`photo_security` AS `photo_security`,
+            `ccdata${database.suffix}`.`other_benefits`.`personalization` AS `personalization`
+            from `ccdata${database.suffix}`.`other_benefits`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_point_rewards">
+            select `ccdata${database.suffix}`.`point_rewards`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`point_rewards`.`base_reward_amount` AS `base_reward_amount`,
+            `ccdata${database.suffix}`.`point_rewards`.`special_reward_amount` AS `special_reward_amount`,
+            `ccdata${database.suffix}`.`point_rewards`.`special_reward_description` AS `special_reward_description`,
+            `ccdata${database.suffix}`.`point_rewards`.`where_points_redeemed` AS `where_points_redeemed`,
+            `ccdata${database.suffix}`.`point_rewards`.`value_of_points` AS `value_of_points`,
+            `ccdata${database.suffix}`.`point_rewards`.`first_purchase_bonus` AS `first_purchase_bonus`,
+            `ccdata${database.suffix}`.`point_rewards`.`other_bonus` AS `other_bonus`,
+            `ccdata${database.suffix}`.`point_rewards`.`intro_reward_period` AS `intro_reward_period`,
+            `ccdata${database.suffix}`.`point_rewards`.`intro_reward_amount` AS `intro_reward_amount`,
+            `ccdata${database.suffix}`.`point_rewards`.`intro_special_reward_amount` AS `intro_special_reward_amount`,
+            `ccdata${database.suffix}`.`point_rewards`.`max_annual_reward` AS `max_annual_reward`
+            from `ccdata${database.suffix}`.`point_rewards`
+        </createView>
+
+
+        <createView viewName="vw_cms_ccx_prepaid_card_fees">
+            select `ccdata${database.suffix}`.`prepaid_card_fees`.`card_id` AS `card_id`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`replacement_card_fee` AS `replacement_card_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`atm_fee` AS `atm_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`live_teller_withdrawal_fee` AS `live_teller_withdrawal_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`atm_balance_inquiry_fee` AS `atm_balance_inquiry_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`monthly_inactive_account_fee` AS
+            `monthly_inactive_account_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`automated_telephone_inquiry_fee` AS
+            `automated_telephone_inquiry_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`customer_service_live_call_fee` AS
+            `customer_service_live_call_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`activation_fee` AS `activation_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`cancel_card_fee` AS `cancel_card_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`application_fee` AS `application_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`purchase_merchant_fee` AS `purchase_merchant_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`purchase_online_fee` AS `purchase_online_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`purchase_telephone_fee` AS `purchase_telephone_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`signature_transaction_fee` AS `signature_transaction_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`pin_transaction_fee` AS `pin_transaction_fee`,
+            `ccdata${database.suffix}`.`prepaid_card_fees`.`load_fee` AS `load_fee`
+            from `ccdata${database.suffix}`.`prepaid_card_fees`
+        </createView>
+
+
+        <createView viewName="vw_cp_quizzes">
+            select `cardpress${database.suffix}`.`cp_quizzes`.`quiz_id` AS `quiz_id`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`title` AS `title`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`intro_text` AS `intro_text`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`pre_result_text` AS `pre_result_text`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`goodbye_text` AS `goodbye_text`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`default_submit_text` AS `default_submit_text`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`question_plume` AS `question_plume`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`fid` AS `fid`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`keywords` AS `keywords`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`description` AS `description`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`actual_page_title` AS `actual_page_title`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`update_time` AS `update_time`,
+            `cardpress${database.suffix}`.`cp_quizzes`.`active` AS `active`
+            from `cardpress${database.suffix}`.`cp_quizzes`
+        </createView>
+
+
+        <createView viewName="vw_historical_2depc_rates_consolidated_card_group">
+            select
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`rate_id` AS
+            `rate_id`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`click_date` AS
+            `click_date`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`click_month` AS
+            `click_month`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`card` AS `card`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`card_id` AS
+            `card_id`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`card_name` AS
+            `card_name`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`card_group_id` AS
+            `card_group_id`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`card_group_name` AS
+            `card_group_name`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`merchant_id` AS
+            `merchant_id`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`merchant_name` AS
+            `merchant_name`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`exit_page_id` AS
+            `exit_page_id`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`exit_page_name` AS
+            `exit_page_name`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`estimated_epc` AS
+            `estimated_epc`,
+            `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`.`actual_epc` AS
+            `actual_epc`
+            from `cccomus_reporting${database.suffix}`.`historical_2depc_rates_consolidated_card_group`
+        </createView>
+
+
+        <createView viewName="vw_sales_rate">
+            select `cccomus_reporting${database.suffix}`.`sales_rate`.`sales_rate_id` AS `sales_rate_id`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`click_date` AS `click_date`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`click_month` AS `click_month`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`card` AS `card`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`card_id`
+            AS `card_id`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`card_name` AS `card_name`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`merchant_id` AS `merchant_id`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`merchant_name` AS `merchant_name`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`exit_page_id` AS `exit_page_id`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`exit_page_name` AS `exit_page_name`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`application_count` AS `application_count`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`click_count` AS `click_count`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`sales_count` AS `sales_count`,
+            `cccomus_reporting${database.suffix}`.`sales_rate`.`revenue_amt` AS `revenue_amt`
+            from `cccomus_reporting${database.suffix}`.`sales_rate`
+        </createView>
+
+
+        <createView viewName="vw_sales_rate_consolidated">
+            select
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`sales_rate_id` AS `sales_rate_id`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`click_date` AS `click_date`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`click_month` AS `click_month`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`card` AS `card`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`card_id` AS `card_id`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`card_name` AS `card_name`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`merchant_id` AS `merchant_id`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`merchant_name` AS `merchant_name`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`exit_page_id` AS `exit_page_id`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`exit_page_name` AS `exit_page_name`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`application_count` AS `application_count`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`click_count` AS `click_count`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`sales_count` AS `sales_count`,
+            `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`.`revenue_amt` AS `revenue_amt`
+            from `cccomus_reporting${database.suffix}`.`sales_rate_consolidated`
+        </createView>
+
+
+        <createView viewName="vw_sales_rate_summary_transactions">
+            select `t`.`transid` AS `transid`,
+            `t`.`transtype` AS `transtype`,
+            `t`.`dateinserted` AS `dateinserted`,
+            `t`.`quantity` AS `quantity`,
+            `t`.`estimatedrevenue` AS `estimatedrevenue`,
+            `t`.`bannerid` AS `bannerid`,
+            (case `t`.`exit` when NULL then 0 when 1415 then 1077 when
+            1397 then 11 when 1398 then 12 when 1399 then 13 when 1400 then 14 when 1406 then 15 when 1407 then 16 when
+            1408 then 17 when 1410 then 18 when 1409 then 19 when 1414 then 20 when 1416 then 21 when 1417 then 22 when
+            1418 then 23 when 1420 then 25 when 1421 then 26 when 1422 then 27 when 1423 then 28 when 1424 then 30 when
+            1425 then 31 when 1426 then 32 when 1419 then 39 when 1413 then 74 when 1412 then 75 when 1411 then 76 when
+            1401 then 77 when 1402 then 78 when 1403 then 79 when 1404 then 80 when 1405 then 82 when 1427 then 979 when
+            1478 then 1477 else `t`.`exit` end) AS `exit_page_id`,
+            (case `t`.`data3` when NULL then 'Unmatched' when 0
+            then 'Unmatched' when 1 then 'Matched' else 'Unmatched' end) AS `card_match`
+            from `cccomus${database.suffix}`.`transactions`
+            `t` where (`t`.`affiliateid` &lt;&gt; 'bf97ede0')
+        </createView>
+
+
+        <createView viewName="vw_summary_day_offer_clicks_by_page">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_offer_clicks_by_page`.`web_page_id` AS `web_page_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_offer_clicks_by_page`.`click_date` AS `click_date`,
+            `cccomus_reporting${database.suffix}`.`summary_day_offer_clicks_by_page`.`page_title` AS `page_title`,
+            `cccomus_reporting${database.suffix}`.`summary_day_offer_clicks_by_page`.`click_count` AS `click_count`
+            from `cccomus_reporting${database.suffix}`.`summary_day_offer_clicks_by_page`
+        </createView>
+
+
+        <createView viewName="vw_summary_day_page_views_by_page">
+            select
+            `cccomus_reporting${database.suffix}`.`summary_day_page_views_by_page`.`web_page_id` AS `web_page_id`,
+            `cccomus_reporting${database.suffix}`.`summary_day_page_views_by_page`.`view_date` AS `view_date`,
+            `cccomus_reporting${database.suffix}`.`summary_day_page_views_by_page`.`page_title` AS `page_title`,
+            `cccomus_reporting${database.suffix}`.`summary_day_page_views_by_page`.`view_count` AS `view_count`,
+            `cccomus_reporting${database.suffix}`.`summary_day_page_views_by_page`.`landing_count` AS `landing_count`
+
+            from `cccomus_reporting${database.suffix}`.`summary_day_page_views_by_page`
+        </createView>
+
+
+        <createView viewName="vw_trans_type_calculate_commission">
+            select
+            `cccomus${database.suffix}`.`transaction_types`.`transaction_type` AS `transaction_type`
+            from `cccomus${database.suffix}`.`transaction_types`
+            where (`cccomus${database.suffix}`.`transaction_types`.`calculate_commission` = 1)
+        </createView>
+
+
+        <createView viewName="vw_trans_type_count_as_sale">
+            select `cccomus${database.suffix}`.`transaction_types`.`transaction_type` AS `transaction_type`
+            from `cccomus${database.suffix}`.`transaction_types` where
+            (`cccomus${database.suffix}`.`transaction_types`.`count_as_sale` =
+            1)
+        </createView>
+
+
+        <createView viewName="vw_trans_type_is_rev_split">
+            select `cccomus${database.suffix}`.`transaction_types`.`transaction_type` AS `transaction_type`
+            from `cccomus${database.suffix}`.`transaction_types` where
+            (`cccomus${database.suffix}`.`transaction_types`.`is_rev_split` =
+            1)
+        </createView>
+
+
+        <createView viewName="vw_trans_type_sum_as_epc">
+            select `cccomus${database.suffix}`.`transaction_types`.`transaction_type` AS `transaction_type`
+            from `cccomus${database.suffix}`.`transaction_types` where
+            (`cccomus${database.suffix}`.`transaction_types`.`sum_as_epc` = 1)
+        </createView>
+
+
+        <createView viewName="vw_trans_type_sum_as_revenue">
+            select `cccomus${database.suffix}`.`transaction_types`.`transaction_type` AS `transaction_type`
+            from `cccomus${database.suffix}`.`transaction_types` where
+            (`cccomus${database.suffix}`.`transaction_types`.`sum_as_revenue`
+            = 1)
+        </createView>
+
+
+        <createView viewName="vw_transtype_reporting">
+            select `cccomus${database.suffix}`.`transaction_types`.`transaction_type` AS `transaction_type`
+            from `cccomus${database.suffix}`.`transaction_types` where
+            ((`cccomus${database.suffix}`.`transaction_types`.`count_as_sale`
+            = 1) or (`cccomus${database.suffix}`.`transaction_types`.`sum_as_revenue` = 1) or
+            (`cccomus${database.suffix}`.`transaction_types`.`transaction_type` = 1))
+        </createView>
+
+
+        <createView viewName="vw_us_publish_history">
+            select `bh`.`build_history_id` AS `build_history_id`,
+            `bh`.`site_id`
+            AS `site_id`,
+            `bh`.`build_time` AS `build_time`,
+            `bh`.`user_id` AS `user_id`,
+            `bh`.`published` AS `published`,
+            `bh`.`publish_time` AS `publish_time`,
+            `bh`.`note` AS `note`
+            from `cms${database.suffix}`.`build_history` `bh`
+            where ((`bh`.`published` = 1) and (`bh`.`site_id` = 35))
+        </createView>
+
+
+        <createView viewName="vw_us_publish_history_detail">
+            select `bhd`.`build_history_detail_id` AS `build_history_detail_id`,
+            `bhd`.`build_history_id` AS `build_history_id`,
+            `bhd`.`web_page_id` AS `web_page_id`,
+            `bhd`.`sub_page_id` AS `sub_page_id`,
+            `bhd`.`card_id` AS `card_id`,
+            `bhd`.`web_page_position` AS `web_page_position`,
+            `bhd`.`sub_page_position` AS `sub_page_position`,
+            `bhd`.`web_page_number` AS `web_page_number`,
+            `bhd`.`estimated_epc` AS `estimated_epc`
+            from (`cms${database.suffix}`.`build_history_detail` `bhd` join
+            `cms${database.suffix}`.`build_history` `bh` on((`bhd`.`build_history_id` = `bh`.`build_history_id`))) where
+            ((`bh`.`published` = 1) and (`bh`.`site_id` = 35))
+        </createView>
+    </changeSet>
+
+
+	<changeSet id="fix-cardpress-views-suffix" author="kenneths">
+
+		<createView viewName="cp_authors" replaceIfExists="true">
+			select `cardpress${database.suffix}`.`cp_authors`.`author_id` AS `author_id`,
+			`cardpress${database.suffix}`.`cp_authors`.`first_name` AS `first_name`,
+			`cardpress${database.suffix}`.`cp_authors`.`last_name` AS `last_name`,
+			`cardpress${database.suffix}`.`cp_authors`.`address` AS `address`,
+			`cardpress${database.suffix}`.`cp_authors`.`business_name` AS `business_name`,
+			`cardpress${database.suffix}`.`cp_authors`.`author_page_link` AS `author_page_link`,
+			`cardpress${database.suffix}`.`cp_authors`.`external_profile_link` AS `external_profile_link`,
+			`cardpress${database.suffix}`.`cp_authors`.`author_photo_location` AS `author_photo_location`,
+			`cardpress${database.suffix}`.`cp_authors`.`author_page_site_content_id` AS `author_page_site_content_id`,
+			`cardpress${database.suffix}`.`cp_authors`.`local_author_page_filename` AS `local_author_page_filename`
+			from `cardpress${database.suffix}`.`cp_authors`
+		</createView>
+
+
+		<createView viewName="cp_document_groups" replaceIfExists="true">
+			select `cardpress${database.suffix}`.`cp_document_groups`.`id` AS `id`,
+			`cardpress${database.suffix}`.`cp_document_groups`.`document_group` AS `document_group`,
+			`cardpress${database.suffix}`.`cp_document_groups`.`document` AS `document`
+			from `cardpress${database.suffix}`.`cp_document_groups`
+		</createView>
+
+
+		<createView viewName="cp_documentgroup_names" replaceIfExists="true">
+			select `cardpress${database.suffix}`.`cp_documentgroup_names`.`id` AS `id`,
+			`cardpress${database.suffix}`.`cp_documentgroup_names`.`name` AS `name`,
+			`cardpress${database.suffix}`.`cp_documentgroup_names`.`private_memgroup` AS `private_memgroup`,
+			`cardpress${database.suffix}`.`cp_documentgroup_names`.`private_webgroup` AS `private_webgroup`,
+			`cardpress${database.suffix}`.`cp_documentgroup_names`.`fid` AS `fid`,
+			`cardpress${database.suffix}`.`cp_documentgroup_names`.`index_page_id` AS `index_page_id`
+			from `cardpress${database.suffix}`.`cp_documentgroup_names`
+		</createView>
+
+
+		<createView viewName="cp_glossary" replaceIfExists="true">
+			select `cardpress${database.suffix}`.`cp_glossary`.`id` AS `id`,
+			`cardpress${database.suffix}`.`cp_glossary`.`term` AS `term`,
+			`cardpress${database.suffix}`.`cp_glossary`.`definition` AS `definition`,
+			`cardpress${database.suffix}`.`cp_glossary`.`disabled` AS `disabled`,
+			`cardpress${database.suffix}`.`cp_glossary`.`createdon` AS `createdon`,
+			`cardpress${database.suffix}`.`cp_glossary`.`editedon` AS `editedon`
+			from `cardpress${database.suffix}`.`cp_glossary`
+		</createView>
+
+
+		<createView viewName="cp_homepage_module" replaceIfExists="true">
+			select `cardpress${database.suffix}`.`cp_homepage_module`.`id` AS `id`,
+			`cardpress${database.suffix}`.`cp_homepage_module`.`name` AS `name`,
+			`cardpress${database.suffix}`.`cp_homepage_module`.`caption` AS `caption`,
+			`cardpress${database.suffix}`.`cp_homepage_module`.`related` AS `related`,
+			`cardpress${database.suffix}`.`cp_homepage_module`.`story`
+			AS `story`
+			from `cardpress${database.suffix}`.`cp_homepage_module`
+		</createView>
+
+
+		<createView viewName="cp_membergroup_access" replaceIfExists="true">
+			select `cardpress${database.suffix}`.`cp_membergroup_access`.`id` AS `id`,
+			`cardpress${database.suffix}`.`cp_membergroup_access`.`membergroup` AS `membergroup`,
+			`cardpress${database.suffix}`.`cp_membergroup_access`.`documentgroup` AS `documentgroup`
+			from `cardpress${database.suffix}`.`cp_membergroup_access`
+		</createView>
+
+
+		<createView viewName="cp_membergroup_names" replaceIfExists="true">
+			select `cardpress${database.suffix}`.`cp_membergroup_names`.`id` AS `id`,
+			`cardpress${database.suffix}`.`cp_membergroup_names`.`name` AS `name`,
+			`cardpress${database.suffix}`.`cp_membergroup_names`.`aff_id` AS `aff_id`
+			from `cardpress${database.suffix}`.`cp_membergroup_names`
+		</createView>
+
+
+		<createView viewName="cp_site_content" replaceIfExists="true">
+			select `cardpress${database.suffix}`.`cp_site_content`.`id` AS `id`,
+			`cardpress${database.suffix}`.`cp_site_content`.`type` AS `type`,
+			`cardpress${database.suffix}`.`cp_site_content`.`contentType` AS `contentType`,
+			`cardpress${database.suffix}`.`cp_site_content`.`author` AS `author`,
+			`cardpress${database.suffix}`.`cp_site_content`.`pagetitle`
+			AS `pagetitle`,
+			`cardpress${database.suffix}`.`cp_site_content`.`longtitle` AS `longtitle`,
+			`cardpress${database.suffix}`.`cp_site_content`.`description` AS `description`,
+			`cardpress${database.suffix}`.`cp_site_content`.`alias` AS `alias`,
+			`cardpress${database.suffix}`.`cp_site_content`.`link_attributes` AS `link_attributes`,
+			`cardpress${database.suffix}`.`cp_site_content`.`published` AS `published`,
+			`cardpress${database.suffix}`.`cp_site_content`.`publish_to_affiliates` AS `publish_to_affiliates`,
+			`cardpress${database.suffix}`.`cp_site_content`.`publish_to_cccom` AS `publish_to_cccom`,
+			`cardpress${database.suffix}`.`cp_site_content`.`pub_date` AS `pub_date`,
+			`cardpress${database.suffix}`.`cp_site_content`.`unpub_date` AS `unpub_date`,
+			`cardpress${database.suffix}`.`cp_site_content`.`repub_date` AS `repub_date`,
+			`cardpress${database.suffix}`.`cp_site_content`.`parent` AS `parent`,
+			`cardpress${database.suffix}`.`cp_site_content`.`isfolder` AS `isfolder`,
+			`cardpress${database.suffix}`.`cp_site_content`.`introtext` AS `introtext`,
+			`cardpress${database.suffix}`.`cp_site_content`.`content`
+			AS `content`,
+			`cardpress${database.suffix}`.`cp_site_content`.`richtext` AS `richtext`,
+			`cardpress${database.suffix}`.`cp_site_content`.`template`
+			AS `template`,
+			`cardpress${database.suffix}`.`cp_site_content`.`menuindex` AS `menuindex`,
+			`cardpress${database.suffix}`.`cp_site_content`.`searchable` AS `searchable`,
+			`cardpress${database.suffix}`.`cp_site_content`.`cacheable` AS `cacheable`,
+			`cardpress${database.suffix}`.`cp_site_content`.`createdby` AS `createdby`,
+			`cardpress${database.suffix}`.`cp_site_content`.`createdon` AS `createdon`,
+			`cardpress${database.suffix}`.`cp_site_content`.`editedby` AS `editedby`,
+			`cardpress${database.suffix}`.`cp_site_content`.`editedon`
+			AS `editedon`,
+			`cardpress${database.suffix}`.`cp_site_content`.`deleted` AS `deleted`,
+			`cardpress${database.suffix}`.`cp_site_content`.`deletedon`
+			AS `deletedon`,
+			`cardpress${database.suffix}`.`cp_site_content`.`deletedby` AS `deletedby`,
+			`cardpress${database.suffix}`.`cp_site_content`.`publishedon` AS `publishedon`,
+			`cardpress${database.suffix}`.`cp_site_content`.`publishedby` AS `publishedby`,
+			`cardpress${database.suffix}`.`cp_site_content`.`menutitle` AS `menutitle`,
+			`cardpress${database.suffix}`.`cp_site_content`.`donthit` AS `donthit`,
+			`cardpress${database.suffix}`.`cp_site_content`.`haskeywords`
+			AS `haskeywords`,
+			`cardpress${database.suffix}`.`cp_site_content`.`hasmetatags` AS `hasmetatags`,
+			`cardpress${database.suffix}`.`cp_site_content`.`privateweb` AS `privateweb`,
+			`cardpress${database.suffix}`.`cp_site_content`.`privatemgr` AS `privatemgr`,
+			`cardpress${database.suffix}`.`cp_site_content`.`content_dispo` AS `content_dispo`,
+			`cardpress${database.suffix}`.`cp_site_content`.`hidemenu` AS `hidemenu`,
+			`cardpress${database.suffix}`.`cp_site_content`.`pageid` AS `pageid`,
+			`cardpress${database.suffix}`.`cp_site_content`.`story_keywords`
+			AS `story_keywords`,
+			`cardpress${database.suffix}`.`cp_site_content`.`homepage_headline` AS `homepage_headline`,
+			`cardpress${database.suffix}`.`cp_site_content`.`homepage_summary` AS `homepage_summary`,
+			`cardpress${database.suffix}`.`cp_site_content`.`homepage_thumb` AS `homepage_thumb`,
+			`cardpress${database.suffix}`.`cp_site_content`.`homepage_alt` AS `homepage_alt`,
+			`cardpress${database.suffix}`.`cp_site_content`.`homepage_linktext` AS `homepage_linktext`,
+			`cardpress${database.suffix}`.`cp_site_content`.`homepage_image_external` AS `homepage_image_external`,
+			`cardpress${database.suffix}`.`cp_site_content`.`pubgroup` AS `pubgroup`,
+			`cardpress${database.suffix}`.`cp_site_content`.`maincategory` AS `maincategory`,
+			`cardpress${database.suffix}`.`cp_site_content`.`archived` AS `archived`,
+			`cardpress${database.suffix}`.`cp_site_content`.`temp_wp_post_id` AS `temp_wp_post_id`,
+			`cardpress${database.suffix}`.`cp_site_content`.`notes` AS `notes`,
+			`cardpress${database.suffix}`.`cp_site_content`.`actual_page_title` AS `actual_page_title`,
+			`cardpress${database.suffix}`.`cp_site_content`.`approved` AS `approved`,
+			`cardpress${database.suffix}`.`cp_site_content`.`invoiced` AS `invoiced`,
+			`cardpress${database.suffix}`.`cp_site_content`.`invoiced_amount` AS `invoiced_amount`
+			from `cardpress${database.suffix}`.`cp_site_content`
+		</createView>
+
+
+		<createView viewName="cp_site_htmlsnippets" replaceIfExists="true">
+			select `cardpress${database.suffix}`.`cp_site_htmlsnippets`.`id` AS `id`,
+			`cardpress${database.suffix}`.`cp_site_htmlsnippets`.`name` AS `name`,
+			`cardpress${database.suffix}`.`cp_site_htmlsnippets`.`description` AS `description`,
+			`cardpress${database.suffix}`.`cp_site_htmlsnippets`.`editor_type` AS `editor_type`,
+			`cardpress${database.suffix}`.`cp_site_htmlsnippets`.`category` AS `category`,
+			`cardpress${database.suffix}`.`cp_site_htmlsnippets`.`cache_type` AS `cache_type`,
+			`cardpress${database.suffix}`.`cp_site_htmlsnippets`.`snippet` AS `snippet`,
+			`cardpress${database.suffix}`.`cp_site_htmlsnippets`.`locked` AS `locked`
+			from `cardpress${database.suffix}`.`cp_site_htmlsnippets`
+		</createView>
+
+
+		<createView viewName="cp_story_authors" replaceIfExists="true">
+			select `cardpress${database.suffix}`.`cp_story_authors`.`story_id` AS `story_id`,
+			`cardpress${database.suffix}`.`cp_story_authors`.`author_id` AS `author_id`
+			from `cardpress${database.suffix}`.`cp_story_authors`
+		</createView>
+
+
+
+		<createView viewName="vw_cp_quizzes" replaceIfExists="true">
+			select `cardpress${database.suffix}`.`cp_quizzes`.`quiz_id` AS `quiz_id`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`title` AS `title`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`intro_text` AS `intro_text`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`pre_result_text` AS `pre_result_text`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`goodbye_text` AS `goodbye_text`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`default_submit_text` AS `default_submit_text`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`question_plume` AS `question_plume`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`fid` AS `fid`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`keywords` AS `keywords`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`description` AS `description`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`actual_page_title` AS `actual_page_title`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`update_time` AS `update_time`,
+			`cardpress${database.suffix}`.`cp_quizzes`.`active` AS `active`
+			from `cardpress${database.suffix}`.`cp_quizzes`
+		</createView>
+
+	</changeSet>
+
+	<changeSet id="TRANS-33" author="kenneth.skertchly">
+		<createView viewName="cms_product_links">
+			select * from ccdata${database.suffix}.product_links
+		</createView>
+		<createView viewName="cms_link_types">
+			select * from ccdata${database.suffix}.link_types
+		</createView>
+		<createView viewName="cms_device_types">
+			select * from ccdata${database.suffix}.device_types
+		</createView>
+	</changeSet>
+
+</databaseChangeLog>

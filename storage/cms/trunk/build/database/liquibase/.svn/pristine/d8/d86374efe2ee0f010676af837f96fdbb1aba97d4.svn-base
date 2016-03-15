@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet author="kenneth" id="FA39905">
+        <createTable tableName="partner_affiliate_referral_blacklist">
+            <column name="aid" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="create_time" type="TIMESTAMP"/>
+        </createTable>
+
+        <addPrimaryKey columnNames="aid" constraintName="PRIMARY" tableName="partner_affiliate_referral_blacklist"/>
+    </changeSet>
+
+    <changeSet author="kenneth" id="FA38626">
+        <createTable tableName="partner_website_network_map">
+            <column name="network_id" type="INT(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="website_id" type="INT(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="network_key" type="VARCHAR(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_time" type="TIMESTAMP" defaultValueComputed="'0000-00-00 00:00:00'">
+                <constraints nullable="false"/>
+            </column>
+            <column name="update_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="network_id, website_id"
+                       tableName="partner_website_network_map"/>
+
+        <createView viewName="cms_networks">
+            SELECT
+            network_id,
+            name,
+            create_time,
+            update_time,
+            deleted
+            FROM
+            ccdata${database.suffix}.networks
+        </createView>
+
+        <createView viewName="cms_default_network_keys">
+            SELECT
+            network_id,
+            account_type,
+            default_network_key,
+            create_time,
+            update_time
+            FROM ccdata${database.suffix}.default_network_keys
+        </createView>
+
+        <createView viewName="cms_cards" replaceIfExists="true">
+            SELECT *
+            FROM ccdata${database.suffix}.rt_cards;
+        </createView>
+
+    </changeSet>
+
+	<changeSet author="leandrop" id="FA40586">
+		<renameColumn tableName="partner_affiliate_sales_transactions_report" oldColumnName="upload_date" newColumnName="estimated_date" columnDataType="datetime"/>
+		<addColumn tableName="partner_affiliate_sales_transactions_report">
+			<column name="reftrans" type="varchar(36)" defaultValue="NULL"/>
+			<column name="comment" type="varchar(70)" defaultValue="NULL"/>
+			<column name="referral_id" type="varchar(8)" defaultValue="NULL"/>
+			<column name="payoutstatus" type="tinyint(4)" defaultValue="1"/>
+		</addColumn>
+	</changeSet>
+	
+</databaseChangeLog>

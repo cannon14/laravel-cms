@@ -1,0 +1,25 @@
+<url>
+	<loc>http://www.merchantaccountguide.com/</loc> 
+	<changefreq>daily</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.merchantaccountguide.com/about-us.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.merchantaccountguide.com/contact.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.merchantaccountguide.com/privacy.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>
+<url>
+	<loc>http://www.merchantaccountguide.com/terms.php</loc> 
+	<changefreq>monthly</changefreq> 
+	<priority>0.5</priority> 
+</url>

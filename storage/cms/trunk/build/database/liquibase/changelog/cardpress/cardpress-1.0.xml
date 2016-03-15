@@ -1,0 +1,1978 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet author="liquibase" id="initial-setup">
+        <createTable tableName="cp_active_users">
+            <column defaultValueNumeric="0" name="internalKey" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="lasthit" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="INT(10)"/>
+            <column name="action" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ip" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="cp_card_category_map">
+            <column defaultValueNumeric="0" name="category_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="category_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="cp_category_stories">
+            <column name="category_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="story_id" type="INT"/>
+            <column defaultValueNumeric="0" name="disabled" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_answers">
+            <column autoIncrement="true" name="answer_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="question_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="score_value" type="INT(10)"/>
+            <column name="answer_text" type="LONGTEXT"/>
+            <column name="explain_text" type="LONGTEXT"/>
+            <column name="sort_order" type="INT(10)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_authors">
+            <column autoIncrement="true" name="author_id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="first_name" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="LONGTEXT"/>
+            <column name="business_name" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_page_link" type="VARCHAR(255)"/>
+            <column name="external_profile_link" type="VARCHAR(255)"/>
+            <column name="author_photo_location" type="VARCHAR(255)"/>
+            <column name="author_page_site_content_id" type="INT(10)"/>
+            <column name="local_author_page_filename" type="VARCHAR(255)"/>
+        </createTable>
+
+
+        <createTable tableName="cp_categories">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="category" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_document_groups">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="document_group" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="document" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_documentgroup_names">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="private_memgroup"
+                    remarks="determine whether the document group is private to manager users" type="TINYINT(3)"/>
+            <column defaultValueNumeric="0" name="private_webgroup"
+                    remarks="determines whether the document is private to web users" type="TINYINT(3)"/>
+            <column defaultValueNumeric="-1" name="fid" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="index_page_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_editorial_landing_page">
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="LONGBLOB"/>
+            <column name="extra" type="VARCHAR(255)"/>
+        </createTable>
+
+
+        <createTable tableName="cp_editorial_snippets">
+            <column autoIncrement="true" name="id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="text" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_evaluations">
+            <column autoIncrement="true" name="evaluation_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="quiz_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="score_high_bound" type="INT(10)"/>
+            <column name="score_low_bound" type="INT(10)"/>
+            <column name="eval_explain_text" type="LONGTEXT"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_event_log">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="eventid" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="createdon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="type" remarks="1- information, 2 - warning, 3- error"
+                    type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="user" remarks="link to user table" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="usertype" remarks="0 - manager, 1 - web" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="source" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cp_glossary">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="term" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="definition" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="disabled" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="createdon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editedon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_homepage_module">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="caption" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="related" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="story" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_jot_content">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="tagid" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="published" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="uparent" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="parent" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="flags" type="VARCHAR(25)"/>
+            <column name="secip" type="VARCHAR(32)"/>
+            <column name="sechash" type="VARCHAR(32)"/>
+            <column name="content" type="MEDIUMTEXT"/>
+            <column name="customfields" type="MEDIUMTEXT"/>
+            <column defaultValueNumeric="1" name="mode" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="createdby" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="createdon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editedby" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editedon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deletedon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deletedby" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="publishedon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="publishedby" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_jot_fields">
+            <column name="id" type="MEDIUMINT(7)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="label" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cp_jot_subscriptions">
+            <column autoIncrement="true" name="id" type="MEDIUMINT(7)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="uparent" type="MEDIUMINT(7)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tagid" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="userid" type="MEDIUMINT(7)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_keyword_xref">
+            <column defaultValueNumeric="0" name="content_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="keyword_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_locked_stories">
+            <column autoIncrement="true" name="locked_story_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" remarks="The user locking a story." type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="site_content_id" remarks="The story id of the story being locked; FK to cp_site_content.id."
+                    type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="locked_time"
+                    remarks="The timestamp of the creation of the lock." type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_manager_log">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="timestamp" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="internalKey" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="action" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0" name="itemid" type="VARCHAR(10)"/>
+            <column name="itemname" type="VARCHAR(255)"/>
+            <column name="message" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_manager_users">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_marquee">
+            <column autoIncrement="true" name="cp_marquee_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="story_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_member_groups">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="user_group" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="member" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_membergroup_access">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="membergroup" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="documentgroup" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_membergroup_names">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="aff_id" type="VARCHAR(255)"/>
+        </createTable>
+
+
+        <createTable tableName="cp_poll_choices">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="pollid" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="choice" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="votes" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="cp_poller_vote">
+            <column autoIncrement="true" name="ID" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="optionID" type="INT(10)"/>
+            <column name="ipAddress" type="VARCHAR(255)"/>
+        </createTable>
+
+
+        <createTable tableName="cp_pollip">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="pollid" type="INT(10)"/>
+            <column name="ipaddress" type="VARCHAR(255)"/>
+        </createTable>
+
+
+        <createTable tableName="cp_polls">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)"/>
+            <column name="question" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="votes" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="cp_questions">
+            <column autoIncrement="true" name="question_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="quiz_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="can_select_multi" type="TINYINT(1)"/>
+            <column name="question_text" type="LONGTEXT"/>
+            <column name="sort_order" type="INT(10)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_quizzes">
+            <column autoIncrement="true" name="quiz_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="intro_text" type="LONGTEXT"/>
+            <column name="pre_result_text" type="LONGTEXT"/>
+            <column name="goodbye_text" type="LONGTEXT"/>
+            <column name="default_submit_text" type="LONGTEXT"/>
+            <column defaultValue="Q" name="question_plume" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="fid" type="INT(10)"/>
+            <column name="keywords" type="LONGTEXT"/>
+            <column name="description" type="LONGTEXT"/>
+            <column defaultValue="Credit Card Quiz" name="actual_page_title" type="VARCHAR(255)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="active" type="TINYINT(1)"/>
+        </createTable>
+
+
+        <createTable tableName="cp_redirect">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="filename" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="filepath" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="editable" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_review">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="review_date" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comments" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="cp-site-content" author="kenneth">
+        <createTable tableName="cp_site_content">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValue="document" name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="text/html" name="contentType" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pagetitle" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="longtitle" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alias" type="VARCHAR(255)"/>
+            <column name="link_attributes" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="published" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="publish_to_affiliates" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="publish_to_cccom" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="original_source" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="pub_date" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="unpub_date" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="repub_date" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="parent" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="isfolder" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="introtext" remarks="Used to provide quick summary of the document" type="LONGTEXT"/>
+            <column name="content" type="MEDIUMTEXT"/>
+            <column defaultValueNumeric="1" name="richtext" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="template" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="menuindex" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="searchable" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="cacheable" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="createdby" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="createdon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editedby" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editedon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deletedon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deletedby" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="publishedon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="publishedby" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="menutitle" remarks="Menu title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="donthit" remarks="Disable page hit count" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="haskeywords" remarks="has links to keywords" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="hasmetatags" remarks="has links to meta tags" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="privateweb" remarks="Private web document" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="privatemgr" remarks="Private manager document" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="content_dispo" remarks="0-inline, 1-attachment" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="hidemenu" remarks="Hide document from menu" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pageid" type="INT(10)"/>
+            <column name="story_keywords" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="homepage_headline" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="homepage_summary" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="homepage_thumb" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="homepage_alt" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="homepage_linktext" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="homepage_image_external" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pubgroup" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="maincategory" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="archived" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="temp_wp_post_id" type="BIGINT(19)"/>
+            <column name="notes" type="MEDIUMTEXT"/>
+            <column name="actual_page_title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="approved" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="invoiced" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="invoiced_amount" type="DECIMAL(7, 2)"/>
+        </createTable>
+
+        <modifySql dbms="mysql">
+            <append value=" ENGINE MYISAM"/>
+        </modifySql>
+
+    </changeSet>
+
+    <changeSet author="liquibase" id="initial-setup-p2">
+        <createTable tableName="cp_site_content_metatags">
+            <column defaultValueNumeric="0" name="content_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="metatag_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_htmlsnippets">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="Chunk" name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editor_type" remarks="0-plain text,1-rich text,2-code editor"
+                    type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="category" remarks="category id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="cache_type" remarks="Cache option" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="snippet" type="MEDIUMTEXT"/>
+            <column defaultValueNumeric="0" name="locked" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_keywords">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="keyword" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_metatags">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tag" remarks="tag name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tagvalue" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="http_equiv" remarks="1 - use http_equiv tag style, 0 - use name"
+                    type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_module_access">
+            <column autoIncrement="true" name="id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="module" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="usergroup" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_module_depobj">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="module" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="resource" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="type"
+                    remarks="10-chunks, 20-docs, 30-plugins, 40-snips, 50-tpls, 60-tvs" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_modules">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0" name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editor_type" remarks="0-plain text,1-rich text,2-code editor"
+                    type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="disabled" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="category" remarks="category id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="wrap" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="locked" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="icon" remarks="url to module icon" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="enable_resource" remarks="enables the resource file feature"
+                    type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resourcefile" remarks="a physical link to a resource file" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="createdon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editedon" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="guid" remarks="globally unique identifier" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="enable_sharedparams" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="properties" type="LONGTEXT"/>
+            <column name="modulecode" remarks="module boot up code" type="MEDIUMTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cp_site_plugin_events">
+            <column name="pluginid" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="evtid" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="priority" remarks="determines plugin run order" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_plugins">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="Plugin" name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editor_type" remarks="0-plain text,1-rich text,2-code editor"
+                    type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="category" remarks="category id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="cache_type" remarks="Cache option" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plugincode" type="MEDIUMTEXT"/>
+            <column defaultValueNumeric="0" name="locked" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="properties" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="disabled" remarks="Disables the plugin" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="moduleguid" remarks="GUID of module from which to import shared parameters"
+                    type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_snippets">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="Snippet" name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editor_type" remarks="0-plain text,1-rich text,2-code editor"
+                    type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="category" remarks="category id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="cache_type" remarks="Cache option" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="snippet" type="MEDIUMTEXT"/>
+            <column defaultValueNumeric="0" name="locked" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="properties" type="LONGTEXT"/>
+            <column name="moduleguid" remarks="GUID of module from which to import shared parameters"
+                    type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_templates">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="templatename" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="Template" name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editor_type" remarks="0-plain text,1-rich text,2-code editor"
+                    type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="category" remarks="category id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="icon" remarks="url to icon file" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="template_type" remarks="0-page,1-content" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="MEDIUMTEXT"/>
+            <column defaultValueNumeric="0" name="locked" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_tmplvar_access">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="tmplvarid" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="documentgroup" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_tmplvar_contentvalues">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="tmplvarid" remarks="Template Variable id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="contentid" remarks="Site Content Id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cp_site_tmplvar_templates">
+            <column defaultValueNumeric="0" name="tmplvarid" remarks="Template Variable id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="templateid" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="rank" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_site_tmplvars">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="caption" type="VARCHAR(80)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="editor_type" remarks="0-plain text,1-rich text,2-code editor"
+                    type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="category" remarks="category id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="locked" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="elements" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="rank" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="display" remarks="Display Control" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="display_params" remarks="Display Control Properties" type="LONGTEXT"/>
+            <column name="default_text" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cp_spelling_whitelist">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="word" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_story_authors">
+            <column name="story_id" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_system_eventnames">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="service" remarks="System Service number" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="groupname" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_system_settings">
+            <column name="setting_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="setting_value" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cp_term_groups">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="term_group" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="term" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_user_attributes">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="internalKey" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fullname" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="role" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mobilephone" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="blocked" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="blockeduntil" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="blockedafter" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="logincount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="lastlogin" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="thislogin" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="failedlogincount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sessionid" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="dob" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="gender" remarks="0 - unknown, 1 - Male 2 - female" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zip" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fax" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="photo" remarks="link to photo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment" remarks="short comment" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_user_messages">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="type" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="message" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="sender" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="recipient" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="private" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="postdate" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="messageread" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_user_roles">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="frames" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="home" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="view_document" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="new_document" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="save_document" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="publish_document" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="delete_document" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="action_ok" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="logout" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="help" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="messages" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="new_user" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="edit_user" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="logs" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="edit_parser" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="save_parser" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="edit_template" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="settings" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="credits" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="new_template" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="save_template" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="delete_template" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="edit_snippet" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="new_snippet" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="save_snippet" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="delete_snippet" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="edit_chunk" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="new_chunk" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="save_chunk" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="delete_chunk" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="empty_cache" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="edit_document" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="change_password" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="error_dialog" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="about" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="file_manager" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="save_user" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="delete_user" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="save_password" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="edit_role" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="save_role" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="delete_role" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="new_role" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="access_permissions" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="bk_manager" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="new_plugin" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="edit_plugin" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="save_plugin" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="delete_plugin" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="new_module" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="edit_module" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="save_module" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="delete_module" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="exec_module" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="view_eventlog" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="delete_eventlog" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="manage_metatags" remarks="manage site meta tags and keywords"
+                    type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="edit_doc_metatags" remarks="edit document meta tags and keywords"
+                    type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="new_web_user" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="edit_web_user" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="save_web_user" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="delete_web_user" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="web_access_permissions" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="view_unpublished" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="import_static" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="export_static" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="review_document" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="find_replace" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="edit_dictionary" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_user_settings">
+            <column name="user" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="setting_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="setting_value" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cp_web_groups">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="webgroup" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="webuser" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_web_user_attributes">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="internalKey" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fullname" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="role" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mobilephone" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="blocked" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="blockeduntil" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="blockedafter" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="logincount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="lastlogin" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="thislogin" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="failedlogincount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sessionid" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="dob" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="gender" remarks="0 - unknown, 1 - Male 2 - female" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zip" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fax" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="photo" remarks="link to photo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment" remarks="short comment" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_web_user_settings">
+            <column name="webuser" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="setting_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="setting_value" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cp_web_users">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cachepwd" remarks="Store new unconfirmed password" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_webgroup_access">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="webgroup" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="documentgroup" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cp_webgroup_names">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="xb_feed_category_mapping">
+            <column autoIncrement="true" name="mapping_id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="feed_id" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_id" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="ENUM('include','exclude')">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="xb_feed_filter_mapping">
+            <column autoIncrement="true" name="mapping_id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="feed_id" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="filter_id" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="xb_feeds">
+            <column autoIncrement="true" name="feed_id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="feed_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="xb_filters">
+            <column autoIncrement="true" name="filter_id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="sort_order" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="filter_description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="filter_short_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="on_by_default" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="xb_runlog">
+            <column autoIncrement="true" name="runlog_id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="entry_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entry_for" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="message" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="xb_template_mapping">
+            <column autoIncrement="true" name="mapping_id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="affiliate_id" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="feed_id" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="template_id" type="INT(10) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="xb_templates">
+            <column autoIncrement="true" name="template_id" type="INT(10) UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="template_description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="template_type" type="ENUM('RSS1','RSS2','ATOM1','XML','CUSTOM')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="template_custom" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="template_extension" type="CHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="suppress_in_list" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sort_order" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <addPrimaryKey columnNames="internalKey" constraintName="PRIMARY" tableName="cp_active_users"/>
+
+
+        <addPrimaryKey columnNames="name" constraintName="PRIMARY" tableName="cp_editorial_landing_page"/>
+
+
+        <addPrimaryKey columnNames="tmplvarid, templateid" constraintName="PRIMARY"
+                       tableName="cp_site_tmplvar_templates"/>
+
+
+        <addPrimaryKey columnNames="story_id, author_id" constraintName="PRIMARY" tableName="cp_story_authors"/>
+
+
+        <addUniqueConstraint columnNames="filename, filepath" constraintName="filename" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="cp_redirect"/>
+
+
+        <addUniqueConstraint columnNames="keyword" constraintName="keyword" deferrable="false" disabled="false"
+                             initiallyDeferred="false" tableName="cp_site_keywords"/>
+
+
+        <addUniqueConstraint columnNames="name" constraintName="name" deferrable="false" disabled="false"
+                             initiallyDeferred="false" tableName="cp_membergroup_names"/>
+
+
+        <addUniqueConstraint columnNames="setting_name" constraintName="setting_name" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="cp_system_settings"/>
+
+
+        <addUniqueConstraint columnNames="user_id, content_id" constraintName="user_id" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="cp_review"/>
+
+
+        <addUniqueConstraint columnNames="username" constraintName="username" deferrable="false" disabled="false"
+                             initiallyDeferred="false" tableName="cp_web_users"/>
+
+
+        <addUniqueConstraint columnNames="word" constraintName="word" deferrable="false" disabled="false"
+                             initiallyDeferred="false" tableName="cp_spelling_whitelist"/>
+
+
+        <createIndex indexName="aliasidx" tableName="cp_site_content" unique="false">
+            <column name="alias"/>
+        </createIndex>
+
+
+        <sql dbms="mysql">
+            <comment>Liquibase can't create fulltext indexes, so we do it manually</comment>
+            CREATE FULLTEXT INDEX content_ft_idx ON cp_site_content(pagetitle, description, content)
+        </sql>
+
+
+        <createIndex indexName="content_id" tableName="cp_keyword_xref" unique="false">
+            <column name="content_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="content_id" tableName="cp_site_content_metatags" unique="false">
+            <column name="content_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="document" tableName="cp_document_groups" unique="false">
+            <column name="document"/>
+        </createIndex>
+
+
+        <createIndex indexName="document_group" tableName="cp_document_groups" unique="false">
+            <column name="document_group"/>
+        </createIndex>
+
+
+        <createIndex indexName="entry_for" tableName="xb_runlog" unique="false">
+            <column name="entry_for"/>
+        </createIndex>
+
+
+        <createIndex indexName="entry_time" tableName="xb_runlog" unique="false">
+            <column name="entry_time"/>
+        </createIndex>
+
+
+        <createIndex indexName="feed_id" tableName="xb_feed_category_mapping" unique="false">
+            <column name="feed_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="filter_short_name" tableName="xb_filters" unique="false">
+            <column name="filter_short_name"/>
+        </createIndex>
+
+
+        <createIndex indexName="id" tableName="cp_jot_fields" unique="false">
+            <column name="id"/>
+        </createIndex>
+
+
+        <createIndex indexName="identifier" tableName="xb_template_mapping" unique="false">
+            <column name="identifier"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_id" tableName="cp_site_tmplvar_contentvalues" unique="false">
+            <column name="contentid"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_site_content_id" tableName="cp_locked_stories" unique="false">
+            <column name="site_content_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_story_id" tableName="cp_marquee" unique="false">
+            <column name="story_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_tmplvarid" tableName="cp_site_tmplvar_contentvalues" unique="false">
+            <column name="tmplvarid"/>
+        </createIndex>
+
+
+        <createIndex indexName="indx_rank" tableName="cp_site_tmplvars" unique="false">
+            <column name="rank"/>
+        </createIndex>
+
+
+        <createIndex indexName="keyword_id" tableName="cp_keyword_xref" unique="false">
+            <column name="keyword_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="label" tableName="cp_jot_fields" unique="false">
+            <column name="label"/>
+        </createIndex>
+
+
+        <createIndex indexName="metatag_id" tableName="cp_site_content_metatags" unique="false">
+            <column name="metatag_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="name" tableName="cp_documentgroup_names" unique="true">
+            <column name="name"/>
+        </createIndex>
+
+
+        <createIndex indexName="name" tableName="cp_homepage_module" unique="true">
+            <column name="name"/>
+        </createIndex>
+
+
+        <createIndex indexName="name" tableName="cp_webgroup_names" unique="true">
+            <column name="name"/>
+        </createIndex>
+
+
+        <createIndex indexName="parent" tableName="cp_jot_content" unique="false">
+            <column name="parent"/>
+        </createIndex>
+
+
+        <createIndex indexName="parent" tableName="cp_site_content" unique="false">
+            <column name="parent"/>
+        </createIndex>
+
+
+        <createIndex indexName="pollid" tableName="cp_poll_choices" unique="false">
+            <column name="pollid"/>
+        </createIndex>
+
+
+        <createIndex indexName="question_id" tableName="cp_answers" unique="false">
+            <column name="question_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="quiz_id" tableName="cp_evaluations" unique="false">
+            <column name="quiz_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="quiz_id" tableName="cp_questions" unique="false">
+            <column name="quiz_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="secip" tableName="cp_jot_content" unique="false">
+            <column name="secip"/>
+        </createIndex>
+
+
+        <createIndex indexName="setting_name" tableName="cp_user_settings" unique="false">
+            <column name="setting_name"/>
+        </createIndex>
+
+
+        <createIndex indexName="setting_name" tableName="cp_web_user_settings" unique="false">
+            <column name="setting_name"/>
+        </createIndex>
+
+
+        <createIndex indexName="sort_order" tableName="xb_filters" unique="false">
+            <column name="sort_order"/>
+        </createIndex>
+
+
+        <createIndex indexName="tagid" tableName="cp_jot_subscriptions" unique="false">
+            <column name="tagid"/>
+        </createIndex>
+
+
+        <createIndex indexName="tagidx" tableName="cp_jot_content" unique="false">
+            <column name="tagid"/>
+        </createIndex>
+
+
+        <createIndex indexName="term" tableName="cp_term_groups" unique="false">
+            <column name="term"/>
+        </createIndex>
+
+
+        <createIndex indexName="term_group" tableName="cp_term_groups" unique="false">
+            <column name="term_group"/>
+        </createIndex>
+
+
+        <createIndex indexName="uparent" tableName="cp_jot_content" unique="false">
+            <column name="uparent"/>
+        </createIndex>
+
+
+        <createIndex indexName="uparent" tableName="cp_jot_subscriptions" unique="false">
+            <column name="uparent"/>
+        </createIndex>
+
+
+        <createIndex indexName="user" tableName="cp_event_log" unique="false">
+            <column name="user"/>
+        </createIndex>
+
+
+        <createIndex indexName="user" tableName="cp_user_settings" unique="false">
+            <column name="user"/>
+        </createIndex>
+
+
+        <createIndex indexName="userid" tableName="cp_jot_subscriptions" unique="false">
+            <column name="userid"/>
+        </createIndex>
+
+
+        <createIndex indexName="userid" tableName="cp_user_attributes" unique="false">
+            <column name="internalKey"/>
+        </createIndex>
+
+
+        <createIndex indexName="userid" tableName="cp_web_user_attributes" unique="false">
+            <column name="internalKey"/>
+        </createIndex>
+
+
+        <createIndex indexName="username" tableName="cp_manager_users" unique="true">
+            <column name="username"/>
+        </createIndex>
+
+
+        <createIndex indexName="webuserid" tableName="cp_web_user_settings" unique="false">
+            <column name="webuser"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

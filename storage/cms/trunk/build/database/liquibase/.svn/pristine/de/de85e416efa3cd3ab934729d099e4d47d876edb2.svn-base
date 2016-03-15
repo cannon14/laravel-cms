@@ -1,0 +1,1758 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="cconey" id="2015-02-24-catch-up-tables">
+
+        <createTable tableName="all_transactions">
+            <column defaultValue="" name="transid" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accountid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0" name="rstatus" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateinserted" type="datetime"/>
+            <column name="dateapproved" type="datetime"/>
+            <column defaultValueNumeric="0" name="transtype" type="TINYINT"/>
+            <column defaultValueNumeric="1" name="payoutstatus" type="TINYINT"/>
+            <column name="datepayout" type="datetime"/>
+            <column name="cookiestatus" type="TINYINT"/>
+            <column name="orderid" type="VARCHAR(200)"/>
+            <column name="totalcost" type="FLOAT(12)"/>
+            <column name="bannerid" type="VARCHAR(20)"/>
+            <column defaultValueNumeric="0" name="transkind" type="TINYINT"/>
+            <column name="refererurl" type="VARCHAR(250)"/>
+            <column name="affiliateid" type="VARCHAR(8)"/>
+            <column name="campcategoryid" type="VARCHAR(8)"/>
+            <column name="parenttransid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0.0" name="commission" type="FLOAT(12)"/>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="recurringcommid" type="VARCHAR(8)"/>
+            <column name="accountingid" type="VARCHAR(8)"/>
+            <column name="productid" type="VARCHAR(200)"/>
+            <column name="data1" type="VARCHAR(80)"/>
+            <column name="data2" type="VARCHAR(80)"/>
+            <column name="data3" type="VARCHAR(80)"/>
+            <column name="channel" type="INT"/>
+            <column name="episode" type="INT"/>
+            <column name="timeslot" type="VARCHAR(200)"/>
+            <column name="exit" type="INT"/>
+            <column name="page_position" type="INT"/>
+            <column name="provideractionname" type="VARCHAR(100)"/>
+            <column name="providerorderid" type="VARCHAR(100)"/>
+            <column name="providertype" type="VARCHAR(100)"/>
+            <column name="providereventdate" type="datetime"/>
+            <column name="providerprocessdate" type="datetime"/>
+            <column name="merchantname" type="VARCHAR(100)"/>
+            <column name="providerid" type="VARCHAR(100)"/>
+            <column name="merchantsales" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="quantity" type="INT"/>
+            <column name="providerchannel" type="VARCHAR(100)"/>
+            <column name="estimatedrevenue" type="DOUBLE(10, 2)"/>
+            <column name="dateestimated" type="datetime"/>
+            <column name="dateactual" type="datetime"/>
+            <column name="estimateddatafilename" type="VARCHAR(150)"/>
+            <column name="actualdatafilename" type="VARCHAR(50)"/>
+            <column name="providerstatus" type="VARCHAR(50)"/>
+            <column name="providercorrected" type="VARCHAR(50)"/>
+            <column name="providerwebsiteid" type="VARCHAR(50)"/>
+            <column name="providerwebsitename" type="VARCHAR(50)"/>
+            <column name="provideractionid" type="VARCHAR(50)"/>
+            <column name="modifiedby" type="VARCHAR(100)"/>
+            <column name="reftrans" type="VARCHAR(36)"/>
+            <column defaultValueNumeric="0" name="reversed" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateadjusted" type="datetime"/>
+            <column name="currref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="external_visit_id" type="VARCHAR(32)"/>
+            <column name="refinceptiondate" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="all_transactions_volatile">
+            <column defaultValue="" name="transid" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accountid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0" name="rstatus" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateinserted" type="datetime"/>
+            <column name="dateapproved" type="datetime"/>
+            <column defaultValueNumeric="0" name="transtype" type="TINYINT"/>
+            <column defaultValueNumeric="1" name="payoutstatus" type="TINYINT"/>
+            <column name="datepayout" type="datetime"/>
+            <column name="cookiestatus" type="TINYINT"/>
+            <column name="orderid" type="VARCHAR(200)"/>
+            <column name="totalcost" type="FLOAT(12)"/>
+            <column name="bannerid" type="VARCHAR(20)"/>
+            <column defaultValueNumeric="0" name="transkind" type="TINYINT"/>
+            <column name="refererurl" type="VARCHAR(250)"/>
+            <column name="affiliateid" type="VARCHAR(8)"/>
+            <column name="campcategoryid" type="VARCHAR(8)"/>
+            <column name="parenttransid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0.0" name="commission" type="FLOAT(12)"/>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="recurringcommid" type="VARCHAR(8)"/>
+            <column name="accountingid" type="VARCHAR(8)"/>
+            <column name="productid" type="VARCHAR(200)"/>
+            <column name="data1" type="VARCHAR(80)"/>
+            <column name="data2" type="VARCHAR(80)"/>
+            <column name="data3" type="VARCHAR(80)"/>
+            <column name="channel" type="INT"/>
+            <column name="episode" type="INT"/>
+            <column name="timeslot" type="VARCHAR(200)"/>
+            <column name="exit" type="INT"/>
+            <column name="page_position" type="INT"/>
+            <column name="provideractionname" type="VARCHAR(100)"/>
+            <column name="providerorderid" type="VARCHAR(100)"/>
+            <column name="providertype" type="VARCHAR(100)"/>
+            <column name="providereventdate" type="datetime"/>
+            <column name="providerprocessdate" type="datetime"/>
+            <column name="merchantname" type="VARCHAR(100)"/>
+            <column name="providerid" type="VARCHAR(100)"/>
+            <column name="merchantsales" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="quantity" type="INT"/>
+            <column name="providerchannel" type="VARCHAR(100)"/>
+            <column name="estimatedrevenue" type="DOUBLE(10, 2)"/>
+            <column name="dateestimated" type="datetime"/>
+            <column name="dateactual" type="datetime"/>
+            <column name="estimateddatafilename" type="VARCHAR(150)"/>
+            <column name="actualdatafilename" type="VARCHAR(50)"/>
+            <column name="providerstatus" type="VARCHAR(50)"/>
+            <column name="providercorrected" type="VARCHAR(50)"/>
+            <column name="providerwebsiteid" type="VARCHAR(50)"/>
+            <column name="providerwebsitename" type="VARCHAR(50)"/>
+            <column name="provideractionid" type="VARCHAR(50)"/>
+            <column name="modifiedby" type="VARCHAR(100)"/>
+            <column name="reftrans" type="VARCHAR(36)"/>
+            <column defaultValueNumeric="0" name="reversed" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateadjusted" type="datetime"/>
+            <column name="currref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="external_visit_id" type="VARCHAR(32)"/>
+            <column name="refinceptiondate" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="arch_external_visits_2010_Q2">
+            <column name="external_visit_id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="affiliate_id" type="VARCHAR(32)"/>
+            <column name="ad_id" type="VARCHAR(32)"/>
+            <column name="external_campaign_id" type="INT"/>
+            <column name="keyword_id" type="INT"/>
+            <column name="landing_page_id" type="INT"/>
+            <column name="referer" type="VARCHAR(255)"/>
+            <column name="insert_time" type="datetime"/>
+            <column name="cccid" type="VARCHAR(50)"/>
+            <column name="curref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="ref_inception_date" type="datetime"/>
+            <column defaultValueNumeric="0" name="new_visitor" type="TINYINT(1)"/>
+            <column name="forwarding_ip" type="VARCHAR(40)"/>
+            <column name="user_agent" type="VARCHAR(255)"/>
+            <column name="external_ad_id" type="VARCHAR(36)"/>
+        </createTable>
+
+
+        <createTable tableName="arch_external_visits_2010_Q3">
+            <column name="external_visit_id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="affiliate_id" type="VARCHAR(32)"/>
+            <column name="ad_id" type="VARCHAR(32)"/>
+            <column name="external_campaign_id" type="INT"/>
+            <column name="keyword_id" type="INT"/>
+            <column name="landing_page_id" type="INT"/>
+            <column name="referer" type="VARCHAR(255)"/>
+            <column name="insert_time" type="datetime"/>
+            <column name="cccid" type="VARCHAR(50)"/>
+            <column name="curref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="ref_inception_date" type="datetime"/>
+            <column defaultValueNumeric="0" name="new_visitor" type="TINYINT(1)"/>
+            <column name="forwarding_ip" type="VARCHAR(40)"/>
+            <column name="user_agent" type="VARCHAR(255)"/>
+            <column name="external_ad_id" type="VARCHAR(36)"/>
+        </createTable>
+
+
+        <createTable tableName="arch_external_visits_2010_Q4">
+            <column name="external_visit_id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="affiliate_id" type="VARCHAR(32)"/>
+            <column name="ad_id" type="VARCHAR(32)"/>
+            <column name="external_campaign_id" type="INT"/>
+            <column name="keyword_id" type="INT"/>
+            <column name="landing_page_id" type="INT"/>
+            <column name="referer" type="VARCHAR(255)"/>
+            <column name="insert_time" type="datetime"/>
+            <column name="cccid" type="VARCHAR(50)"/>
+            <column name="curref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="ref_inception_date" type="datetime"/>
+            <column defaultValueNumeric="0" name="new_visitor" type="TINYINT(1)"/>
+            <column name="forwarding_ip" type="VARCHAR(40)"/>
+            <column name="user_agent" type="VARCHAR(255)"/>
+            <column name="external_ad_id" type="VARCHAR(36)"/>
+        </createTable>
+
+
+        <createTable tableName="arch_external_visits_2011_Q1">
+            <column name="external_visit_id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="affiliate_id" type="VARCHAR(32)"/>
+            <column name="ad_id" type="VARCHAR(32)"/>
+            <column name="external_campaign_id" type="INT"/>
+            <column name="keyword_id" type="INT"/>
+            <column name="landing_page_id" type="INT"/>
+            <column name="referer" type="VARCHAR(255)"/>
+            <column name="insert_time" type="datetime"/>
+            <column name="cccid" type="VARCHAR(50)"/>
+            <column name="curref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="ref_inception_date" type="datetime"/>
+            <column defaultValueNumeric="0" name="new_visitor" type="TINYINT(1)"/>
+            <column name="forwarding_ip" type="VARCHAR(40)"/>
+            <column name="user_agent" type="VARCHAR(255)"/>
+            <column name="external_ad_id" type="VARCHAR(36)"/>
+        </createTable>
+
+
+        <createTable tableName="arch_external_visits_2011_Q2">
+            <column name="external_visit_id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="affiliate_id" type="VARCHAR(32)"/>
+            <column name="ad_id" type="VARCHAR(32)"/>
+            <column name="external_campaign_id" type="INT"/>
+            <column name="keyword_id" type="INT"/>
+            <column name="landing_page_id" type="INT"/>
+            <column name="referer" type="VARCHAR(255)"/>
+            <column name="insert_time" type="datetime"/>
+            <column name="cccid" type="VARCHAR(50)"/>
+            <column name="curref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="ref_inception_date" type="datetime"/>
+            <column defaultValueNumeric="0" name="new_visitor" type="TINYINT(1)"/>
+            <column name="forwarding_ip" type="VARCHAR(40)"/>
+            <column name="user_agent" type="VARCHAR(255)"/>
+            <column name="external_ad_id" type="VARCHAR(36)"/>
+        </createTable>
+
+
+        <createTable tableName="arch_partner_banner_impressions_2010_Q2">
+            <column name="impression_id" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="banner_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="impression_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="arch_partner_banner_impressions_2010_Q3">
+            <column name="impression_id" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="banner_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="impression_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="arch_partner_banner_impressions_2010_Q4">
+            <column name="impression_id" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="banner_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="impression_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="arch_partner_banner_impressions_2011_Q1">
+            <column name="impression_id" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="banner_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="impression_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="arch_partner_banner_impressions_2011_Q2">
+            <column name="impression_id" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="banner_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="impression_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="arch_transactions_2010_Q2">
+            <column defaultValue="" name="transid" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accountid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0" name="rstatus" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateinserted" type="datetime"/>
+            <column name="dateapproved" type="datetime"/>
+            <column defaultValueNumeric="0" name="transtype" type="TINYINT"/>
+            <column defaultValueNumeric="1" name="payoutstatus" type="TINYINT"/>
+            <column name="datepayout" type="datetime"/>
+            <column name="cookiestatus" type="TINYINT"/>
+            <column name="orderid" type="VARCHAR(200)"/>
+            <column name="totalcost" type="FLOAT(12)"/>
+            <column name="bannerid" type="VARCHAR(20)"/>
+            <column defaultValueNumeric="0" name="transkind" type="TINYINT"/>
+            <column name="refererurl" type="VARCHAR(250)"/>
+            <column name="affiliateid" type="VARCHAR(8)"/>
+            <column name="campcategoryid" type="VARCHAR(8)"/>
+            <column name="parenttransid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0.0" name="commission" type="FLOAT(12)"/>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="recurringcommid" type="VARCHAR(8)"/>
+            <column name="accountingid" type="VARCHAR(8)"/>
+            <column name="productid" type="VARCHAR(200)"/>
+            <column name="data1" type="VARCHAR(80)"/>
+            <column name="data2" type="VARCHAR(80)"/>
+            <column name="data3" type="VARCHAR(80)"/>
+            <column name="channel" type="INT"/>
+            <column name="episode" type="INT"/>
+            <column name="timeslot" type="VARCHAR(200)"/>
+            <column name="exit" type="INT"/>
+            <column name="page_position" type="INT"/>
+            <column name="provideractionname" type="VARCHAR(100)"/>
+            <column name="providerorderid" type="VARCHAR(100)"/>
+            <column name="providertype" type="VARCHAR(100)"/>
+            <column name="providereventdate" type="datetime"/>
+            <column name="providerprocessdate" type="datetime"/>
+            <column name="merchantname" type="VARCHAR(100)"/>
+            <column name="providerid" type="VARCHAR(100)"/>
+            <column name="merchantsales" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="quantity" type="INT"/>
+            <column name="providerchannel" type="VARCHAR(100)"/>
+            <column name="estimatedrevenue" type="DOUBLE(10, 2)"/>
+            <column name="dateestimated" type="datetime"/>
+            <column name="dateactual" type="datetime"/>
+            <column name="estimateddatafilename" type="VARCHAR(150)"/>
+            <column name="actualdatafilename" type="VARCHAR(50)"/>
+            <column name="providerstatus" type="VARCHAR(50)"/>
+            <column name="providercorrected" type="VARCHAR(50)"/>
+            <column name="providerwebsiteid" type="VARCHAR(50)"/>
+            <column name="providerwebsitename" type="VARCHAR(50)"/>
+            <column name="provideractionid" type="VARCHAR(50)"/>
+            <column name="modifiedby" type="VARCHAR(100)"/>
+            <column name="reftrans" type="VARCHAR(36)"/>
+            <column defaultValueNumeric="0" name="reversed" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateadjusted" type="datetime"/>
+            <column name="currref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="external_visit_id" type="VARCHAR(32)"/>
+            <column name="refinceptiondate" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="arch_transactions_2010_Q3">
+            <column defaultValue="" name="transid" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accountid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0" name="rstatus" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateinserted" type="datetime"/>
+            <column name="dateapproved" type="datetime"/>
+            <column defaultValueNumeric="0" name="transtype" type="TINYINT"/>
+            <column defaultValueNumeric="1" name="payoutstatus" type="TINYINT"/>
+            <column name="datepayout" type="datetime"/>
+            <column name="cookiestatus" type="TINYINT"/>
+            <column name="orderid" type="VARCHAR(200)"/>
+            <column name="totalcost" type="FLOAT(12)"/>
+            <column name="bannerid" type="VARCHAR(20)"/>
+            <column defaultValueNumeric="0" name="transkind" type="TINYINT"/>
+            <column name="refererurl" type="VARCHAR(250)"/>
+            <column name="affiliateid" type="VARCHAR(8)"/>
+            <column name="campcategoryid" type="VARCHAR(8)"/>
+            <column name="parenttransid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0.0" name="commission" type="FLOAT(12)"/>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="recurringcommid" type="VARCHAR(8)"/>
+            <column name="accountingid" type="VARCHAR(8)"/>
+            <column name="productid" type="VARCHAR(200)"/>
+            <column name="data1" type="VARCHAR(80)"/>
+            <column name="data2" type="VARCHAR(80)"/>
+            <column name="data3" type="VARCHAR(80)"/>
+            <column name="channel" type="INT"/>
+            <column name="episode" type="INT"/>
+            <column name="timeslot" type="VARCHAR(200)"/>
+            <column name="exit" type="INT"/>
+            <column name="page_position" type="INT"/>
+            <column name="provideractionname" type="VARCHAR(100)"/>
+            <column name="providerorderid" type="VARCHAR(100)"/>
+            <column name="providertype" type="VARCHAR(100)"/>
+            <column name="providereventdate" type="datetime"/>
+            <column name="providerprocessdate" type="datetime"/>
+            <column name="merchantname" type="VARCHAR(100)"/>
+            <column name="providerid" type="VARCHAR(100)"/>
+            <column name="merchantsales" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="quantity" type="INT"/>
+            <column name="providerchannel" type="VARCHAR(100)"/>
+            <column name="estimatedrevenue" type="DOUBLE(10, 2)"/>
+            <column name="dateestimated" type="datetime"/>
+            <column name="dateactual" type="datetime"/>
+            <column name="estimateddatafilename" type="VARCHAR(150)"/>
+            <column name="actualdatafilename" type="VARCHAR(50)"/>
+            <column name="providerstatus" type="VARCHAR(50)"/>
+            <column name="providercorrected" type="VARCHAR(50)"/>
+            <column name="providerwebsiteid" type="VARCHAR(50)"/>
+            <column name="providerwebsitename" type="VARCHAR(50)"/>
+            <column name="provideractionid" type="VARCHAR(50)"/>
+            <column name="modifiedby" type="VARCHAR(100)"/>
+            <column name="reftrans" type="VARCHAR(36)"/>
+            <column defaultValueNumeric="0" name="reversed" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateadjusted" type="datetime"/>
+            <column name="currref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="external_visit_id" type="VARCHAR(32)"/>
+            <column name="refinceptiondate" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="arch_transactions_2010_Q4">
+            <column defaultValue="" name="transid" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accountid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0" name="rstatus" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateinserted" type="datetime"/>
+            <column name="dateapproved" type="datetime"/>
+            <column defaultValueNumeric="0" name="transtype" type="TINYINT"/>
+            <column defaultValueNumeric="1" name="payoutstatus" type="TINYINT"/>
+            <column name="datepayout" type="datetime"/>
+            <column name="cookiestatus" type="TINYINT"/>
+            <column name="orderid" type="VARCHAR(200)"/>
+            <column name="totalcost" type="FLOAT(12)"/>
+            <column name="bannerid" type="VARCHAR(20)"/>
+            <column defaultValueNumeric="0" name="transkind" type="TINYINT"/>
+            <column name="refererurl" type="VARCHAR(250)"/>
+            <column name="affiliateid" type="VARCHAR(8)"/>
+            <column name="campcategoryid" type="VARCHAR(8)"/>
+            <column name="parenttransid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0.0" name="commission" type="FLOAT(12)"/>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="recurringcommid" type="VARCHAR(8)"/>
+            <column name="accountingid" type="VARCHAR(8)"/>
+            <column name="productid" type="VARCHAR(200)"/>
+            <column name="data1" type="VARCHAR(80)"/>
+            <column name="data2" type="VARCHAR(80)"/>
+            <column name="data3" type="VARCHAR(80)"/>
+            <column name="channel" type="INT"/>
+            <column name="episode" type="INT"/>
+            <column name="timeslot" type="VARCHAR(200)"/>
+            <column name="exit" type="INT"/>
+            <column name="page_position" type="INT"/>
+            <column name="provideractionname" type="VARCHAR(100)"/>
+            <column name="providerorderid" type="VARCHAR(100)"/>
+            <column name="providertype" type="VARCHAR(100)"/>
+            <column name="providereventdate" type="datetime"/>
+            <column name="providerprocessdate" type="datetime"/>
+            <column name="merchantname" type="VARCHAR(100)"/>
+            <column name="providerid" type="VARCHAR(100)"/>
+            <column name="merchantsales" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="quantity" type="INT"/>
+            <column name="providerchannel" type="VARCHAR(100)"/>
+            <column name="estimatedrevenue" type="DOUBLE(10, 2)"/>
+            <column name="dateestimated" type="datetime"/>
+            <column name="dateactual" type="datetime"/>
+            <column name="estimateddatafilename" type="VARCHAR(150)"/>
+            <column name="actualdatafilename" type="VARCHAR(50)"/>
+            <column name="providerstatus" type="VARCHAR(50)"/>
+            <column name="providercorrected" type="VARCHAR(50)"/>
+            <column name="providerwebsiteid" type="VARCHAR(50)"/>
+            <column name="providerwebsitename" type="VARCHAR(50)"/>
+            <column name="provideractionid" type="VARCHAR(50)"/>
+            <column name="modifiedby" type="VARCHAR(100)"/>
+            <column name="reftrans" type="VARCHAR(36)"/>
+            <column defaultValueNumeric="0" name="reversed" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateadjusted" type="datetime"/>
+            <column name="currref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="external_visit_id" type="VARCHAR(32)"/>
+            <column name="refinceptiondate" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="arch_transactions_2011_Q1">
+            <column defaultValue="" name="transid" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accountid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0" name="rstatus" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateinserted" type="datetime"/>
+            <column name="dateapproved" type="datetime"/>
+            <column defaultValueNumeric="0" name="transtype" type="TINYINT"/>
+            <column defaultValueNumeric="1" name="payoutstatus" type="TINYINT"/>
+            <column name="datepayout" type="datetime"/>
+            <column name="cookiestatus" type="TINYINT"/>
+            <column name="orderid" type="VARCHAR(200)"/>
+            <column name="totalcost" type="FLOAT(12)"/>
+            <column name="bannerid" type="VARCHAR(20)"/>
+            <column defaultValueNumeric="0" name="transkind" type="TINYINT"/>
+            <column name="refererurl" type="VARCHAR(250)"/>
+            <column name="affiliateid" type="VARCHAR(8)"/>
+            <column name="campcategoryid" type="VARCHAR(8)"/>
+            <column name="parenttransid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0.0" name="commission" type="FLOAT(12)"/>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="recurringcommid" type="VARCHAR(8)"/>
+            <column name="accountingid" type="VARCHAR(8)"/>
+            <column name="productid" type="VARCHAR(200)"/>
+            <column name="data1" type="VARCHAR(80)"/>
+            <column name="data2" type="VARCHAR(80)"/>
+            <column name="data3" type="VARCHAR(80)"/>
+            <column name="channel" type="INT"/>
+            <column name="episode" type="INT"/>
+            <column name="timeslot" type="VARCHAR(200)"/>
+            <column name="exit" type="INT"/>
+            <column name="page_position" type="INT"/>
+            <column name="provideractionname" type="VARCHAR(100)"/>
+            <column name="providerorderid" type="VARCHAR(100)"/>
+            <column name="providertype" type="VARCHAR(100)"/>
+            <column name="providereventdate" type="datetime"/>
+            <column name="providerprocessdate" type="datetime"/>
+            <column name="merchantname" type="VARCHAR(100)"/>
+            <column name="providerid" type="VARCHAR(100)"/>
+            <column name="merchantsales" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="quantity" type="INT"/>
+            <column name="providerchannel" type="VARCHAR(100)"/>
+            <column name="estimatedrevenue" type="DOUBLE(10, 2)"/>
+            <column name="dateestimated" type="datetime"/>
+            <column name="dateactual" type="datetime"/>
+            <column name="estimateddatafilename" type="VARCHAR(150)"/>
+            <column name="actualdatafilename" type="VARCHAR(50)"/>
+            <column name="providerstatus" type="VARCHAR(50)"/>
+            <column name="providercorrected" type="VARCHAR(50)"/>
+            <column name="providerwebsiteid" type="VARCHAR(50)"/>
+            <column name="providerwebsitename" type="VARCHAR(50)"/>
+            <column name="provideractionid" type="VARCHAR(50)"/>
+            <column name="modifiedby" type="VARCHAR(100)"/>
+            <column name="reftrans" type="VARCHAR(36)"/>
+            <column defaultValueNumeric="0" name="reversed" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateadjusted" type="datetime"/>
+            <column name="currref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="external_visit_id" type="VARCHAR(32)"/>
+            <column name="refinceptiondate" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="arch_transactions_2011_Q2">
+            <column defaultValue="" name="transid" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accountid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0" name="rstatus" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateinserted" type="datetime"/>
+            <column name="dateapproved" type="datetime"/>
+            <column defaultValueNumeric="0" name="transtype" type="TINYINT"/>
+            <column defaultValueNumeric="1" name="payoutstatus" type="TINYINT"/>
+            <column name="datepayout" type="datetime"/>
+            <column name="cookiestatus" type="TINYINT"/>
+            <column name="orderid" type="VARCHAR(200)"/>
+            <column name="totalcost" type="FLOAT(12)"/>
+            <column name="bannerid" type="VARCHAR(20)"/>
+            <column defaultValueNumeric="0" name="transkind" type="TINYINT"/>
+            <column name="refererurl" type="VARCHAR(250)"/>
+            <column name="affiliateid" type="VARCHAR(8)"/>
+            <column name="campcategoryid" type="VARCHAR(8)"/>
+            <column name="parenttransid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0.0" name="commission" type="FLOAT(12)"/>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="recurringcommid" type="VARCHAR(8)"/>
+            <column name="accountingid" type="VARCHAR(8)"/>
+            <column name="productid" type="VARCHAR(200)"/>
+            <column name="data1" type="VARCHAR(80)"/>
+            <column name="data2" type="VARCHAR(80)"/>
+            <column name="data3" type="VARCHAR(80)"/>
+            <column name="channel" type="INT"/>
+            <column name="episode" type="INT"/>
+            <column name="timeslot" type="VARCHAR(200)"/>
+            <column name="exit" type="INT"/>
+            <column name="page_position" type="INT"/>
+            <column name="provideractionname" type="VARCHAR(100)"/>
+            <column name="providerorderid" type="VARCHAR(100)"/>
+            <column name="providertype" type="VARCHAR(100)"/>
+            <column name="providereventdate" type="datetime"/>
+            <column name="providerprocessdate" type="datetime"/>
+            <column name="merchantname" type="VARCHAR(100)"/>
+            <column name="providerid" type="VARCHAR(100)"/>
+            <column name="merchantsales" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="quantity" type="INT"/>
+            <column name="providerchannel" type="VARCHAR(100)"/>
+            <column name="estimatedrevenue" type="DOUBLE(10, 2)"/>
+            <column name="dateestimated" type="datetime"/>
+            <column name="dateactual" type="datetime"/>
+            <column name="estimateddatafilename" type="VARCHAR(150)"/>
+            <column name="actualdatafilename" type="VARCHAR(50)"/>
+            <column name="providerstatus" type="VARCHAR(50)"/>
+            <column name="providercorrected" type="VARCHAR(50)"/>
+            <column name="providerwebsiteid" type="VARCHAR(50)"/>
+            <column name="providerwebsitename" type="VARCHAR(50)"/>
+            <column name="provideractionid" type="VARCHAR(50)"/>
+            <column name="modifiedby" type="VARCHAR(100)"/>
+            <column name="reftrans" type="VARCHAR(36)"/>
+            <column defaultValueNumeric="0" name="reversed" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateadjusted" type="datetime"/>
+            <column name="currref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="external_visit_id" type="VARCHAR(32)"/>
+            <column name="refinceptiondate" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="chase_link_card_map">
+            <column name="link_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="chase_publisher_website_map">
+            <column name="website_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="linkshare_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="publisher_name" type="VARCHAR(100)"/>
+        </createTable>
+
+
+        <createTable tableName="chase_used_clicks">
+            <column name="click_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00 00:00:00" name="createDate" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="ignored_visitors">
+            <column autoIncrement="true" name="visitor_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="ip_address" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="reason" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="1" name="active" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="marin_base_clicks">
+            <column name="visit_id" remarks="equates to transactions.external_visit_id" type="VARCHAR(32)"/>
+            <column name="transtype" type="TINYINT"/>
+            <column name="card_id" remarks="equates to transactions.bannerid" type="VARCHAR(20)"/>
+            <column name="exit_page" remarks="equates to transactions.exit" type="INT"/>
+            <column name="page_position" remarks="equates to transactions.page_position" type="INT"/>
+            <column name="date_inserted" remarks="equates to transactions.date_inserted" type="date"/>
+            <column name="keyword_id" remarks="this is transactions.ref_id - external_visits.keyword_id" type="VARCHAR(50)"/>
+            <column name="creative_id" remarks="Equates to external_visits.ad_id" type="VARCHAR(32)"/>
+            <column name="click_count" remarks="equates to sum(transactions.quantity)" type="INT"/>
+            <column name="card_epc_rate" type="DOUBLE(10, 2)"/>
+            <column name="estimated_revenue" type="DOUBLE(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="marin_base_combined">
+            <column name="visit_id" remarks="equates to transactions.external_visit_id" type="VARCHAR(32)"/>
+            <column name="transtype" remarks="from transactions table" type="TINYINT"/>
+            <column name="card_id" remarks="equates to transactions.bannerid" type="VARCHAR(20)"/>
+            <column name="exit_page" remarks="equates to transactions.exit" type="INT"/>
+            <column name="page_position" remarks="equates to transactions.page_position" type="INT"/>
+            <column name="date_inserted" remarks="equates to transactions.date_inserted" type="date"/>
+            <column name="keyword_id" remarks="this is transactions.ref_id - external_visits.keyword_id" type="VARCHAR(50)"/>
+            <column name="creative_id" remarks="Equates to external_visits.ad_id" type="VARCHAR(32)"/>
+            <column name="click_count" remarks="equates to sum(transactions.quantity) where transtype = 1" type="INT"/>
+            <column name="sales_count" remarks="equates to sum(transactions.quantity)" type="INT"/>
+            <column name="click_rate" type="DOUBLE(10, 2)"/>
+            <column name="sales_rate" type="DOUBLE(10, 2)"/>
+            <column name="estimated_revenue" type="DOUBLE(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="marin_base_combined_save">
+            <column name="visit_id" remarks="equates to transactions.external_visit_id" type="VARCHAR(32)"/>
+            <column name="transtype" remarks="from transactions table" type="TINYINT"/>
+            <column name="card_id" remarks="equates to transactions.bannerid" type="VARCHAR(20)"/>
+            <column name="exit_page" remarks="equates to transactions.exit" type="INT"/>
+            <column name="page_position" remarks="equates to transactions.page_position" type="INT"/>
+            <column name="date_inserted" remarks="equates to transactions.date_inserted" type="date"/>
+            <column name="keyword_id" remarks="this is transactions.ref_id - external_visits.keyword_id" type="VARCHAR(50)"/>
+            <column name="creative_id" remarks="Equates to external_visits.ad_id" type="VARCHAR(32)"/>
+            <column name="click_count" remarks="equates to sum(transactions.quantity) where transtype = 1" type="INT"/>
+            <column name="sales_count" remarks="equates to sum(transactions.quantity)" type="INT"/>
+            <column name="click_rate" type="DOUBLE(10, 2)"/>
+            <column name="sales_rate" type="DOUBLE(10, 2)"/>
+            <column name="estimated_revenue" type="DOUBLE(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="marin_base_sales">
+            <column name="visit_id" remarks="equates to transactions.external_visit_id" type="VARCHAR(32)"/>
+            <column name="transtype" type="TINYINT"/>
+            <column name="card_id" remarks="equates to transactions.bannerid" type="VARCHAR(20)"/>
+            <column name="exit_page" remarks="equates to transactions.exit" type="INT"/>
+            <column name="page_position" remarks="equates to transactions.page_position" type="INT"/>
+            <column name="date_inserted" remarks="equates to transactions.date_inserted" type="date"/>
+            <column name="keyword_id" remarks="this is transactions.ref_id - external_visits.keyword_id" type="VARCHAR(50)"/>
+            <column name="creative_id" remarks="Equates to external_visits.ad_id" type="VARCHAR(32)"/>
+            <column name="click_count" remarks="equates to sum(transactions.quantity)" type="INT"/>
+            <column name="card_epc_rate" type="DOUBLE(10, 2)"/>
+            <column name="estimated_revenue" type="DOUBLE(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="marin_report_actual">
+            <column name="visit_id" remarks="equates to transactions.external_visit_id" type="VARCHAR(32)"/>
+            <column name="card_id" remarks="equates to transactions.bannerid" type="VARCHAR(20)"/>
+            <column name="exit_page" remarks="equates to transactions.exit" type="INT"/>
+            <column name="page_position" remarks="equates to transactions.page_position" type="INT"/>
+            <column name="date_inserted" remarks="equates to transactions.date_inserted" type="date"/>
+            <column name="keyword_id" remarks="this is transactions.ref_id - external_visits.keyword_id" type="VARCHAR(50)"/>
+            <column name="creative_id" remarks="Equates to external_visits.ad_id" type="VARCHAR(32)"/>
+            <column name="click_count" remarks="equates to sum(transactions.quantity)" type="INT"/>
+            <column name="card_epc_rate" type="DOUBLE(10, 2)"/>
+            <column name="estimated_revenue" type="DOUBLE(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="marin_report_actual_historical">
+            <column name="visit_id" remarks="equates to transactions.external_visit_id" type="VARCHAR(32)"/>
+            <column name="card_id" remarks="equates to transactions.bannerid" type="VARCHAR(20)"/>
+            <column name="exit_page" remarks="equates to transactions.exit" type="INT"/>
+            <column name="page_position" remarks="equates to transactions.page_position" type="INT"/>
+            <column name="date_inserted" remarks="equates to transactions.date_inserted" type="date"/>
+            <column name="keyword_id" remarks="this is transactions.ref_id - external_visits.keyword_id" type="VARCHAR(50)"/>
+            <column name="creative_id" remarks="Equates to external_visits.ad_id" type="VARCHAR(32)"/>
+            <column name="click_count" remarks="equates to sum(transactions.quantity)" type="INT"/>
+            <column name="card_epc_rate" type="DOUBLE(10, 2)"/>
+            <column name="estimated_revenue" type="DOUBLE(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="marin_report_actual_temp">
+            <column name="visit_id" remarks="equates to transactions.external_visit_id" type="VARCHAR(32)"/>
+            <column name="card_id" remarks="equates to transactions.bannerid" type="VARCHAR(20)"/>
+            <column name="exit_page" remarks="equates to transactions.exit" type="INT"/>
+            <column name="page_position" remarks="equates to transactions.page_position" type="INT"/>
+            <column name="date_inserted" remarks="equates to transactions.date_inserted" type="date"/>
+            <column name="keyword_id" remarks="this is transactions.ref_id - external_visits.keyword_id" type="VARCHAR(50)"/>
+            <column name="creative_id" remarks="Equates to external_visits.ad_id" type="VARCHAR(32)"/>
+            <column name="click_count" remarks="equates to sum(transactions.quantity)" type="INT"/>
+            <column name="card_epc_rate" type="DOUBLE(10, 2)"/>
+            <column name="estimated_revenue" type="DOUBLE(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="marin_report_estimated">
+            <column name="visit_id" remarks="equates to transactions.external_visit_id" type="VARCHAR(32)"/>
+            <column name="card_id" remarks="equates to transactions.bannerid" type="VARCHAR(20)"/>
+            <column name="exit_page" remarks="equates to transactions.exit" type="INT"/>
+            <column name="page_position" remarks="equates to transactions.page_position" type="INT"/>
+            <column name="date_inserted" remarks="equates to transactions.date_inserted" type="date"/>
+            <column name="keyword_id" remarks="this is transactions.ref_id + - + external_visits.keyword_id" type="VARCHAR(50)"/>
+            <column name="creative_id" remarks="Equates to external_visits.ad_id" type="VARCHAR(32)"/>
+            <column name="click_count" remarks="equates to sum(transactions.quantity)" type="INT"/>
+            <column name="card_epc_rate" type="DOUBLE(10, 2)"/>
+            <column name="estimated_revenue" type="DOUBLE(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="marin_report_estimated_historical">
+            <column name="visit_id" remarks="equates to transactions.external_visit_id" type="VARCHAR(32)"/>
+            <column name="card_id" remarks="equates to transactions.bannerid" type="VARCHAR(20)"/>
+            <column name="exit_page" remarks="equates to transactions.exit" type="INT"/>
+            <column name="page_position" remarks="equates to transactions.page_position" type="INT"/>
+            <column name="date_inserted" remarks="equates to transactions.date_inserted" type="date"/>
+            <column name="keyword_id" remarks="this is transactions.ref_id + - + external_visits.keyword_id" type="VARCHAR(50)"/>
+            <column name="creative_id" remarks="Equates to external_visits.ad_id" type="VARCHAR(32)"/>
+            <column name="click_count" remarks="equates to sum(transactions.quantity)" type="INT"/>
+            <column name="card_epc_rate" type="DOUBLE(10, 2)"/>
+            <column name="estimated_revenue" type="DOUBLE(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="partner_affiliate_bonus_summary">
+            <column name="ref_transID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="provider_process_date" type="datetime"/>
+            <column defaultValueNumeric="0.00" name="bonus_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="partner_affiliate_sales_transactions_report_adjustments">
+            <column defaultValue="" name="reftrans" type="VARCHAR(80)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="trans_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="adj_total" type="DECIMAL(24, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="partner_phones">
+            <column name="marchex_number" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="marchex_campaign_id" type="VARCHAR(50)"/>
+            <column name="marchex_campaign_name" type="VARCHAR(100)"/>
+            <column name="provider_number" type="VARCHAR(15)"/>
+            <column name="network_affiliate_id" type="VARCHAR(36)"/>
+            <column name="network_website_id" type="VARCHAR(36)"/>
+            <column name="network_product_id" type="VARCHAR(36)"/>
+            <column name="network_category_id" type="VARCHAR(36)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="partner_website_conversion_rates">
+            <column defaultValueNumeric="0" name="website_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="period" type="SET('Yesterday', 'This Week', 'Last Week', 'This Month', 'Last Month')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clicks" type="INT"/>
+            <column name="sales" type="INT"/>
+            <column name="commission" type="DECIMAL(18, 2)"/>
+            <column name="adjustments" type="DECIMAL(18, 2)"/>
+            <column name="total" type="DECIMAL(18, 2)"/>
+            <column name="epc" type="DECIMAL(18, 2)"/>
+            <column name="conversion" type="DECIMAL(18, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="partner_website_daily_stats">
+            <column defaultValueNumeric="0" name="website_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00" name="transaction_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clicks" type="INT"/>
+            <column name="sales" type="INT"/>
+            <column name="commission" type="DECIMAL(18, 2)"/>
+            <column name="adjustments" type="DECIMAL(18, 2)"/>
+            <column name="total" type="DECIMAL(18, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="pc_application_detail">
+            <column name="transaction_id" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_date" type="datetime"/>
+            <column name="issuer_id" type="INT"/>
+            <column name="issuer_name" type="VARCHAR(255)"/>
+            <column name="product_id" type="VARCHAR(20)"/>
+            <column name="product_sku" type="VARCHAR(15)"/>
+            <column name="product_name" type="VARCHAR(100)"/>
+            <column name="product_internal_name" type="TEXT"/>
+            <column name="category_id" type="INT"/>
+            <column name="card_category_name" type="VARCHAR(255)"/>
+            <column name="affiliate_id" type="VARCHAR(8)"/>
+            <column name="affiliate_name" type="VARCHAR(510)"/>
+            <column name="website_id" type="BIGINT"/>
+            <column name="website_url" type="VARCHAR(255)"/>
+            <column name="ref_trans" type="VARCHAR(36)"/>
+        </createTable>
+
+
+        <createTable tableName="pc_categories">
+            <column name="category_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="pc_daily_application">
+            <column defaultValue="" name="event_date" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer_id" type="INT"/>
+            <column defaultValue="" name="product_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_sku" type="VARCHAR(15)"/>
+            <column name="product_name" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="website_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="website_url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="category_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="transaction_count" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="pc_daily_application_conversion_rate">
+            <column defaultValue="" name="event_date" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="product_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_sku" type="VARCHAR(15)"/>
+            <column name="product_name" type="VARCHAR(100)"/>
+            <column name="issuer_id" type="INT"/>
+            <column name="conversion_rate" type="DECIMAL(45, 4)"/>
+        </createTable>
+
+
+        <createTable tableName="pc_daily_sale_by_click">
+            <column defaultValue="" name="event_date" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer_id" type="INT"/>
+            <column defaultValue="" name="product_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_sku" type="VARCHAR(15)"/>
+            <column name="product_name" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="website_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="website_url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="category_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="transaction_count" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="pc_monthly_application">
+            <column defaultValue="" name="event_date" type="VARCHAR(7)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer_id" type="INT"/>
+            <column defaultValue="" name="product_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_sku" type="VARCHAR(15)"/>
+            <column name="product_name" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="website_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="website_url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="category_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="transaction_count" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="pc_monthly_application_conversion_rate">
+            <column defaultValue="" name="event_date" type="VARCHAR(7)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="product_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_sku" type="VARCHAR(15)"/>
+            <column name="product_name" type="VARCHAR(100)"/>
+            <column name="issuer_id" type="INT"/>
+            <column name="conversion_rate" type="DECIMAL(45, 4)"/>
+        </createTable>
+
+
+        <createTable tableName="pc_monthly_sale_by_click">
+            <column defaultValue="" name="event_date" type="VARCHAR(7)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer_id" type="INT"/>
+            <column defaultValue="" name="product_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_sku" type="VARCHAR(15)"/>
+            <column name="product_name" type="VARCHAR(100)"/>
+            <column name="website_id" type="INT"/>
+            <column defaultValue="" name="website_url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="category_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_category_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="transaction_count" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="program_website_map">
+            <column defaultValueNumeric="0" name="website_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="program_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP"/>
+        </createTable>
+
+
+        <createTable tableName="programs">
+            <column autoIncrement="true" name="program_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="program_name" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="program_default" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="rex_payin_tier_card_assignments">
+            <column autoIncrement="true" name="payin_tier_card_assignment_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="payin_tier_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(6, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="dynamic" type="TINYINT(1)"/>
+            <column name="start_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_time" type="datetime"/>
+            <column defaultValue="0000-00-00 00:00:00" name="create_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="rex_payin_tier_website_assignments">
+            <column autoIncrement="true" name="payin_tier_website_assignment_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="payin_tier_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="website_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_time" type="datetime"/>
+            <column defaultValue="0000-00-00 00:00:00" name="create_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="rex_payin_tiers">
+            <column autoIncrement="true" name="payin_tier_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="payin_tier_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00 00:00:00" name="create_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="summarized_applications">
+            <column name="application_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_id" type="VARCHAR(35)"/>
+            <column name="state" type="ENUM('COMMITTED', 'DELETED', 'VALID', 'ERROR')"/>
+            <column name="app_submission_date" type="datetime"/>
+            <column name="app_updated_date" type="datetime"/>
+            <column name="click_date" type="datetime"/>
+            <column name="product_id" type="VARCHAR(20)"/>
+            <column name="product_name" type="VARCHAR(255)"/>
+	        <column name="program_id" type="INT"/>
+	        <column name="program_name" type="VARCHAR(45)"/>
+	        <column name="issuer_id" type="INT"/>
+	        <column name="issuer_name" type="VARCHAR(255)"/>
+            <column name="affiliate_id" type="VARCHAR(8)"/>
+            <column name="website_id" type="INT"/>
+            <column name="user_variable" type="VARCHAR(80)"/>
+        </createTable>
+
+
+        <createTable tableName="summarized_clicks">
+            <column name="click_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_name" type="VARCHAR(100)"/>
+            <column name="program_id" type="INT"/>
+            <column name="product_type_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_type_name" type="VARCHAR(100)"/>
+            <column name="website_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="website_url" type="VARCHAR(255)"/>
+            <column name="user_variable" type="VARCHAR(80)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_count" type="INT"/>
+        </createTable>
+
+
+        <createTable tableName="transactions_affiliate_generic">
+            <column name="transaction_id" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="website_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_creative_id" type="INT"/>
+            <column name="date_inserted" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="transactions_call">
+            <column autoIncrement="true" name="transaction_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="call_id" type="VARCHAR(36)"/>
+            <column name="call_number" type="VARCHAR(15)"/>
+            <column name="call_name" type="VARCHAR(50)"/>
+            <column name="call_time" type="datetime"/>
+            <column name="call_duration" type="INT"/>
+            <column name="call_offset" type="INT"/>
+            <column name="call_ring_time" type="INT"/>
+            <column name="call_status" type="VARCHAR(15)"/>
+            <column name="marchex_number" type="VARCHAR(15)"/>
+            <column name="marchex_extension" type="VARCHAR(15)"/>
+            <column name="provider_number" type="VARCHAR(15)"/>
+            <column name="marchex_account_id" type="VARCHAR(50)"/>
+            <column name="marchex_group_id" type="VARCHAR(50)"/>
+            <column name="marchex_campaign_id" type="VARCHAR(50)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="transactions_call_sale">
+            <column autoIncrement="true" name="transaction_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="transaction_call_id" type="VARCHAR(36)"/>
+            <column name="order_id" type="VARCHAR(50)"/>
+            <column name="member_id" type="VARCHAR(50)"/>
+            <column name="advertiser_id" type="VARCHAR(36)"/>
+            <column name="process_time" type="datetime"/>
+            <column name="transaction_time" type="datetime"/>
+            <column name="product_sku" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.0" name="amount" type="FLOAT(12)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="transactions_click_external">
+            <column autoIncrement="true" name="click_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="tracking_id" type="VARCHAR(35)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)"/>
+            <column name="website_id" type="INT"/>
+            <column name="product_id" type="VARCHAR(20)"/>
+            <column name="product_name" type="VARCHAR(100)"/>
+            <column name="product_type_id" type="INT"/>
+            <column name="program_id" type="INT"/>
+            <column name="creative_id" type="INT"/>
+            <column name="ip_address" type="BIGINT"/>
+            <column name="referer_url" type="VARCHAR(250)"/>
+            <column name="user_variable" type="VARCHAR(80)"/>
+            <column name="user_agent" type="VARCHAR(250)"/>
+            <column name="exit_page_id" type="INT"/>
+            <column name="page_position" type="INT"/>
+            <column name="content_type_id" type="INT"/>
+            <column name="date_inserted" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="transactions_external_whitelist">
+            <column name="affiliate_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00 00:00:00" name="date_inserted" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="transactions_recent_generic">
+            <column defaultValue="" name="transid" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="accountid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0" name="rstatus" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateinserted" type="datetime"/>
+            <column name="dateapproved" type="datetime"/>
+            <column defaultValueNumeric="0" name="transtype" type="TINYINT"/>
+            <column defaultValueNumeric="1" name="payoutstatus" type="TINYINT"/>
+            <column name="datepayout" type="datetime"/>
+            <column name="cookiestatus" type="TINYINT"/>
+            <column name="orderid" type="VARCHAR(200)"/>
+            <column name="totalcost" type="FLOAT(12)"/>
+            <column name="bannerid" type="VARCHAR(20)"/>
+            <column defaultValueNumeric="0" name="transkind" type="TINYINT"/>
+            <column name="refererurl" type="VARCHAR(250)"/>
+            <column name="affiliateid" type="VARCHAR(8)"/>
+            <column name="campcategoryid" type="VARCHAR(8)"/>
+            <column name="parenttransid" type="VARCHAR(8)"/>
+            <column defaultValueNumeric="0.0" name="commission" type="FLOAT(12)"/>
+            <column name="ip" type="VARCHAR(40)"/>
+            <column name="recurringcommid" type="VARCHAR(8)"/>
+            <column name="accountingid" type="VARCHAR(8)"/>
+            <column name="productid" type="VARCHAR(200)"/>
+            <column name="data1" type="VARCHAR(80)"/>
+            <column name="data2" type="VARCHAR(80)"/>
+            <column name="data3" type="VARCHAR(80)"/>
+            <column name="channel" type="INT"/>
+            <column name="episode" type="INT"/>
+            <column name="timeslot" type="VARCHAR(200)"/>
+            <column name="exit" type="INT"/>
+            <column name="page_position" type="INT"/>
+            <column name="provideractionname" type="VARCHAR(100)"/>
+            <column name="providerorderid" type="VARCHAR(100)"/>
+            <column name="providertype" type="VARCHAR(100)"/>
+            <column name="providereventdate" type="datetime"/>
+            <column name="providerprocessdate" type="datetime"/>
+            <column name="merchantname" type="VARCHAR(100)"/>
+            <column name="providerid" type="VARCHAR(100)"/>
+            <column name="merchantsales" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="1" name="quantity" type="INT"/>
+            <column name="providerchannel" type="VARCHAR(100)"/>
+            <column name="estimatedrevenue" type="DOUBLE(10, 2)"/>
+            <column name="dateestimated" type="datetime"/>
+            <column name="dateactual" type="datetime"/>
+            <column name="estimateddatafilename" type="VARCHAR(150)"/>
+            <column name="actualdatafilename" type="VARCHAR(50)"/>
+            <column name="providerstatus" type="VARCHAR(50)"/>
+            <column name="providercorrected" type="VARCHAR(50)"/>
+            <column name="providerwebsiteid" type="VARCHAR(50)"/>
+            <column name="providerwebsitename" type="VARCHAR(50)"/>
+            <column name="provideractionid" type="VARCHAR(50)"/>
+            <column name="modifiedby" type="VARCHAR(100)"/>
+            <column name="reftrans" type="VARCHAR(36)"/>
+            <column defaultValueNumeric="0" name="reversed" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateadjusted" type="datetime"/>
+            <column name="currref" type="VARCHAR(32)"/>
+            <column name="prevref" type="VARCHAR(32)"/>
+            <column name="thirdref" type="VARCHAR(32)"/>
+            <column name="external_visit_id" type="VARCHAR(32)"/>
+            <column name="refinceptiondate" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="transactions_sale_external">
+            <column name="trans_id" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="website_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="program_id" type="INT"/>
+            <column name="category_fid" type="INT"/>
+            <column name="product_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_name" type="VARCHAR(100)"/>
+            <column name="product_type_id" type="INT"/>
+            <column name="user_variable" type="VARCHAR(200)"/>
+            <column name="click_id" type="VARCHAR(36)"/>
+            <column name="click_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="commission" type="DECIMAL(24, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cross_sale" type="VARCHAR(80)"/>
+            <column name="upload_date" type="datetime"/>
+            <column name="process_date" type="datetime"/>
+            <column name="status" type="TINYINT"/>
+            <column name="transaction_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="arch_page_views_2010_Q2">
+            <column name="page_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="external_visit_id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="view_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="seed" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="is_landing_page" type="TINYINT(1)"/>
+        </createTable>
+
+
+        <createTable tableName="arch_page_views_2010_Q3">
+            <column name="page_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="external_visit_id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="view_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="seed" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="is_landing_page" type="TINYINT(1)"/>
+        </createTable>
+
+
+        <createTable tableName="arch_page_views_2010_Q4">
+            <column name="page_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="external_visit_id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="view_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="seed" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="is_landing_page" type="TINYINT(1)"/>
+        </createTable>
+
+
+        <createTable tableName="arch_page_views_2011_Q1">
+            <column name="page_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="external_visit_id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="view_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="seed" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="is_landing_page" type="TINYINT(1)"/>
+        </createTable>
+
+
+        <createTable tableName="arch_page_views_2011_Q2">
+            <column name="page_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="external_visit_id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="view_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="seed" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="is_landing_page" type="TINYINT(1)"/>
+        </createTable>
+
+    </changeSet>
+
+
+    <changeSet author="cconey" id="2015-02-25-catch-up-missing-columns">
+
+        <addColumn tableName="partner_websites">
+            <column name="api_key" type="varchar(36)" afterColumn="status" />
+        </addColumn>
+
+        <addColumn tableName="rev_slotting_apply">
+            <column name="application_results" type="varchar(255)" afterColumn="apply_end_date" />
+        </addColumn>
+
+        <addColumn tableName="providers">
+            <column name="associated" type="tinyint(1)" defaultValueNumeric="1" afterColumn="rate"/>
+            <column name="custom_payin" type="tinyint(1)" defaultValueNumeric="0" afterColumn="associated">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+
+        <addColumn tableName="partner_affiliate_sales_transactions_report">
+            <column name="exit_page_id" type="int(11)" afterColumn="card_id" />
+        </addColumn>
+
+        <addColumn tableName="transaction_types">
+            <column name="is_paid_bonus" type="tinyint(1)" defaultValueNumeric="0" afterColumn="count_as_sale" />
+        </addColumn>
+
+        <addColumn tableName="ncs_partner_card_website_map">
+            <column name="sub_account_id" type="int(11)" />
+            <column name="ncs_card_id" type="int(11)" />
+        </addColumn>
+
+        <addColumn tableName="pc_transaction_detail">
+            <column name="product_internal_name" type="text" afterColumn="product_name" />
+            <column name="ref_trans" type="varchar(36)" afterColumn="category_id" />
+        </addColumn>
+
+    </changeSet>
+
+
+    <changeSet author="cconey" id="2015-02-24-catch-up-views">
+
+        <createView viewName="cms_card_page_map_ccg">
+            select
+              `ccdata${database.suffix}`.`rt_cardpagemap_ccg`.`cardcategorymapId` AS `cardcategorymapId`,
+              `ccdata${database.suffix}`.`rt_cardpagemap_ccg`.`pageInsert`        AS `pageInsert`,
+              `ccdata${database.suffix}`.`rt_cardpagemap_ccg`.`cardpageId`        AS `cardpageId`,
+              `ccdata${database.suffix}`.`rt_cardpagemap_ccg`.`cardId`            AS `cardId`,
+              `ccdata${database.suffix}`.`rt_cardpagemap_ccg`.`rank`              AS `rank`
+            from `ccdata${database.suffix}`.`rt_cardpagemap_ccg`
+        </createView>
+
+        <createView viewName="cms_product_types">
+            select * from `ccdata${database.suffix}`.`product_types`
+        </createView>
+
+        <createView viewName="cms_programs">
+            select
+              `ccdata${database.suffix}`.`programs`.`program_id`      AS `program_id`,
+              `ccdata${database.suffix}`.`programs`.`program_name`    AS `program_name`,
+              `ccdata${database.suffix}`.`programs`.`issuer_id`       AS `issuer_id`,
+              `ccdata${database.suffix}`.`programs`.`program_default` AS `program_default`,
+              `ccdata${database.suffix}`.`programs`.`date_created`    AS `date_created`,
+              `ccdata${database.suffix}`.`programs`.`deleted`         AS `deleted`,
+              `ccdata${database.suffix}`.`programs`.`private`         AS `private`
+            from `ccdata${database.suffix}`.`programs`
+        </createView>
+
+        <createView viewName="cms_secured_merchants">
+            select
+              `ccdata${database.suffix}`.`cs_secured_merchants`.`secured_merchant_id` AS `secured_merchant_id`,
+              `ccdata${database.suffix}`.`cs_secured_merchants`.`merchant_id`         AS `merchant_id`,
+              `ccdata${database.suffix}`.`cs_secured_merchants`.`insulator_class`     AS `insulator_class`
+            from `ccdata${database.suffix}`.`cs_secured_merchants`
+        </createView>
+
+        <createView viewName="cms_sites">
+            select * from `ccdata${database.suffix}`.`rt_sites`
+        </createView>
+
+        <createView viewName="cms_subpage_page_map_ccg">
+            select
+              `ccdata${database.suffix}`.`rt_pagesubpagemap_ccg`.`mapid`        AS `mapid`,
+              `ccdata${database.suffix}`.`rt_pagesubpagemap_ccg`.`siteid`       AS `siteid`,
+              `ccdata${database.suffix}`.`rt_pagesubpagemap_ccg`.`masterpageid` AS `masterpageid`,
+              `ccdata${database.suffix}`.`rt_pagesubpagemap_ccg`.`subpageid`    AS `subpageid`,
+              `ccdata${database.suffix}`.`rt_pagesubpagemap_ccg`.`hide`         AS `hide`,
+              `ccdata${database.suffix}`.`rt_pagesubpagemap_ccg`.`rank`         AS `rank`
+            from `ccdata${database.suffix}`.`rt_pagesubpagemap_ccg`
+        </createView>
+
+        <createView viewName="vw_common_card_display_fields">
+            select
+              `cccomus${database.suffix}`.`partner_cards`.`default_commission` AS `default_commission`,
+              `cccomus${database.suffix}`.`cms_card_page_map`.`cardpageId` AS `category_id`,
+              `cccomus${database.suffix}`.`partner_cards`.`commission_label` AS `commission_label`,
+              `cccomus${database.suffix}`.`partner_cards`.`payout_cap` AS `payout_cap`,
+              `cccomus${database.suffix}`.`partner_cards`.`card_level_id` AS `card_level_id`,
+              `cccomus${database.suffix}`.`partner_cards`.`status` AS `status`,
+              `cccomus${database.suffix}`.`cms_cards`.`cardId` AS `cardId`,
+              `cccomus${database.suffix}`.`cms_cards`.`cardTitle` AS `cardTitle`,
+              `cccomus${database.suffix}`.`cms_card_details`.`cardDetailText` AS `cardDetailText`,
+              `cccomus${database.suffix}`.`cms_card_details`.`cardLink` AS `cardLink`,
+              `cccomus${database.suffix}`.`cms_cards`.`imagePath` AS `imagePath`,
+              `cccomus${database.suffix}`.`cms_cards`.`url` AS `url`,
+              `cccomus${database.suffix}`.`cms_card_details`.`cardIntroDetail` AS `cardIntroDetail`,
+              cast(`cccomus${database.suffix}`.`cms_cards`.`dateCreated` as date) AS `dateCreated`,
+              replace(`cccomus${database.suffix}`.`cms_cards`.`introApr`,'@@introApr@@',`cms_card_data`.`introApr`) AS `introApr`,
+              `cccomus${database.suffix}`.`cms_card_data`.`introApr` AS `q_introApr`,
+              replace(`cccomus${database.suffix}`.`cms_cards`.`regularApr`,'@@regularApr@@',`cms_card_data`.`regularApr`) AS `regularApr`,
+              `cccomus${database.suffix}`.`cms_card_data`.`regularApr` AS `q_regularApr`,
+              replace(`cccomus${database.suffix}`.`cms_cards`.`introAprPeriod`,'@@introAprPeriod@@',`cms_card_data`.`introAprPeriod`) AS `introAprPeriod`,
+              `cccomus${database.suffix}`.`cms_card_data`.`introAprPeriod` AS `q_introAprPeriod`,
+              replace(`cccomus${database.suffix}`.`cms_cards`.`annualFee`,'@@annualFee@@',`cms_card_data`.`annualFee`) AS `annualFee`,
+              `cccomus${database.suffix}`.`cms_card_data`.`annualFee` AS `q_annualFee`,
+              replace(`cccomus${database.suffix}`.`cms_cards`.`monthlyFee`,'@@monthlyFee@@',`cms_card_data`.`monthlyFee`) AS `monthlyFee`,
+              `cccomus${database.suffix}`.`cms_card_data`.`monthlyFee` AS `q_monthlyFee`,
+              replace(`cccomus${database.suffix}`.`cms_cards`.`balanceTransfers`,'@@balanceTransfers@@',convert(if((`cms_card_data`.`balanceTransfers` = 1),'Yes','N/A') using latin1)) AS `balanceTransfers`,
+              `cccomus${database.suffix}`.`cms_card_data`.`balanceTransfers` AS `q_balanceTransfers`,
+              replace(`cccomus${database.suffix}`.`cms_cards`.`balanceTransfers`,'@@balanceTransfers@@',convert(if((`cms_card_data`.`balanceTransfers` = 1),'Yes','No') using latin1)) AS `balanceTransferFee`,
+              `cccomus${database.suffix}`.`cms_card_data`.`balanceTransferFee` AS `q_balanceTransferFee`,
+              replace(`cccomus${database.suffix}`.`cms_cards`.`creditNeeded`,'@@creditNeeded@@',convert((case `cms_card_data`.`creditNeeded` when 0 then 'No Credit Check' when 1 then 'Bad Credit' when 2 then 'Fair Credit' when 3 then 'Good Credit' when 4 then 'Excellent Credit' end) using latin1)) AS `creditNeeded`,
+              `cccomus${database.suffix}`.`cms_card_data`.`creditNeeded` AS `q_creditNeeded`
+            from `cccomus${database.suffix}`.`partner_cards`
+                join `cccomus${database.suffix}`.`cms_cards`
+                    on `cccomus${database.suffix}`.`cms_cards`.`cardId` = `cccomus${database.suffix}`.`partner_cards`.`card_id`
+                join `cccomus${database.suffix}`.`cms_card_details`
+                    on `cccomus${database.suffix}`.`cms_cards`.`cardId` = `cms_card_details`.`cardId`
+                join `cccomus${database.suffix}`.`cms_card_data`
+                    on `cccomus${database.suffix}`.`cms_card_details`.`cardId` = `cms_card_data`.`cardId`
+                join `cccomus${database.suffix}`.`cms_card_page_map`
+                    on `cccomus${database.suffix}`.`cms_card_data`.`cardId` = `cms_card_page_map`.`cardId`
+                join `cccomus${database.suffix}`.`cms_page_site_map`
+                    on `cccomus${database.suffix}`.`cms_page_site_map`.`cardpageId` = `cms_card_page_map`.`cardpageId`
+            where `cccomus${database.suffix}`.`cms_cards`.`active` = 1
+                and `cccomus${database.suffix}`.`cms_cards`.`syndicate` = 1
+                and `cccomus${database.suffix}`.`cms_cards`.`deleted` &lt;&gt; 1
+                and `cccomus${database.suffix}`.`partner_cards`.`status` = 'ACTIVE'
+                and `cccomus${database.suffix}`.`partner_cards`.`deleted` &lt;&gt; 1
+                and `cccomus${database.suffix}`.`cms_card_details`.`cardDetailVersion` =  -1
+                and `cccomus${database.suffix}`.`cms_page_site_map`.`categoryId` = 25
+            order by `cccomus${database.suffix}`.`cms_card_page_map`.`rank`
+        </createView>
+
+        <createView viewName="cms_cards" replaceIfExists="true">
+            SELECT * FROM `ccdata${database.suffix}`.`rt_cards`
+        </createView>
+
+        <createView viewName="cms_merchants" replaceIfExists="true">
+            SELECT * FROM `ccdata${database.suffix}`.`cs_merchants`
+        </createView>
+
+        <createView viewName="vw_sales_rate_summary_transactions" replaceIfExists="true">
+            select
+              `t`.`transid`          AS `transid`,
+              `t`.`transtype`        AS `transtype`,
+              `t`.`dateinserted`     AS `dateinserted`,
+              `t`.`quantity`         AS `quantity`,
+              `t`.`estimatedrevenue` AS `estimatedrevenue`,
+              `t`.`bannerid`         AS `bannerid`,
+              (case `t`.`exit` when NULL then 0 when 1415 then 1077 when 1397 then 11 when 1398 then 12 when 1399 then 13 when 1400 then 14 when 1406 then 15 when 1407 then 16 when 1408 then 17 when 1410 then 18 when 1409 then 19 when 1414 then 20 when 1416 then 21 when 1417 then 22 when 1418 then 23 when 1420 then 25 when 1421 then 26 when 1422 then 27 when 1423 then 28 when 1424 then 30 when 1425 then 31 when 1426 then 32 when 1419 then 39 when 1413 then 74 when 1412 then 75 when 1411 then 76 when 1401 then 77 when 1402 then 78 when 1403 then 79 when 1404 then 80 when 1405 then 82 when 1427 then 979 when 1478 then 1477 else `t`.`exit` end) AS `exit_page_id`,
+              (case `t`.`data3` when NULL then 'Unmatched' when 0 then 'Unmatched' when 1 then 'Matched' else 'Unmatched' end) AS `card_match`
+            from `cccomus${database.suffix}`.`transactions` `t`
+                left join `cccomus${database.suffix}`.`partner_affiliates` `pa`
+                    on `t`.`affiliateid` = `pa`.`affiliate_id`
+            where `pa`.`affiliate_type` like 'TRAFFIC_SOURCE'
+                and `t`.`affiliateid` &lt;&gt; 'bf97ede0'
+        </createView>
+
+        <createView viewName="partner_affiliate_click_reporting_internal" replaceIfExists="true">
+            select
+              `cl`.`affiliate_id` AS `affiliate_id`,
+              `cl`.`website_id` AS `website_id`,
+              `cl`.`card_id` AS `card_id`,
+              `cl`.`date` AS `date_inserted`,
+              ifnull(`co`.`approvalSalesCount`, 0) AS `saleClickCount`,
+              '0' AS `nonSaleClickCount`,
+              ifnull(`co`.`applicationSalesCount`,0) AS `applicationsCount`,
+              ifnull(`co`.`crossSaleCount`,0) AS `crossSaleCount`,
+              ifnull(`cl`.`totalclicks`,0) AS `totalClicks`,
+              ifnull(`co`.`totalcommission`,0) AS `totalCommission`,
+              ifnull(`co`.`totalAdjustment`,0) AS `totalAdjustment`,
+              ifnull(`rs`.`sales_rev`,0) AS `totalRevenue`,
+              '0' AS `nonSalesClickCommission`,
+              '0' AS `salesClickCommission`
+            from `cccomus${database.suffix}`.`click_summary` `cl`
+                left join `cccomus${database.suffix}`.`commission_summary` `co`
+                    on `co`.`affiliate_id` = `cl`.`affiliate_id`
+                       and `co`.`card_id` = `cl`.`card_id`
+                       and `co`.`date` = `cl`.`date`
+                       and `co`.`website_id` = `cl`.`website_id`
+                left join `cccomus${database.suffix}`.`revenue_summary` `rs`
+                    on `rs`.`affiliate_id` = `cl`.`affiliate_id`
+                        and `rs`.`card_id` = `cl`.`card_id`
+                        and `rs`.`post_date` = `cl`.`date`
+                        and `rs`.`website_id` = `cl`.`website_id`
+        </createView>
+
+        <createView viewName="partner_affiliate_click_reporting" replaceIfExists="true">
+            select
+              `cl`.`affiliate_id` AS `affiliate_id`,
+              `cl`.`website_id` AS `website_id`,
+              `cl`.`card_id` AS `card_id`,
+              `cl`.`date` AS `date_inserted`,
+              ifnull(`co`.`approvalSalesCount`,0) AS `saleClickCount`,
+              '0' AS `nonSaleClickCount`,
+              ifnull(`co`.`applicationSalesCount`,0) AS `applicationsCount`,
+              ifnull(`co`.`crossSaleCount`,0) AS `crossSaleCount`,
+              ifnull(`cl`.`totalclicks`,0) AS `totalClicks`,
+              ifnull(`co`.`totalcommission`,0) AS `totalCommission`,
+              ifnull(`co`.`totalAdjustment`,0) AS `totalAdjustment`,
+              '0' AS `nonSalesClickCommission`,
+              '0' AS `salesClickCommission`
+            from `cccomus${database.suffix}`.`click_summary` `cl`
+                left join `cccomus${database.suffix}`.`commission_summary` `co`
+                    on `co`.`affiliate_id` = `cl`.`affiliate_id`
+                        and `co`.`card_id` = `cl`.`card_id`
+                        and `co`.`date` = `cl`.`date`
+                        and `co`.`website_id` = `cl`.`website_id`
+        </createView>
+
+    </changeSet>
+
+</databaseChangeLog>

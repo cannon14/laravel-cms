@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"
+		logicalFilePath="true">
+
+    <property name="database.suffix" value="" context="default"/>
+    <property name="database.suffix" value="_test" context="test"/>
+
+	<include file="ram-1.0.xml" relativeToChangelogFile="true"/>
+	<include file="ram-1.1.xml" relativeToChangelogFile="true"/>
+    <include file="ram-1.2.xml" relativeToChangelogFile="true"/>
+    <include file="ram-1.4.xml" relativeToChangelogFile="true"/>
+    <include file="ram-federated.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

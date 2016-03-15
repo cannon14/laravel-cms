@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="cms_test">
+	<table_data name="product_links">
+        <row>
+            <field name="link_id">1</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">1</field>                                    <!-- card -->
+            <field name="device_type_id">1</field>                                  <!-- desktop -->
+            <field name="website_id" xsi:nil="true" />
+            <field name="account_type_id" xsi:nil="true" />
+            <field name="url">http://card-desktop.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+        <row>
+            <field name="link_id">2</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">1</field>                                    <!-- card -->
+            <field name="device_type_id">2</field>                                  <!-- mobile -->
+            <field name="website_id" xsi:nil="true" />
+            <field name="account_type_id" xsi:nil="true" />
+            <field name="url">http://card-mobile.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+        <row>
+            <field name="link_id">3</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">4</field>                                    <!-- terms -->
+            <field name="device_type_id">1</field>                                  <!-- desktop -->
+            <field name="website_id" xsi:nil="true" />
+            <field name="account_type_id" xsi:nil="true" />
+            <field name="url">http://terms-desktop.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+        <row>
+            <field name="link_id">4</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">4</field>                                    <!-- terms -->
+            <field name="device_type_id">2</field>                                  <!-- mobile -->
+            <field name="website_id" xsi:nil="true" />
+            <field name="account_type_id" xsi:nil="true" />
+            <field name="url">http://terms-mobile.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+        <row>
+            <field name="link_id">5</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">2</field>                                    <!-- account -->
+            <field name="device_type_id">1</field>                                  <!-- desktop -->
+            <field name="website_id" xsi:nil="true" />
+            <field name="account_type_id">1</field>                                 <!-- CS -->
+            <field name="url">http://account-cs-desktop.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+        <row>
+            <field name="link_id">6</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">2</field>                                    <!-- account -->
+            <field name="device_type_id">2</field>                                  <!-- mobile -->
+            <field name="website_id" xsi:nil="true" />
+            <field name="account_type_id">1</field>                                 <!-- CS -->
+            <field name="url">http://account-cs-mobile.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+        <row>
+            <field name="link_id">7</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">2</field>                                    <!-- account -->
+            <field name="device_type_id">1</field>                                  <!-- desktop -->
+            <field name="website_id" xsi:nil="true" />
+            <field name="account_type_id">2</field>                                 <!-- NCS -->
+            <field name="url">http://account-ncs-desktop.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+        <row>
+            <field name="link_id">8</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">2</field>                                    <!-- account -->
+            <field name="device_type_id">2</field>                                  <!-- mobile -->
+            <field name="website_id" xsi:nil="true" />
+            <field name="account_type_id">2</field>                                 <!-- NCS -->
+            <field name="url">http://account-ncs-mobile.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+        <row>
+            <field name="link_id">9</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">2</field>                                    <!-- account -->
+            <field name="device_type_id">1</field>                                  <!-- desktop -->
+            <field name="website_id" xsi:nil="true" />
+            <field name="account_type_id">3</field>                                 <!-- LO -->
+            <field name="url">http://account-lo-desktop.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+        <row>
+            <field name="link_id">10</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">2</field>                                    <!-- account -->
+            <field name="device_type_id">2</field>                                  <!-- mobile -->
+            <field name="website_id" xsi:nil="true" />
+            <field name="account_type_id">3</field>                                 <!-- LO -->
+            <field name="url">http://account-lo-mobile.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+        <row>
+            <field name="link_id">11</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">3</field>                                    <!-- website -->
+            <field name="device_type_id">1</field>                                  <!-- desktop -->
+            <field name="website_id">1</field>
+            <field name="account_type_id" xsi:nil="true" />
+            <field name="url">http://website-desktop.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+        <row>
+            <field name="link_id">12</field>
+            <field name="product_id">1</field>
+            <field name="link_type_id">3</field>                                    <!-- website -->
+            <field name="device_type_id">2</field>                                  <!-- mobile -->
+            <field name="website_id">1</field>
+            <field name="account_type_id" xsi:nil="true" />
+            <field name="url">http://website-mobile.com</field>
+            <field name="date_created">2015-04-23 19:24:56</field>
+            <field name="date_updated" xsi:nil="true" />
+            <field name="updated_by" xsi:nil="true" />
+        </row>
+	</table_data>
+</database>
+</mysqldump>

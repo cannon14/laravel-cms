@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="kenneths" id="ram-federated-tables" runOnChange="true">
+	    <sql>
+
+		    DROP TABLE IF EXISTS payin_tiers;
+		    DROP TABLE IF EXISTS payin_tier_card_assignments;
+		    DROP TABLE IF EXISTS payin_tier_website_assignments;
+
+
+		    CREATE TABLE `payin_tiers` (
+		    `payin_tier_id` int(10) NOT NULL auto_increment,
+		    `issuer_id` int(10) default NULL,
+		    `payin_tier_name` varchar(50) default NULL,
+		    `description` longtext,
+		    `create_time` date default NULL,
+		    `update_time` date default NULL,
+		    `deleted` tinyint(1) default NULL,
+		    `deleted_at` timestamp NULL default NULL,
+		    `default` tinyint(1) default '0',
+		    PRIMARY KEY  (`payin_tier_id`),
+		    UNIQUE KEY `issuer_tiername` (`issuer_id`,`payin_tier_name`)
+		    ) ENGINE=FEDERATED DEFAULT CHARSET=latin1
+			  CONNECTION='${federated.cccomus.ram}/payin_tiers';
+
+		    CREATE TABLE `payin_tier_card_assignments` (
+			    `payin_tier_card_assignment_id` int(32) NOT NULL auto_increment,
+			    `payin_tier_id` int(32) NOT NULL,
+			    `card_id` varchar(15) NOT NULL,
+			    `amount` decimal(6,2) NOT NULL,
+			    `dynamic` tinyint(1) NOT NULL,
+			    `start_time` datetime NOT NULL,
+			    `end_time` datetime default NULL,
+			    `create_time` timestamp NULL default '0000-00-00 00:00:00',
+			    `update_time` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+			    `deleted` tinyint(1) NOT NULL default '0',
+			    `deleted_at` timestamp NULL default NULL,
+			    PRIMARY KEY  (`payin_tier_card_assignment_id`),
+			    KEY `payin_tier_id` (`payin_tier_id`),
+			    KEY `card_id` (`card_id`)
+		    ) ENGINE=FEDERATED DEFAULT CHARSET=latin1
+			  CONNECTION='${federated.cccomus.ram}/payin_tier_card_assignments';
+
+
+		    CREATE TABLE `payin_tier_website_assignments` (
+			    `payin_tier_website_assignment_id` int(32) NOT NULL auto_increment,
+			    `payin_tier_id` int(32) NOT NULL,
+			    `website_id` int(11) NOT NULL,
+			    `start_time` datetime NOT NULL,
+			    `end_time` datetime default NULL,
+			    `create_time` timestamp NULL default '0000-00-00 00:00:00',
+			    `update_time` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+			    `deleted` tinyint(1) NOT NULL default '0',
+			    PRIMARY KEY  (`payin_tier_website_assignment_id`),
+			    KEY `payin_tier_id` (`payin_tier_id`),
+			    KEY `website_id` (`website_id`)
+		    ) ENGINE=FEDERATED DEFAULT CHARSET=latin1
+			  CONNECTION='${federated.cccomus.ram}/payin_tier_website_assignments';
+	    </sql>
+
+
+	</changeSet>
+
+</databaseChangeLog>

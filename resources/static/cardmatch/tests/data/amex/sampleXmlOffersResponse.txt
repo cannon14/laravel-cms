@@ -1,0 +1,67 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns2:getPreScreenOffersResponse xmlns="http://data.prescreen.webservice.edge.americanexpress.com" xmlns:ns2="http://com.americanexpress.edge.webservice.prescreen">
+         <ns2:offersResponse>
+            <customerFlag xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+            <leadOfferFlag>C</leadOfferFlag>
+            <leadOfferURL/>
+            <offerTypeFlag>P</offerTypeFlag>
+            <ErrorMessages xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+            <Offer>
+               <ns2:item>
+                  <sourceCode>A00000EALD</sourceCode>
+                  <iaCode>2X</iaCode>
+                  <rsvpCode xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <bannerInfo>
+                     <ns2:item>
+                        <cardArtURL>https://qicm.americanexpress.comnull</cardArtURL>
+                        <cardName>CCSG</cardName>
+                        <offerMarketingText><![CDATA[&lt;html&gt;&lt;body&gt;&lt;ul&gt;&lt;li&gt; Earn 100K Membership Rewards&lt;sup&gt;&amp;#174;&lt;/sup&gt; points after you spend $3,000 during your first three months of Card membership &lt;li&gt; Premium travel benefits: access over 600 lounges worldwide with Priority Pass&lt;sup&gt;&amp;#153;&lt;/sup&gt; Select, no foreign transaction fees&lt;/li&gt;&lt;li&gt; Entertainment benefits: get Advance Tickets before the public and access once in a lifetime events with By Invitation Only&lt;sup&gt;&amp;#174;&lt;/sup&gt;&lt;/li&gt;&lt;li&gt; 24/7 Platinum Card&lt;sup&gt;&amp;#174;&lt;/sup&gt; Concierge service for assistance with reservations, travel, gifts, and more&lt;/li&gt;&lt;li&gt; Terms and Restrictions Apply.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;]]></offerMarketingText>
+                        <ratesInfo>
+                           <ns2:item>
+                              <introAPR xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                              <regAPR xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                              <btIntroAPR xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                              <btRegAPR xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                           </ns2:item>
+                        </ratesInfo>
+                        <offerBannerURL xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        <offerDispPageInd xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                     </ns2:item>
+                  </bannerInfo>
+                  <offerExpiry>2013-12-31 00:00:00.0</offerExpiry>
+                  <offerId>1720f4d0e7d2f940692daa73117e85a18a214f6b</offerId>
+               </ns2:item>
+               <ns2:item>
+                  <sourceCode>A00000EGJE</sourceCode>
+                  <iaCode>SJH</iaCode>
+                  <rsvpCode xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <bannerInfo>
+                     <ns2:item>
+                        <cardArtURL>https://qicm.americanexpress.comnull</cardArtURL>
+                        <cardName>CCSG</cardName>
+                        <offerMarketingText><![CDATA[&lt;html&gt;&lt;body&gt;&lt;ul&gt;&lt;li&gt; Earn More: earn 50K Membership Rewards&lt;sup&gt;&amp;#174;&lt;/sup&gt; points after you spend $1,000 during your first three months of Card membership; earn 15K points after you spend $30,000 within one calendar year&lt;/li&gt;&lt;li&gt; Earn Fast: Earn triple points on airfare, double points on gasoline at U.S. stand-alone gas stations, double points at U.S. stand-alone supermarkets, and single points on other purchases &lt;li&gt; Points are earned only on eligible purchases&lt;/li&gt;&lt;li&gt; Redeem with Flexibility: use points for gift cards for dining, entertainment, and to shop over 300 brands&lt;/li&gt;&lt;li&gt; Access to Benefits: enjoy the Baggage Insurance Plan&lt;sup&gt;*&lt;/sup&gt; when you travel, and shop with confidence with Extended Warranty&lt;sup&gt;*&lt;/sup&gt; and Return Protection. &lt;sup&gt;*&lt;/sup&gt;Underwritten by AMEX Assurance Company&lt;/li&gt;&lt;li&gt; Preferred Seating: select concerts, shows, major sporting events, and more&lt;/li&gt;&lt;li&gt; $0 introductory annual fee for the first year, then $175&lt;/li&gt;&lt;li&gt; Terms and Restrictions Apply.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;]]></offerMarketingText>
+                        <ratesInfo>
+                           <ns2:item>
+                              <introAPR xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                              <regAPR xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                              <btIntroAPR xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                              <btRegAPR xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                           </ns2:item>
+                        </ratesInfo>
+                        <offerBannerURL xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                        <offerDispPageInd xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                     </ns2:item>
+                  </bannerInfo>
+                  <offerExpiry>2015-02-02 00:00:00.0</offerExpiry>
+                  <offerId>aac0a46a995e1ab727b4506ee72d6a18db56d9d2</offerId>
+               </ns2:item>
+            </Offer>
+            <statusCode>0</statusCode>
+            <statusDescription>SUCCESS</statusDescription>
+            <transactionId>20131016064428014169570TranPMCId</transactionId>
+            <pmcVendorCode xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+         </ns2:offersResponse>
+      </ns2:getPreScreenOffersResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

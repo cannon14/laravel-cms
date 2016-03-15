@@ -1,0 +1,77 @@
+
+.rate-top {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    background-color: #d7d7d7;
+    text-align: center;
+    padding-right: 1px;
+    padding-left: 1px
+}
+
+h1 {
+    color: #000066;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    font-weight: bold;
+}
+
+.rates-bottom {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    background-color: #F2F2F2;
+    text-align: center
+}
+
+.rate-rc {
+    width: 100%;
+    background-color: #FFFFFF
+}
+
+.cc-card-art-align {
+    text-align: right;
+    background-color: #FFFFFF;
+    vertical-align: top;
+}
+
+.offer-left {
+    font-size: 13px;
+    background-color: #CCCCCC;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 100%;
+    color: #0066CC;
+    padding-left: 4px;
+    /*BACKGROUND :   #FFFFFF*/
+}
+
+.offer-left a:link {
+    color: #000999;
+    text-decoration: none
+}
+
+.offer-left a:hover {
+    color: #000999;
+    text-decoration: none
+}
+
+.offer-left a:visited {
+    color: #000999;
+    text-decoration: none
+}
+
+.details {
+    background-color: #FFFFFF;
+    list-style-position: outside;
+    list-style-image: url(/images/b3-spacer.gif);
+    vertical-align: text-top
+}

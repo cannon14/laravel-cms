@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: cccomus
+        psr4_prefix: cccomus
+        src_path: app

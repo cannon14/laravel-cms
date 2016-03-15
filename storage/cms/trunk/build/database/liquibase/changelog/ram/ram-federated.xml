@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   logicalFilePath="ram-federated.ram.xml">
+
+    <changeSet id="init-federated-tables" author="kenneths" runOnChange="true">
+
+	    <sql>
+		    DROP TABLE IF EXISTS ccdata_merchants;
+		    CREATE TABLE `ccdata_merchants` (
+		    `merchantid` int(10) NOT NULL AUTO_INCREMENT,
+		    `merchantname` varchar(255) DEFAULT NULL,
+		    `merchantcardpage` varchar(255) DEFAULT NULL,
+		    `default_payin_tier_id` int(11) DEFAULT NULL,
+		    `deleted` int(1) NOT NULL DEFAULT '0',
+		    `display_name` varchar(255) DEFAULT NULL,
+		    `logo` varchar(255) DEFAULT NULL,
+		    `site_code` varchar(5) DEFAULT NULL,
+		    `category_id` int(11) DEFAULT NULL,
+		    PRIMARY KEY (`merchantid`)
+		    )
+			ENGINE=FEDERATED
+			CONNECTION='${federated.ram.ccdata}/cs_merchants'
+	    </sql>
+
+	    <sql>
+		    DROP TABLE IF EXISTS ccdata_cards;
+            CREATE TABLE ccdata_cards (
+            `id` varchar(15) NOT NULL,
+            `cardId` varchar(15) NOT NULL,
+            `site_code` varchar(5) NOT NULL DEFAULT 'USEN',
+            `cardTitle` varchar(100) DEFAULT NULL,
+            `cardDescription` text,
+            `merchant` int(10) DEFAULT NULL,
+            `introApr` varchar(100) DEFAULT '@@introApr@@%*',
+            `active_introApr` int(1) DEFAULT '0',
+            `introAprPeriod` varchar(100) DEFAULT '@@introAprPeriod@@*',
+            `active_introAprPeriod` int(1) DEFAULT '0',
+            `regularApr` varchar(100) DEFAULT '@@regularApr@@%*',
+            `variable` int(1) DEFAULT '0',
+            `active_regularApr` int(1) DEFAULT '0',
+            `annualFee` varchar(100) DEFAULT '$@@annualFee@@*',
+            `active_annualFee` int(1) DEFAULT '0',
+            `monthlyFee` varchar(255) DEFAULT '$@@monthlyFee@@*',
+            `active_monthlyFee` int(1) DEFAULT '0',
+            `balanceTransfers` varchar(100) DEFAULT '@@balanceTransfers@@*',
+            `active_balanceTransfers` int(1) DEFAULT '0',
+            `balanceTransferFee` varchar(100) DEFAULT '@@balanceTransferFee@@*',
+            `active_balanceTransferFee` int(1) DEFAULT NULL,
+            `balanceTransferIntroApr` varchar(100) DEFAULT '@@balanceTransferIntroApr@@*',
+            `active_balanceTransferIntroApr` int(1) DEFAULT NULL,
+            `balanceTransferIntroAprPeriod` varchar(100) DEFAULT '@@balanceTransferIntroAprPeriod@@*',
+            `active_balanceTransferIntroAprPeriod` int(1) DEFAULT NULL,
+            `creditNeeded` varchar(100) DEFAULT '@@creditNeeded@@*',
+            `active_creditNeeded` int(1) DEFAULT NULL,
+            `imagePath` varchar(255) DEFAULT NULL,
+            `ratesAndFees` text,
+            `rewards` text,
+            `cardBenefits` text,
+            `onlineServices` text,
+            `footNotes` text,
+            `layout` varchar(50) DEFAULT NULL,
+            `dateCreated` datetime DEFAULT NULL,
+            `dateUpdated` datetime DEFAULT NULL,
+            `subCat` tinyint(1) DEFAULT '0',
+            `catTitle` varchar(100) DEFAULT NULL,
+            `catDescription` text,
+            `catImage` varchar(100) DEFAULT NULL,
+            `catImageAltText` varchar(100) DEFAULT NULL,
+            `syndicate` tinyint(1) DEFAULT '1',
+            `url` varchar(255) DEFAULT NULL,
+            `applyByPhoneNumber` varchar(20) DEFAULT NULL,
+            `tPageText` text,
+            `private` tinyint(1) NOT NULL DEFAULT '0',
+            `active` tinyint(1) NOT NULL DEFAULT '1',
+            `deleted` tinyint(1) NOT NULL DEFAULT '0',
+            `active_epd_pages` int(11) DEFAULT NULL,
+            `active_show_epd_rates` int(11) DEFAULT NULL,
+            `show_verify` varchar(255) DEFAULT NULL,
+            `commission_label` enum('PER_APPLICATION','PER_APPROVAL','PER_CLICK') DEFAULT 'PER_APPROVAL',
+            `payout_cap` decimal(6,5) unsigned DEFAULT NULL,
+            `card_level_id` int(11) DEFAULT NULL COMMENT 'References cccomus.card_levels.card_level_id',
+            `requires_approval` tinyint(1) NOT NULL COMMENT 'Card requires issuer approval before it may be syndicated.',
+            `secured` tinyint(4) NOT NULL DEFAULT '0',
+            `network_id` int(11) DEFAULT NULL)
+	        ENGINE=FEDERATED
+	        CONNECTION='${federated.ram.ccdata}/rt_cards'
+        </sql>
+
+	    <sql>
+		    DROP TABLE IF EXISTS cccomus_affiliates;
+		    CREATE TABLE `cccomus_affiliates` (
+		    `affiliate_id` varchar(8) NOT NULL,
+		    `account_id` int(11) NOT NULL,
+		    `affiliate_type` enum('PARTNER','TRAFFIC_SOURCE') NOT NULL,
+		    `ref_id` varchar(8) DEFAULT NULL,
+		    `username` varchar(255) NOT NULL,
+		    `password` varchar(32) NOT NULL,
+		    `affiliate_representative_id` int(11) DEFAULT NULL,
+		    `first_name` varchar(255) NOT NULL,
+		    `last_name` varchar(255) NOT NULL,
+		    `company_name` varchar(255) NOT NULL,
+		    `city` varchar(255) NOT NULL,
+		    `state` varchar(255) NOT NULL,
+		    `street` varchar(255) NOT NULL,
+		    `address2` varchar(60) DEFAULT NULL,
+		    `country` varchar(255) NOT NULL,
+		    `zip` varchar(10) NOT NULL,
+		    `phone` varchar(20) NOT NULL,
+		    `fax` varchar(20) DEFAULT NULL,
+		    `billing_first_name` varchar(255) DEFAULT NULL,
+		    `billing_last_name` varchar(255) DEFAULT NULL,
+		    `billing_company_name` varchar(255) DEFAULT NULL,
+		    `billing_address1` varchar(255) DEFAULT NULL,
+		    `billing_address2` varchar(60) DEFAULT NULL,
+		    `billing_city` varchar(255) DEFAULT NULL,
+		    `billing_state` varchar(255) DEFAULT NULL,
+		    `billing_zip` varchar(10) DEFAULT NULL,
+		    `billing_country` varchar(255) DEFAULT NULL,
+		    `referral_type` tinyint(1) DEFAULT NULL,
+		    `referral_detail` varchar(255) DEFAULT NULL,
+		    `tax` varchar(255) NOT NULL,
+		    `status` enum('ACTIVE','DECLINED','INACTIVE','PENDING','APPROVED') NOT NULL,
+		    `commission_rate_id` int(11) DEFAULT NULL,
+		    `payment_type_id` int(11) NOT NULL DEFAULT '0',
+		    `payout_threshold` double NOT NULL,
+		    `payout_name` varchar(255) NOT NULL,
+		    `ip` int(10) unsigned DEFAULT NULL,
+		    `initials` varchar(10) DEFAULT NULL,
+		    `restricted` tinyint(1) NOT NULL DEFAULT '0',
+		    `in_house` tinyint(1) NOT NULL DEFAULT '0',
+		    `time_inserted` datetime NOT NULL,
+		    `time_modified` datetime NOT NULL,
+		    `deleted` tinyint(1) NOT NULL DEFAULT '0',
+		    `email` varchar(60) NOT NULL,
+		    PRIMARY KEY (`affiliate_id`),
+		    UNIQUE KEY `idx_ref_id` (`ref_id`)
+		    )
+			ENGINE=FEDERATED
+			CONNECTION='${federated.ram.cccomus}/partner_affiliates'
+	    </sql>
+
+	    <sql>
+		    DROP TABLE IF EXISTS cccomus_websites;
+		    CREATE TABLE `cccomus_websites` (
+		    `website_id` int(11) NOT NULL AUTO_INCREMENT,
+		    `affiliate_id` varchar(8) NOT NULL,
+		    `sub_account_id` int(11) DEFAULT NULL,
+		    `name` varchar(255) NOT NULL,
+		    `url` varchar(255) NOT NULL,
+		    `description` varchar(255) DEFAULT NULL,
+		    `estimated_traffic_volume_id` tinyint(3) unsigned NOT NULL,
+		    `approval_status` enum('APPROVED','DECLINED','PENDING') NOT NULL DEFAULT 'PENDING',
+		    `status` enum('ACTIVE','INACTIVE') NOT NULL DEFAULT 'ACTIVE',
+		    `deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+		    PRIMARY KEY (`website_id`),
+		    KEY `idx_affiliate_id` (`affiliate_id`),
+		    KEY `pw_sub_account_id_idx` (`sub_account_id`)
+		    )
+			ENGINE=FEDERATED
+			CONNECTION='${federated.ram.cccomus}/partner_websites'
+	    </sql>
+
+    </changeSet>
+    <changeSet id="add-federated-table" author="michael.lawson">
+        <sql>
+            DROP TABLE IF EXISTS providers;
+            CREATE TABLE `providers` (
+            `provider_id` int(11) NOT NULL AUTO_INCREMENT,
+            `directory` varchar(255) DEFAULT NULL,
+            `class` varchar(255) DEFAULT NULL,
+            `parser_type` varchar(255) NOT NULL DEFAULT 'CSV',
+            `name` varchar(255) DEFAULT NULL,
+            `rate` tinyint(1) DEFAULT NULL,
+            `use_file_revenue` tinyint(1) NOT NULL DEFAULT '0',
+            `custom_payin` tinyint(1) NOT NULL DEFAULT '0',
+            `active` tinyint(1) NOT NULL DEFAULT '1',
+            `deleted` tinyint(1) DEFAULT '0',
+            `associated` tinyint(1) DEFAULT '1',
+            `last_user` varchar(255) NOT NULL,
+            `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+            `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+            PRIMARY KEY (`provider_id`)
+            ) ENGINE=FEDERATED
+            CONNECTION='${federated.ram.cccomus}/providers';
+        </sql>
+    </changeSet>
+
+	<changeSet id="add-transactions-federated-table" author="justin.griffith">
+		<sql>
+			DROP TABLE IF EXISTS cccomus_transactions;
+			CREATE TABLE `cccomus_transactions` (
+			`transid` VARCHAR(36) NOT NULL DEFAULT '',
+			`accountid` VARCHAR(8) DEFAULT NULL,
+			`rstatus` TINYINT(4) NOT NULL DEFAULT '0',
+			`dateinserted` DATETIME DEFAULT NULL,
+			`dateapproved` DATETIME DEFAULT NULL,
+			`transtype` TINYINT(4) DEFAULT '0',
+			`payoutstatus` TINYINT(4) DEFAULT '1',
+			`datepayout` DATETIME DEFAULT NULL,
+			`cookiestatus` TINYINT(4) DEFAULT NULL,
+			`orderid` VARCHAR(200) DEFAULT NULL,
+			`totalcost` FLOAT DEFAULT NULL,
+			`bannerid` VARCHAR(20) DEFAULT NULL,
+			`transkind` TINYINT(4) DEFAULT '0',
+			`refererurl` VARCHAR(250) DEFAULT NULL,
+			`affiliateid` VARCHAR(8) DEFAULT NULL,
+			`campcategoryid` VARCHAR(8) DEFAULT NULL,
+			`parenttransid` VARCHAR(8) DEFAULT NULL,
+			`commission` FLOAT DEFAULT '0',
+			`ip` VARCHAR(40) DEFAULT NULL,
+			`recurringcommid` VARCHAR(8) DEFAULT NULL,
+			`accountingid` VARCHAR(8) DEFAULT NULL,
+			`productid` VARCHAR(200) DEFAULT NULL,
+			`data1` VARCHAR(80) DEFAULT NULL,
+			`data2` VARCHAR(80) DEFAULT NULL,
+			`data3` VARCHAR(80) DEFAULT NULL,
+			`channel` INT(11) DEFAULT NULL,
+			`episode` INT(11) DEFAULT NULL,
+			`timeslot` VARCHAR(200) DEFAULT NULL,
+			`exit` INT(11) DEFAULT NULL,
+			`page_position` INT(11) DEFAULT NULL,
+			`provideractionname` VARCHAR(100) DEFAULT NULL,
+			`providerorderid` VARCHAR(100) DEFAULT NULL,
+			`providertype` VARCHAR(100) DEFAULT NULL,
+			`providereventdate` DATETIME DEFAULT NULL,
+			`providerprocessdate` DATETIME DEFAULT NULL,
+			`merchantname` VARCHAR(100) DEFAULT NULL,
+			`providerid` VARCHAR(100) DEFAULT NULL,
+			`merchantsales` VARCHAR(100) DEFAULT NULL,
+			`quantity` INT(11) DEFAULT '1',
+			`providerchannel` VARCHAR(100) DEFAULT NULL,
+			`estimatedrevenue` DOUBLE(10,2) DEFAULT NULL,
+			`dateestimated` DATETIME DEFAULT NULL,
+			`dateactual` DATETIME DEFAULT NULL,
+			`estimateddatafilename` VARCHAR(150) DEFAULT NULL,
+			`actualdatafilename` VARCHAR(50) DEFAULT NULL,
+			`providerstatus` VARCHAR(50) DEFAULT NULL,
+			`providercorrected` VARCHAR(50) DEFAULT NULL,
+			`providerwebsiteid` VARCHAR(50) DEFAULT NULL,
+			`providerwebsitename` VARCHAR(50) DEFAULT NULL,
+			`provideractionid` VARCHAR(50) DEFAULT NULL,
+			`modifiedby` VARCHAR(100) DEFAULT NULL,
+			`reftrans` VARCHAR(36) DEFAULT NULL,
+			`reversed` TINYINT(1) NOT NULL DEFAULT '0',
+			`dateadjusted` DATETIME DEFAULT NULL,
+			`currref` VARCHAR(32) DEFAULT NULL,
+			`prevref` VARCHAR(32) DEFAULT NULL,
+			`thirdref` VARCHAR(32) DEFAULT NULL,
+			`external_visit_id` VARCHAR(32) DEFAULT NULL,
+			`refinceptiondate` DATETIME DEFAULT NULL,
+			PRIMARY KEY (`transid`),
+			KEY `IDX_wd_pa_transactions8` (`transtype`,`reftrans`),
+			KEY `IDX_wd_pa_transactions10` (`dateinserted`),
+			KEY `IDX_wd_pa_transactions11` (`affiliateid`),
+			KEY `IDX_wd_pa_transactions12` (`campcategoryid`),
+			KEY `IDX_wd_pa_transactions13` (`ip`),
+			KEY `IDX_wd_pa_transactions9` (`dateestimated`),
+			KEY `idx_external_visit_id` (`external_visit_id`),
+			KEY `idx_dateadjusted` (`dateadjusted`)
+			) ENGINE=FEDERATED
+			CONNECTION='${federated.ram.cccomus}/transactions';
+		</sql>
+	</changeSet>
+</databaseChangeLog>

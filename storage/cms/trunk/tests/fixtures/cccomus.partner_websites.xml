@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <database name="cccomus_test">
+        <table_data name="cccomus_test.partner_websites">
+            <row>
+                <field name="website_id">1</field>
+                <field name="affiliate_id">1</field>
+                <field name="sub_account_id" xsi:nil="true" />
+                <field name="name">Fake Site #1</field>
+                <field name="url">http://www.fake-site-1.com</field>
+                <field name="description" xsi:nil="true" />
+                <field name="estimated_traffic_volume_id">1</field>
+                <field name="approval_status">APPROVED</field>
+                <field name="status">ACTIVE</field>
+                <field name="deleted">0</field>
+            </row>
+            <row>
+                <field name="website_id">2</field>
+                <field name="affiliate_id">1</field>
+                <field name="sub_account_id" xsi:nil="true" />
+                <field name="name">Fake Site #2</field>
+                <field name="url">http://www.fake-site-2.com</field>
+                <field name="description" xsi:nil="true" />
+                <field name="estimated_traffic_volume_id">1</field>
+                <field name="approval_status">APPROVED</field>
+                <field name="status">ACTIVE</field>
+                <field name="deleted">0</field>
+            </row>
+        </table_data>
+    </database>
+</mysqldump>

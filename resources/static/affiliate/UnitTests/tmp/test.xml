@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <productCategory id="86" name="Low Interest">
+    <product id="22144458" name="Citi&amp;reg; Platinum Select&amp;reg; Card" introApr="0.00%*" q_introApr="0.00" introAprPeriod="12 Months *" q_introAprPeriod="12" regularApr="10.49%*" q_regularApr="10.49" creditNeeded="Excellent Credit*" q_creditNeeded="2" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22184474" name="Discover&amp;reg; Platinum Card" introApr="0.00%  on Purchases and Balance Transfers." q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="10.99%*" q_regularApr="10.99" creditNeeded="Excellent Credit*" q_creditNeeded="2" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22124546" name="Chase Cash Plus&amp;reg; Rewards Visa Card (Cash Back Credit Card)" introApr="0.00%*" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="13.49%*" q_regularApr="13.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22034413" name="Blue from American Express" introApr="0.00%*" q_introApr="0.00" introAprPeriod="up to 15 months*" q_introAprPeriod="15" regularApr="11.49%*" q_regularApr="11.49" creditNeeded="Excellent Credit*" q_creditNeeded="2" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22124443" name="Chase Platinum Credit Card" introApr="0.00%*" q_introApr="0.00" introAprPeriod="up to 15 Months*" q_introAprPeriod="15" regularApr="11.49%*" q_regularApr="11.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+  </productCategory>
+  <productCategory id="88" name="Cash Back">
+    <product id="22124546" name="Chase Cash Plus&amp;reg; Rewards Visa Card (Cash Back Credit Card)" introApr="0.00%*" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="13.49%*" q_regularApr="13.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22184477" name="The Discover&amp;reg; Platinum Gas Card" introApr="0.00% on Purchases and Balance Transfers*" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="10.99%*" q_regularApr="10.99" creditNeeded="Excellent Credit*" q_creditNeeded="2" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22034411" name="Blue Cash&amp;reg; from American Express" introApr="0.00%*" q_introApr="0.00" introAprPeriod="6 months*" q_introAprPeriod="6" regularApr="12.49%*" q_regularApr="12.49" creditNeeded="Excellent Credit*" q_creditNeeded="2" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22264552" name="HSBC Mastercard&amp;reg; Cash Back Rewards" introApr="0.00%*" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="11.24%*" q_regularApr="11.24" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+  </productCategory>
+  <productCategory id="87" name="Balance Transfers">
+    <product id="22124546" name="Chase Cash Plus&amp;reg; Rewards Visa Card (Cash Back Credit Card)" introApr="0.00%*" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="13.49%*" q_regularApr="13.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22144458" name="Citi&amp;reg; Platinum Select&amp;reg; Card" introApr="0.00%*" q_introApr="0.00" introAprPeriod="12 Months *" q_introAprPeriod="12" regularApr="10.49%*" q_regularApr="10.49" creditNeeded="Excellent Credit*" q_creditNeeded="2" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22264538" name="HSBC Platinum MasterCard" introApr="0.00%*" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="11.24%*" q_regularApr="11.24" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22124443" name="Chase Platinum Credit Card" introApr="0.00%*" q_introApr="0.00" introAprPeriod="up to 15 Months*" q_introAprPeriod="15" regularApr="11.49%*" q_regularApr="11.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+  </productCategory>
+  <productCategory id="90" name="Business">
+    <product id="22014402" name="Advanta Platinum with Rewards" introApr="0.00%*" q_introApr="0.00" introAprPeriod="15 Months*" q_introAprPeriod="15" regularApr="7.99%*" q_regularApr="7.99" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22144465" name="CitiBusiness&amp;reg; Card" introApr="0.00%*" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="12.49%*" q_regularApr="12.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22034410" name="Blue Cash&lt;sup&gt;&amp;reg;&lt;/sup&gt; for Business Credit Card" introApr="0.00%*" q_introApr="0.00" introAprPeriod="6 Months*" q_introAprPeriod="6" regularApr="10.49%*" q_regularApr="10.49" creditNeeded="Excellent Credit*" q_creditNeeded="2" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22144504" name="CitiBusiness&amp;reg; Card with Thank You Network" introApr="0.00%*" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="13.49%*" q_regularApr="13.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22034405" name="Platinum Business Credit Card from American Express" introApr="0.00%*" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="10.49%*" q_regularApr="10.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+  </productCategory>
+  <productCategory id="89" name="Airline">
+    <product id="22074433" name="Value Miles Platinum Visa&amp;reg; Card (Frequent Flyer Credit Card)" introApr="0.00%*" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="12.24%*" q_regularApr="12.24" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1">
+    	<adunit id='123' type='1'/>
+    </product>
+    <product id="22144520" name="Citi&amp;reg; PremierPass&lt;sup&gt;SM&lt;/sup&gt;Card" introApr="0.00% on balance transfers*" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="13.49%*" q_regularApr="13.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1">
+    	<adunit id='321' name='2'/>
+    </product>
+    <product id="22184478" name="The Miles Card from Discover&amp;reg; Card" introApr="0.00% on Purchases &amp;amp; Balance Transfers" q_introApr="0.00" introAprPeriod="12 Months*" q_introAprPeriod="12" regularApr="10.99%*" q_regularApr="10.99" creditNeeded="Excellent Credit*" q_creditNeeded="2" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22144529" name="Citi&amp;reg; Bronze&amp;reg; AAdvantage&amp;reg; MasterCard&amp;reg;" introApr="0.00*" q_introApr="0.00" introAprPeriod="0*" q_introAprPeriod="0" regularApr="17.49%*" q_regularApr="17.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22144516" name="Citi&amp;reg; Gold / AAdvantage&amp;reg; World MasterCard&amp;reg;" introApr="0.00*" q_introApr="0.00" introAprPeriod="0*" q_introAprPeriod="0" regularApr="17.49%*" q_regularApr="17.49" creditNeeded="Bad Credit OK*" q_creditNeeded="0" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+  </productCategory>
+  <productCategory id="91" name="Bad Credit">
+    <product id="22214485" name="First PREMIER Bank Gold MasterCard?" introApr="0.00*" q_introApr="0.00" introAprPeriod="0*" q_introAprPeriod="0" regularApr="9.90%*" q_regularApr="9.90" creditNeeded="Bad Credit OK*" q_creditNeeded="0" balanceTransfers="N/A*" q_balanceTransfers="0"/>
+    <product id="22214484" name="First PREMIER Bank Credit Card" introApr="0.00*" q_introApr="0.00" introAprPeriod="0*" q_introAprPeriod="0" regularApr="9.90%*" q_regularApr="9.90" creditNeeded="Bad Credit OK*" q_creditNeeded="0" balanceTransfers="N/A*" q_balanceTransfers="0"/>
+    <product id="22214482" name="Centennial Gold MasterCard&amp;reg;" introApr="0.00*" q_introApr="0.00" introAprPeriod="0*" q_introAprPeriod="0" regularApr="9.90%*" q_regularApr="9.90" creditNeeded="Bad Credit OK*" q_creditNeeded="0" balanceTransfers="N/A*" q_balanceTransfers="0"/>
+  </productCategory>
+  <productCategory id="92" name="Student">
+    <product id="22144460" name="Citi&amp;reg; Dividend Platinum Select&amp;reg; Card for College Students" introApr="0.00%*" q_introApr="0.00" introAprPeriod="6 Months*" q_introAprPeriod="6" regularApr="17.49%*" q_regularApr="17.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22124444" name="Chase Platinum Student Credit Card" introApr="0.00%*" q_introApr="0.00" introAprPeriod="6 Months*" q_introAprPeriod="6" regularApr="17.49%*" q_regularApr="17.49" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22144462" name="Citi&amp;reg; Platinum Select&amp;reg; Card for College Students" introApr="0.00%*" q_introApr="0.00" introAprPeriod="6 Months*" q_introAprPeriod="6" regularApr="17.24%*" q_regularApr="17.24" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22144536" name="Citi&amp;reg; mtvU&amp;#8482; Platinum Select&amp;reg; Visa&amp;reg; Card for College Students" introApr="0.00%*" q_introApr="0.00" introAprPeriod="6 Months*" q_introAprPeriod="6" regularApr="17.24%*" q_regularApr="17.24" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="Yes*" q_balanceTransfers="1"/>
+    <product id="22184470" name="Discover&amp;reg; Student Classic Card" introApr="0.00%*" q_introApr="0.00" introAprPeriod="6 Months *" q_introAprPeriod="6" regularApr="16.99%*" q_regularApr="16.99" creditNeeded="Good Credit*" q_creditNeeded="1" balanceTransfers="N/A*" q_balanceTransfers="0"/>
+  </productCategory>
+  <productCategory id="93" name="Prepaid">
+    <product id="22354503" name="Wired Plastic Prepaid Visa" introApr="N/A*" q_introApr="0.00" introAprPeriod="N/A*" q_introAprPeriod="0" regularApr="N/A*" q_regularApr="0.00" creditNeeded="Bad Credit OK*" q_creditNeeded="0" balanceTransfers="N/A*" q_balanceTransfers="0"/>
+    <product id="22194479" name="Eufora&amp;reg; Pre-Paid MasterCard&amp;reg;" introApr="0.00*" q_introApr="0.00" introAprPeriod="0*" q_introAprPeriod="0" regularApr="0.00*" q_regularApr="0.00" creditNeeded="Bad Credit OK*" q_creditNeeded="0" balanceTransfers="N/A*" q_balanceTransfers="0"/>
+    <product id="22344502" name="The Vaya&lt;sup&gt;TM&lt;/sup&gt; MasterCard&amp;reg; Card" introApr="0.00*" q_introApr="0.00" introAprPeriod="0*" q_introAprPeriod="0" regularApr="0.00*" q_regularApr="0.00" monthlyFee="None*" q_monthlyFee="5.95" creditNeeded="Bad Credit OK*" q_creditNeeded="0" balanceTransfers="N/A*" q_balanceTransfers="0"/>
+    <product id="22224545" name="Western Union&amp;reg; Prepaid MasterCard&amp;reg; Card" introApr="0.00*" q_introApr="0.00" introAprPeriod="0*" q_introAprPeriod="0" regularApr="0.00*" q_regularApr="0.00" creditNeeded="Bad Credit OK*" q_creditNeeded="0" balanceTransfers="N/A*" q_balanceTransfers="0"/>
+    <product id="22244491" name="Vue Prepaid Visa&amp;reg; Debit Card" introApr="0.00*" q_introApr="0.00" introAprPeriod="0*" q_introAprPeriod="0" regularApr="0.00*" q_regularApr="0.00" creditNeeded="Bad Credit OK*" q_creditNeeded="0" balanceTransfers="N/A*" q_balanceTransfers="0"/>
+  </productCategory>
+</data>

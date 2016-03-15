@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="update-cms" default="update">
+
+    <dirname property="path.base" file="${ant.file}"/>
+    <property name="lib.dir" value="${path.base}/liquibase/lib"/>
+    <property file="${path.base}/liquibase/liquibase.properties"/>
+
+    <taskdef resource="net/sf/antcontrib/antlib.xml"
+             classpath="liquibase/lib/ant-contrib.jar"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.*"/>
+        </fileset>
+    </path>
+
+    <path id="classpath">
+        <fileset dir="${basedir}/liquibase/lib">
+            <include name="mysql-connector-java-5.1.27-bin.jar"/>
+        </fileset>
+    </path>
+
+    <target name="update">
+        <property name="liquibase.target" value="update" />
+        <antcall target="update-cms"/>
+    </target>
+
+    <target name="update-test">
+        <property name="liquibase.target" value="update-test" />
+        <antcall target="update-cms" />
+    </target>
+
+    <target name="sync">
+        <ant antfile="liquibase/build.xml" target="sync">
+            <property name="database.name" value="cms" />
+        </ant>
+    </target>
+
+    <target name="dropTestDbs" description="Drop test databases">
+        <sql
+            driver="${driver}"
+            url="${url}"
+            userid="${username}"
+            password="${password}"
+            src="${basedir}/dropTestDbs.sql"
+            classpathref="classpath"
+            />
+    </target>
+
+    <target name="update-cms">
+
+	    <property name="database.name" value="cms" />
+	    <ant antfile="liquibase/build.xml" target="${liquibase.target}" />
+
+		<ant antfile="liquibase/build.xml" target="${liquibase.target}">
+			<property name="update.type" value="views" />
+		</ant>
+
+    </target>
+</project>

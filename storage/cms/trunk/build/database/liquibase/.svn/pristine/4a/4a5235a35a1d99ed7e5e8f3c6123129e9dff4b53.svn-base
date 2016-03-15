@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="cconey" id="2015-02-23-catch-up">
+
+        <createTable tableName="bid_types">
+            <column defaultValueNumeric="0" name="bid_type" type="TINYINT(1)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="label" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addColumn tableName="cards">
+            <column name="product_type_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <addColumn tableName="cards_history">
+            <column name="product_type_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <addColumn tableName="cards_pending">
+            <column name="product_type_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <addColumn tableName="cards">
+            <column name="program_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <addColumn tableName="cards_pending">
+            <column name="program_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <modifyDataType columnName="account_protection" newDataType="boolean" tableName="other_benefits"/>
+
+        <modifyDataType columnName="account_protection" newDataType="boolean" tableName="other_benefits_history"/>
+
+        <modifyDataType columnName="account_protection" newDataType="boolean" tableName="other_benefits_pending"/>
+
+        <modifyDataType columnName="balance_xfer_period_max" newDataType="int(10) UNSIGNED" tableName="acr_card_terms"/>
+
+        <modifyDataType columnName="balance_xfer_period_min" newDataType="int(10) UNSIGNED" tableName="acr_card_terms"/>
+
+        <modifyDataType columnName="bid_type" newDataType="boolean" tableName="issuers"/>
+
+        <modifyDataType columnName="card_design" newDataType="boolean" tableName="other_benefits"/>
+
+        <modifyDataType columnName="card_design" newDataType="boolean" tableName="other_benefits_history"/>
+
+        <modifyDataType columnName="card_design" newDataType="boolean" tableName="other_benefits_pending"/>
+
+        <addDefaultValue columnDataType="varchar(15)" columnName="card_sku" defaultValue="" tableName="alt_card_skus"/>
+
+        <modifyDataType columnName="consierge_service" newDataType="boolean" tableName="other_benefits"/>
+
+        <modifyDataType columnName="consierge_service" newDataType="boolean" tableName="other_benefits_history"/>
+
+        <modifyDataType columnName="consierge_service" newDataType="boolean" tableName="other_benefits_pending"/>
+
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="acr_import"/>
+
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="cards"/>
+
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="cards_history"/>
+
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="cards_pending"/>
+
+        <modifyDataType columnName="deleted" newDataType="boolean" tableName="users"/>
+
+        <modifyDataType columnName="distribute" newDataType="boolean" tableName="meta_data"/>
+
+        <modifyDataType columnName="extended_warranties" newDataType="boolean" tableName="other_benefits"/>
+
+        <modifyDataType columnName="extended_warranties" newDataType="boolean" tableName="other_benefits_history"/>
+
+        <modifyDataType columnName="extended_warranties" newDataType="boolean" tableName="other_benefits_pending"/>
+
+        <modifyDataType columnName="insurance" newDataType="boolean" tableName="other_benefits"/>
+
+        <modifyDataType columnName="insurance" newDataType="boolean" tableName="other_benefits_history"/>
+
+        <modifyDataType columnName="insurance" newDataType="boolean" tableName="other_benefits_pending"/>
+
+        <modifyDataType columnName="intro_period_max" newDataType="int(10) UNSIGNED" tableName="acr_card_terms"/>
+
+        <modifyDataType columnName="intro_period_min" newDataType="int(10) UNSIGNED" tableName="acr_card_terms"/>
+
+        <modifyDataType columnName="manager" newDataType="boolean" tableName="users"/>
+
+        <modifyDataType columnName="marketable" newDataType="boolean" tableName="acr_import"/>
+
+        <modifyDataType columnName="marketable" newDataType="boolean" tableName="cards"/>
+
+        <modifyDataType columnName="marketable" newDataType="boolean" tableName="cards_history"/>
+
+        <modifyDataType columnName="marketable" newDataType="boolean" tableName="cards_pending"/>
+
+        <modifyDataType columnName="mini_card" newDataType="boolean" tableName="other_benefits"/>
+
+        <modifyDataType columnName="mini_card" newDataType="boolean" tableName="other_benefits_history"/>
+
+        <modifyDataType columnName="mini_card" newDataType="boolean" tableName="other_benefits_pending"/>
+
+        <modifyDataType columnName="personalization" newDataType="boolean" tableName="other_benefits"/>
+
+        <modifyDataType columnName="personalization" newDataType="boolean" tableName="other_benefits_history"/>
+
+        <modifyDataType columnName="personalization" newDataType="boolean" tableName="other_benefits_pending"/>
+
+        <modifyDataType columnName="photo_security" newDataType="boolean" tableName="other_benefits"/>
+
+        <modifyDataType columnName="photo_security" newDataType="boolean" tableName="other_benefits_history"/>
+
+        <modifyDataType columnName="photo_security" newDataType="boolean" tableName="other_benefits_pending"/>
+
+        <modifyDataType columnName="retail_discounts" newDataType="boolean" tableName="other_benefits"/>
+
+        <modifyDataType columnName="retail_discounts" newDataType="boolean" tableName="other_benefits_history"/>
+
+        <modifyDataType columnName="retail_discounts" newDataType="boolean" tableName="other_benefits_pending"/>
+
+        <modifyDataType columnName="roadside_assistance" newDataType="boolean" tableName="other_benefits"/>
+
+        <modifyDataType columnName="roadside_assistance" newDataType="boolean" tableName="other_benefits_history"/>
+
+        <modifyDataType columnName="roadside_assistance" newDataType="boolean" tableName="other_benefits_pending"/>
+
+        <modifyDataType columnName="security_identity_solution" newDataType="boolean" tableName="other_benefits"/>
+
+        <modifyDataType columnName="security_identity_solution" newDataType="boolean" tableName="other_benefits_history"/>
+
+        <modifyDataType columnName="security_identity_solution" newDataType="boolean" tableName="other_benefits_pending"/>
+
+    </changeSet>
+</databaseChangeLog>

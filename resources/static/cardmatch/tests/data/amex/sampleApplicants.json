@@ -1,0 +1,15 @@
+[
+
+	{
+		"first": "MACK",
+		"last": "TINTS",
+		"street": "234 OILY",
+		"city": "HIBBS",
+		"state": "AL",
+		"zip": "88833",
+		"ssn": "1713",
+		"status": 0,
+		"offers": ["A00000EALD", "A00000EGJE"]
+	}
+
+]

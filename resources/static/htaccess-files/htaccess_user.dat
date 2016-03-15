@@ -1,0 +1,4 @@
+AuthUserFile /home/acesw/.htpasswd
+AuthName "Log In"
+AuthType Basic
+require valid-user

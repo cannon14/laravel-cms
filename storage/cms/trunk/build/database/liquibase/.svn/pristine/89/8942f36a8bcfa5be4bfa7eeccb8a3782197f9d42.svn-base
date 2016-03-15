@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet author="liquibase" id="initial-setup">
+        <createTable tableName="card_group_lookup">
+            <column name="card_group_id" type="VARCHAR(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_group_name" type="VARCHAR(255)"/>
+        </createTable>
+
+
+        <createTable tableName="card_name_lookup">
+            <column name="card_id" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_name" type="VARCHAR(100)"/>
+            <column name="card" type="VARCHAR(118)"/>
+        </createTable>
+
+
+        <createTable tableName="exit_page_lookup">
+            <column defaultValueNumeric="0" name="exit_page_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exit_page_name" type="VARCHAR(255)"/>
+        </createTable>
+
+
+        <createTable tableName="historical_2depc_rates_consolidated">
+            <column autoIncrement="true" name="rate_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="'0000-00-00'" name="click_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="click_month" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card" type="VARCHAR(118)"/>
+            <column name="card_id" type="VARCHAR(15)"/>
+            <column name="card_name" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="merchant_id" type="INT(10)"/>
+            <column name="merchant_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="exit_page_id" type="INT(10)"/>
+            <column name="exit_page_name" type="VARCHAR(255)"/>
+            <column name="estimated_epc" type="DECIMAL(8, 5)"/>
+            <column name="actual_epc" type="DECIMAL(8, 5)"/>
+        </createTable>
+
+
+        <createTable tableName="historical_2depc_rates_consolidated_card_group">
+            <column autoIncrement="true" name="rate_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="'0000-00-00'" name="click_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="click_month" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card" type="VARCHAR(118)"/>
+            <column name="card_id" type="VARCHAR(15)"/>
+            <column name="card_name" type="VARCHAR(100)"/>
+            <column name="card_group_id" type="VARCHAR(16)"/>
+            <column name="card_group_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="merchant_id" type="INT(10)"/>
+            <column name="merchant_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="exit_page_id" type="INT(10)"/>
+            <column name="exit_page_name" type="VARCHAR(255)"/>
+            <column name="estimated_epc" type="DECIMAL(8, 5)"/>
+            <column name="actual_epc" type="DECIMAL(8, 5)"/>
+        </createTable>
+
+
+        <createTable tableName="merchant_lookup">
+            <column defaultValueNumeric="0" name="merchant_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="merchant_name" type="VARCHAR(255)"/>
+        </createTable>
+
+
+        <createTable tableName="sales_rate">
+            <column autoIncrement="true" name="sales_rate_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="'0000-00-00'" name="click_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="click_month" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card" type="VARCHAR(118)"/>
+            <column name="card_id" type="VARCHAR(15)"/>
+            <column name="card_name" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="merchant_id" type="INT(10)"/>
+            <column name="merchant_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="exit_page_id" type="INT(10)"/>
+            <column name="exit_page_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="application_count" type="INT(10)"/>
+            <column name="click_count" type="INT(10)"/>
+            <column name="sales_count" type="INT(10)"/>
+            <column name="revenue_amt" type="DECIMAL(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="sales_rate_consolidated">
+            <column autoIncrement="true" name="sales_rate_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="'0000-00-00'" name="click_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="click_month" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card" type="VARCHAR(118)"/>
+            <column name="card_id" type="VARCHAR(15)"/>
+            <column name="card_name" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="merchant_id" type="INT(10)"/>
+            <column name="merchant_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="exit_page_id" type="INT(10)"/>
+            <column name="exit_page_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="application_count" type="INT(10)"/>
+            <column name="click_count" type="INT(10)"/>
+            <column name="sales_count" type="INT(10)"/>
+            <column name="revenue_amt" type="DECIMAL(12, 2)"/>
+        </createTable>
+
+
+        <createTable tableName="sales_rate_consolidated_card_group_baseline">
+            <column autoIncrement="true" name="sales_rate_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="'0000-00-00'" name="click_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="click_month" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card" type="VARCHAR(118)"/>
+            <column name="card_id" type="VARCHAR(15)"/>
+            <column name="card_name" type="VARCHAR(100)"/>
+            <column name="card_group_id" type="VARCHAR(16)"/>
+            <column name="card_group_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="merchant_id" type="INT(10)"/>
+            <column name="merchant_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="exit_page_id" type="INT(10)"/>
+            <column name="exit_page_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="application_count" type="INT(10)"/>
+            <column name="click_count" type="INT(10)"/>
+            <column name="sales_count" type="INT(10)"/>
+            <column name="revenue_amt" type="DECIMAL(12, 2)"/>
+            <column name="declined_application_count" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="sales_rate_consolidated_card_group_optimized">
+            <column autoIncrement="true" name="sales_rate_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="'0000-00-00'" name="click_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="click_month" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card" type="VARCHAR(118)"/>
+            <column name="card_id" type="VARCHAR(15)"/>
+            <column name="card_name" type="VARCHAR(100)"/>
+            <column name="card_group_id" type="VARCHAR(16)"/>
+            <column name="card_group_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="merchant_id" type="INT(10)"/>
+            <column name="merchant_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="exit_page_id" type="INT(10)"/>
+            <column name="exit_page_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="application_count" type="INT(10)"/>
+            <column name="click_count" type="INT(10)"/>
+            <column name="sales_count" type="INT(10)"/>
+            <column name="revenue_amt" type="DECIMAL(12, 2)"/>
+            <column name="declined_application_count" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="sales_rate_consolidated_card_group_table">
+            <column autoIncrement="true" name="sales_rate_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="'0000-00-00'" name="click_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="click_month" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card" type="VARCHAR(118)"/>
+            <column name="card_id" type="VARCHAR(15)"/>
+            <column name="card_name" type="VARCHAR(100)"/>
+            <column name="card_group_id" type="VARCHAR(16)"/>
+            <column name="card_group_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="merchant_id" type="INT(10)"/>
+            <column name="merchant_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="exit_page_id" type="INT(10)"/>
+            <column name="exit_page_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="application_count" type="INT(10)"/>
+            <column name="click_count" type="INT(10)"/>
+            <column name="sales_count" type="INT(10)"/>
+            <column name="revenue_amt" type="DECIMAL(12, 2)"/>
+            <column name="declined_application_count" type="INT(10)"/>
+            <column name="card_match" type="VARCHAR(20)"/>
+        </createTable>
+
+
+        <createTable tableName="sales_rate_consolidated_card_group_version_2">
+            <column autoIncrement="true" name="sales_rate_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="'0000-00-00'" name="click_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="click_month" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card" type="VARCHAR(118)"/>
+            <column name="card_id" type="VARCHAR(15)"/>
+            <column name="card_name" type="VARCHAR(100)"/>
+            <column name="card_group_id" type="VARCHAR(16)"/>
+            <column name="card_group_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="merchant_id" type="INT(10)"/>
+            <column name="merchant_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="exit_page_id" type="INT(10)"/>
+            <column name="exit_page_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="application_count" type="INT(10)"/>
+            <column name="click_count" type="INT(10)"/>
+            <column name="sales_count" type="INT(10)"/>
+            <column name="revenue_amt" type="DECIMAL(12, 2)"/>
+            <column name="declined_application_count" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="summary_card_placement">
+            <column name="card_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_desc" type="LONGTEXT"/>
+            <column name="card_title" type="VARCHAR(100)"/>
+            <column name="web_page_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="position" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="position_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="summary_day_clicks_by_aid">
+            <column defaultValueComputed="'0000-00-00'" name="click_day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count_of_clicks" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="summary_day_clicks_by_aid_card_id">
+            <column defaultValueComputed="'0000-00-00'" name="click_day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count_of_clicks" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="summary_day_clicks_by_aid_did">
+            <column defaultValueComputed="'0000-00-00'" name="click_day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="keyword_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count_of_clicks" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="summary_day_clicks_by_cid">
+            <column defaultValueComputed="'0000-00-00'" name="click_day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="external_campaign_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count_of_clicks" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="summary_day_legacy_page_views_by_aid">
+            <column defaultValueComputed="'0000-00-00'" name="legacy_page_view_day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count_of_unique_page_views" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="summary_day_offer_clicks_by_page">
+            <column name="web_page_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="click_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="page_title" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="click_count" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="summary_day_page_views_by_page">
+            <column name="web_page_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="view_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="page_title" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="view_count" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="landing_count" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="summary_day_unique_visits_by_aid">
+            <column defaultValueComputed="'0000-00-00'" name="visit_day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count_of_visits" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="summary_day_visits_by_aid">
+            <column defaultValueComputed="'0000-00-00'" name="visit_day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count_of_visits" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="summary_day_visits_by_aid_bid">
+            <column defaultValueComputed="'0000-00-00'" name="visit_day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0" name="ad_id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count_of_visits" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="summary_day_visits_by_aid_did">
+            <column defaultValueComputed="'0000-00-00'" name="visit_day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="affiliate_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="keyword_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count_of_visits" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="summary_day_visits_by_cid">
+            <column defaultValueComputed="'0000-00-00'" name="visit_day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="external_campaign_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count_of_visits" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="summary_invalid_exit_page_card_id_trans">
+            <column defaultValueComputed="'0000-00-00'" name="day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_title" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="0" name="exit_page_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="page_name" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="invalid_trans_count" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <addPrimaryKey columnNames="card_group_id" constraintName="PRIMARY" tableName="card_group_lookup"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="card_name_lookup"/>
+
+
+        <addPrimaryKey columnNames="exit_page_id" constraintName="PRIMARY" tableName="exit_page_lookup"/>
+
+
+        <addPrimaryKey columnNames="merchant_id" constraintName="PRIMARY" tableName="merchant_lookup"/>
+
+
+        <addPrimaryKey columnNames="card_id, web_page_id, position, active, position_date" constraintName="PRIMARY"
+                       tableName="summary_card_placement"/>
+
+
+        <addPrimaryKey columnNames="click_day, affiliate_id" constraintName="PRIMARY"
+                       tableName="summary_day_clicks_by_aid"/>
+
+
+        <addPrimaryKey columnNames="click_day, affiliate_id, card_id" constraintName="PRIMARY"
+                       tableName="summary_day_clicks_by_aid_card_id"/>
+
+
+        <addPrimaryKey columnNames="click_day, affiliate_id, keyword_id" constraintName="PRIMARY"
+                       tableName="summary_day_clicks_by_aid_did"/>
+
+
+        <addPrimaryKey columnNames="click_day, external_campaign_id" constraintName="PRIMARY"
+                       tableName="summary_day_clicks_by_cid"/>
+
+
+        <addPrimaryKey columnNames="legacy_page_view_day, affiliate_id" constraintName="PRIMARY"
+                       tableName="summary_day_legacy_page_views_by_aid"/>
+
+
+        <addPrimaryKey columnNames="click_date, web_page_id" constraintName="PRIMARY"
+                       tableName="summary_day_offer_clicks_by_page"/>
+
+
+        <addPrimaryKey columnNames="view_date, web_page_id" constraintName="PRIMARY"
+                       tableName="summary_day_page_views_by_page"/>
+
+
+        <addPrimaryKey columnNames="visit_day, affiliate_id" constraintName="PRIMARY"
+                       tableName="summary_day_unique_visits_by_aid"/>
+
+
+        <addPrimaryKey columnNames="visit_day, affiliate_id" constraintName="PRIMARY"
+                       tableName="summary_day_visits_by_aid"/>
+
+
+        <addPrimaryKey columnNames="visit_day, affiliate_id, ad_id" constraintName="PRIMARY"
+                       tableName="summary_day_visits_by_aid_bid"/>
+
+
+        <addPrimaryKey columnNames="visit_day, affiliate_id, keyword_id" constraintName="PRIMARY"
+                       tableName="summary_day_visits_by_aid_did"/>
+
+
+        <addPrimaryKey columnNames="visit_day, external_campaign_id" constraintName="PRIMARY"
+                       tableName="summary_day_visits_by_cid"/>
+
+
+        <addPrimaryKey columnNames="day, card_id, exit_page_id" constraintName="PRIMARY"
+                       tableName="summary_invalid_exit_page_card_id_trans"/>
+
+
+        <addUniqueConstraint columnNames="click_date, card_id, merchant_id, exit_page_id" constraintName="idx_u_ids"
+                             deferrable="false" disabled="false" initiallyDeferred="false" tableName="sales_rate"/>
+
+
+        <createIndex indexName="idx_affiliate_id" tableName="summary_day_clicks_by_aid" unique="false">
+            <column name="affiliate_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_affiliate_id" tableName="summary_day_clicks_by_aid_card_id" unique="false">
+            <column name="affiliate_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_affiliate_id" tableName="summary_day_clicks_by_aid_did" unique="false">
+            <column name="affiliate_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_affiliate_id" tableName="summary_day_legacy_page_views_by_aid" unique="false">
+            <column name="affiliate_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_affiliate_id" tableName="summary_day_unique_visits_by_aid" unique="false">
+            <column name="affiliate_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_affiliate_id" tableName="summary_day_visits_by_aid" unique="false">
+            <column name="affiliate_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_affiliate_id" tableName="summary_day_visits_by_aid_bid" unique="false">
+            <column name="affiliate_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_affiliate_id" tableName="summary_day_visits_by_aid_did" unique="false">
+            <column name="affiliate_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_group_id" tableName="historical_2depc_rates_consolidated_card_group"
+                     unique="false">
+            <column name="card_group_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_group_id" tableName="sales_rate_consolidated_card_group_baseline"
+                     unique="false">
+            <column name="card_group_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_group_id" tableName="sales_rate_consolidated_card_group_optimized"
+                     unique="false">
+            <column name="card_group_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_group_id" tableName="sales_rate_consolidated_card_group_table" unique="false">
+            <column name="card_group_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_group_id" tableName="sales_rate_consolidated_card_group_version_2"
+                     unique="false">
+            <column name="card_group_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_id" tableName="historical_2depc_rates_consolidated" unique="false">
+            <column name="card_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_id" tableName="historical_2depc_rates_consolidated_card_group" unique="false">
+            <column name="card_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_id" tableName="sales_rate" unique="false">
+            <column name="card_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_id" tableName="sales_rate_consolidated" unique="false">
+            <column name="card_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_id" tableName="sales_rate_consolidated_card_group_baseline" unique="false">
+            <column name="card_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_id" tableName="sales_rate_consolidated_card_group_optimized" unique="false">
+            <column name="card_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_id" tableName="sales_rate_consolidated_card_group_table" unique="false">
+            <column name="card_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_id" tableName="sales_rate_consolidated_card_group_version_2" unique="false">
+            <column name="card_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_card_id" tableName="summary_day_clicks_by_aid_card_id" unique="false">
+            <column name="card_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_exit_page_id" tableName="historical_2depc_rates_consolidated" unique="false">
+            <column name="exit_page_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_exit_page_id" tableName="historical_2depc_rates_consolidated_card_group"
+                     unique="false">
+            <column name="exit_page_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_exit_page_id" tableName="sales_rate" unique="false">
+            <column name="exit_page_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_exit_page_id" tableName="sales_rate_consolidated" unique="false">
+            <column name="exit_page_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_exit_page_id" tableName="sales_rate_consolidated_card_group_baseline"
+                     unique="false">
+            <column name="exit_page_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_exit_page_id" tableName="sales_rate_consolidated_card_group_optimized"
+                     unique="false">
+            <column name="exit_page_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_exit_page_id" tableName="sales_rate_consolidated_card_group_table" unique="false">
+            <column name="exit_page_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_exit_page_id" tableName="sales_rate_consolidated_card_group_version_2"
+                     unique="false">
+            <column name="exit_page_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_external_campaign_id" tableName="summary_day_clicks_by_cid" unique="false">
+            <column name="external_campaign_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_external_campaign_id" tableName="summary_day_visits_by_cid" unique="false">
+            <column name="external_campaign_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_keyword_id" tableName="summary_day_clicks_by_aid_did" unique="false">
+            <column name="keyword_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_keyword_id" tableName="summary_day_visits_by_aid_bid" unique="false">
+            <column name="ad_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_keyword_id" tableName="summary_day_visits_by_aid_did" unique="false">
+            <column name="keyword_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_merchant_id" tableName="historical_2depc_rates_consolidated" unique="false">
+            <column name="merchant_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_merchant_id" tableName="historical_2depc_rates_consolidated_card_group"
+                     unique="false">
+            <column name="merchant_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_merchant_id" tableName="sales_rate" unique="false">
+            <column name="merchant_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_merchant_id" tableName="sales_rate_consolidated" unique="false">
+            <column name="merchant_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_merchant_id" tableName="sales_rate_consolidated_card_group_baseline" unique="false">
+            <column name="merchant_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_merchant_id" tableName="sales_rate_consolidated_card_group_optimized"
+                     unique="false">
+            <column name="merchant_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_merchant_id" tableName="sales_rate_consolidated_card_group_table" unique="false">
+            <column name="merchant_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_merchant_id" tableName="sales_rate_consolidated_card_group_version_2"
+                     unique="false">
+            <column name="merchant_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_position_date" tableName="summary_card_placement" unique="false">
+            <column name="position_date"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_u_ids" tableName="historical_2depc_rates_consolidated" unique="true">
+            <column name="click_date"/>
+            <column name="card_id"/>
+            <column name="merchant_id"/>
+            <column name="exit_page_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_u_ids" tableName="historical_2depc_rates_consolidated_card_group" unique="true">
+            <column name="click_date"/>
+            <column name="card_id"/>
+            <column name="merchant_id"/>
+            <column name="exit_page_id"/>
+            <column name="card_group_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_u_ids" tableName="sales_rate_consolidated" unique="true">
+            <column name="click_date"/>
+            <column name="card_id"/>
+            <column name="merchant_id"/>
+            <column name="exit_page_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_u_ids" tableName="sales_rate_consolidated_card_group_baseline" unique="true">
+            <column name="click_date"/>
+            <column name="card_id"/>
+            <column name="merchant_id"/>
+            <column name="exit_page_id"/>
+            <column name="card_group_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_u_ids" tableName="sales_rate_consolidated_card_group_optimized" unique="true">
+            <column name="click_date"/>
+            <column name="card_id"/>
+            <column name="merchant_id"/>
+            <column name="exit_page_id"/>
+            <column name="card_group_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_u_ids" tableName="sales_rate_consolidated_card_group_version_2" unique="true">
+            <column name="click_date"/>
+            <column name="card_id"/>
+            <column name="merchant_id"/>
+            <column name="exit_page_id"/>
+            <column name="card_group_id"/>
+        </createIndex>
+
+
+        <createIndex indexName="idx_u_ids" tableName="sales_rate_consolidated_card_group_table" unique="false">
+            <column name="click_date"/>
+            <column name="card_id"/>
+            <column name="merchant_id"/>
+            <column name="exit_page_id"/>
+            <column name="card_group_id"/>
+        </createIndex>
+
+
+        <createView viewName="sales_rate_consolidated_card_group">
+            SELECT
+            `srccg`.`sales_rate_id` AS `sales_rate_id`,
+            `srccg`.`click_date` AS `click_date`,
+            `srccg`.`card_id` AS `card_id`,
+            `srccg`.`card_group_id` AS `card_group_id`,
+            `srccg`.`merchant_id` AS `merchant_id`,
+            `srccg`.`exit_page_id` AS `exit_page_id`,
+            `srccg`.`application_count` AS `application_count`,
+            `srccg`.`click_count` AS `click_count`,
+            `srccg`.`sales_count` AS `sales_count`,
+            `srccg`.`revenue_amt` AS `revenue_amt`,
+            `srccg`.`declined_application_count` AS `declined_application_count`,
+            `srccg`.`card_match` AS `card_match`,
+            DATE_FORMAT(`srccg`.`click_date`,'%M') AS `click_month`,
+            `cnl`.`card_name` AS `card_name`,
+            `cnl`.`card` AS `card`,
+            `cgl`.`card_group_name` AS `card_group_name`,
+            `epl`.`exit_page_name` AS `exit_page_name`,
+            `ml`.`merchant_name` AS `merchant_name`
+            FROM `sales_rate_consolidated_card_group_table` `srccg`
+            LEFT JOIN `card_name_lookup` `cnl` ON `srccg`.`card_id` = `cnl`.`card_id`
+            LEFT JOIN `card_group_lookup` `cgl` ON `srccg`.`card_group_id` = `cgl`.`card_group_id`
+            LEFT JOIN `exit_page_lookup` `epl` ON `srccg`.`exit_page_id` = `epl`.`exit_page_id`
+            LEFT JOIN `merchant_lookup` `ml` ON `srccg`.`merchant_id` = `ml`.`merchant_id`
+        </createView>
+
+
+        <createView viewName="vw_sales_rate_consolidated_card_group">
+            SELECT
+            `srccg`.`sales_rate_id` AS `sales_rate_id`,
+            `srccg`.`click_date` AS `click_date`,
+            `srccg`.`card_id` AS `card_id`,
+            `srccg`.`card_group_id` AS `card_group_id`,
+            `srccg`.`merchant_id` AS `merchant_id`,
+            `srccg`.`exit_page_id` AS `exit_page_id`,
+            `srccg`.`application_count` AS `application_count`,
+            `srccg`.`click_count` AS `click_count`,
+            `srccg`.`sales_count` AS `sales_count`,
+            `srccg`.`revenue_amt` AS `revenue_amt`,
+            `srccg`.`declined_application_count` AS `declined_application_count`,
+            DATE_FORMAT(`srccg`.`click_date`,'%M') AS `click_month`,
+            `cnl`.`card_name` AS `card_name`,
+            `cnl`.`card` AS `card`,
+            `cgl`.`card_group_name` AS `card_group_name`,
+            `epl`.`exit_page_name` AS `exit_page_name`,
+            `ml`.`merchant_name` AS `merchant_name`
+            FROM `sales_rate_consolidated_card_group_version_2` `srccg`
+            LEFT JOIN `card_name_lookup` `cnl` ON `srccg`.`card_id` = `cnl`.`card_id`
+            LEFT JOIN `card_group_lookup` `cgl` ON `srccg`.`card_group_id` = `cgl`.`card_group_id`
+            LEFT JOIN `exit_page_lookup` `epl` ON `srccg`.`exit_page_id` = `epl`.`exit_page_id`
+            LEFT JOIN `merchant_lookup` `ml` ON `srccg`.`merchant_id` = `ml`.`merchant_id`
+        </createView>
+    </changeSet>
+</databaseChangeLog>

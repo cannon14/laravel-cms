@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bcus-header="http://barclaycardus.com/core/ws/header/v1" xmlns:schema="http://barclaycardus.com/svc/prescreen/v1/request" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://barclaycardus.com/svc/prescreen/ws/v1" xmlns:version="http://barclaycardus.com/util/appversion/schema/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://barclaycardus.com/svc/prescreen/ws/v1">
+	<wsdl:documentation>Version 1.0</wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://barclaycardus.com/svc/prescreen/v1/request" schemaLocation="prescreen_request_v1.xsd"/>
+			<xsd:import namespace="http://barclaycardus.com/util/appversion/schema/v1" schemaLocation="appversion_v1.xsd"/>
+			<xsd:import namespace="http://barclaycardus.com/core/ws/header/v1" schemaLocation="global_service_header_v1.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="VersionRequest">
+		<wsdl:part element="bcus-header:MessageHeader" name="MessageHeader"/>
+		<wsdl:part element="version:VersionRequest" name="body"/>
+	</wsdl:message>
+
+	<wsdl:message name="VersionResponse">
+		<wsdl:part element="version:VersionResponse" name="body"/>
+	</wsdl:message>
+
+	<wsdl:message name="PrescreenRequest">
+		<wsdl:part element="bcus-header:MessageHeader" name="MessageHeader"/>
+		<wsdl:part element="schema:PrescreenRequest" name="body"/>
+	</wsdl:message>
+
+	<wsdl:message name="PrescreenResponse">
+		<wsdl:part element="schema:PrescreenResponse" name="body"/>
+	</wsdl:message>
+
+	<wsdl:message name="PrescreenOfferCaptureRequest">
+		<wsdl:part element="bcus-header:MessageHeader" name="MessageHeader"/>
+		<wsdl:part element="schema:PrescreenOfferCaptureRequest" name="body"/>
+	</wsdl:message>
+
+	<wsdl:message name="PrescreenOfferCaptureResponse">
+		<wsdl:part element="schema:PrescreenOfferCaptureResponse" name="body"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetPrescreenByPartnerPrescreenIdRequest">
+		<wsdl:part element="bcus-header:MessageHeader" name="MessageHeader"/>
+		<wsdl:part element="schema:GetPrescreenByPartnerPrescreenIdRequest" name="body"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetPrescreenByPartnerPrescreenIdResponse">
+		<wsdl:part element="schema:GetPrescreenByPartnerPrescreenIdResponse" name="body"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetPrescreenRequest">
+		<wsdl:part element="bcus-header:MessageHeader" name="MessageHeader"/>
+		<wsdl:part element="schema:GetPrescreenRequest" name="body"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetPrescreenResponse">
+		<wsdl:part element="schema:GetPrescreenResponse" name="body"/>
+	</wsdl:message>
+
+	<wsdl:message name="ProactivePrescreenRequest">
+		<wsdl:part element="bcus-header:MessageHeader" name="MessageHeader"/>
+		<wsdl:part element="schema:ProactivePrescreenRequest" name="body"/>
+	</wsdl:message>
+	<wsdl:message name="ProactivePrescreenResponse">
+		<wsdl:part element="schema:ProactivePrescreenResponse" name="body"/>
+	</wsdl:message>
+
+	<wsdl:portType name="PrescreenPortType">
+		<wsdl:operation name="version">
+			<wsdl:input message="tns:VersionRequest" name="VersionRequest"/>
+			<wsdl:output message="tns:VersionResponse" name="VersionResponse"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="prescreen">
+			<wsdl:input message="tns:PrescreenRequest" name="PrescreenRequest"/>
+			<wsdl:output message="tns:PrescreenResponse" name="PrescreenResponse"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="offerCapture">
+			<wsdl:input message="tns:PrescreenOfferCaptureRequest" name="PrescreenOfferCaptureRequest"/>
+			<wsdl:output message="tns:PrescreenOfferCaptureResponse" name="PrescreenOfferCaptureResponse"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="getPrescreenByPartnerPrescreenId">
+			<wsdl:input message="tns:GetPrescreenByPartnerPrescreenIdRequest" name="GetPrescreenByPartnerPrescreenIdRequest"/>
+			<wsdl:output message="tns:GetPrescreenByPartnerPrescreenIdResponse" name="GetPrescreenByPartnerPrescreenIdResponse"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="getPrescreen">
+			<wsdl:input message="tns:GetPrescreenRequest" name="GetPrescreenRequest"/>
+			<wsdl:output message="tns:GetPrescreenResponse" name="GetPrescreenResponse"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="getProactivePrescreenProducts">
+			<wsdl:input message="tns:ProactivePrescreenRequest" name="ProactivePrescreenRequest"/>
+			<wsdl:output message="tns:ProactivePrescreenResponse" name="ProactivePrescreenResponse"/>
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="PrescreenServiceBinding" type="tns:PrescreenPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+		<wsdl:operation name="version">
+			<soap:operation soapAction="https://qa01-ic-svcs.barclaycardus.com/prescreenservice/v1/PrescreenWebService.wsdl#version"/>
+			<wsdl:input name="VersionRequest">
+				<soap:header message="tns:VersionRequest" part="MessageHeader" use="literal"/>
+				<soap:body parts="body" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="VersionResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="prescreen">
+			<soap:operation soapAction="https://qa01-ic-svcs.barclaycardus.com/prescreenservice/v1/PrescreenWebService.wsdl#prescreen"/>
+			<wsdl:input name="PrescreenRequest">
+				<soap:header message="tns:PrescreenRequest" part="MessageHeader" use="literal"/>
+				<soap:body parts="body" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="PrescreenResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="offerCapture">
+			<soap:operation soapAction="https://qa01-ic-svcs.barclaycardus.com/prescreenservice/v1/PrescreenWebService.wsdl#offerCapture"/>
+			<wsdl:input name="PrescreenOfferCaptureRequest">
+				<soap:header message="tns:PrescreenOfferCaptureRequest" part="MessageHeader" use="literal"/>
+				<soap:body parts="body" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="PrescreenOfferCaptureResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="getPrescreenByPartnerPrescreenId">
+			<soap:operation soapAction="https://qa01-ic-svcs.barclaycardus.com/prescreenservice/v1/PrescreenWebService.wsdl#getPrescreenByPartnerPrescreenId"/>
+			<wsdl:input name="GetPrescreenByPartnerPrescreenIdRequest">
+				<soap:header message="tns:GetPrescreenByPartnerPrescreenIdRequest" part="MessageHeader" use="literal"/>
+				<soap:body parts="body" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="GetPrescreenByPartnerPrescreenIdResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="getPrescreen">
+			<soap:operation soapAction="https://qa01-ic-svcs.barclaycardus.com/prescreenservice/v1/PrescreenWebService.wsdl#getPrescreen"/>
+			<wsdl:input name="GetPrescreenRequest">
+				<soap:header message="tns:GetPrescreenRequest" part="MessageHeader" use="literal"/>
+				<soap:body parts="body" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="GetPrescreenResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="getProactivePrescreenProducts">
+			<soap:operation soapAction="https://qa01-ic-svcs.barclaycardus.com/prescreenservice/v1/PrescreenWebService.wsdl#getProactivePrescreenProducts"/>
+			<wsdl:input name="ProactivePrescreenRequest">
+				<soap:header message="tns:ProactivePrescreenRequest" part="MessageHeader" use="literal"/>
+				<soap:body parts="body" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="ProactivePrescreenResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+	<wsdl:service name="PrescreenService">
+		<wsdl:port binding="tns:PrescreenServiceBinding" name="PrescreenServicePort">
+			<soap:address location="https://qa01-ic-svcs.barclaycardus.com/prescreenservice/v1/PrescreenWebService.wsdl"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

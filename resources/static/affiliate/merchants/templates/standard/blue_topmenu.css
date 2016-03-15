@@ -1,0 +1,123 @@
+TD.headerLogo
+{
+    BACKGROUND-IMAGE: url("images/blue_logoline.png"); 
+    BACKGROUND-REPEAT: repeat-x;
+    width: 175px;
+    height: 47px;
+    font-weight: bold;
+}
+.topHeader
+{
+    height: 25px;
+}
+.topUserInfo
+{
+
+}
+.headerTopMenu
+{
+    height: 23px;
+}
+.headerTopMenuSpacer
+{
+    BACKGROUND-IMAGE: url("images/blank.gif"); 
+    BACKGROUND-REPEAT: repeat-x;
+    width: 5px;
+    height: 22px;
+}
+.topMenuLeftTab
+{
+    BACKGROUND-IMAGE: url("images/tab_left.gif"); 
+    BACKGROUND-REPEAT: no-repeat;
+    width: 17px;
+    height: 23px;
+}
+.topMenuRightTab
+{
+    BACKGROUND-IMAGE: url("images/tab_right.gif"); 
+    BACKGROUND-REPEAT: no-repeat;
+    width: 18px;
+    height: 23px;
+}
+.topMenuContent
+{
+    BACKGROUND: #FFFFFF url("images/tab_center.gif") top left repeat-x; 
+    height: 23px;
+    
+	padding: 0px 25px;
+    text-align: center;
+    vertical-align: middle;
+    color: #000000;
+    font: 11px Tahoma, Arial, Verdana, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.topMenuLeftTabDisabled
+{
+    BACKGROUND-IMAGE: url("images/tabdisabled_left.gif"); 
+    BACKGROUND-REPEAT: no-repeat;
+    width: 18px;
+    height: 23px;
+}
+.topMenuRightTabDisabled
+{
+    BACKGROUND-IMAGE: url("images/tabdisabled_right.gif"); 
+    BACKGROUND-REPEAT: no-repeat;
+    width: 18px;
+    height: 23px;
+}
+.topMenuContentDisabled
+{
+    BACKGROUND: #FFFFFF url("images/tabdisabled_center.gif") top left repeat-x; 
+    height: 23px;
+	padding: 0px 25px;
+    text-align: center;
+    vertical-align: middle;
+    color: #CCCCCC;
+    font: 11px Tahoma, Arial, Verdana, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.topMenuLine
+{
+    width: 100px;
+    height: 4px;
+    background: #FFFFFF url("images/topmenuline.gif") top left repeat-x;
+}
+.topMenuLineAboveMenu
+{
+    width: 175px;
+    height: 1px;
+    background-color: #E8EDFA;
+}
+
+.topMenuLineAboveContent
+{
+    BACKGROUND-IMAGE: url("images/blank.png"); 
+    BACKGROUND-REPEAT: no-repeat;    
+    height: 5px;
+    background-color: #FFFFFF;
+    border-top: #5993AB 1px solid;
+}
+.topCorner
+{
+    BACKGROUND-IMAGE: url("images/blue_topcorner.png"); 
+    BACKGROUND-REPEAT: no-repeat;
+    width: 7px;
+    height: 5px;
+    background-color: #E8EDFA;
+}
+
+td.topMenuContent a {
+	color: #FFFFFF;
+}
+
+td.topMenuContent a:hover {
+}
+
+td.topMenuContentDisabled a {
+	color: #999999;
+}
+
+td.topMenuContentDisabled a:hover {
+	color: #000D51;
+}
+

@@ -1,0 +1,2094 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="liquibase" id="initial-setup">
+        <createTable tableName="acr_bt_import">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="accept_partial_balance_transfer" type="INT(10)"/>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_end_date" type="date"/>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)"/>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)"/>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)"/>
+            <column defaultValue="fixed" name="used_rate_type" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT(10)"/>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT(10)"/>
+            <column defaultValueNumeric="0.00" name="min_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="fee_rate" type="DECIMAL(6, 3)"/>
+            <column defaultValueNumeric="0.00" name="min_transfer_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_transfer_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)"/>
+        </createTable>
+
+
+        <createTable tableName="acr_card_terms">
+            <column defaultValueNumeric="0" name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="std_apr_min" type="DECIMAL(6, 2) UNSIGNED"/>
+            <column defaultValueNumeric="0.00" name="std_apr_max" type="DECIMAL(6, 2) UNSIGNED"/>
+            <column defaultValueNumeric="0.00" name="intro_apr_min" type="DECIMAL(6, 2) UNSIGNED"/>
+            <column defaultValueNumeric="0.00" name="intro_apr_max" type="DECIMAL(6, 2) UNSIGNED"/>
+            <column defaultValueNumeric="0" name="intro_period_min" type="INT(10) UNSIGNED"/>
+            <column defaultValueNumeric="0" name="intro_period_max" type="INT(10) UNSIGNED"/>
+            <column defaultValueNumeric="0.00" name="balance_xfer_apr_min" type="DECIMAL(6, 2) UNSIGNED"/>
+            <column defaultValueNumeric="0.00" name="balance_xfer_apr_max" type="DECIMAL(6, 2) UNSIGNED"/>
+            <column defaultValueNumeric="0" name="balance_xfer_period_min" type="INT(10) UNSIGNED"/>
+            <column defaultValueNumeric="0" name="balance_xfer_period_max" type="INT(10) UNSIGNED"/>
+            <column defaultValueNumeric="0.00" name="annual_fee" type="DECIMAL(12, 2) UNSIGNED"/>
+            <column name="update_time" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="acr_cards">
+            <column autoIncrement="true" name="card_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_name" type="VARCHAR(255)"/>
+            <column name="card_label" type="VARCHAR(255)"/>
+            <column name="image_file_name" type="VARCHAR(255)"/>
+            <column name="issuer" type="VARCHAR(255)"/>
+            <column name="offer_page_url" type="VARCHAR(255)"/>
+            <column name="terms_page_url" type="VARCHAR(255)"/>
+            <column name="terms_page_hash" type="VARCHAR(255)"/>
+            <column name="sku" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="insert_time" type="datetime"/>
+            <column name="update_time" type="datetime"/>
+            <column name="deleted_time" type="datetime"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(3)"/>
+            <column name="card_source" type="VARCHAR(255)"/>
+            <column name="comments" type="LONGTEXT"/>
+            <column name="card_link_url" type="VARCHAR(255)"/>
+            <column name="old_issuer" type="VARCHAR(255)"/>
+        </createTable>
+
+
+        <createTable tableName="acr_import">
+            <column autoIncrement="true" name="card_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_sku" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer" type="INT(10)"/>
+            <column name="effective_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="NEW" name="status" type="VARCHAR(15)"/>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="coissuing_organization" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="network" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="initial_setup_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="annual_fee" type="DECIMAL(12, 2)"/>
+            <column name="annual_fee_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.00" name="monthly_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_late_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="max_late_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="late_payment_fee_percent" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="over_limit_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="returned_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="dishonored_convenience_check_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="convenience_check_stop_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="balance_transfer_cancellation_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="bank_wire_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="statement_copy_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_display_text" type="LONGTEXT"/>
+            <column name="intro_period_end_date" type="date"/>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ongoing_apr_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="fixed" name="used_rate_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance_compute_method" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit_needed" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_credit_line" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="max_credit_line" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_income" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="min_between_applications_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="interest_rate_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="used_index_rate" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="index_rate_definition" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="apply_payment" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_min_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_max_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="foreign_exchange_fee_rate" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_date" type="date"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="marketable" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="actions">
+            <column autoIncrement="true" name="action_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="action" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="status" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INT(10)"/>
+            <column name="insert_time" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="additional_benefits">
+            <column autoIncrement="true" name="additional_benefit_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="benefit" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="additional_benefits_pending">
+            <column autoIncrement="true" name="additional_benefit_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="benefit" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="additional_fees">
+            <column autoIncrement="true" name="additional_fee_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fee" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="additional_fees_pending">
+            <column autoIncrement="true" name="additional_fee_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fee" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="additional_notes">
+            <column autoIncrement="true" name="additional_note_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="note" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="additional_notes_pending">
+            <column autoIncrement="true" name="additional_note_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="note" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="alt_card_skus">
+            <column defaultValueNumeric="0" name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_sku" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="insert_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="approved_promotional_content">
+            <column autoIncrement="true" name="approved_promotional_content_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="approved_promotional_content_pending">
+            <column autoIncrement="true" name="approved_promotional_content_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="balance_transfers">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="accept_partial_balance_transfer" type="INT(10)"/>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_end_date" type="date"/>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)"/>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)"/>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT(10)"/>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT(10)"/>
+            <column defaultValueNumeric="0.00" name="min_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="fee_rate" type="DECIMAL(6, 3)"/>
+            <column defaultValueNumeric="0.00" name="min_transfer_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_transfer_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)"/>
+            <column name="display_text" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="balance_transfers_history">
+            <column defaultValueNumeric="0" name="action_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="accept_partial_balance_transfer" type="INT(10)"/>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_end_date" type="date"/>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)"/>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)"/>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT(10)"/>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT(10)"/>
+            <column defaultValueNumeric="0.00" name="min_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="fee_rate" type="DECIMAL(6, 3)"/>
+            <column defaultValueNumeric="0.00" name="min_transfer_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_transfer_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)"/>
+            <column name="display_text" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="balance_transfers_pending">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="accept_partial_balance_transfer" type="INT(10)"/>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_end_date" type="date"/>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)"/>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)"/>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT(10)"/>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT(10)"/>
+            <column defaultValueNumeric="0.00" name="min_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="fee_rate" type="DECIMAL(6, 3)"/>
+            <column defaultValueNumeric="0.00" name="min_transfer_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_transfer_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)"/>
+            <column name="display_text" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="card_creation">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="object" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="card_tags">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_tag" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="card_tags_pending">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_tag" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cards">
+            <column autoIncrement="true" name="card_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_sku" type="VARCHAR(15)"/>
+            <column name="issuer" type="INT(10)"/>
+            <column name="effective_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="NEW" name="status" type="VARCHAR(15)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="coissuing_organization" type="VARCHAR(255)"/>
+            <column name="network" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="category" type="VARCHAR(255)"/>
+            <column name="color" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0.00" name="initial_setup_fee" type="DECIMAL(12, 2)"/>
+            <column name="first_annual_fee" type="DECIMAL(12, 2)"/>
+            <column name="ongoing_annual_fee" type="DECIMAL(12, 2)"/>
+            <column name="annual_fee_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.00" name="monthly_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_late_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_late_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="late_payment_fee_percent" type="DECIMAL(6, 3)"/>
+            <column defaultValueNumeric="0.00" name="over_limit_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="returned_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="dishonored_convenience_check_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="convenience_check_stop_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="balance_transfer_cancellation_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="bank_wire_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="statement_copy_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="inactivity_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="intro_apr_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_display_text" type="LONGTEXT"/>
+            <column name="intro_period_end_date" type="date"/>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="ongoing_apr_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT(10)"/>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT(10)"/>
+            <column name="balance_compute_method" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)"/>
+            <column name="credit_needed" type="VARCHAR(255)"/>
+            <column name="credit_needed_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.00" name="min_credit_line" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_credit_line" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_income" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0" name="min_between_applications_period" type="INT(10)"/>
+            <column name="interest_rate_type" type="VARCHAR(255)"/>
+            <column name="used_index_rate" type="VARCHAR(255)"/>
+            <column name="index_rate_definition" type="VARCHAR(255)"/>
+            <column name="apply_payment" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_min_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_max_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="foreign_exchange_fee_rate" type="DECIMAL(6, 3)"/>
+            <column name="custom_prepaid_display_text" type="VARCHAR(50)"/>
+            <column name="modified_date" type="date"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="marketable" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="terms_page_url" type="VARCHAR(255)"/>
+            <column name="bt_intro_apr_display_text" type="LONGTEXT"/>
+            <column name="bt_intro_period_display_text" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cards_history">
+            <column defaultValueNumeric="0" name="action_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column autoIncrement="true" name="card_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_sku" type="VARCHAR(15)"/>
+            <column name="issuer" type="INT(10)"/>
+            <column name="effective_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="NEW" name="status" type="VARCHAR(15)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="coissuing_organization" type="VARCHAR(255)"/>
+            <column name="network" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="category" type="VARCHAR(255)"/>
+            <column name="color" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0.00" name="initial_setup_fee" type="DECIMAL(12, 2)"/>
+            <column name="first_annual_fee" type="DECIMAL(12, 2)"/>
+            <column name="ongoing_annual_fee" type="DECIMAL(12, 2)"/>
+            <column name="annual_fee_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.00" name="monthly_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_late_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_late_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="late_payment_fee_percent" type="DECIMAL(6, 3)"/>
+            <column defaultValueNumeric="0.00" name="over_limit_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="returned_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="dishonored_convenience_check_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="convenience_check_stop_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="balance_transfer_cancellation_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="bank_wire_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="statement_copy_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="inactivity_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="intro_apr_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_display_text" type="LONGTEXT"/>
+            <column name="intro_period_end_date" type="date"/>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="ongoing_apr_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT(10)"/>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT(10)"/>
+            <column name="balance_compute_method" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)"/>
+            <column name="credit_needed" type="VARCHAR(255)"/>
+            <column name="credit_needed_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.00" name="min_credit_line" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_credit_line" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_income" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0" name="min_between_applications_period" type="INT(10)"/>
+            <column name="interest_rate_type" type="VARCHAR(255)"/>
+            <column name="used_index_rate" type="VARCHAR(255)"/>
+            <column name="index_rate_definition" type="VARCHAR(255)"/>
+            <column name="apply_payment" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_min_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_max_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="foreign_exchange_fee_rate" type="DECIMAL(6, 3)"/>
+            <column name="custom_prepaid_display_text" type="VARCHAR(50)"/>
+            <column name="modified_date" type="date"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="marketable" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="terms_page_url" type="VARCHAR(255)"/>
+            <column name="bt_intro_apr_display_text" type="LONGTEXT"/>
+            <column name="bt_intro_period_display_text" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cards_pending">
+            <column autoIncrement="true" name="card_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_sku" type="VARCHAR(15)"/>
+            <column name="issuer" type="INT(10)"/>
+            <column name="effective_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="NEW" name="status" type="VARCHAR(15)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="coissuing_organization" type="VARCHAR(255)"/>
+            <column name="network" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="category" type="VARCHAR(255)"/>
+            <column name="color" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0.00" name="initial_setup_fee" type="DECIMAL(12, 2)"/>
+            <column name="first_annual_fee" type="DECIMAL(12, 2)"/>
+            <column name="ongoing_annual_fee" type="DECIMAL(12, 2)"/>
+            <column name="annual_fee_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.00" name="monthly_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_late_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_late_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="late_payment_fee_percent" type="DECIMAL(6, 3)"/>
+            <column defaultValueNumeric="0.00" name="over_limit_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="returned_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="dishonored_convenience_check_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="convenience_check_stop_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="balance_transfer_cancellation_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="bank_wire_payment_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="statement_copy_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="inactivity_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="intro_apr_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_display_text" type="LONGTEXT"/>
+            <column name="intro_period_end_date" type="date"/>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="ongoing_apr_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)"/>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT(10)"/>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT(10)"/>
+            <column name="balance_compute_method" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)"/>
+            <column name="credit_needed" type="VARCHAR(255)"/>
+            <column name="credit_needed_display_text" type="LONGTEXT"/>
+            <column defaultValueNumeric="0.00" name="min_credit_line" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="max_credit_line" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_income" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0" name="min_between_applications_period" type="INT(10)"/>
+            <column name="interest_rate_type" type="VARCHAR(255)"/>
+            <column name="used_index_rate" type="VARCHAR(255)"/>
+            <column name="index_rate_definition" type="VARCHAR(255)"/>
+            <column name="apply_payment" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_min_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_max_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="foreign_exchange_fee_rate" type="DECIMAL(6, 3)"/>
+            <column name="custom_prepaid_display_text" type="VARCHAR(50)"/>
+            <column name="modified_date" type="date"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="marketable" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="terms_page_url" type="VARCHAR(255)"/>
+            <column name="bt_intro_apr_display_text" type="LONGTEXT"/>
+            <column name="bt_intro_period_display_text" type="LONGTEXT"/>
+        </createTable>
+
+
+        <createTable tableName="cash_advances">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_end_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="max_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_grace_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_finance_charge" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_fixed_rate_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fee_rate" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_convenience_check_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_payment_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_payment_percentage" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cash_advance_limit" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cash_advances_history">
+            <column defaultValueNumeric="0" name="action_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_end_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="max_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_grace_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_finance_charge" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_fixed_rate_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fee_rate" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_convenience_check_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_payment_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_payment_percentage" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cash_advance_limit" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cash_advances_pending">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_intro_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_end_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="max_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_grace_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_finance_charge" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_fixed_rate_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fee_rate" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_convenience_check_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_payment_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_payment_percentage" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cash_advance_limit" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cash_back">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_round_bonus" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="annual_bonus" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cash_back_history">
+            <column defaultValueNumeric="0" name="action_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_round_bonus" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="annual_bonus" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cash_back_pending">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_round_bonus" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="annual_bonus" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="categories">
+            <column autoIncrement="true" name="category_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="category_title" type="VARCHAR(255)"/>
+            <column name="rank" type="INT(10)"/>
+            <column name="category_link_url" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(3)"/>
+        </createTable>
+
+
+        <createTable tableName="category_map">
+            <column autoIncrement="true" name="category_map_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)"/>
+            <column name="category_id" type="INT(10)"/>
+        </createTable>
+
+
+        <createTable tableName="cccom_data">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_link" type="VARCHAR(255)"/>
+            <column name="apply_by_phone_number" type="VARCHAR(255)"/>
+            <column name="terms_link" type="VARCHAR(255)"/>
+        </createTable>
+
+
+        <createTable tableName="ccx_cms_map">
+            <column name="ccx_card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cms_card_id" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="commercial_features">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reporting_features" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="travel_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchasing_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fleet_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="commercial_features_history">
+            <column defaultValueNumeric="0" name="action_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reporting_features" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="travel_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchasing_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fleet_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="commercial_features_pending">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reporting_features" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="travel_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchasing_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fleet_expense_management" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="cpbt_snapshot_windows">
+            <column autoIncrement="true" name="window_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="snapshot_id" type="INT(10)"/>
+            <column name="issuer_id" type="INT(10)"/>
+            <column name="start_date" type="datetime"/>
+            <column name="end_date" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="cpbt_snapshots">
+            <column autoIncrement="true" name="snapshot_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="date_created" type="datetime"/>
+        </createTable>
+
+
+        <createTable tableName="errors">
+            <column autoIncrement="true" name="error_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="error" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="SYSTEM" name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="frequent_flier">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="which_airlines" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject_to_blackout_dates" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_purchase_bonus" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="frequent_flier_history">
+            <column defaultValueNumeric="0" name="action_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="which_airlines" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject_to_blackout_dates" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_purchase_bonus" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="frequent_flier_pending">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="which_airlines" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject_to_blackout_dates" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_purchase_bonus" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="issuers">
+            <column autoIncrement="true" name="issuer_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="logo" type="VARCHAR(255)"/>
+            <column name="site_code" type="VARCHAR(5)"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="bid_type" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="meta_data">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="distribute" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="other_benefits">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="insurance" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="retail_discounts" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="extended_warranties" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roadside_assistance" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="security_identity_solution" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_protection" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="consierge_service" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_design" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mini_card" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="photo_security" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="personalization" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="other_benefits_history">
+            <column defaultValueNumeric="0" name="action_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="insurance" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="retail_discounts" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="extended_warranties" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roadside_assistance" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="security_identity_solution" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_protection" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="consierge_service" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_design" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mini_card" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="photo_security" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="personalization" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="other_benefits_pending">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="insurance" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="retail_discounts" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="extended_warranties" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roadside_assistance" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="security_identity_solution" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_protection" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="consierge_service" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_design" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mini_card" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="photo_security" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="personalization" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="point_rewards">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="where_points_redeemed" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value_of_points" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_purchase_bonus" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="point_rewards_history">
+            <column defaultValueNumeric="0" name="action_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="where_points_redeemed" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value_of_points" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_purchase_bonus" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="point_rewards_pending">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="where_points_redeemed" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value_of_points" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_purchase_bonus" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="prepaid_card_fees">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="replacement_card_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atm_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="live_teller_withdrawal_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atm_balance_inquiry_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="monthly_inactive_account_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="automated_telephone_inquiry_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_service_live_call_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cancel_card_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="application_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_merchant_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_online_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_telephone_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="signature_transaction_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pin_transaction_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="load_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="prepaid_card_fees_history">
+            <column defaultValueNumeric="0" name="action_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="replacement_card_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atm_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="live_teller_withdrawal_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atm_balance_inquiry_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="monthly_inactive_account_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="automated_telephone_inquiry_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_service_live_call_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cancel_card_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="application_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_merchant_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_online_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_telephone_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="signature_transaction_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pin_transaction_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="load_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="prepaid_card_fees_pending">
+            <column name="card_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="replacement_card_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atm_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="live_teller_withdrawal_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atm_balance_inquiry_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="monthly_inactive_account_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="automated_telephone_inquiry_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_service_live_call_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cancel_card_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="application_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_merchant_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_online_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_telephone_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="signature_transaction_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pin_transaction_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="load_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="user_issuer_map">
+            <column name="user_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="users">
+            <column autoIncrement="true" name="user_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="USER" name="role" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer_id" type="INT(10)"/>
+            <column defaultValueNumeric="0" name="manager" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time_inserted" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="acr_bt_import"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="acr_card_terms"/>
+
+
+        <addPrimaryKey columnNames="card_id, card_sku" constraintName="PRIMARY" tableName="alt_card_skus"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="balance_transfers"/>
+
+
+        <addPrimaryKey columnNames="card_id, action_id" constraintName="PRIMARY" tableName="balance_transfers_history"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="balance_transfers_pending"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="card_creation"/>
+
+
+        <addPrimaryKey columnNames="card_id, card_tag" constraintName="PRIMARY" tableName="card_tags"/>
+
+
+        <addPrimaryKey columnNames="card_id, card_tag" constraintName="PRIMARY" tableName="card_tags_pending"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="cash_advances"/>
+
+
+        <addPrimaryKey columnNames="card_id, action_id" constraintName="PRIMARY" tableName="cash_advances_history"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="cash_advances_pending"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="cash_back"/>
+
+
+        <addPrimaryKey columnNames="card_id, action_id" constraintName="PRIMARY" tableName="cash_back_history"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="cash_back_pending"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="cccom_data"/>
+
+
+        <addPrimaryKey columnNames="ccx_card_id, cms_card_id" constraintName="PRIMARY" tableName="ccx_cms_map"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="commercial_features"/>
+
+
+        <addPrimaryKey columnNames="card_id, action_id" constraintName="PRIMARY"
+                       tableName="commercial_features_history"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="commercial_features_pending"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="frequent_flier"/>
+
+
+        <addPrimaryKey columnNames="card_id, action_id" constraintName="PRIMARY" tableName="frequent_flier_history"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="frequent_flier_pending"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="meta_data"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="other_benefits"/>
+
+
+        <addPrimaryKey columnNames="card_id, action_id" constraintName="PRIMARY" tableName="other_benefits_history"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="other_benefits_pending"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="point_rewards"/>
+
+
+        <addPrimaryKey columnNames="card_id, action_id" constraintName="PRIMARY" tableName="point_rewards_history"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="point_rewards_pending"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="prepaid_card_fees"/>
+
+
+        <addPrimaryKey columnNames="card_id, action_id" constraintName="PRIMARY" tableName="prepaid_card_fees_history"/>
+
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="prepaid_card_fees_pending"/>
+
+
+        <addPrimaryKey columnNames="user_id, issuer_id" constraintName="PRIMARY" tableName="user_issuer_map"/>
+
+
+        <addUniqueConstraint columnNames="card_sku, issuer" constraintName="IDX_SKU_Issuer" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="acr_import"/>
+
+
+        <addUniqueConstraint columnNames="card_id, benefit" constraintName="IDX_sku_issuer_benefit" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="additional_benefits_pending"/>
+
+
+        <addUniqueConstraint columnNames="card_id, fee" constraintName="IDX_sku_issuer_fee" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="additional_fees"/>
+
+
+        <addUniqueConstraint columnNames="card_id, note" constraintName="IDX_sku_issuer_note" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="additional_notes_pending"/>
+
+
+        <addUniqueConstraint columnNames="card_id, category_id" constraintName="idx_card_cat" deferrable="false"
+                             disabled="false" initiallyDeferred="false" tableName="category_map"/>
+
+
+        <createIndex indexName="IDX_SKU_Issuer" tableName="cards" unique="false">
+            <column name="card_sku"/>
+            <column name="issuer"/>
+        </createIndex>
+
+
+        <createIndex indexName="IDX_SKU_Issuer" tableName="cards_pending" unique="false">
+            <column name="card_sku"/>
+            <column name="issuer"/>
+        </createIndex>
+
+
+        <createIndex indexName="IDX_sku_issuer_benefit" tableName="additional_benefits" unique="true">
+            <column name="card_id"/>
+            <column name="benefit"/>
+        </createIndex>
+
+
+        <createIndex indexName="IDX_sku_issuer_fee" tableName="additional_fees_pending" unique="true">
+            <column name="card_id"/>
+            <column name="fee"/>
+        </createIndex>
+
+
+        <createIndex indexName="IDX_sku_issuer_note" tableName="additional_notes" unique="true">
+            <column name="card_id"/>
+            <column name="note"/>
+        </createIndex>
+
+
+        <createIndex indexName="issuers_bid_type_fk" tableName="issuers" unique="false">
+            <column name="bid_type"/>
+        </createIndex>
+
+
+        <createView viewName="stable_cards">
+            SELECT
+            `cards_pending`.`card_id` AS `card_id`,
+            `cards_pending`.`card_sku` AS `card_sku`,
+            `cards_pending`.`issuer` AS `issuer`,
+            `cards_pending`.`effective_date` AS `effective_date`,
+            `cards_pending`.`status` AS `status`,
+            `cards_pending`.`type` AS `type`,
+            `cards_pending`.`image` AS `image`,
+            `cards_pending`.`coissuing_organization` AS `coissuing_organization`,
+            `cards_pending`.`network` AS `network`,
+            `cards_pending`.`title` AS `title`,
+            `cards_pending`.`category` AS `category`,
+            `cards_pending`.`color` AS `color`,
+            `cards_pending`.`initial_setup_fee` AS `initial_setup_fee`,
+            `cards_pending`.`first_annual_fee` AS `first_annual_fee`,
+            `cards_pending`.`ongoing_annual_fee` AS `ongoing_annual_fee`,
+            `cards_pending`.`annual_fee_display_text` AS `annual_fee_display_text`,
+            `cards_pending`.`monthly_fee` AS `monthly_fee`,
+            `cards_pending`.`min_late_payment_fee` AS `min_late_payment_fee`,
+            `cards_pending`.`max_late_payment_fee` AS `max_late_payment_fee`,
+            `cards_pending`.`late_payment_fee_percent` AS `late_payment_fee_percent`,
+            `cards_pending`.`over_limit_fee` AS `over_limit_fee`,
+            `cards_pending`.`returned_payment_fee` AS `returned_payment_fee`,
+            `cards_pending`.`dishonored_convenience_check_fee` AS `dishonored_convenience_check_fee`,
+            `cards_pending`.`convenience_check_stop_payment_fee` AS `convenience_check_stop_payment_fee`,
+            `cards_pending`.`balance_transfer_cancellation_fee` AS `balance_transfer_cancellation_fee`,
+            `cards_pending`.`bank_wire_payment_fee` AS `bank_wire_payment_fee`,
+            `cards_pending`.`statement_copy_fee` AS `statement_copy_fee`,
+            `cards_pending`.`inactivity_fee` AS `inactivity_fee`,
+            `cards_pending`.`intro_apr` AS `intro_apr`,
+            `cards_pending`.`intro_apr_used_rate_type` AS `intro_apr_used_rate_type`,
+            `cards_pending`.`intro_apr_display_text` AS `intro_apr_display_text`,
+            `cards_pending`.`min_intro_period` AS `min_intro_period`,
+            `cards_pending`.`max_intro_period` AS `max_intro_period`,
+            `cards_pending`.`intro_period_display_text` AS `intro_period_display_text`,
+            `cards_pending`.`intro_period_end_date` AS `intro_period_end_date`,
+            `cards_pending`.`min_ongoing_apr` AS `min_ongoing_apr`,
+            `cards_pending`.`min_ongoing_apr_used_rate_type` AS `min_ongoing_apr_used_rate_type`,
+            `cards_pending`.`max_ongoing_apr` AS `max_ongoing_apr`,
+            `cards_pending`.`max_ongoing_apr_used_rate_type` AS `max_ongoing_apr_used_rate_type`,
+            `cards_pending`.`ongoing_apr_display_text` AS `ongoing_apr_display_text`,
+            `cards_pending`.`min_default_apr` AS `min_default_apr`,
+            `cards_pending`.`min_default_apr_used_rate_type` AS `min_default_apr_used_rate_type`,
+            `cards_pending`.`max_default_apr` AS `max_default_apr`,
+            `cards_pending`.`max_default_apr_used_rate_type` AS `max_default_apr_used_rate_type`,
+            `cards_pending`.`min_grace_period` AS `min_grace_period`,
+            `cards_pending`.`min_finance_charge` AS `min_finance_charge`,
+            `cards_pending`.`min_fixed_rate_period` AS `min_fixed_rate_period`,
+            `cards_pending`.`balance_compute_method` AS `balance_compute_method`,
+            `cards_pending`.`min_payment_amount` AS `min_payment_amount`,
+            `cards_pending`.`min_payment_percentage` AS `min_payment_percentage`,
+            `cards_pending`.`credit_needed` AS `credit_needed`,
+            `cards_pending`.`credit_needed_display_text` AS `credit_needed_display_text`,
+            `cards_pending`.`min_credit_line` AS `min_credit_line`,
+            `cards_pending`.`max_credit_line` AS `max_credit_line`,
+            `cards_pending`.`min_income` AS `min_income`,
+            `cards_pending`.`min_between_applications_period` AS `min_between_applications_period`,
+            `cards_pending`.`interest_rate_type` AS `interest_rate_type`,
+            `cards_pending`.`used_index_rate` AS `used_index_rate`,
+            `cards_pending`.`index_rate_definition` AS `index_rate_definition`,
+            `cards_pending`.`apply_payment` AS `apply_payment`,
+            `cards_pending`.`foreign_exchange_min_fee` AS `foreign_exchange_min_fee`,
+            `cards_pending`.`foreign_exchange_max_fee` AS `foreign_exchange_max_fee`,
+            `cards_pending`.`foreign_exchange_fee_rate` AS `foreign_exchange_fee_rate`,
+            `cards_pending`.`custom_prepaid_display_text` AS `custom_prepaid_display_text`,
+            `cards_pending`.`modified_date` AS `modified_date`,
+            `cards_pending`.`deleted` AS `deleted`,
+            `cards_pending`.`marketable` AS `marketable`,
+            `cards_pending`.`terms_page_url` AS `terms_page_url`,
+            `cards_pending`.`bt_intro_apr_display_text` AS `bt_intro_apr_display_text`,
+            `cards_pending`.`bt_intro_period_display_text` AS `bt_intro_period_display_text`
+            FROM `cards_pending`
+        </createView>
+    </changeSet>
+</databaseChangeLog>

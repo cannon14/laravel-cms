@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <database name="cccomus_test">
+        <table_data name="cccomus_test.partner_account_types">
+            <row>
+                <field name="partner_account_type_id">1</field>
+                <field name="account_type">CS</field>
+                <field name="can_receive_email" xsi:nil="true" />
+            </row>
+            <row>
+                <field name="partner_account_type_id">2</field>
+                <field name="account_type">NCS</field>
+                <field name="can_receive_email" xsi:nil="true" />
+            </row>
+            <row>
+                <field name="partner_account_type_id">3</field>
+                <field name="account_type">LO</field>
+                <field name="can_receive_email" xsi:nil="true" />
+            </row>
+        </table_data>
+    </database>
+</mysqldump>

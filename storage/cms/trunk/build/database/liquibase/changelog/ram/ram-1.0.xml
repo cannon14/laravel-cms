@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   logicalFilePath="ram-1.0.xml">
+
+    <changeSet author="liquibase" id="initial-setup">
+
+        <createTable tableName="payin_tiers">
+            <column autoIncrement="true" name="payin_tier_id" type="INT(10)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="issuer_id" type="INT(10)"/>
+            <column name="payin_tier_name" type="VARCHAR(50)"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="create_time" type="date"/>
+            <column name="update_time" type="date"/>
+            <column name="deleted" type="TINYINT(1)"/>
+        </createTable>
+
+        <addUniqueConstraint columnNames="issuer_id, payin_tier_name" constraintName="issuer_tiername" deferrable="false" disabled="false" initiallyDeferred="false" tableName="payin_tiers"/>
+
+    </changeSet>
+
+    <changeSet author="cconey" id="soft-delete">
+
+        <addColumn tableName="payin_tiers">
+            <column name="deleted_at" type="timestamp"/>
+        </addColumn>
+
+    </changeSet>
+
+	<changeSet author="kenneths" id="card_assignments">
+
+		<createTable tableName="payin_tier_card_assignments">
+			<column name="payin_tier_card_assignment_id" type="int(32)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="payin_tier_id" type="int(32)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="card_id" type="varchar(15)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="amount" type="decimal(6,2)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="dynamic" type="tinyint(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="start_time" type="datetime">
+				<constraints nullable="false"/>
+			</column>
+			<column name="end_time" type="datetime"/>
+			<column name="create_time" type="timestamp" defaultValue="0000-00-00 00:00:00"/>
+			<column name="deleted" type="tinyint(1)" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<sql>
+			ALTER TABLE payin_tier_card_assignments
+			ADD COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER create_time
+		</sql>
+	</changeSet>
+
+
+	<changeSet author="kenneths" id="website_assignments">
+		<createTable tableName="payin_tier_website_assignments">
+			<column name="payin_tier_website_assignment_id" type="int(32)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="payin_tier_id" type="int(32)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="website_id" type="int(11)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="start_time" type="datetime">
+				<constraints nullable="false"/>
+			</column>
+			<column name="end_time" type="datetime"/>
+			<column name="create_time" type="timestamp" defaultValueComputed="'0000-00-00 00:00:00'"/>
+			<column name="deleted" type="tinyint(1)" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<sql>
+			ALTER TABLE payin_tier_website_assignments
+			ADD COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER create_time
+		</sql>
+	</changeSet>
+
+    <changeSet author="cconey" id="default_tier">
+
+        <addColumn tableName="payin_tiers">
+            <column name="default" type="tinyint(1)" defaultValue="0"/>
+        </addColumn>
+
+    </changeSet>
+
+
+	<changeSet author="kenneths" id="payins-soft-delete">
+
+		<addColumn tableName="payin_tier_card_assignments">
+			<column name="deleted_at" type="timestamp"/>
+		</addColumn>
+
+	</changeSet>
+
+    <changeSet id="add-indexes" author="cconey">
+        <createIndex tableName="payin_tier_card_assignments" indexName="payin_tier_id">
+            <column name="payin_tier_id" type="int(11)"/>
+        </createIndex>
+        <createIndex tableName="payin_tier_card_assignments" indexName="card_id">
+            <column name="card_id" type="varchar(15)"/>
+        </createIndex>
+
+        <createIndex tableName="payin_tier_website_assignments" indexName="payin_tier_id">
+            <column name="payin_tier_id" type="int(32)"/>
+        </createIndex>
+        <createIndex tableName="payin_tier_website_assignments" indexName="website_id">
+            <column name="website_id" type="int(11)"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="add-payin-tier-indexes" author="cconey">
+        <createIndex tableName="payin_tiers" indexName="issuer_id">
+            <column name="issuer_id" type="int(10)"></column>
+        </createIndex>
+    </changeSet>
+
+	<changeSet id="fix-auto-updating-deleted-at" author="kenneths">
+		<dropNotNullConstraint tableName="payin_tier_card_assignments"
+		                       columnName="deleted_at"
+							   columnDataType="timestamp"/>
+	</changeSet>
+	
+	<changeSet id="fix-deleted-default-values" author="danielk">
+		<addDefaultValue tableName="payin_tiers"
+            columnName="deleted"
+            defaultValue="0"/>
+		<addDefaultValue tableName="payin_tier_card_assignments"
+            columnName="deleted"
+            defaultValue="0"/>
+		<addDefaultValue tableName="payin_tier_website_assignments"
+            columnName="deleted"
+            defaultValue="0"/>
+	</changeSet>
+
+	<changeSet id="fix-dynamic-default-value" author="kenneth">
+		<addDefaultValue tableName="payin_tier_card_assignments"
+		                 columnName="dynamic"
+		                 defaultValue="0" />
+	</changeSet>
+
+</databaseChangeLog>

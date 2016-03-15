@@ -1,0 +1,16 @@
+1.  Make progress bar accurate for file uploads
+4.  Add overall rating stars to PDPs.
+5.  Add reviews to PDP pages.
+6.  Sort by reviews count on "Reviews by Issuer" and "Reviews by Product"
+7.  Fix sorting for all tables in admin
+12. Add required asterick to forms.
+13. Add ability to see product reviews by issuer
+14. Add Hero Content block
+16. Bullets not displaying and growing correctly
+* Create/Publish a Sitemap
+* Delete media functionality
+* Add static page functionality
+* Active menu item highlighting
+* Add ACL
+* Add Logging
+

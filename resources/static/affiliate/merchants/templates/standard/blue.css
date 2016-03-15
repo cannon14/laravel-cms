@@ -1,0 +1,399 @@
+@import "blue_topmenu.css";
+@import "blue_leftmenu.css";
+/*@import "blue_tabs.css";  */
+
+FORM
+{
+    margin-top: 0px;
+    margin-bottom: 0px;    
+}
+INPUT
+{
+    font: 11px Arial, Verdana, Helvetica, sans-serif;
+}
+SELECT
+{
+    font: 11px Arial, Verdana, Helvetica, sans-serif;
+}
+IMG
+{
+    BORDER: 0;
+}
+
+TEXTAREA
+{
+    font: 11px Arial, Verdana, Helvetica, sans-serif;
+}
+
+A.mainlink 
+{
+    font-size: 11px;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    color: #AA0000;
+    text-decoration: none;
+    CURSOR: hand; 
+}
+
+.helplink
+{
+    font-size: 10px;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    color: #0000ff;
+    text-decoration: underline;
+    CURSOR: hand; 
+}
+
+.simplelink 
+{
+    font-size: 11px;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    color: #ff0000;
+    text-decoration: underline; 
+    CURSOR: hand;
+    FONT-WEIGHT: normal;    
+}
+.textlink 
+{
+	COLOR: #0056B6;
+    FONT-FAMILY: Tahoma, Arial,Helvetica,sans-serif; 
+    FONT-SIZE: 11px; 
+    FONT-WEIGHT: normal  
+}
+
+TD
+{
+    font: 11px Tahoma, Arial, Verdana, Helvetica, sans-serif;
+}
+.minihelp
+{
+    font: 11px Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	COLOR: #444444;
+}
+.contents
+{
+    width: 100%;
+    height: 100%;
+/*    background-color: #FFFFFF; */
+    text-align: left;
+    vertical-align: top;
+}
+
+.footer
+{
+    color: #999999;   
+	padding: 15px; 
+	background: #FFFFFF url("images/footer.gif") top left repeat-x;
+/*    border-top: #000D51 1px solid; */
+}
+
+.formbutton 
+{
+    font-size: 10px;
+    font-family: sans-serif,Arial,Helvetica,Verdana;
+    color: #000000;
+    border-style: solid;
+    border-width: 1;
+    border-color: #000D51;
+    CURSOR: hand; 
+    background-color: #5E96BD;
+}
+
+.listing 
+{
+    border: #000D51 1px solid;
+}
+
+.errorMsgTable
+{
+    border: #ff0000 1px solid;
+    width: 450px;
+}
+
+.okMsgTable
+{
+    border: #00aa00 1px solid;
+    width: 450px;
+}
+
+.settings 
+{
+    border-left: #000D51 1px solid;
+    border-right: #000D51 1px solid;
+    border-bottom: #000D51 1px solid;
+}
+
+.settingsLine
+{
+    border-top: #000D51 1px solid;
+    height: 5px;
+}
+
+.listingClosed 
+{
+    border: #000D51 1px solid;
+}
+
+.listing .hidableHeader {
+    DISPLAY: block
+}
+.listingClosed .hidableHeader {
+    DISPLAY: none
+}
+
+.actionheader 
+{
+    background-color: #FFFFFF;
+    BORDER-BOTTOM: #000D51 1px solid;
+    height: 20px;
+    padding-left: 2px; 
+}
+
+.tableheader 
+{
+    background-image: url(images/tab_center.gif);
+    background-color: #FFFFFF;
+    TEXT-ALIGN: left;
+    VERTICAL-ALIGN: middle;
+    FONT-WEIGHT: normal;
+    BORDER-BOTTOM: #000D51 1px solid;
+    color: #FFFFFF;
+}
+
+.errorMessageHeader
+{
+    background-color: #FFA9A9;
+    TEXT-ALIGN: left;
+    VERTICAL-ALIGN: middle;
+    FONT-WEIGHT: bold;
+    BORDER-BOTTOM: #ff0000 1px solid;
+}
+
+.okMessageHeader
+{
+    background-color: #BAFCBA;
+    TEXT-ALIGN: left;
+    VERTICAL-ALIGN: middle;
+    FONT-WEIGHT: bold;
+    BORDER-BOTTOM: #00AA00 1px solid;
+}
+
+.tableheader2 
+{
+    TEXT-ALIGN: left;
+    VERTICAL-ALIGN: middle;
+    FONT-WEIGHT: normal;
+    padding: 2px;
+    background-color: ##4A6AB3;    
+    BORDER-TOP: #000D51 1px solid;
+    BORDER-BOTTOM: #000D51 1px solid;
+}
+
+.errorMessage
+{
+    color: #ff0000;
+}
+
+.okMessage
+{
+    color: #00AA00;
+}
+
+.sideborders
+{
+    BORDER-LEFT: #000D51 1px solid;
+    BORDER-RIGHT: #000D51 1px solid;
+}
+
+.listheader 
+{
+    background-color: #4779A4;
+    TEXT-ALIGN: center;
+    FONT-WEIGHT: bold;
+    BORDER-RIGHT: #000D51 1px solid; 
+    BORDER-BOTTOM: #000D51 1px solid; 
+    color: #FFFFFF;  
+}
+
+.listheader a:link, .listheader a:visited
+{
+    TEXT-ALIGN: center;
+    FONT-WEIGHT: bold; 
+    color: #FFFFFF;  
+}
+
+.listheader a:hover, .listheader a:active
+{
+    TEXT-ALIGN: center;
+    FONT-WEIGHT: bold; 
+    color: #AA0000;  
+}
+.listheaderNoRightLine
+{
+    background-color: #DEE3EB;
+    TEXT-ALIGN: center;
+    FONT-WEIGHT: bold;
+    BORDER-BOTTOM: #000D51 1px solid;   
+}
+
+.listPaging
+{
+    background-color: #DEE3EB;
+    TEXT-ALIGN: center;
+    FONT-WEIGHT: bold;
+    BORDER-BOTTOM: #000D51 1px solid;   
+}
+
+.listheaderNoLine
+{
+    background-color: #DEE3EB;
+    TEXT-ALIGN: center;
+    FONT-WEIGHT: bold;
+}
+
+.listheaderNoLineLeft
+{
+    background-color: #DEE3EB;
+    TEXT-ALIGN: left;
+    FONT-WEIGHT: bold;
+}
+
+.listViewLine
+{
+    background-color: #DEE3EB;
+    TEXT-ALIGN: left;
+    height: 25px;
+    VERTICAL-ALIGN: middle;
+    BORDER-TOP: #000D51 1px solid;
+}
+
+.tablelistheader 
+{
+    background-color: #DEE3EB;
+    TEXT-ALIGN: center;
+    FONT-WEIGHT: bold;
+    BORDER-RIGHT: #000D51 1px solid; 
+    BORDER-BOTTOM: #000D51 1px solid;   
+}
+
+.header 
+{
+    background-color: #B3CED9;
+    TEXT-ALIGN: center;
+    FONT-WEIGHT: bold;
+    BORDER-RIGHT: #ffffff 1px solid; 
+    BORDER-BOTTOM: #ffffff 1px solid;
+}
+
+.listresult 
+{
+    TEXT-ALIGN: center;
+    BORDER-RIGHT: #000D51 1px solid; 
+    BORDER-BOTTOM: #000D51 1px solid; 
+}
+
+.listresult-left 
+{
+    BORDER-RIGHT: #000D51 1px solid; 
+    BORDER-BOTTOM: #000D51 1px solid; 
+}
+
+.listresultNoRightLine 
+{
+    TEXT-ALIGN: center;
+    BORDER-BOTTOM: #000D51 1px solid; 
+}
+
+.listresultnocenter 
+{
+    BORDER-RIGHT: #000D51 1px solid; 
+    BORDER-BOTTOM: #000D51 1px solid; 
+}
+
+.listresultMouseOver 
+{
+    background-color: #E8EDFA;
+    TEXT-ALIGN: center;
+    BORDER-RIGHT: #000D51 1px solid; 
+    BORDER-BOTTOM: #000D51 1px solid; 
+}
+
+UL.errorMessage
+{
+    margin-left: 20px;
+    padding-left: 0px;
+}
+
+.okMessage2
+{
+    margin-left: 20px;
+    padding-left: 0px;
+}
+
+LI.errorMessage
+{
+    padding-left: 0px;
+}
+
+.okMessage
+{
+    padding-left: 0px;
+}
+
+.formBText
+{
+    font: 11px Arial, Verdana, Helvetica, sans-serif;
+    FONT-WEIGHT: bold;
+}
+
+.formText
+{
+    font: 11px Arial, Verdana, Helvetica, sans-serif;
+}
+
+.merchlogo {
+	background: #FFFFFF;
+}
+
+.hiddenSection  
+{
+	color:#000033; 
+	background-color:#eeeeff; 
+	layer-background-color:#ffffff;
+    z-index:99;  
+    border-collapse:collapse;
+    display:none;
+}
+
+#modName {
+	margin: 0px;
+	position: absolute;
+	top: 20px;	
+	left: 420px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 32px;
+	color: #4779A4;
+	width: 99%
+}
+
+.whitetext {
+	color: #FFFFFF;	
+}
+
+.subinfo {
+	font-family: sans-serif, Arial, Helvetica;
+	font-weight: 300;
+	font-size: 9px;
+	color: #999999;
+}
+
+#reportFrame{
+        width: 100%;
+        height: 95%;
+        border: none;
+}
+
+#submitButtonDiv
+{
+   text-align:center;
+}

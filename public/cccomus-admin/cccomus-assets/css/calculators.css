@@ -1,0 +1,101 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 19, 2014, 7:12:34 PM
+    Author     : davidcannon
+*/
+.title {
+    font-family: arial;
+    font-size:20px;
+    font-weight: bold;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+.subtitle {
+    font-family: arial;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #0C4E77;
+    color:#FFFFFF;
+    padding-top:8px;
+    padding-bottom:8px;
+    margin-bottom: 5px;
+}
+.bold_me {
+    font-weight:bold;
+}
+table th, td {
+    font-size:10px;
+}
+
+.scrolling-table {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.bt_section_title {
+    font-weight: bold;
+    padding:5px;
+    font-size:14px;
+}
+.bt_col_title {
+    font-weight: bold;
+}
+.bt_left_title {
+    display:inline-block;
+    padding-top:5px;
+}
+
+.custom-error {
+    font-size:12px;
+}
+.custom-error > .alert-danger {
+    display:inline-block;
+    width:100%;
+    margin-top:5px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.btn-default {
+    font-weight: bold;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+.save_money {
+    color:#a94442;
+    margin-bottom:0;
+}
+.save_money_line {
+    color:#a94442;
+    height:10px;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.nav-tabs > li a {
+    color:#a94442;
+    font-weight: bold;
+    padding: 10px 10px;
+}
+.calculator_green_button {
+    background-color:#429E5D;
+    border-color:#4CAE4C;
+    font-weight: bold;
+}
+
+.calculator_green_button:hover,
+.calculator_green_button:focus,
+.calculator_green_button:active,
+.calculator_green_button.active {
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+.angular_error {
+    display: none;
+}

@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://barclaycardus.com/svc/prescreen/v1/request" elementFormDefault="qualified" targetNamespace="http://barclaycardus.com/svc/prescreen/v1/request">
+    
+   <xs:element name="PrescreenRequest">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="contextId" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="messageHeader" type="tns:MessageHeader"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="applicant" type="tns:Applicant"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="prescreenAttributes" type="tns:PrescreenAttribute"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="partnerId" type="xs:long"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="clientProductCode" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="accountSubType" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="campaignKey" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="inboundChannel" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="saleAmount" type="xs:double"/>    
+            <xs:element maxOccurs="1" minOccurs="0" name="posTypeCode" type="xs:string"/>        
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   
+   <xs:element name="PrescreenResponse">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="0" name="messageHeader" type="tns:MessageHeader"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="prescreenId" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="partnerPrescreenId" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="prescreenDecision" type="tns:PrescreenDecisionType"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="prescreenAttributes" type="tns:PrescreenAttribute"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="expirationDate" type="xs:date"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="accountSubType" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="languagePreference" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="creditLimit" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="annualFee" type="xs:decimal"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="preApprovalOfferType" type="tns:PreApprovalOfferType"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="tncURL" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="partnerId" type="xs:long"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="clientProductCode" type="xs:string"/>
+            <xs:element minOccurs="0" name="statusInfo" type="tns:StatusInfo"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   
+   <xs:element name="PrescreenOfferCaptureRequest">
+      <xs:complexType>
+         <xs:sequence>
+            <!-- Proactive prescreen will use max of 3 occurences of OfferCapture but for future purpose made this to 6 -->
+              <xs:element maxOccurs="6" minOccurs="1" name="offerCaptures" type="tns:OfferCapture"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   
+   <xs:complexType name="OfferCapture">
+       <xs:sequence>
+           <xs:element maxOccurs="1" minOccurs="1" name="contextId" type="xs:string"/>
+           <xs:element maxOccurs="1" minOccurs="0" name="prescreenId" type="xs:string"/>
+           <xs:element maxOccurs="1" minOccurs="0" name="partnerPrescreenId" type="xs:string"/>
+           <xs:element maxOccurs="1" minOccurs="1" name="customerAcceptanceType" type="tns:CustomerAcceptanceType"/>
+       </xs:sequence>
+   </xs:complexType>
+   
+   <xs:element name="PrescreenOfferCaptureResponse">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="statusInfo" type="tns:StatusInfo"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   
+   <xs:element name="ProactivePrescreenRequest">
+       <xs:complexType>
+           <xs:sequence>
+               <xs:element maxOccurs="1" minOccurs="1" name="clientProductCode">
+                   <xs:simpleType>
+                       <xs:restriction base="xs:string">
+                           <!--value="ALL" stands for all the cpcs below-->
+                           <!-- <xs:enumeration value="ALL"/>
+                           <xs:enumeration value="C11"/> 
+                           <xs:enumeration value="ANB"/>-->
+                           <xs:enumeration value="APB"/>
+
+                       </xs:restriction>
+                   </xs:simpleType>
+               </xs:element> 
+               <xs:element maxOccurs="1" minOccurs="1" name="firstName" type="tns:NonEmptyString"/>
+               <xs:element maxOccurs="1" minOccurs="1" name="lastName" type="tns:NonEmptyString"/>
+               <xs:element maxOccurs="1" minOccurs="0" name="ssn">
+                   <xs:simpleType>
+                       <xs:restriction base="xs:string">
+                           <xs:maxLength value="4"/>
+                           <xs:pattern value="([0-9])+"/>
+                       </xs:restriction>
+                   </xs:simpleType>
+               </xs:element> 
+               <!--              <xs:element name="ssn" type="xs:string" minOccurs="0" maxOccurs="1"/>-->
+            
+               <xs:element maxOccurs="1" minOccurs="1" name="addressline1" type="tns:NonEmptyString"/>
+               <xs:element maxOccurs="1" minOccurs="0" name="addressline2" type="xs:string"/>
+               <xs:element maxOccurs="1" minOccurs="1" name="city" type="tns:NonEmptyString"/>
+               <xs:element maxOccurs="1" minOccurs="1" name="state" type="tns:NonEmptyString"/>
+               <xs:element maxOccurs="1" minOccurs="1" name="zip" type="xs:string"/>
+               <xs:element maxOccurs="1" minOccurs="0" name="referrerId" type="xs:string"/>
+           </xs:sequence>
+       </xs:complexType>
+   </xs:element>
+   
+  
+    <xs:element name="ProactivePrescreenResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="prescreenProducts" type="tns:PrescreenProduct"/>
+                 <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:ErrorDetails"/>   
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+   
+   <xs:element name="ErrorDetails">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="0" name="errorCode" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="errorText" type="xs:string"/>                
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   
+   <xs:complexType name="PrescreenAttribute">
+      <xs:sequence>
+         <xs:element maxOccurs="1" minOccurs="1" name="attributeName" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="1" name="attributeValue" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:complexType name="PrescreenProduct">
+      <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="applyURL" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="productName" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="productId" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="campaignId" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="cellId" type="xs:int"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="referrerId" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="tncURL" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="prescreenId" type="xs:string"/>
+           
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:simpleType name="PreApprovalOfferType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="FEECARD"/>
+         <xs:enumeration value="NOFEECARD"/>
+      </xs:restriction>
+   </xs:simpleType>
+   
+   <xs:simpleType name="CustomerAcceptanceType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="ACCEPTED"/>
+         <xs:enumeration value="DECLINED"/>
+         <xs:enumeration value="APPLY_LATER"/>
+      </xs:restriction>
+   </xs:simpleType>
+   
+   <xs:simpleType name="PrescreenDecisionType">
+      <xs:restriction base="xs:string">
+			<xs:enumeration value="PRESCREEN_APPROVED_EXISTING"/>
+			<xs:enumeration value="PRESCREEN_DECLINED_EXISTING"/>
+            <xs:enumeration value="PRESCREEN_APPROVED"/>
+            <xs:enumeration value="PRESCREEN_DECLINED"/>
+			<xs:enumeration value="PRESCREEN_DECLINED_USED"/>
+			<xs:enumeration value="PRESCREEN_DECLINED_HAS_PRODUCT"/>
+			<xs:enumeration value="PRESCREEN_ERROR"/>
+			<xs:enumeration value="PRESCREEN_DECLINE_NO_IOWA"/>
+			<xs:enumeration value="PRESCREEN_DECLINED_USED"/>
+			<xs:enumeration value="PRESCREEN_DECLINED_HAS_PRODUCT"/>
+			<xs:enumeration value="PRESCREEN_ERROR"/>
+			<xs:enumeration value="PRESCREEN_DECLINE_NO_IOWA"/>
+      </xs:restriction>
+   </xs:simpleType>
+   
+   <xs:simpleType name="DecisionType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="APPROVED"/>
+         <xs:enumeration value="DECLINED"/>
+         <xs:enumeration value="PENDED"/>
+      </xs:restriction>
+   </xs:simpleType>
+   
+   <xs:element name="Applicant" type="tns:Applicant"/>
+   <xs:complexType name="Applicant">
+      <xs:sequence>
+         <xs:element maxOccurs="1" minOccurs="1" name="name" type="tns:Name"/>
+         <xs:element maxOccurs="1" minOccurs="1" name="residence" type="tns:Residence"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="dob" type="xs:date"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="emailAddress" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="married" type="xs:boolean"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="phone" type="tns:Phone"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="ssn" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="grossHouseholdIncome" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="languagePreference" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:element name="Name" type="tns:Name"/>
+   <xs:complexType name="Name">
+      <xs:sequence>
+         <xs:element maxOccurs="1" minOccurs="0" name="prefix" type="tns:Prefix"/>
+         <xs:element maxOccurs="1" minOccurs="1" name="firstName" type="tns:NonEmptyString"/>
+         <xs:element maxOccurs="1" minOccurs="1" name="lastName" type="tns:NonEmptyString"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="middleInitial" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="suffix" type="tns:Suffix"/>
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:simpleType name="Prefix">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="MR"/>
+         <xs:enumeration value="MS"/>
+      </xs:restriction>
+   </xs:simpleType>
+   
+   <xs:simpleType name="Suffix">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="DDS"/>
+         <xs:enumeration value="DDM"/>
+         <xs:enumeration value="DO"/>
+         <xs:enumeration value="II"/>
+         <xs:enumeration value="III"/>
+         <xs:enumeration value="IV"/>
+         <xs:enumeration value="JR"/>
+         <xs:enumeration value="MD"/>
+         <xs:enumeration value="OD"/>
+         <xs:enumeration value="PHD"/>
+         <xs:enumeration value="SR"/>
+         <xs:enumeration value="V"/>
+      </xs:restriction>
+   </xs:simpleType>
+   
+   <xs:element name="Residence" type="tns:Residence"/>
+   <xs:complexType name="Residence">
+      <xs:sequence>
+         <xs:element maxOccurs="1" minOccurs="1" name="address" type="tns:Address"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="monthlyRentOrMortgage" type="xs:decimal"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="monthsAtResidence" type="xs:int"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="residenceStatus" type="tns:ResidenceStatus"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="residenceType" type="tns:ResidenceType"/>
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:element name="Address" type="tns:Address"/>
+   <xs:complexType name="Address">
+      <xs:sequence>
+         <xs:element maxOccurs="1" minOccurs="1" name="addressLine1" type="tns:NonEmptyString"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="addressLine2" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="addressLine3" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="1" name="city" type="tns:NonEmptyString"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="province" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="1" name="state" type="tns:NonEmptyString"/>
+         <xs:element maxOccurs="1" minOccurs="1" name="zipCode" type="tns:NonEmptyString"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="countryCode" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:simpleType name="ResidenceStatus">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="OWN"/>
+         <xs:enumeration value="RENT"/>
+         <xs:enumeration value="OTHER"/>
+      </xs:restriction>
+   </xs:simpleType>
+   
+   <xs:simpleType name="ResidenceType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="PERMANENT"/>
+         <xs:enumeration value="ALTERNATE"/>
+         <xs:enumeration value="AT_SCHOOL"/>
+      </xs:restriction>
+   </xs:simpleType>
+   
+   <xs:element name="Phone" type="tns:Phone"/>
+   <xs:complexType name="Phone">
+      <xs:sequence>
+         <xs:element maxOccurs="1" minOccurs="0" name="phoneNumber" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="type" type="tns:PhoneType"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="mobileNumber" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="carrier" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:simpleType name="PhoneType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="SCHOOL"/>
+         <xs:enumeration value="WORK"/>
+         <xs:enumeration value="MOBILE"/>
+         <xs:enumeration value="HOME"/>
+      </xs:restriction>
+   </xs:simpleType>
+   
+   <xs:complexType name="MessageHeader">
+      <xs:sequence>
+         <xs:element maxOccurs="1" minOccurs="0" name="messageLength" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="messageVersion" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="messageType" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="originatorId" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="messageId" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="timeStamp" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="encryptionScheme" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="correlationId" type="xs:string"/>
+         <xs:element maxOccurs="1" minOccurs="0" name="statusCode" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:simpleType name="NonEmptyString">
+      <xs:restriction base="xs:string">
+            <!--Ensures at least one character-->
+         <xs:minLength value="1"/>
+            <!--Ensures at least one non-whitespace character-->
+         <xs:pattern value=".*[^\s].*"/>
+      </xs:restriction>
+   </xs:simpleType>
+   
+   <xs:complexType name="StatusInfo">
+      <xs:sequence>
+         <xs:element name="statusCode" type="tns:StatusCodeType"/>
+         <xs:element minOccurs="0" name="statusMessage" type="xs:string"/>
+         <xs:element maxOccurs="unbounded" minOccurs="0" name="errors" type="tns:Error"/>
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:simpleType name="StatusCodeType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="SUCCESS"/>
+         <xs:enumeration value="ERROR"/>
+         <xs:enumeration value="NO_DATA_FOUND"/>
+      </xs:restriction>
+   </xs:simpleType>
+  
+   <xs:complexType name="Error">
+      <xs:sequence>
+         <xs:element name="errorCode" type="xs:int"/>
+         <xs:element name="errorDesc" type="xs:string"/>
+      </xs:sequence>
+   </xs:complexType>
+
+	<!-- This service request is used for Sears, for Sears the partner prescreen id from prescreen_ext table used as prescreenId -->
+	<xs:element name="GetPrescreenByPartnerPrescreenIdRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="1" minOccurs="1" name="contextId" type="xs:string"/>
+				<xs:element maxOccurs="1" minOccurs="1" name="partnerPrescreenId" type="xs:long"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetPrescreenByPartnerPrescreenIdResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="1" minOccurs="0" name="prescreenData" type="tns:PrescreenData"/>
+				<!-- gets some of the prescreen_ext table details if exists. -->
+				<xs:element maxOccurs="1" minOccurs="0" name="prescreenExtData" type="tns:PrescreenExtData"/>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="prescreenAttributes" type="tns:PrescreenAttribute"/>
+				<xs:element minOccurs="0" name="statusInfo" type="tns:StatusInfo"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- -->
+	<xs:element name="GetPrescreenRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="1" minOccurs="1" name="contextId" type="xs:string"/>
+				<xs:element maxOccurs="1" minOccurs="1" name="prescreenId" type="xs:string"/>
+				<xs:element maxOccurs="1" minOccurs="1" name="lastName" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetPrescreenResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="1" minOccurs="0" name="prescreenData" type="tns:PrescreenData"/>
+				<!-- gets some of the prescreen_ext table details if exists. -->
+				<xs:element maxOccurs="1" minOccurs="0" name="prescreenExtData" type="tns:PrescreenExtData"/>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="prescreenAttributes" type="tns:PrescreenAttribute"/>
+				<!-- ipsComplianceStatusCode is used in the ips compliance letter flow. -->
+				<xs:element minOccurs="0" name="ipsComplianceStatusCode" type="tns:IPSComplianceStatusCode"/>
+				<xs:element minOccurs="0" name="statusInfo" type="tns:StatusInfo"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	   
+	<xs:complexType name="PrescreenData">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="prescreenSeqId" type="xs:long"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="prescreenId" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="applicant" type="tns:Applicant"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="partnerId" type="xs:long"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="campaignKey" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="inboundChannel" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="prescreenDecision" type="tns:PrescreenDecisionType"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="prescreenRequestTimestamp" type="xs:date"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="prescreenDecisionTimestamp" type="xs:date"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="prescreenTermsAcceptCd" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="prescreenUsedFlag" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="decisionOfferLevelCd" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="prescreenOfferLevelCd" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PrescreenExtData">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="partnerPrescreenId" type="xs:long"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="messageHeader" type="tns:MessageHeader"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="posTypeCd" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="ipsOfferLevelCd" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="creditLimit" type="xs:int"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="saleAmount" type="xs:double"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="accountSubType" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="primaryIncomeCd" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="requestedProduct" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="approvedProduct" type="xs:string"/>
+			<!-- the decision code is from transact value -->
+			<xs:element maxOccurs="1" minOccurs="0" name="decisionStatusCd" type="tns:DecisionType"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="decisionReasonValue" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+		   
+    <xs:simpleType name="IPSComplianceStatusCode">
+       <xs:restriction base="xs:string">
+          <xs:enumeration value="DATA_NOT_FOUND"/>
+          <xs:enumeration value="EXPIRED"/>
+          <xs:enumeration value="ID_USED"/>
+          <xs:enumeration value="NAME_DOES_NOT_MATCH"/>
+       	  <xs:enumeration value="READY_FOR_USE"/>          
+       </xs:restriction>
+    </xs:simpleType>		   
+</xs:schema>

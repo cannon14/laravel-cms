@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	<changeSet id="FA38626" author="kenneths">
+		<createTable tableName="networks">
+			<column name="network_id" type="INT(11)" autoIncrement="true">
+				<constraints primaryKey="true"/>
+			</column>
+			<column name="name" type="varchar(36)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="create_time" type="timestamp" defaultValue="0000-00-00 00:00:00"/>
+			<column name="update_time" type="timestamp"/>
+			<column name="deleted" type="tinyint(1)" defaultValue="0">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="CMS-9" author="kenneth.skertchly">
+		<createTable tableName="product_links">
+			<column autoIncrement="true" name="link_id" type="INT(10)">
+				<constraints primaryKey="true"/>
+			</column>
+			<column name="product_id" type="VARCHAR(20)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="link_type_id" type="INT(10)"/>
+			<column name="device_type_id" type="INT(10)"/>
+			<column name="website_id" type="INT(10)"/>
+			<column name="account_type_id" type="INT(10)"/>
+			<column name="url" type="TEXT"/>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="date_created" type="TIMESTAMP">
+				<constraints nullable="false"/>
+			</column>
+			<column name="date_updated" type="TIMESTAMP"/>
+			<column name="updated_by" type="VARCHAR(50)"/>
+		</createTable>
+
+		<createTable tableName="link_types">
+			<column autoIncrement="true" name="link_type_id" type="INT(10)">
+				<constraints primaryKey="true"/>
+			</column>
+			<column name="name" type="VARCHAR(50)"/>
+			<column name="description" type="VARCHAR(255)"/>
+		</createTable>
+
+		<createTable tableName="device_types">
+			<column autoIncrement="true" name="device_type_id" type="INT(10)">
+				<constraints primaryKey="true"/>
+			</column>
+			<column name="name" type="VARCHAR(50)"/>
+			<column name="description" type="VARCHAR(255)"/>
+		</createTable>
+	</changeSet>
+
+</databaseChangeLog>

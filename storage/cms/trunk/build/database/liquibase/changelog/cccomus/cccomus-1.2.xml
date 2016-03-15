@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	<changeSet author="richard" id="FA39240">
+		<createTable tableName="payin_tiers">
+			<column name="payin_tier_id" type="int(32)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="payin_tier_name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="issuer_id" type="int(10)">
+				<constraints nullable="false" />
+			</column>
+			<column name="create_time" type="timestamp" defaultValueComputed="'0000-00-00 00:00:00'"/>
+			<column name="deleted" type="tinyint(1)" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<sql>
+			ALTER TABLE payin_tiers ADD COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER create_time
+		</sql>
+		<createTable tableName="payin_tier_card_assignments">
+			<column name="payin_tier_card_assignment_id" type="int(32)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="payin_tier_id" type="int(32)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="card_id" type="varchar(15)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="amount" type="decimal(6,2)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="start_time" type="datetime">
+				<constraints nullable="false"/>
+			</column>
+			<column name="end_time" type="datetime"/>
+			<column name="create_time" type="timestamp" defaultValueComputed="'0000-00-00 00:00:00'"/>
+			<column name="deleted" type="tinyint(1)" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<sql>
+			ALTER TABLE payin_tier_card_assignments ADD COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER create_time
+		</sql>
+		<createTable tableName="payin_tier_website_assignments">
+			<column name="payin_tier_website_assignment_id" type="int(32)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="payin_tier_id" type="int(32)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="website_id" type="int(11)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="start_time" type="datetime">
+				<constraints nullable="false"/>
+			</column>
+			<column name="end_time" type="datetime"/>
+			<column name="create_time" type="timestamp" defaultValueComputed="'0000-00-00 00:00:00'"/>
+			<column name="deleted" type="tinyint(1)" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<sql>
+			ALTER TABLE payin_tier_website_assignments ADD COLUMN update_time timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER create_time
+		</sql>
+		<addColumn tableName="providers">
+			<column name="use_file_revenue" type="tinyint(1)" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+		</addColumn>
+		<addColumn tableName="partner_affiliate_card_commissions">
+			<column name="website_id" type="int(11)">
+				<constraints nullable="false" />
+			</column>
+		</addColumn>
+	</changeSet>
+	<changeSet author="richard" id="FA39240-2">
+		<addColumn tableName="payin_tier_card_assignments">
+			<column name="dynamic" type="tinyint(1)">
+				<constraints nullable="false" />
+			</column>
+		</addColumn>
+		<modifySql>
+			<append value=" AFTER amount" />
+		</modifySql>
+	</changeSet>
+	<changeSet author="robertq" id="41130">
+		<addColumn tableName="rev_slotting_apply">
+			<column name="payout_id" type="INT">
+				<constraints nullable="true" />
+			</column>
+		</addColumn>
+		<modifySql>
+			<append value=" AFTER referred_affiliate_id" />
+		</modifySql>
+	</changeSet>
+	<changeSet author="lawrenceb" id="VA_LOPORTAL_OUTSIDE">
+		<createTable tableName="transactions_click_outside">
+			<column name="outside_id" type="bigint(20)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_location_id" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_server_id" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_legacy_id" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_character_four" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_character_five" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="date_inserted" type="datetime">
+				<constraints nullable="true"/>
+			</column>
+			<column name="affiliate_id" type="varchar(8)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="website_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="product_id" type="varchar(20)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="creative_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="commission_rate_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="ip_address" type="bigint(20)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_url" type="varchar(250)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_current_cookie" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_cookie_date" type="datetime">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_last_cookie" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_first_cookie" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="user_variable" type="varchar(80)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="campaign_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="exit_page_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="keyword_id" type="varchar(45)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="external_visit_id" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="page_position" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="traffic_source_id" type="varchar(8)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="cardmatch_offer_id" type="varchar(8)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="cardmatch_result" type="tinyint(1)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="content_type_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="user_agent" type="varchar(250)">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+		<modifySql dbms="mysql">
+         <append value=" engine innodb"/>
+		</modifySql>
+	</changeSet>
+	<changeSet author="lawrenceb" id="VA_LOPORTAL_INSIDE">
+		<createTable tableName="transactions_click">
+			<column name="click_id" type="bigint(20)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="outside_id" type="bigint(20)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_location_id" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_server_id" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_legacy_id" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_character_four" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_character_five" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="tracking_id" type="varchar(35)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="date_inserted" type="datetime">
+				<constraints nullable="true"/>
+			</column>
+			<column name="affiliate_id" type="varchar(8)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="website_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="product_id" type="varchar(20)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="creative_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="commission_rate_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="ip_address" type="bigint(20)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_url" type="varchar(250)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_current_cookie" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_cookie_date" type="datetime">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_last_cookie" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_first_cookie" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="user_variable" type="varchar(80)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="campaign_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="exit_page_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="keyword_id" type="varchar(45)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="external_visit_id" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="page_position" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="traffic_source_id" type="varchar(8)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="cardmatch_offer_id" type="varchar(8)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="cardmatch_result" type="tinyint(1)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="content_type_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="user_agent" type="varchar(250)">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+		<modifySql dbms="mysql">
+			<append value=" engine innodb"/>
+		</modifySql>
+	</changeSet>
+	<changeSet author="dknight" id="new_default_payin_tier_column">
+		<addColumn tableName="payin_tiers">
+			<column name="default" type="tinyint(1)" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="FA_42197" author="cconey">
+        <addColumn tableName="partner_commission_rates_log">
+            <column name="website_id" type="INT(11)">
+                <constraints nullable="false" />
+            </column>
+            <column name="payin_rate" type="DOUBLE" />
+        </addColumn>
+    </changeSet>
+	<changeSet id="FA_42379" author="lawrenceb">
+		<createTable tableName="transactions_click_filtered">
+			<column name="outside_id" type="bigint(20)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_location_id" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_server_id" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_legacy_id" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_character_four" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="control_character_five" type="varchar(1)">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="date_inserted" type="datetime">
+				<constraints nullable="true"/>
+			</column>
+			<column name="affiliate_id" type="varchar(8)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="website_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="product_id" type="varchar(20)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="creative_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="commission_rate_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="ip_address" type="bigint(20)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_url" type="varchar(250)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_current_cookie" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_cookie_date" type="datetime">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_last_cookie" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="referer_first_cookie" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="user_variable" type="varchar(80)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="campaign_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="exit_page_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="keyword_id" type="varchar(45)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="external_visit_id" type="varchar(32)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="page_position" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="traffic_source_id" type="varchar(8)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="cardmatch_offer_id" type="varchar(8)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="cardmatch_result" type="tinyint(1)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="content_type_id" type="int(11)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="user_agent" type="varchar(250)">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+		<modifySql dbms="mysql">
+         <append value=" engine innodb"/>
+		</modifySql>
+	</changeSet>
+
+    <changeSet id="FA_42603" author="cconey">
+        <dropNotNullConstraint tableName="partner_commission_rates_log"
+                               columnName="website_id"
+                               columnDataType="int"/>
+    </changeSet>
+</databaseChangeLog>

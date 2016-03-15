@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/test/webservice/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             name="AmexWebservice" targetNamespace="http://localhost/test/webservice/">
+    <types>
+        <xsd:schema targetNamespace="http://localhost/test/webservice/"/>
+    </types>
+    <portType name="AmexWebservicePort">
+        <operation name="helloWorld">
+            <documentation>Basic "Hello World!" response</documentation>
+            <input message="tns:helloWorldIn"/>
+            <output message="tns:helloWorldOut"/>
+        </operation>
+        <operation name="getCurrentTime">
+            <documentation>Returns the current time</documentation>
+            <input message="tns:getCurrentTimeIn"/>
+            <output message="tns:getCurrentTimeOut"/>
+        </operation>
+        <operation name="echoBack">
+            <documentation>Returns whatever was sent</documentation>
+            <input message="tns:echoBackIn"/>
+            <output message="tns:echoBackOut"/>
+        </operation>
+        <operation name="acknowledgeOffer">
+            <documentation>Acknowledge Offer -
+                Returns "ACK OK" if the ack was received successfully
+            </documentation>
+            <input message="tns:acknowledgeOfferIn"/>
+            <output message="tns:acknowledgeOfferOut"/>
+        </operation>
+        <operation name="Security">
+            <documentation>WSSE Header</documentation>
+            <input message="tns:SecurityIn"/>
+        </operation>
+    </portType>
+    <binding name="AmexWebserviceBinding" type="tns:AmexWebservicePort">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="helloWorld">
+            <soap:operation soapAction="http://localhost/test/webservice/#helloWorld"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                           namespace="http://localhost/test/webservice/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                           namespace="http://localhost/test/webservice/"/>
+            </output>
+        </operation>
+        <operation name="getCurrentTime">
+            <soap:operation soapAction="http://localhost/test/webservice/#getCurrentTime"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                           namespace="http://localhost/test/webservice/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                           namespace="http://localhost/test/webservice/"/>
+            </output>
+        </operation>
+        <operation name="echoBack">
+            <soap:operation soapAction="http://localhost/test/webservice/#echoBack"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                           namespace="http://localhost/test/webservice/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                           namespace="http://localhost/test/webservice/"/>
+            </output>
+        </operation>
+        <operation name="acknowledgeOffer">
+            <soap:operation soapAction="http://localhost/test/webservice/#acknowledgeOffer"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                           namespace="http://localhost/test/webservice/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                           namespace="http://localhost/test/webservice/"/>
+            </output>
+        </operation>
+        <operation name="Security">
+            <soap:operation soapAction="http://localhost/test/webservice/#Security"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                           namespace="http://localhost/test/webservice/"/>
+            </input>
+        </operation>
+    </binding>
+    <service name="AmexWebserviceService">
+        <port name="AmexWebservicePort" binding="tns:AmexWebserviceBinding">
+            <soap:address location="http://localhost/test/webservice/"/>
+        </port>
+    </service>
+    <message name="helloWorldIn"/>
+    <message name="helloWorldOut">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="getCurrentTimeIn"/>
+    <message name="getCurrentTimeOut">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="echoBackIn">
+        <part name="string" type="xsd:string"/>
+    </message>
+    <message name="echoBackOut">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="acknowledgeOfferIn">
+        <part name="offeringId" type="xsd:string"/>
+        <part name="requestTimeStamp" type="xsd:string"/>
+    </message>
+    <message name="acknowledgeOfferOut">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="SecurityIn">
+        <part name="BinarySecurityToken" type="xsd:anyType"/>
+        <part name="Signature" type="xsd:anyType"/>
+    </message>
+</definitions>

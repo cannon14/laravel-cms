@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   logicalFilePath="ram-1.4.xml">
+
+
+    <changeSet id="add_deleted_time" author="michael.lawson">
+        <addColumn tableName="payin_tier_card_assignments">
+            <column name="deleted_time" type="DATETIME"/>
+        </addColumn>
+        <addColumn tableName="payin_tier_website_assignments">
+            <column name="deleted_time" type="DATETIME"/>
+        </addColumn>
+        <addColumn tableName="payin_tiers">
+            <column name="deleted_time" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="david.cannon" id="create_files_table">
+        <createTable tableName="files">
+            <column autoIncrement="true" name="file_id" type="INT(11)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="file_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_hash" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_type" type="VARCHAR(4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_size" type="INT(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="source" type="ENUM('ETL','Upload')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="book_type" type="VARCHAR(4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reconciliation" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="staged" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

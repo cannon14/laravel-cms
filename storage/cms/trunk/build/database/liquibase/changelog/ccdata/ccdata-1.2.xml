@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="cconey" id="2015-02-23-catch-up">
+        <createTable tableName="cs_secured_merchants">
+            <column autoIncrement="true" name="secured_merchant_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="merchant_id" type="INT"/>
+            <column name="insulator_class" type="VARCHAR(45)"/>
+        </createTable>
+
+        <createTable tableName="product_types">
+            <column autoIncrement="true" name="product_type_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="product_type_name" type="VARCHAR(100)"/>
+            <column defaultValue="0000-00-00 00:00:00" name="date_inserted" type="TIMESTAMP"/>
+            <column defaultValueNumeric="0" name="deleted" type="INT"/>
+        </createTable>
+
+        <createTable tableName="programs">
+            <column autoIncrement="true" name="program_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="program_name" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="program_default" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="private" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="rt_cardpagemap_mobile">
+            <column autoIncrement="true" name="cardcategorymapId" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="pageInsert" type="INT"/>
+            <column name="cardpageId" type="INT"/>
+            <column name="cardId" type="VARCHAR(15)"/>
+            <column name="rank" type="INT"/>
+        </createTable>
+
+        <createTable tableName="rt_pagesubpagemap_mobile">
+            <column autoIncrement="true" name="mapid" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteid" type="INT"/>
+            <column name="masterpageid" type="INT"/>
+            <column name="subpageid" type="INT"/>
+            <column name="hide" type="INT"/>
+            <column name="rank" type="INT"/>
+        </createTable>
+
+        <createTable tableName="rt_sites">
+            <column autoIncrement="true" name="siteId" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="siteName" type="VARCHAR(100)"/>
+            <column name="siteTitle" type="VARCHAR(100)"/>
+            <column name="siteDescription" type="TEXT"/>
+            <column defaultValue="EN" name="language" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="layout" type="VARCHAR(50)"/>
+            <column name="pagetype" type="VARCHAR(5)"/>
+            <column name="applyLogo" type="VARCHAR(250)"/>
+            <column name="ftpSite" type="VARCHAR(250)"/>
+            <column name="ftpPath" type="VARCHAR(250)"/>
+            <column name="sourcePath" type="VARCHAR(250)"/>
+            <column name="corePath" type="VARCHAR(255)"/>
+            <column name="publishPath" type="VARCHAR(250)"/>
+            <column name="publishurl" type="VARCHAR(250)"/>
+            <column name="hostname" type="VARCHAR(100)"/>
+            <column name="postBuildScript" type="VARCHAR(255)"/>
+            <column name="publishScript" type="VARCHAR(255)"/>
+            <column name="order" type="INT"/>
+            <column name="dateCreated" type="datetime"/>
+            <column defaultValue="0000-00-00 00:00:00" name="dateUpdated" type="datetime"/>
+            <column name="dateLastBuilt" type="datetime"/>
+            <column name="dblocation" type="VARCHAR(255)"/>
+            <column name="dbname" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="ccbuildPublish" type="TINYINT(1)"/>
+            <column name="individualcards" type="INT"/>
+            <column name="individualcarddir" type="VARCHAR(255)"/>
+            <column name="individualmerchantservices" type="INT"/>
+            <column name="individualmerchantservicesdir" type="VARCHAR(255)"/>
+            <column name="createSeoDoc" type="INT"/>
+            <column name="sitemap" type="INT"/>
+            <column defaultValueNumeric="1" name="active" type="TINYINT(1)"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)"/>
+            <column name="articledb" type="VARCHAR(80)"/>
+            <column name="articledbhost" type="VARCHAR(255)"/>
+            <column name="articletableprefix" type="VARCHAR(80)"/>
+            <column name="articledbun" type="VARCHAR(80)"/>
+            <column name="articledbpw" type="VARCHAR(80)"/>
+            <column name="articleindexlink" type="VARCHAR(255)"/>
+            <column name="sitemaplink" type="VARCHAR(255)"/>
+            <column name="articleSiteMapFile" type="VARCHAR(255)"/>
+            <column name="yahooArticleFile" type="VARCHAR(255)"/>
+            <column name="yahooArticleCategoryFile" type="VARCHAR(255)"/>
+            <column name="googleArticleFile" type="VARCHAR(255)"/>
+            <column name="dbun" type="VARCHAR(255)"/>
+            <column name="dbpw" type="VARCHAR(255)"/>
+            <column name="landingPageDir" type="VARCHAR(255)"/>
+            <column name="editorialLandingPgPath" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creditCardNewsPg" type="VARCHAR(120)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alternativecardpages" type="TINYINT"/>
+            <column name="alternativecardpagesdir" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="-1" name="version_id" type="INT"/>
+        </createTable>
+
+        <addColumn tableName="cards">
+            <column name="product_type_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <addColumn tableName="rt_cards">
+            <column name="product_type_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <addColumn tableName="cards">
+            <column name="program_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <addColumn tableName="rt_cards">
+            <column name="program_id" type="INT(10) UNSIGNED"/>
+        </addColumn>
+
+        <createIndex indexName="IDX_cardpage" tableName="rt_cardpagemap_mobile" unique="true">
+            <column name="cardpageId"/>
+            <column name="cardId"/>
+        </createIndex>
+
+        <dropUniqueConstraint constraintName="page_name" tableName="pages"/>
+
+        <dropTable tableName="pages"/>
+
+        <modifyDataType columnName="annualFee" newDataType="double(11,2)" tableName="cs_carddata"/>
+
+        <modifyDataType columnName="annual_fee_display_text" newDataType="clob" tableName="cards"/>
+
+        <modifyDataType columnName="balanceTransferFee" newDataType="double(11,2)" tableName="cs_carddata"/>
+
+        <modifyDataType columnName="balanceTransferIntroApr" newDataType="double(11,2)" tableName="cs_carddata"/>
+
+        <modifyDataType columnName="introApr" newDataType="double(11,2)" tableName="cs_carddata"/>
+
+        <addDefaultValue columnDataType="varchar(20)" columnName="merchant_service_id" defaultValue="" tableName="merchant_services"/>
+
+        <modifyDataType columnName="monthlyFee" newDataType="double(11,2)" tableName="cs_carddata"/>
+
+        <modifyDataType columnName="regularApr" newDataType="double(11,2)" tableName="cs_carddata"/>
+    </changeSet>
+</databaseChangeLog>

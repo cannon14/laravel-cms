@@ -1,0 +1,1 @@
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like width="260"></fb:like>

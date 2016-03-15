@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="ccdata_test">
+	<table_data name="ccdata_test.rt_carddetails">
+        <row>
+            <field name="id">1</field>
+            <field name="cardShortName">Test Card</field>
+            <field name="cardLink">http://www.example.com</field>
+            <field name="appLink" xsi:nil="true" />
+            <field name="cardDetailVersion">-1</field>
+            <field name="cardDetailLabel">Card Detail</field>
+            <field name="cardId">1</field>
+            <field name="campaignLink" xsi:nil="true" />
+            <field name="cardPageMeta" xsi:nil="true" />
+            <field name="cardDetailText" xsi:nil="true" />
+            <field name="cardIntroDetail" xsi:nil="true" />
+            <field name="cardMoreDetail" xsi:nil="true" />
+            <field name="cardSeeDetails" xsi:nil="true" />
+            <field name="categoryImage" xsi:nil="true" />
+            <field name="categoryAltText" xsi:nil="true" />
+            <field name="cardIOImage" xsi:nil="true" />
+            <field name="cardIOAltText" xsi:nil="true" />
+            <field name="cardButtonImage" xsi:nil="true" />
+            <field name="cardButtonAltText" xsi:nil="true" />
+            <field name="cardIOButtonAltText" xsi:nil="true" />
+            <field name="cardIconSmall" xsi:nil="true" />
+            <field name="cardIconMid" xsi:nil="true" />
+            <field name="cardIconLarge" xsi:nil="true" />
+            <field name="detailOrder" xsi:nil="true" />
+            <field name="dateCreated" xsi:nil="true" />
+            <field name="dateUpdated">0000-00-00 00:00:00</field>
+            <field name="fid" xsi:nil="true" />
+            <field name="cardListingString" xsi:nil="true" />
+            <field name="cardPageHeaderString" xsi:nil="true" />
+            <field name="imageAltText" xsi:nil="true" />
+            <field name="active">1</field>
+            <field name="deleted">0</field>
+            <field name="specialsDescription" xsi:nil="true" />
+            <field name="specialsAdditionalLink" xsi:nil="true" />
+            <field name="cardTeaserText">This is a test card used for unit testing</field>
+        </row>
+        <row>
+            <field name="id">2</field>
+            <field name="cardShortName">Test Card</field>
+            <field name="cardLink">http://www.example.com</field>
+            <field name="appLink" xsi:nil="true" />
+            <field name="cardDetailVersion">-1</field>
+            <field name="cardDetailLabel">Card Detail</field>
+            <field name="cardId">2</field>
+            <field name="campaignLink" xsi:nil="true" />
+            <field name="cardPageMeta" xsi:nil="true" />
+            <field name="cardDetailText" xsi:nil="true" />
+            <field name="cardIntroDetail" xsi:nil="true" />
+            <field name="cardMoreDetail" xsi:nil="true" />
+            <field name="cardSeeDetails" xsi:nil="true" />
+            <field name="categoryImage" xsi:nil="true" />
+            <field name="categoryAltText" xsi:nil="true" />
+            <field name="cardIOImage" xsi:nil="true" />
+            <field name="cardIOAltText" xsi:nil="true" />
+            <field name="cardButtonImage" xsi:nil="true" />
+            <field name="cardButtonAltText" xsi:nil="true" />
+            <field name="cardIOButtonAltText" xsi:nil="true" />
+            <field name="cardIconSmall" xsi:nil="true" />
+            <field name="cardIconMid" xsi:nil="true" />
+            <field name="cardIconLarge" xsi:nil="true" />
+            <field name="detailOrder" xsi:nil="true" />
+            <field name="dateCreated" xsi:nil="true" />
+            <field name="dateUpdated">0000-00-00 00:00:00</field>
+            <field name="fid" xsi:nil="true" />
+            <field name="cardListingString" xsi:nil="true" />
+            <field name="cardPageHeaderString" xsi:nil="true" />
+            <field name="imageAltText" xsi:nil="true" />
+            <field name="active">1</field>
+            <field name="deleted">0</field>
+            <field name="specialsDescription" xsi:nil="true" />
+            <field name="specialsAdditionalLink" xsi:nil="true" />
+            <field name="cardTeaserText">This is a test card used for unit testing</field>
+        </row>
+        <row>
+            <field name="id">3</field>
+            <field name="cardShortName">Test Card</field>
+            <field name="cardLink">http://www.example.com</field>
+            <field name="appLink" xsi:nil="true" />
+            <field name="cardDetailVersion">-1</field>
+            <field name="cardDetailLabel">Card Detail</field>
+            <field name="cardId">3</field>
+            <field name="campaignLink" xsi:nil="true" />
+            <field name="cardPageMeta" xsi:nil="true" />
+            <field name="cardDetailText" xsi:nil="true" />
+            <field name="cardIntroDetail" xsi:nil="true" />
+            <field name="cardMoreDetail" xsi:nil="true" />
+            <field name="cardSeeDetails" xsi:nil="true" />
+            <field name="categoryImage" xsi:nil="true" />
+            <field name="categoryAltText" xsi:nil="true" />
+            <field name="cardIOImage" xsi:nil="true" />
+            <field name="cardIOAltText" xsi:nil="true" />
+            <field name="cardButtonImage" xsi:nil="true" />
+            <field name="cardButtonAltText" xsi:nil="true" />
+            <field name="cardIOButtonAltText" xsi:nil="true" />
+            <field name="cardIconSmall" xsi:nil="true" />
+            <field name="cardIconMid" xsi:nil="true" />
+            <field name="cardIconLarge" xsi:nil="true" />
+            <field name="detailOrder" xsi:nil="true" />
+            <field name="dateCreated" xsi:nil="true" />
+            <field name="dateUpdated">0000-00-00 00:00:00</field>
+            <field name="fid" xsi:nil="true" />
+            <field name="cardListingString" xsi:nil="true" />
+            <field name="cardPageHeaderString" xsi:nil="true" />
+            <field name="imageAltText" xsi:nil="true" />
+            <field name="active">0</field>
+            <field name="deleted">0</field>
+            <field name="specialsDescription" xsi:nil="true" />
+            <field name="specialsAdditionalLink" xsi:nil="true" />
+            <field name="cardTeaserText">This is a test card used for unit testing</field>
+        </row>
+        <row>
+            <field name="id">4</field>
+            <field name="cardShortName">Test Card</field>
+            <field name="cardLink">http://www.example.com</field>
+            <field name="appLink" xsi:nil="true" />
+            <field name="cardDetailVersion">-1</field>
+            <field name="cardDetailLabel">Card Detail</field>
+            <field name="cardId">4</field>
+            <field name="campaignLink" xsi:nil="true" />
+            <field name="cardPageMeta" xsi:nil="true" />
+            <field name="cardDetailText" xsi:nil="true" />
+            <field name="cardIntroDetail" xsi:nil="true" />
+            <field name="cardMoreDetail" xsi:nil="true" />
+            <field name="cardSeeDetails" xsi:nil="true" />
+            <field name="categoryImage" xsi:nil="true" />
+            <field name="categoryAltText" xsi:nil="true" />
+            <field name="cardIOImage" xsi:nil="true" />
+            <field name="cardIOAltText" xsi:nil="true" />
+            <field name="cardButtonImage" xsi:nil="true" />
+            <field name="cardButtonAltText" xsi:nil="true" />
+            <field name="cardIOButtonAltText" xsi:nil="true" />
+            <field name="cardIconSmall" xsi:nil="true" />
+            <field name="cardIconMid" xsi:nil="true" />
+            <field name="cardIconLarge" xsi:nil="true" />
+            <field name="detailOrder" xsi:nil="true" />
+            <field name="dateCreated" xsi:nil="true" />
+            <field name="dateUpdated">0000-00-00 00:00:00</field>
+            <field name="fid" xsi:nil="true" />
+            <field name="cardListingString" xsi:nil="true" />
+            <field name="cardPageHeaderString" xsi:nil="true" />
+            <field name="imageAltText" xsi:nil="true" />
+            <field name="active">1</field>
+            <field name="deleted">1</field>
+            <field name="specialsDescription" xsi:nil="true" />
+            <field name="specialsAdditionalLink" xsi:nil="true" />
+            <field name="cardTeaserText">This is a test card used for unit testing</field>
+        </row>
+
+        <row>
+            <field name="id">5</field>
+            <field name="cardShortName">One More Test Card</field>
+            <field name="cardLink">http://www.example.com</field>
+            <field name="appLink" xsi:nil="true" />
+            <field name="cardDetailVersion">-1</field>
+            <field name="cardDetailLabel">Card Detail</field>
+            <field name="cardId">5</field>
+            <field name="campaignLink" xsi:nil="true" />
+            <field name="cardPageMeta" xsi:nil="true" />
+            <field name="cardDetailText" xsi:nil="true" />
+            <field name="cardIntroDetail" xsi:nil="true" />
+            <field name="cardMoreDetail" xsi:nil="true" />
+            <field name="cardSeeDetails" xsi:nil="true" />
+            <field name="categoryImage" xsi:nil="true" />
+            <field name="categoryAltText" xsi:nil="true" />
+            <field name="cardIOImage" xsi:nil="true" />
+            <field name="cardIOAltText" xsi:nil="true" />
+            <field name="cardButtonImage" xsi:nil="true" />
+            <field name="cardButtonAltText" xsi:nil="true" />
+            <field name="cardIOButtonAltText" xsi:nil="true" />
+            <field name="cardIconSmall" xsi:nil="true" />
+            <field name="cardIconMid" xsi:nil="true" />
+            <field name="cardIconLarge" xsi:nil="true" />
+            <field name="detailOrder" xsi:nil="true" />
+            <field name="dateCreated" xsi:nil="true" />
+            <field name="dateUpdated">0000-00-00 00:00:00</field>
+            <field name="fid" xsi:nil="true" />
+            <field name="cardListingString" xsi:nil="true" />
+            <field name="cardPageHeaderString" xsi:nil="true" />
+            <field name="imageAltText" xsi:nil="true" />
+            <field name="active">1</field>
+            <field name="deleted">0</field>
+            <field name="specialsDescription" xsi:nil="true" />
+            <field name="specialsAdditionalLink" xsi:nil="true" />
+            <field name="cardTeaserText">This is a test card used for unit testing</field>
+        </row>
+	</table_data>
+</database>
+</mysqldump>

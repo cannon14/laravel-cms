@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="cconey" id="initial-setup">
+        <createTable tableName="etl_review">
+            <column autoIncrement="true" name="review_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="database_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="table_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="entry" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="review_status" type="ENUM('DUPLICATE')"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="date_inserted" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="provider_data_sources">
+            <column autoIncrement="true" name="provider_data_source_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="transfer_type" type="ENUM('EMAIL', 'FTP', 'RSYNC', 'SCP', 'WEBSERVICE', 'SFTP', 'CURL', 'SECURECURL', 'XMLRPC')"/>
+            <column name="data_source_type" type="ENUM('EXPENSE', 'REVENUE', 'APPDATA')"/>
+            <column name="frequency" type="ENUM('DAILY', 'MONTHLY', 'WEEKLY')"/>
+            <column name="last_time_run" type="datetime"/>
+            <column name="provider_data_address" type="TEXT"/>
+            <column name="provider_file_name" type="VARCHAR(200)"/>
+            <column defaultValue="Ymd" name="provider_file_date_pattern" type="VARCHAR(20)"/>
+            <column name="provider_data_path" type="VARCHAR(200)"/>
+            <column name="provider_local_path" type="VARCHAR(200)"/>
+            <column name="username" type="VARCHAR(200)"/>
+            <column name="password" type="VARCHAR(200)"/>
+            <column defaultValue="Y" name="year_format" type="CHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="m" name="month_format" type="CHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="d" name="day_format" type="CHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plugin" type="VARCHAR(255)"/>
+            <column name="active" type="TINYINT(1)"/>
+            <column name="deleted" type="TINYINT(1)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

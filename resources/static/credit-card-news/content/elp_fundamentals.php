@@ -1,0 +1,2 @@
+<h2>Credit card tip of the day</h2>
+<p>If your college student will be traveling abroad, consider making her an <a href="/credit-card-news/best-card-send-kids-europe-1377.php">authorized user</a> on your credit card.</p>

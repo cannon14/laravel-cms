@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <database name="ccdata_test">
+        <table_data name="ccdata_test.cs_carddata">
+            <row>
+                <field name="cardId">1</field>
+                <field name="introApr" xsi:nil="true"/>
+                <field name="introAprPeriod" xsi:nil="true"/>
+                <field name="regularApr" xsi:nil="true"/>
+                <field name="annualFee" xsi:nil="true"/>
+                <field name="balanceTransfers" xsi:nil="true"/>
+                <field name="balanceTransferFee" xsi:nil="true"/>
+                <field name="balanceTransferIntroApr" xsi:nil="true"/>
+                <field name="balanceTransferIntroAprPeriod" xsi:nil="true"/>
+                <field name="monthlyFee" xsi:nil="true"/>
+                <field name="creditNeeded" xsi:nil="true"/>
+                <field name="dateModified" xsi:nil="true"/>
+            </row>
+            <row>
+                <field name="cardId">2</field>
+                <field name="introApr" xsi:nil="true"/>
+                <field name="introAprPeriod" xsi:nil="true"/>
+                <field name="regularApr" xsi:nil="true"/>
+                <field name="annualFee" xsi:nil="true"/>
+                <field name="balanceTransfers" xsi:nil="true"/>
+                <field name="balanceTransferFee" xsi:nil="true"/>
+                <field name="balanceTransferIntroApr" xsi:nil="true"/>
+                <field name="balanceTransferIntroAprPeriod" xsi:nil="true"/>
+                <field name="monthlyFee" xsi:nil="true"/>
+                <field name="creditNeeded" xsi:nil="true"/>
+                <field name="dateModified" xsi:nil="true"/>
+            </row>
+            <row>
+                <field name="cardId">3</field>
+                <field name="introApr" xsi:nil="true"/>
+                <field name="introAprPeriod" xsi:nil="true"/>
+                <field name="regularApr" xsi:nil="true"/>
+                <field name="annualFee" xsi:nil="true"/>
+                <field name="balanceTransfers" xsi:nil="true"/>
+                <field name="balanceTransferFee" xsi:nil="true"/>
+                <field name="balanceTransferIntroApr" xsi:nil="true"/>
+                <field name="balanceTransferIntroAprPeriod" xsi:nil="true"/>
+                <field name="monthlyFee" xsi:nil="true"/>
+                <field name="creditNeeded" xsi:nil="true"/>
+                <field name="dateModified" xsi:nil="true"/>
+            </row>
+            <row>
+                <field name="cardId">4</field>
+                <field name="introApr" xsi:nil="true"/>
+                <field name="introAprPeriod" xsi:nil="true"/>
+                <field name="regularApr" xsi:nil="true"/>
+                <field name="annualFee" xsi:nil="true"/>
+                <field name="balanceTransfers" xsi:nil="true"/>
+                <field name="balanceTransferFee" xsi:nil="true"/>
+                <field name="balanceTransferIntroApr" xsi:nil="true"/>
+                <field name="balanceTransferIntroAprPeriod" xsi:nil="true"/>
+                <field name="monthlyFee" xsi:nil="true"/>
+                <field name="creditNeeded" xsi:nil="true"/>
+                <field name="dateModified" xsi:nil="true"/>
+            </row>
+            <row>
+                <field name="cardId">5</field>
+                <field name="introApr" xsi:nil="true"/>
+                <field name="introAprPeriod" xsi:nil="true"/>
+                <field name="regularApr" xsi:nil="true"/>
+                <field name="annualFee" xsi:nil="true"/>
+                <field name="balanceTransfers" xsi:nil="true"/>
+                <field name="balanceTransferFee" xsi:nil="true"/>
+                <field name="balanceTransferIntroApr" xsi:nil="true"/>
+                <field name="balanceTransferIntroAprPeriod" xsi:nil="true"/>
+                <field name="monthlyFee" xsi:nil="true"/>
+                <field name="creditNeeded" xsi:nil="true"/>
+                <field name="dateModified" xsi:nil="true"/>
+            </row>
+        </table_data>
+    </database>
+</mysqldump>

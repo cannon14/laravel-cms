@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Liquibase Database Update -->
+<project name="liquibase" default="update">
+
+	<dirname property="path.liquibase" file="${ant.file}"/>
+	<property name="lib.dir" value="${path.liquibase}/lib"/>
+	<property file="${path.liquibase}/liquibase.properties"/>
+	<property file="${path.liquibase}/database.properties"/>
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.*"/>
+		</fileset>
+	</path>
+
+	<target name="test">
+		<echo message="Fed: ${federated.ram.cccomus}" />
+	</target>
+
+	<target name="update">
+		<property name="database.suffix" value=""/>
+		<antcall target="update-database"/>
+	</target>
+
+	<target name="update-test">
+		<property name="database.suffix" value="_test"/>
+		<antcall target="update-database"/>
+	</target>
+
+	<target name="validate">
+
+		<taskdef resource="liquibasetasks.properties">
+			<classpath refid="classpath"/>
+		</taskdef>
+
+		<fail unless="database.name">Database name not set</fail>
+		<fail unless="username">database.username not set</fail>
+		<fail unless="password">database.password not set</fail>
+	</target>
+
+	<target name="update-database" depends="validate">
+
+		<property name="database.schema" value="${database.name}${database.suffix}"/>
+		<property name="database.url" value="${url}${database.schema}?createDatabaseIfNotExist=true"/>
+
+		<property name="update.type" value="master"/>
+		<property name="database.changelog"
+		          value="${path.liquibase}/changelog/${database.name}/${database.name}-${update.type}.xml"/>
+
+
+		<echo message="Updating ${database.schema} (${update.type})"/>
+
+        <updateDatabase
+                changeLogFile="${database.changelog}"
+                promptOnNonLocalDatabase="false"
+                dropFirst="false"
+                classpathref="classpath">
+            <database driver="${driver}" url="${database.url}" user="${username}" password="${password}"/>
+            <changeLogParameters>
+                <changeLogParameter name="database.suffix" value="${database.suffix}"/>
+                <changeLogParameter name="federated.ram.cccomus" value="${federated.ram.cccomus}/cccomus${database.suffix}"/>
+                <changeLogParameter name="federated.ram.ccdata" value="${federated.ram.ccdata}/ccdata${database.suffix}"/>
+                <changeLogParameter name="federated.cccomus.ram" value="${federated.cccomus.ram}/ram${database.suffix}"/>
+            </changeLogParameters>
+        </updateDatabase>
+	</target>
+
+
+	<target name="update-changelog" depends="validate">
+		<fail unless="database.changelog">Please specify a changelog path to sync</fail>
+		<echo message="Updating changelog for ${database.name} (${database.changelog})"/>
+
+		<property name="database.url" value="${url}${database.name}"/>
+
+		<changeLogSync
+				changeLogFile="${database.changelog}"
+				driver="${driver}"
+				url="${database.url}"
+				username="${username}"
+				password="${password}"
+				promptOnNonLocalDatabase="true"
+				classpathref="classpath" />
+	</target>
+
+
+	<target name="sync" depends="validate">
+		<property name="database.schema" value="${database.name}"/>
+		<property name="database.url" value="${url}${database.schema}?createDatabaseIfNotExist=true"/>
+		<property name="database.changelog"
+		          value="${path.liquibase}/changelog/${database.name}/${database.name}-master.xml"/>
+
+		<changeLogSync
+				changeLogFile="${database.changelog}"
+				driver="${driver}"
+				url="${database.url}"
+				username="${username}"
+				password="${password}"
+				classpathref="classpath"
+				>
+		</changeLogSync>
+	</target>
+
+
+	<target name="dump" depends="validate">
+		<property name="database.suffix" value=""/>
+		<property name="outputFile" value="db.sql"/>
+
+		<!-- We use an invalid table name so that the dump is generated for all changesets -->
+		<property name="changeLogTable" value="thisIsNotATable" />
+
+		<property name="database.schema" value="${database.name}${database.suffix}"/>
+		<property name="database.url" value="${url}${database.schema}?createDatabaseIfNotExist=true"/>
+
+		<property name="update.type" value="master"/>
+		<property name="database.changelog"
+		          value="${path.liquibase}/changelog/${database.name}/${database.name}-${update.type}.xml"/>
+
+		<echo message="Generating dump for ${database.schema} (${update.type})"/>
+
+        <updateDatabase
+                changeLogFile="${database.changelog}"
+                promptOnNonLocalDatabase="false"
+                dropFirst="false"
+                classpathref="classpath"
+                outputFile="${outputFile}"
+                databaseChangeLogTableName="${changeLogTable}">
+            <database driver="${driver}" url="${database.url}" user="${username}" password="${password}"/>
+            <changeLogParameters>
+                <changeLogParameter name="database.suffix" value="${database.suffix}"/>
+                <changeLogParameter name="federated.ram.cccomus" value="${federated.ram.cccomus}/cccomus${database.suffix}"/>
+                <changeLogParameter name="federated.ram.ccdata" value="${federated.ram.ccdata}/ccdata${database.suffix}"/>
+                <changeLogParameter name="federated.cccomus.ram" value="${federated.cccomus.ram}/ram${database.suffix}"/>
+            </changeLogParameters>
+        </updateDatabase>
+	</target>
+
+</project>

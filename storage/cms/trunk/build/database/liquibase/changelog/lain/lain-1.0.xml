@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   logicalFilePath="lain-1.0.xml">
+
+    <changeSet id="initial-setup" author="michael.lawson">
+        <createTable tableName="client_authorization">
+            <column name="client_authorization_id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="app_id" type="VARCHAR(45)"/>
+            <column name="api_key" type="VARCHAR(45)"/>
+            <column name="active" type="TINYINT(1)" defaultValue="0"/>
+            <column name="is_admin" type="TINYINT(1)"/>
+            <column name="created_date" type="DATETIME"/>
+            <column name="updated_date" type="DATETIME"/>
+        </createTable>
+        <createTable tableName="content_types">
+            <column name="content_type_id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="content_type_name" type="VARCHAR(45)"/>
+            <column name="content_type_mime" type="VARCHAR(50)"/>
+            <column name="content_type_description" type="VARCHAR(255)"/>
+            <column name="content_type_handler_class" type="VARCHAR(255)"/>
+        </createTable>
+        <sql>INSERT INTO content_types (content_type_name, content_type_mime, content_type_description, content_type_handler_class)
+            VALUES ('json', 'application/json', 'Json data', '')</sql>
+        <createTable tableName="errors">
+            <column name="error_id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="error_name" type="VARCHAR(45)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="error_description" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <createTable tableName="parsers">
+            <column name="parser_id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="parser_name" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parser_description" type="VARCHAR(255)"/>
+            <column name="parser_version" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parser_type" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parser_file_type" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parser_plugin" type="VARCHAR(100)"/>
+            <column name="header_rows" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="header_rows_start" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="footer_rows" type="INT(11)"/>
+            <column name="date_format" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="row_xpath" type="VARCHAR(255)"/>
+            <column name="header_bindings" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="callback_name" type="VARCHAR(45)"/>
+            <column name="created_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="uploads">
+            <column name="upload_id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="upload_content_type" type="BIGINT"/>
+            <column name="parser_id" type="BIGINT"/>
+            <column name="upload_content" type="LONGTEXT"/>
+            <column name="valid" type="TINYINT(1)" defaultValue="0"/>
+            <column name="error_id" type="BIGINT"/>
+            <column name="active" type="TINYINT(1)" defaultValue="0"/>
+            <column name="created_date" type="DATETIME"/>
+            <column name="updated_date" type="DATETIME"/>
+        </createTable>
+        <createTable tableName="uploaded_files">
+            <column name="file_id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="file_name" type="VARCHAR(255)"/>
+            <column name="file_type" type="VARCHAR(10)"/>
+            <column name="file_content_type" type="BIGINT"/>
+            <column name="created_date" type="DATETIME"/>
+            <column name="updated_date" type="DATETIME"/>
+            <column name="valid" type="TINYINT(1)"/>
+            <column name="error_id" type="INT(11)"/>
+        </createTable>
+
+        <createIndex tableName="parsers" indexName="ix_parsers_uploadedFile_1">
+            <column name="parser_id"/>
+        </createIndex>
+        <sql>INSERT INTO client_authorization (app_id, api_key, active, is_admin, created_date, updated_date)
+            VALUES ('f62e5bcda4fae4f82370da0c6f20697b8f8447ef', '36d89a3cadcdf269110757df1074b4ef45fe641e', 1, 1, NOW(), NOW())</sql>
+        <sql>INSERT INTO client_authorization (app_id, api_key, active, is_admin, created_date, updated_date)
+            VALUES ('863cc374e6dc98095eb06aa4025895b4a28df6c1', '33b82201081ec7c438cb5d9a36cd72bcb153050b', 1, 0, NOW(), NOW())</sql>
+    </changeSet>
+
+</databaseChangeLog>

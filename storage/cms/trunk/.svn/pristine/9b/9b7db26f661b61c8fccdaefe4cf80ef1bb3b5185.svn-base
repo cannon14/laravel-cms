@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:nffeed="http://rss.netfiniti.com">
+  <channel>
+    <title>CreditCards.com Wrapper Program - Powered By Netfinti</title>
+    <link>http://www.creditcards.com</link>
+    <description>Shop and compare Credit Cards</description>
+    <webMaster>support@netfiniti.com</webMaster>
+    <image>
+      <title>CreditCards.com</title>
+      <link>http://www.creditcards.com</link>
+      <url>http://www.creditcards.com/images/cccom_logo_114x44.gif</url>
+      <width>114</width>
+      <height>144</height>
+      <description>Shop and compare credit cards online!</description>
+    </image>
+    <item>
+      <title><![CDATA[Citi&reg; Platinum Select&reg; Card]]></title>
+      <link><![CDATA[http://www.qksrv.net/click-1469133-10313233?sid=]]></link>
+      <category>86</category>
+      <nffeed:categoryname>Low Interest</nffeed:categoryname>
+      <nffeed:bannerid>22144458</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Citi-Bank-Credit-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">0% APR* on balance transfers and purchases for 12 months*</li>        <li class="nf_li">No annual fee*</li>        <li class="nf_li">Secure, free online account management*</li>        <li class="nf_li">$0 liability on unauthorized purchases*</li>        <li class="nf_li">Apply online and get an instant response*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>10.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>10.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months *</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Excellent Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>2</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Discover&reg; Platinum Card]]></title>
+      <link><![CDATA[https://discovercardapplication.com/?cid=53437&uid=]]></link>
+      <category>86</category>
+      <nffeed:categoryname>Low Interest</nffeed:categoryname>
+      <nffeed:bannerid>22184474</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/discover-platinum-credit-card.gif</nffeed:image>
+      <description><![CDATA[<ul class="nf_ul">    <li class="nf_li"> 0% Intro APR* </li>    <li class="nf_li"> No Annual Fee </li>    <li class="nf_li"> 5% <em>Cashback Bonus&reg; </em>on Get More Program purchases throughout the year when you shop at places like bookstores, home improvement stores, gasoline stations, restaurants and more* </li>    <li class="nf_li"> Up to 1% <em>Cashback Bonus&reg;</em> on all your other purchases* </li>    <li class="nf_li"> Unlimited cash rewards that never expire as long as you use your Card. </li>    <li class="nf_li"> DOUBLE your <em>Cashback Bonus</em>&reg; (turn $20 into $40) when you redeem for gift cards or certificates from many of Discover's 40 brand name partners.</li></ul>]]></description>
+      <nffeed:regularApr>10.99%*</nffeed:regularApr>
+      <nffeed:q_regularApr>10.99</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%  on Purchases and Balance Transfers.</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Excellent Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>2</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Chase Cash Plus&reg; Rewards Visa Card (Cash Back Credit Card)]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=EhraRx8K/BE&offerid=87906.10000280&type=3&subid=0&u1=]]></link>
+      <category>86</category>
+      <nffeed:categoryname>Low Interest</nffeed:categoryname>
+      <nffeed:bannerid>22124546</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Chase-Cash-Plus-Rewards-Visa.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">5% cash back at grocery stores, gas stations and drug stores*</LI>        <li class="nf_li">1% cash back   on all other purchases*</LI>        <li class="nf_li">0% Introductory APR     for up to 12 months on purchases and balance transfers*</LI>        <li class="nf_li">No Annual Fee*</LI>      </ul>    ]]></description>
+      <nffeed:regularApr>13.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>13.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Blue from American Express]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=EhraRx8K/BE&offerid=84465.10001022&subid=0&type=4&u1=]]></link>
+      <category>86</category>
+      <nffeed:categoryname>Low Interest</nffeed:categoryname>
+      <nffeed:bannerid>22034413</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/business-credit-cards-american-express-blue.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">This low interest credit card features a 0% Introductory APR for up to 15 months as well as a low regular APR*</li>        <li class="nf_li">No annual fee*</li>        <li class="nf_li">Free Credit Card Reward Program*</li>        <li class="nf_li">Apply now and get Instant Online Credit Card Approval*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>11.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>11.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>up to 15 months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>15</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Excellent Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>2</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Chase Platinum Credit Card]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=EhraRx8K/BE&offerid=87906.10000363&type=3&subid=0&u1=]]></link>
+      <category>86</category>
+      <nffeed:categoryname>Low Interest</nffeed:categoryname>
+      <nffeed:bannerid>22124443</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/chase-platinum-visa.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">Low 0% Introductory APR on Purchases and Balance Transfers*</li>        <li class="nf_li">This Platinum Credit Card also features a low regular APR*</li>        <li class="nf_li">No Annual Fee*</li>        <li class="nf_li">Eligibility to enroll in Chase Travel Rewards where you can earn points           for free flights, hotel stays and more*</li>        <li class="nf_li">Free secure online account access and bill pay*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>11.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>11.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>up to 15 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>15</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Chase Cash Plus&reg; Rewards Visa Card (Cash Back Credit Card)]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=EhraRx8K/BE&offerid=87906.10000280&type=3&subid=0&u1=]]></link>
+      <category>88</category>
+      <nffeed:categoryname>Cash Back</nffeed:categoryname>
+      <nffeed:bannerid>22124546</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Chase-Cash-Plus-Rewards-Visa.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">5% cash back at grocery stores, gas stations and drug stores*</LI>        <li class="nf_li">1% cash back   on all other purchases*</LI>        <li class="nf_li">0% Introductory APR     for up to 12 months on purchases and balance transfers*</LI>        <li class="nf_li">No Annual Fee*</LI>      </ul>    ]]></description>
+      <nffeed:regularApr>13.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>13.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[The Discover&reg; Platinum Gas Card]]></title>
+      <link><![CDATA[https://discovercardapplication.com/?cid=53439&uid=]]></link>
+      <category>88</category>
+      <nffeed:categoryname>Cash Back</nffeed:categoryname>
+      <nffeed:bannerid>22184477</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Discover-Platinum-Cashback-Bonus-Plus.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li"> 0% Intro APR* </li>        <li class="nf_li"> No Annual Fee </li>        <li class="nf_li"> Full 5% <em>Cashback Bonus&reg;</em> on your Gas purchases* </li>        <li class="nf_li"> Up to 1% <em>Cashback Bonus&reg; </em>on all your other purchases*</li>        <li class="nf_li">Cash rewards never expire as long as you use your Card</li>      </ul>    ]]></description>
+      <nffeed:regularApr>10.99%*</nffeed:regularApr>
+      <nffeed:q_regularApr>10.99</nffeed:q_regularApr>
+      <nffeed:introApr>0.00% on Purchases and Balance Transfers*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Excellent Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>2</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Blue Cash&reg; from American Express]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=EhraRx8K/BE&offerid=84465.10001026&subid=0&type=4&u1=]]></link>
+      <category>88</category>
+      <nffeed:categoryname>Cash Back</nffeed:categoryname>
+      <nffeed:bannerid>22034411</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/business-credit-cards-american-express-blue-cash.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">Up to 5% cash back on all qualified purchases*</li>        <li class="nf_li">No annual fee*</li>        <li class="nf_li">0% Intro APR for 6 months*</li>        <li class="nf_li">Flexibility to pay over time</li>        <li class="nf_li">Fee-free additional cards help you earn more</li>      </ul>    ]]></description>
+      <nffeed:regularApr>12.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>12.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>6 months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>6</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Excellent Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>2</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Citi&reg; Dividend Platinum Select&reg; Card]]></title>
+      <link><![CDATA[http://www.qksrv.net/click-1469133-10359665?sid=]]></link>
+      <category>88</category>
+      <nffeed:categoryname>Cash Back</nffeed:categoryname>
+      <nffeed:bannerid>22144464</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Citi-Dividend-Platinum-Select-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">Earn a FULL 5% cash back on purchases at supermarkets, drugstores and gas stations</li>        <li class="nf_li">Earn 1% on all other purchases</li>        <li class="nf_li">0% APR on balance transfers for 12 months</li>        <li class="nf_li">Earn unlimited cash back by shopping within the Citi Dividend Merchant Network</li>        <li class="nf_li">No annual fee</li>      </ul>    ]]></description>
+      <nffeed:regularApr>12.99%*</nffeed:regularApr>
+      <nffeed:q_regularApr>12.99</nffeed:q_regularApr>
+      <nffeed:introApr>0.00% on Balance Transfers*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Excellent Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>2</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[HSBC Mastercard&reg; Cash Back Rewards]]></title>
+      <link><![CDATA[http://www.disclosure.hsbccreditcard.com/media/disclosure?cmd_lpage=&indicator=hs002&media=H1AG05_]]></link>
+      <category>88</category>
+      <nffeed:categoryname>Cash Back</nffeed:categoryname>
+      <nffeed:bannerid>22264552</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/HSBC-Mastercard-Cash-Rewards-Credit-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">0% Intro APR on purchases and balance transfers for 12 months*</li><li class="nf_li">Earn a full 1% cash back on every credit card purchase</li><li class="nf_li">Simple, unlimited earnings - no tiers, caps, or complicated spending requirements</li><li class="nf_li">Platinum benefits include unlimited purchase protection, extended warranties, travel accident insurance</li><li class="nf_li">No Annual Fee</li>      </ul>    ]]></description>
+      <nffeed:regularApr>11.24%*</nffeed:regularApr>
+      <nffeed:q_regularApr>11.24</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Chase Cash Plus&reg; Rewards Visa Card (Cash Back Credit Card)]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=EhraRx8K/BE&offerid=87906.10000280&type=3&subid=0&u1=]]></link>
+      <category>87</category>
+      <nffeed:categoryname>Balance Transfers</nffeed:categoryname>
+      <nffeed:bannerid>22124546</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Chase-Cash-Plus-Rewards-Visa.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">5% cash back at grocery stores, gas stations and drug stores*</LI>        <li class="nf_li">1% cash back   on all other purchases*</LI>        <li class="nf_li">0% Introductory APR     for up to 12 months on purchases and balance transfers*</LI>        <li class="nf_li">No Annual Fee*</LI>      </ul>    ]]></description>
+      <nffeed:regularApr>13.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>13.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Citi&reg; Platinum Select&reg; Card]]></title>
+      <link><![CDATA[http://www.qksrv.net/click-1469133-10313233?sid=]]></link>
+      <category>87</category>
+      <nffeed:categoryname>Balance Transfers</nffeed:categoryname>
+      <nffeed:bannerid>22144458</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Citi-Bank-Credit-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">0% APR* on balance transfers and purchases for 12 months*</li>        <li class="nf_li">No annual fee*</li>        <li class="nf_li">Secure, free online account management*</li>        <li class="nf_li">$0 liability on unauthorized purchases*</li>        <li class="nf_li">Apply online and get an instant response*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>10.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>10.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months *</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Excellent Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>2</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[HSBC Platinum MasterCard]]></title>
+      <link><![CDATA[http://www.disclosure.hsbccreditcard.com/media/disclosure?cmd_lpage=&indicator=hs002&media=H1AG05_]]></link>
+      <category>87</category>
+      <nffeed:categoryname>Balance Transfers</nffeed:categoryname>
+      <nffeed:bannerid>22264538</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/HSBC-Household-Platinum-Credit-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul"><li class="nf_li">No annual fee </li><li class="nf_li">0% Intro APR on purchases and balance transfers for 12 months*</li><li class="nf_li">Free online bill pay</li><li class="nf_li">Secure, free online account management</li><li class="nf_li">Platinum benefits include unlimited purchase protection, extended warranties, travel accident insurance</li></ul>    ]]></description>
+      <nffeed:regularApr>11.24%*</nffeed:regularApr>
+      <nffeed:q_regularApr>11.24</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Chase Platinum Credit Card]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=EhraRx8K/BE&offerid=87906.10000363&type=3&subid=0&u1=]]></link>
+      <category>87</category>
+      <nffeed:categoryname>Balance Transfers</nffeed:categoryname>
+      <nffeed:bannerid>22124443</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/chase-platinum-visa.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">Low 0% Introductory APR on Purchases and Balance Transfers*</li>        <li class="nf_li">This Platinum Credit Card also features a low regular APR*</li>        <li class="nf_li">No Annual Fee*</li>        <li class="nf_li">Eligibility to enroll in Chase Travel Rewards where you can earn points           for free flights, hotel stays and more*</li>        <li class="nf_li">Free secure online account access and bill pay*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>11.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>11.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>up to 15 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>15</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Advanta Platinum with Rewards]]></title>
+      <link><![CDATA[http://service.bfast.com/bfast/click?bfmid=37921849&siteid=39764206&bfpage=cc_com_plat_w_reward&bfinfo=]]></link>
+      <category>90</category>
+      <nffeed:categoryname>Business</nffeed:categoryname>
+      <nffeed:bannerid>22014402</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/advanta-business-credit-card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">0% APR on Balance Transfers for 15 months</li>        <li class="nf_li">7.99% Fixed APR thereafter</li>        <li class="nf_li">5% Cash Back OR Travel Rewards ? No Annual Fee</li>        <li class="nf_li"> Exceptional offers to help your business </li>      </ul>    ]]></description>
+      <nffeed:regularApr>7.99%*</nffeed:regularApr>
+      <nffeed:q_regularApr>7.99</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>15 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>15</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[CitiBusiness&reg; Card]]></title>
+      <link><![CDATA[http://www.dpbolvw.net/click-1469133-10384637?sid=]]></link>
+      <category>90</category>
+      <nffeed:categoryname>Business</nffeed:categoryname>
+      <nffeed:bannerid>22144465</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Citi-Bank-Business-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">0% APR on balance transfers for 12 months*</li>        <li class="nf_li">No annual fee</li>        <li class="nf_li">Business-size credit line</li>        <li class="nf_li">Free additional cards for employees with credit limits you set</li>        <li class="nf_li">Savings on everyday business purchases</li>        <li class="nf_li">Quarterly and annual account summaries</li>      </ul>    ]]></description>
+      <nffeed:regularApr>12.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>12.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Blue Cash<sup>&reg;</sup> for Business Credit Card]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=EhraRx8K/BE&offerid=61259.10000602&subid=0&type=4&u1=]]></link>
+      <category>90</category>
+      <nffeed:categoryname>Business</nffeed:categoryname>
+      <nffeed:bannerid>22034410</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/business-credit-cards-american-express-blue-cash.gif</nffeed:image>
+      <description><![CDATA[<ul class="nf_ul">              <li class="nf_li">Up to 5% cash rebate </li>              <li class="nf_li">No annual fee </li>              <li class="nf_li">0% APR during your first 6 months </li>              <li class="nf_li">Get a decision in less than 60 seconds*</li>          </ul>]]></description>
+      <nffeed:regularApr>10.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>10.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>6 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>6</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Excellent Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>2</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[CitiBusiness&reg; Card with Thank You Network]]></title>
+      <link><![CDATA[http://www.qksrv.net/click-1469133-10361894?sid=]]></link>
+      <category>90</category>
+      <nffeed:categoryname>Business</nffeed:categoryname>
+      <nffeed:bannerid>22144504</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Citi-Bank-Business-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">0% APR on balance transfers for 12 months*                <li class="nf_li">No annual fee                <li class="nf_li">10,000 ThankYou Points after your first purchase*                <li class="nf_li">3 ThankYou Points for every dollar you spend on eligible business purchases                <li class="nf_li">Quarterly and annual account summaries                <li class="nf_li">Free additional cards for employees with credit limits you set              </ul>    ]]></description>
+      <nffeed:regularApr>13.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>13.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Platinum Business Credit Card from American Express]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=EhraRx8K/BE&offerid=61259.10000738&subid=0&type=4&u1=]]></link>
+      <category>90</category>
+      <nffeed:categoryname>Business</nffeed:categoryname>
+      <nffeed:bannerid>22034405</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Platinum-Business-Credit-Card-American-Express.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">No annual fee</li>        <li class="nf_li">Pay over time or in full*</li>        <li class="nf_li">0% intro APR for purchases*</li>        <li class="nf_li">4.99% for the life of the balance for balance transfers*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>10.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>10.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Value Miles Platinum Visa&reg; Card (Frequent Flyer Credit Card)]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=EhraRx8K/BE&offerid=87906.10000399&type=3&subid=0&u1=]]></link>
+      <category>89</category>
+      <nffeed:categoryname>Airline</nffeed:categoryname>
+      <nffeed:bannerid>22074433</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Bank-One-Travel-Visa.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">Every purchase earns you one Value Mile for each dollar spent*</li>        <li class="nf_li">And all it takes is 24,000 miles to earn an airline ticket to anywhere in the continental U.S. 48 states*</li>        <li class="nf_li">Fly major U.S. airlines with no blackout dates*<li class="nf_li"> Receive Travel Insurance, Travel Assistance, Emergency Cash Delivery, Lost Card Reporting, and more!         <li class="nf_li">0% Intro APR* and No Annual Fee*</LI>        </ul>    ]]></description>
+      <nffeed:regularApr>12.24%*</nffeed:regularApr>
+      <nffeed:q_regularApr>12.24</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Citi&reg; PremierPass<sup>SM</sup>Card]]></title>
+      <link><![CDATA[http://www.kqzyfj.com/click-1469133-10372545?sid=]]></link>
+      <category>89</category>
+      <nffeed:categoryname>Airline</nffeed:categoryname>
+      <nffeed:bannerid>22144520</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Citi-Premier-Pass-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">0% APR on Balance Transfers for 12 months</li>        <li class="nf_li">Get the purchasing power you need</li>        <li class="nf_li">Earn points for purchases &amp; miles flown</li>        <li class="nf_li">FREE online services, including account management, statements, unbilled activity, and faster payments</li>      </ul>    ]]></description>
+      <nffeed:regularApr>13.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>13.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00% on balance transfers*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[The Miles Card from Discover&reg; Card]]></title>
+      <link><![CDATA[https://discovercardapplication.com/?cid=53441&uid=]]></link>
+      <category>89</category>
+      <nffeed:categoryname>Airline</nffeed:categoryname>
+      <nffeed:bannerid>22184478</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Discover-Miles-Credit-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li"> Now with NO Annual Fee </li>        <li class="nf_li"> 5,000 Bonus Miles after your First Purchase* </li>        <li class="nf_li"> 0% Intro APR* </li>        <li class="nf_li"> Earn 1 Mile for Every $1 You Spend </li>        <li class="nf_li"> No Blackout Dates with Air Travel Rewards </li>        <li class="nf_li"> Rewards that Fit Any Plans</li>      </ul>    ]]></description>
+      <nffeed:regularApr>10.99%*</nffeed:regularApr>
+      <nffeed:q_regularApr>10.99</nffeed:q_regularApr>
+      <nffeed:introApr>0.00% on Purchases &amp;amp; Balance Transfers</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>12 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>12</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Excellent Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>2</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Citi&reg; Bronze&reg; AAdvantage&reg; MasterCard&reg;]]></title>
+      <link><![CDATA[http://www.anrdoezrs.net/click-1469133-10378819?sid=]]></link>
+      <category>89</category>
+      <nffeed:categoryname>Airline</nffeed:categoryname>
+      <nffeed:bannerid>22144529</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Citi-Bronze-AAdvantage-MasterCard-Credit-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">Receive 5,000 Bonus Miles after your first purchase with the card*</li>        <li class="nf_li">No annual fee for your card or for AAdvantage&reg; program membership*</li>        <li class="nf_li">Earn 1 AAdvantage&reg; mile for every $2 you spend on eligible purchases - up to 25,000 miles per year*</li>        <li class="nf_li">No blackout dates for AAdvantage award travel on American Airlines, American Eagle &amp; AmericanConnection&reg; carriers*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>17.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>17.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>0*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>0</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Citi&reg; Gold / AAdvantage&reg; World MasterCard&reg;]]></title>
+      <link><![CDATA[http://www.jdoqocy.com/click-1469195-10367104?sid=]]></link>
+      <category>89</category>
+      <nffeed:categoryname>Airline</nffeed:categoryname>
+      <nffeed:bannerid>22144516</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/citi-aadvantage-gold-platinum-credit-card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">Earn 12,500 Bonus Miles after your first purchase with the card</li>        <li class="nf_li">Earn 1 AAdvantage&reg; mile for every $1 you spend on eligible purchases - up to 60,000 miles per year</li>        <li class="nf_li">No blackout dates for AAdvantage award travel on American Airlines, American Eagle &amp; AmericanConnection&reg; carriers</li>        <li class="nf_li">Redeem AAdvantage miles with over 25 of the world&rsquo;s top airlines, major car rental companies and hundreds of luxurious hotels worldwide </li>        <li class="nf_li">AAdvantage&reg; miles may never expire</li>        <li class="nf_li">Reduced Mileage Awards &ndash; 5,000 fewer miles to select destinations </li>        <li class="nf_li">No pre-set spending limit </li>      </ul>    ]]></description>
+      <nffeed:regularApr>17.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>17.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>0*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>0</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>$50.00*</nffeed:annualFee>
+      <nffeed:q_annualFee>50.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Bad Credit OK*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>0</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[First PREMIER Bank Gold MasterCard?]]></title>
+      <link><![CDATA[http://www.firstpremierbankcards.com/?trkid=5&mrkt=531&submrkt=40&jump=a1&SourceID=]]></link>
+      <category>91</category>
+      <nffeed:categoryname>Bad Credit</nffeed:categoryname>
+      <nffeed:bannerid>22214485</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/first-premiere-gold-mastercard.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">Low APR on Purchases*</li>        <li class="nf_li">Reports monthly to 4 Major Credit Bureaus</li>        <li class="nf_li">Enjoy the benefit of 24 hour account access by phone</li>        <li class="nf_li">Prestige of a Gold Card.</li>        <li class="nf_li">See application for complete <a href="/First-Premier-Terms&Conditions.php" target="_blank">terms &amp; conditions</a>*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>9.90%*</nffeed:regularApr>
+      <nffeed:q_regularApr>9.90</nffeed:q_regularApr>
+      <nffeed:introApr>0.00*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>0*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>0</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>$48.00*</nffeed:annualFee>
+      <nffeed:q_annualFee>48.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>N/A*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>0</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Bad Credit OK*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>0</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[First PREMIER Bank Credit Card]]></title>
+      <link><![CDATA[http://www.firstpremierbankcards.com/?trkid=7&mrkt=531&submrkt=40&jump=a1&SourceID=]]></link>
+      <category>91</category>
+      <nffeed:categoryname>Bad Credit</nffeed:categoryname>
+      <nffeed:bannerid>22214484</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/firstpremier-bad-credit-credit-card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">You may qualify for a MasterCard&reg; or Visa&reg;. </li>        <li class="nf_li">Low APR on Purchases*</li>        <li class="nf_li">Reports monthly to 4 Major Credit Bureaus*</li>        <li class="nf_li">Enjoy the benefit of 24 hour account access by phone*</li>        <li class="nf_li">See application for complete <a href="/First-Premier-Terms&Conditions.php" target="_blank">terms &amp; conditions</a>*</li>      </ul>                  ]]></description>
+      <nffeed:regularApr>9.90%*</nffeed:regularApr>
+      <nffeed:q_regularApr>9.90</nffeed:q_regularApr>
+      <nffeed:introApr>0.00*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>0*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>0</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>$48.00*</nffeed:annualFee>
+      <nffeed:q_annualFee>48.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>N/A*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>0</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Bad Credit OK*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>0</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Centennial Gold MasterCard&reg;]]></title>
+      <link><![CDATA[http://www.firstpremierbankcards.com/?trkid=6&mrkt=531&submrkt=40&jump=a1&SourceID=]]></link>
+      <category>91</category>
+      <nffeed:categoryname>Bad Credit</nffeed:categoryname>
+      <nffeed:bannerid>22214482</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/centenial-gold-bad-credit-card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">Low APR on Purchases*</li>        <li class="nf_li">Reports monthly to 4 Major Credit Bureaus</li>        <li class="nf_li">Enjoy the benefit of 24 hour account access by phone</li>        <li class="nf_li">The Prestige of a Gold Card</li>        <li class="nf_li">See application for complete <a href="/First-Premier-Terms&Conditions.php" target="_blank">terms &amp; conditions</a>*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>9.90%*</nffeed:regularApr>
+      <nffeed:q_regularApr>9.90</nffeed:q_regularApr>
+      <nffeed:introApr>0.00*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>0*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>0</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>$48.00*</nffeed:annualFee>
+      <nffeed:q_annualFee>48.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>N/A*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>0</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Bad Credit OK*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>0</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Citi&reg; Dividend Platinum Select&reg; Card for College Students]]></title>
+      <link><![CDATA[http://www.qksrv.net/click-1469133-10280318?sid=]]></link>
+      <category>92</category>
+      <nffeed:categoryname>Student</nffeed:categoryname>
+      <nffeed:bannerid>22144460</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Citi-Student-Dividend-Platinum-Select-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li"> 0% Introductory APR for 6 months* </li>        <li class="nf_li">5% cash back on eligible purchases at supermarkets, drugstores and gas stations* </li>        <li class="nf_li">0% liability to any unauthorized charges to your account </li>        <li class="nf_li">No annual fee </li>        <li class="nf_li">Free online account management*</li>      </ul>      ]]></description>
+      <nffeed:regularApr>17.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>17.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>6 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>6</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Chase Platinum Student Credit Card]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=EhraRx8K/BE&offerid=87906.10000339&type=3&subid=0&u1=]]></link>
+      <category>92</category>
+      <nffeed:categoryname>Student</nffeed:categoryname>
+      <nffeed:bannerid>22124444</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/platinum-student-credit-cards.gif</nffeed:image>
+      <description><![CDATA[<ul class="nf_ul">    <li class="nf_li">No Annual Fee                 </li>    <li class="nf_li">Get automatic membership in the Chase Ultimate Rewards Express Program                 </li>    <li class="nf_li">Get 1 Point for every dollar you spend          </li>    <li class="nf_li">$0 liability so you don't get charged if someone else uses your credit card without permission          </li>    <li class="nf_li">Free secure online account access and bill pay*</li></ul>]]></description>
+      <nffeed:regularApr>17.49%*</nffeed:regularApr>
+      <nffeed:q_regularApr>17.49</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>6 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>6</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Citi&reg; Platinum Select&reg; Card for College Students]]></title>
+      <link><![CDATA[http://www.qksrv.net/click-1469133-10280321?sid=]]></link>
+      <category>92</category>
+      <nffeed:categoryname>Student</nffeed:categoryname>
+      <nffeed:bannerid>22144462</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/citi-platinum-student-credit-card.gif</nffeed:image>
+      <description><![CDATA[<ul class="nf_ul">      <li class="nf_li">0% APR* for 6 months on purchases, cash advances and balance transfers as long as you do not default under any Card Agreement*</li>      <li class="nf_li">$0 liability on unauthorized purchases*</li>      <li class="nf_li">No annual fee*</li>      <li class="nf_li">FREE Online Account Management*</li>      <li class="nf_li">No minimum income or co-signer required </li>    </ul>]]></description>
+      <nffeed:regularApr>17.24%*</nffeed:regularApr>
+      <nffeed:q_regularApr>17.24</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>6 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>6</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Citi&reg; mtvU&#8482; Platinum Select&reg; Visa&reg; Card for College Students]]></title>
+      <link><![CDATA[http://www.anrdoezrs.net/click-1469133-10383125?sid=]]></link>
+      <category>92</category>
+      <nffeed:categoryname>Student</nffeed:categoryname>
+      <nffeed:bannerid>22144536</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Citi-mtv-UTM-Platinum-Select-Visa-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li"> Earn 5 ThankYou Points&reg; for every dollar you spend at restaurants, bookstores, record stores, movie theaters and video rentals stores.</li>        <li class="nf_li">Earn 1 ThankYou Point for every dollar you spend on all other purchases.</li>        <li class="nf_li">Earn 200-2000 ThankYou Points twice a year for maintaining a good GPA.</li>        <li class="nf_li">Redeem points for gift cards, MTV events, and airline tickets.*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>17.24%*</nffeed:regularApr>
+      <nffeed:q_regularApr>17.24</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>6 Months*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>6</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>Yes*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>1</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Discover&reg; Student Classic Card]]></title>
+      <link><![CDATA[https://discovercardapplication.com/?cid=53504&uid=]]></link>
+      <category>92</category>
+      <nffeed:categoryname>Student</nffeed:categoryname>
+      <nffeed:bannerid>22184470</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/discover-student-credit-card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">0% APR for 6 Months </li><li class="nf_li">24/7 Easy Online Account Management </li><li class="nf_li">No Annual Fee </li><li class="nf_li">5% <em>Cashback Bonus</em>&reg; on Get More Program purchases throughout the year* </li><li class="nf_li">Up to 1% <em>Cashback Bonus</em>&reg; on all your other purchases*</li>       </ul>    ]]></description>
+      <nffeed:regularApr>16.99%*</nffeed:regularApr>
+      <nffeed:q_regularApr>16.99</nffeed:q_regularApr>
+      <nffeed:introApr>0.00%*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>6 Months *</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>6</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>N/A*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>0</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Good Credit*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>1</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Wired Plastic Prepaid Visa]]></title>
+      <link><![CDATA[http://www.ncsreporting.com/LinkTrack/Redirect.asp?LinkID=WPC10565]]></link>
+      <category>93</category>
+      <nffeed:categoryname>Prepaid</nffeed:categoryname>
+      <nffeed:bannerid>22354503</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/wired-plastic-mastercard.gif</nffeed:image>
+      <description><![CDATA[<ul class="nf_ul">    <li class="nf_li">No Upfront Payment*</li>    <li class="nf_li">Overdraft Safety Program*</li>    <li class="nf_li">Earn 1 point for every $1 spent, redeem points for; LD Phone Calls, Prepaid Wireless Airtime and Music Downloads*</li>    <li class="nf_li">Integrated Bill Pay Service*</li>    <li class="nf_li">Free Direct Deposit or add cash instantly at over 100,000 retail locations nationwide*</li></ul>]]></description>
+      <nffeed:regularApr>N/A*</nffeed:regularApr>
+      <nffeed:q_regularApr>0.00</nffeed:q_regularApr>
+      <nffeed:introApr>N/A*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>N/A*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>0</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>N/A*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>0</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Bad Credit OK*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>0</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Eufora&reg; Pre-Paid MasterCard&reg;]]></title>
+      <link><![CDATA[https://www.eufora.com/sco/apply.do?member=1&ref=910001347884&refTag=]]></link>
+      <category>93</category>
+      <nffeed:categoryname>Prepaid</nffeed:categoryname>
+      <nffeed:bannerid>22194479</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/Eufora-Credit-Card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">Rebuild your credit with a Eufora Pre-Paid MasterCard</li>        <li class="nf_li">Credit Bureau Reporting</li>        <li class="nf_li">Load funds online</li>        <li class="nf_li">Zero Liability </li>        <li class="nf_li">Global Customer Assistance </li>        <li class="nf_li">Auto Sweepstakes Entry*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>0.00*</nffeed:regularApr>
+      <nffeed:q_regularApr>0.00</nffeed:q_regularApr>
+      <nffeed:introApr>0.00*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>0*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>0</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>$29.95-$annualFee*</nffeed:annualFee>
+      <nffeed:q_annualFee>29.95</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>N/A*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>0</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Bad Credit OK*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>0</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[The Vaya<sup>TM</sup> MasterCard&reg; Card]]></title>
+      <link><![CDATA[http://www.ncsreporting.com/LinkTrack/Redirect.asp?LinkID=VPM10565]]></link>
+      <category>93</category>
+      <nffeed:categoryname>Prepaid</nffeed:categoryname>
+      <nffeed:bannerid>22344502</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/prepaid-debit-cards.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">Prepaid, with easy loading options</li>        <li class="nf_li">Guaranteed Approval</li>        <li class="nf_li">No credit check, bank account or security deposit required</li>        <li class="nf_li">No interest charges or late fees</li>        <li class="nf_li">Free Direct Deposit</li>      </ul>    ]]></description>
+      <nffeed:regularApr>0.00*</nffeed:regularApr>
+      <nffeed:q_regularApr>0.00</nffeed:q_regularApr>
+      <nffeed:introApr>0.00*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>0*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>0</nffeed:q_introAprPeriod>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:monthlyFee>None*</nffeed:monthlyFee>
+      <nffeed:q_monthlyFee>5.95</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>N/A*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>0</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Bad Credit OK*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>0</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Western Union&reg; Prepaid MasterCard&reg; Card]]></title>
+      <link><![CDATA[http://click.linksynergy.com/fs-bin/click?id=yh2rM/1KfGc&offerid=60384.10000089&type=3&subid=0&u1=]]></link>
+      <category>93</category>
+      <nffeed:categoryname>Prepaid</nffeed:categoryname>
+      <nffeed:bannerid>22224545</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/western-union-prepaid-mastercard-card.gif</nffeed:image>
+      <description><![CDATA[       <ul class="nf_ul">        <li class="nf_li">No lengthy application</li>        <li class="nf_li">No credit check</li>        <li class="nf_li">No bank account needed</li>        <li class="nf_li">Now with direct deposit*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>0.00*</nffeed:regularApr>
+      <nffeed:q_regularApr>0.00</nffeed:q_regularApr>
+      <nffeed:introApr>0.00*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>0*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>0</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>$4.95*</nffeed:annualFee>
+      <nffeed:q_annualFee>4.95</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>N/A*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>0</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Bad Credit OK*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>0</nffeed:q_creditNeeded>
+    </item>
+    <item>
+      <title><![CDATA[Vue Prepaid Visa&reg; Debit Card]]></title>
+      <link><![CDATA[https://instantvuecard.com/index.asp?masteraff=060&aff=]]></link>
+      <category>93</category>
+      <nffeed:categoryname>Prepaid</nffeed:categoryname>
+      <nffeed:bannerid>22244491</nffeed:bannerid>
+      <nffeed:image>http://www.creditcards.com/images/vue-visa-prepaid-credit-card.gif</nffeed:image>
+      <description><![CDATA[      <ul class="nf_ul">        <li class="nf_li">No credit checks.</li>        <li class="nf_li">No turndowns.</li>        <li class="nf_li">No security deposit.</li>        <li class="nf_li">No employment required.*</li>      </ul>    ]]></description>
+      <nffeed:regularApr>0.00*</nffeed:regularApr>
+      <nffeed:q_regularApr>0.00</nffeed:q_regularApr>
+      <nffeed:introApr>0.00*</nffeed:introApr>
+      <nffeed:q_introApr>0.00</nffeed:q_introApr>
+      <nffeed:introAprPeriod>0*</nffeed:introAprPeriod>
+      <nffeed:q_introAprPeriod>0</nffeed:q_introAprPeriod>
+      <nffeed:annualFee>None*</nffeed:annualFee>
+      <nffeed:q_annualFee>0.00</nffeed:q_annualFee>
+      <nffeed:q_monthlyFee>0.00</nffeed:q_monthlyFee>
+      <nffeed:balanceTransfers>N/A*</nffeed:balanceTransfers>
+      <nffeed:q_balanceTransfers>0</nffeed:q_balanceTransfers>
+      <nffeed:creditNeeded>Bad Credit OK*</nffeed:creditNeeded>
+      <nffeed:q_creditNeeded>0</nffeed:q_creditNeeded>
+    </item>
+  </channel>
+</rss>

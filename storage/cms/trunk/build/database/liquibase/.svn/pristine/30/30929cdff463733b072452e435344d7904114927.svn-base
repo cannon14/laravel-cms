@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="cconey" id="initial-setup">
+
+        <createTable tableName="additional_benefits">
+            <column autoIncrement="true" name="additional_benefit_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="benefit" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="additional_fees">
+            <column autoIncrement="true" name="additional_fee_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fee" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="additional_notes">
+            <column autoIncrement="true" name="additional_note_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="note" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="approved_promotional_content">
+            <column autoIncrement="true" name="approved_promotional_content_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="balance_transfers">
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="accept_partial_balance_transfer" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_end_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="max_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="fee_rate" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_transfer_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="max_transfer_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="display_text" type="TEXT"/>
+        </createTable>
+
+        <createTable tableName="card_tags">
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_tag" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="cards">
+            <column autoIncrement="true" name="card_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_sku" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="issuer" type="INT"/>
+            <column name="effective_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="NEW" name="status" type="VARCHAR(15)"/>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="coissuing_organization" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="network" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="initial_setup_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_annual_fee" type="DECIMAL(12, 2)"/>
+            <column name="ongoing_annual_fee" type="DECIMAL(12, 2)"/>
+            <column name="annual_fee_display_text" type="TEXT"/>
+            <column defaultValueNumeric="0.00" name="monthly_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.00" name="min_late_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="max_late_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="late_payment_fee_percent" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="over_limit_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="returned_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="dishonored_convenience_check_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="convenience_check_stop_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="balance_transfer_cancellation_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="bank_wire_payment_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="statement_copy_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="inactivity_fee" type="DECIMAL(12, 2)"/>
+            <column defaultValueNumeric="0.000" name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="intro_apr_display_text" type="TEXT"/>
+            <column defaultValueNumeric="0" name="min_intro_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="max_intro_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_display_text" type="TEXT"/>
+            <column name="intro_period_end_date" type="date"/>
+            <column defaultValueNumeric="0.000" name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="ongoing_apr_display_text" type="TEXT"/>
+            <column defaultValueNumeric="0.000" name="min_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0.000" name="max_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="min_grace_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_finance_charge" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="min_fixed_rate_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance_compute_method" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_payment_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="min_payment_percentage" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit_needed" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit_needed_display_text" type="TEXT"/>
+            <column defaultValueNumeric="0.00" name="min_credit_line" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="max_credit_line" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="min_income" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="min_between_applications_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="interest_rate_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="used_index_rate" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="index_rate_definition" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="apply_payment" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_min_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.00" name="foreign_exchange_max_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0.000" name="foreign_exchange_fee_rate" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="custom_prepaid_display_text" type="VARCHAR(50)"/>
+            <column name="modified_date" type="date"/>
+            <column defaultValueNumeric="0" name="deleted" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bt_intro_apr_display_text" type="TEXT"/>
+            <column name="bt_intro_period_display_text" type="TEXT"/>
+            <column name="product_type_id" type="INT"/>
+        </createTable>
+
+        <createTable tableName="cash_advances">
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_intro_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_intro_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_period_end_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="max_ongoing_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_ongoing_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="max_default_apr" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_default_apr_used_rate_type" type="VARCHAR(50)"/>
+            <column name="min_grace_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_finance_charge" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_fixed_rate_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fee_rate" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_convenience_check_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_payment_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="min_payment_percentage" type="DECIMAL(6, 3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cash_advance_limit" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="cash_back">
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_round_bonus" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="annual_bonus" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="cccom_data">
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_link" type="VARCHAR(255)"/>
+            <column name="apply_by_phone_number" type="VARCHAR(255)"/>
+            <column name="terms_link" type="VARCHAR(255)"/>
+        </createTable>
+
+        <createTable tableName="ccx_cardbank_card_map">
+            <column name="ccx_card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cardbank_card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="commercial_features">
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reporting_features" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="travel_expense_management" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchasing_expense_management" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fleet_expense_management" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="frequent_flier">
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="which_airlines" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject_to_blackout_dates" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_purchase_bonus" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="meta_data">
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="distribute" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="other_benefits">
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="insurance" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="retail_discounts" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="extended_warranties" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roadside_assistance" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="security_identity_solution" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_protection" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="consierge_service" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="card_design" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mini_card" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="photo_security" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="personalization" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="point_rewards">
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="base_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_amount" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_reward_description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="where_points_redeemed" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value_of_points" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_purchase_bonus" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_bonus" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_period" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_reward_amount" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="intro_special_reward_amount" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_annual_reward" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="prepaid_card_fees">
+            <column name="card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="replacement_card_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atm_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="live_teller_withdrawal_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="atm_balance_inquiry_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="monthly_inactive_account_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="automated_telephone_inquiry_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_service_live_call_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cancel_card_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="application_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_merchant_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_online_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_telephone_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="signature_transaction_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pin_transaction_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="load_fee" type="DECIMAL(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="balance_transfers"/>
+
+        <addPrimaryKey columnNames="card_id, card_tag" constraintName="PRIMARY" tableName="card_tags"/>
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="cash_advances"/>
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="cash_back"/>
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="cccom_data"/>
+
+        <addPrimaryKey columnNames="ccx_card_id, cardbank_card_id" constraintName="PRIMARY" tableName="ccx_cardbank_card_map"/>
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="commercial_features"/>
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="frequent_flier"/>
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="meta_data"/>
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="other_benefits"/>
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="point_rewards"/>
+
+        <addPrimaryKey columnNames="card_id" constraintName="PRIMARY" tableName="prepaid_card_fees"/>
+
+        <addUniqueConstraint columnNames="card_sku, issuer" constraintName="IDX_SKU_Issuer" deferrable="false" disabled="false" initiallyDeferred="false" tableName="cards"/>
+
+        <addUniqueConstraint columnNames="card_id, benefit" constraintName="IDX_sku_issuer_benefit" deferrable="false" disabled="false" initiallyDeferred="false" tableName="additional_benefits"/>
+
+        <addUniqueConstraint columnNames="card_id, fee" constraintName="IDX_sku_issuer_fee" deferrable="false" disabled="false" initiallyDeferred="false" tableName="additional_fees"/>
+
+        <addUniqueConstraint columnNames="card_id, note" constraintName="IDX_sku_issuer_note" deferrable="false" disabled="false" initiallyDeferred="false" tableName="additional_notes"/>
+
+        <createView fullDefinition="false" viewName="alt_card_skus">select `cardbank${database.suffix}`.`alt_card_skus`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`alt_card_skus`.`card_sku` AS `card_sku`,`cardbank${database.suffix}`.`alt_card_skus`.`insert_time` AS `insert_time` from `cardbank${database.suffix}`.`alt_card_skus`</createView>
+
+        <createView fullDefinition="false" viewName="ccx_cms_map">select `cardbank${database.suffix}`.`ccx_cms_map`.`ccx_card_id` AS `ccx_card_id`,`cardbank${database.suffix}`.`ccx_cms_map`.`cms_card_id` AS `cms_card_id` from `cardbank${database.suffix}`.`ccx_cms_map`</createView>
+
+        <createView fullDefinition="false" viewName="errors">select `cardbank${database.suffix}`.`errors`.`error_id` AS `error_id`,`cardbank${database.suffix}`.`errors`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`errors`.`error` AS `error`,`cardbank${database.suffix}`.`errors`.`type` AS `type` from `cardbank${database.suffix}`.`errors`</createView>
+
+        <createView fullDefinition="false" viewName="issuers">select `cardbank${database.suffix}`.`issuers`.`issuer_id` AS `issuer_id`,`cardbank${database.suffix}`.`issuers`.`name` AS `name`,`cardbank${database.suffix}`.`issuers`.`logo` AS `logo`,`cardbank${database.suffix}`.`issuers`.`site_code` AS `site_code`,`cardbank${database.suffix}`.`issuers`.`deleted` AS `deleted` from `cardbank${database.suffix}`.`issuers`</createView>
+
+        <createView fullDefinition="false" viewName="stable_additional_benefits">select `cardbank${database.suffix}`.`additional_benefits_pending`.`additional_benefit_id` AS `additional_benefit_id`,`cardbank${database.suffix}`.`additional_benefits_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`additional_benefits_pending`.`benefit` AS `benefit` from `cardbank${database.suffix}`.`additional_benefits_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_additional_fees">select `cardbank${database.suffix}`.`additional_fees_pending`.`additional_fee_id` AS `additional_fee_id`,`cardbank${database.suffix}`.`additional_fees_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`additional_fees_pending`.`fee` AS `fee` from `cardbank${database.suffix}`.`additional_fees_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_additional_notes">select `cardbank${database.suffix}`.`additional_notes_pending`.`additional_note_id` AS `additional_note_id`,`cardbank${database.suffix}`.`additional_notes_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`additional_notes_pending`.`note` AS `note` from `cardbank${database.suffix}`.`additional_notes_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_approved_promotional_content">select `cardbank${database.suffix}`.`approved_promotional_content_pending`.`approved_promotional_content_id` AS `approved_promotional_content_id`,`cardbank${database.suffix}`.`approved_promotional_content_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`approved_promotional_content_pending`.`content` AS `content` from `cardbank${database.suffix}`.`approved_promotional_content_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_balance_transfers">select `cardbank${database.suffix}`.`balance_transfers_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`balance_transfers_pending`.`accept_partial_balance_transfer` AS `accept_partial_balance_transfer`,`cardbank${database.suffix}`.`balance_transfers_pending`.`intro_apr` AS `intro_apr`,`cardbank${database.suffix}`.`balance_transfers_pending`.`intro_apr_used_rate_type` AS `intro_apr_used_rate_type`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_intro_period` AS `min_intro_period`,`cardbank${database.suffix}`.`balance_transfers_pending`.`max_intro_period` AS `max_intro_period`,`cardbank${database.suffix}`.`balance_transfers_pending`.`intro_period_end_date` AS `intro_period_end_date`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_ongoing_apr` AS `min_ongoing_apr`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_ongoing_apr_used_rate_type` AS `min_ongoing_apr_used_rate_type`,`cardbank${database.suffix}`.`balance_transfers_pending`.`max_ongoing_apr` AS `max_ongoing_apr`,`cardbank${database.suffix}`.`balance_transfers_pending`.`max_ongoing_apr_used_rate_type` AS `max_ongoing_apr_used_rate_type`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_default_apr` AS `min_default_apr`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_default_apr_used_rate_type` AS `min_default_apr_used_rate_type`,`cardbank${database.suffix}`.`balance_transfers_pending`.`max_default_apr` AS `max_default_apr`,`cardbank${database.suffix}`.`balance_transfers_pending`.`max_default_apr_used_rate_type` AS `max_default_apr_used_rate_type`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_grace_period` AS `min_grace_period`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_finance_charge` AS `min_finance_charge`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_fixed_rate_period` AS `min_fixed_rate_period`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_fee` AS `min_fee`,`cardbank${database.suffix}`.`balance_transfers_pending`.`max_fee` AS `max_fee`,`cardbank${database.suffix}`.`balance_transfers_pending`.`fee_rate` AS `fee_rate`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_transfer_amount` AS `min_transfer_amount`,`cardbank${database.suffix}`.`balance_transfers_pending`.`max_transfer_amount` AS `max_transfer_amount`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_payment_amount` AS `min_payment_amount`,`cardbank${database.suffix}`.`balance_transfers_pending`.`min_payment_percentage` AS `min_payment_percentage`,`cardbank${database.suffix}`.`balance_transfers_pending`.`display_text` AS `display_text` from `cardbank${database.suffix}`.`balance_transfers_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_card_tags">select `cardbank${database.suffix}`.`card_tags_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`card_tags_pending`.`card_tag` AS `card_tag` from `cardbank${database.suffix}`.`card_tags_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_cards">select `cardbank${database.suffix}`.`cards_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`cards_pending`.`card_sku` AS `card_sku`,`cardbank${database.suffix}`.`cards_pending`.`issuer` AS `issuer`,`cardbank${database.suffix}`.`cards_pending`.`effective_date` AS `effective_date`,`cardbank${database.suffix}`.`cards_pending`.`status` AS `status`,`cardbank${database.suffix}`.`cards_pending`.`type` AS `type`,`cardbank${database.suffix}`.`cards_pending`.`image` AS `image`,`cardbank${database.suffix}`.`cards_pending`.`coissuing_organization` AS `coissuing_organization`,`cardbank${database.suffix}`.`cards_pending`.`network` AS `network`,`cardbank${database.suffix}`.`cards_pending`.`title` AS `title`,`cardbank${database.suffix}`.`cards_pending`.`category` AS `category`,`cardbank${database.suffix}`.`cards_pending`.`color` AS `color`,`cardbank${database.suffix}`.`cards_pending`.`initial_setup_fee` AS `initial_setup_fee`,`cardbank${database.suffix}`.`cards_pending`.`first_annual_fee` AS `first_annual_fee`,`cardbank${database.suffix}`.`cards_pending`.`ongoing_annual_fee` AS `ongoing_annual_fee`,`cardbank${database.suffix}`.`cards_pending`.`annual_fee_display_text` AS `annual_fee_display_text`,`cardbank${database.suffix}`.`cards_pending`.`monthly_fee` AS `monthly_fee`,`cardbank${database.suffix}`.`cards_pending`.`min_late_payment_fee` AS `min_late_payment_fee`,`cardbank${database.suffix}`.`cards_pending`.`max_late_payment_fee` AS `max_late_payment_fee`,`cardbank${database.suffix}`.`cards_pending`.`late_payment_fee_percent` AS `late_payment_fee_percent`,`cardbank${database.suffix}`.`cards_pending`.`over_limit_fee` AS `over_limit_fee`,`cardbank${database.suffix}`.`cards_pending`.`returned_payment_fee` AS `returned_payment_fee`,`cardbank${database.suffix}`.`cards_pending`.`dishonored_convenience_check_fee` AS `dishonored_convenience_check_fee`,`cardbank${database.suffix}`.`cards_pending`.`convenience_check_stop_payment_fee` AS `convenience_check_stop_payment_fee`,`cardbank${database.suffix}`.`cards_pending`.`balance_transfer_cancellation_fee` AS `balance_transfer_cancellation_fee`,`cardbank${database.suffix}`.`cards_pending`.`bank_wire_payment_fee` AS `bank_wire_payment_fee`,`cardbank${database.suffix}`.`cards_pending`.`statement_copy_fee` AS `statement_copy_fee`,`cardbank${database.suffix}`.`cards_pending`.`inactivity_fee` AS `inactivity_fee`,`cardbank${database.suffix}`.`cards_pending`.`intro_apr` AS `intro_apr`,`cardbank${database.suffix}`.`cards_pending`.`intro_apr_used_rate_type` AS `intro_apr_used_rate_type`,`cardbank${database.suffix}`.`cards_pending`.`intro_apr_display_text` AS `intro_apr_display_text`,`cardbank${database.suffix}`.`cards_pending`.`min_intro_period` AS `min_intro_period`,`cardbank${database.suffix}`.`cards_pending`.`max_intro_period` AS `max_intro_period`,`cardbank${database.suffix}`.`cards_pending`.`intro_period_display_text` AS `intro_period_display_text`,`cardbank${database.suffix}`.`cards_pending`.`intro_period_end_date` AS `intro_period_end_date`,`cardbank${database.suffix}`.`cards_pending`.`min_ongoing_apr` AS `min_ongoing_apr`,`cardbank${database.suffix}`.`cards_pending`.`min_ongoing_apr_used_rate_type` AS `min_ongoing_apr_used_rate_type`,`cardbank${database.suffix}`.`cards_pending`.`max_ongoing_apr` AS `max_ongoing_apr`,`cardbank${database.suffix}`.`cards_pending`.`max_ongoing_apr_used_rate_type` AS `max_ongoing_apr_used_rate_type`,`cardbank${database.suffix}`.`cards_pending`.`ongoing_apr_display_text` AS `ongoing_apr_display_text`,`cardbank${database.suffix}`.`cards_pending`.`min_default_apr` AS `min_default_apr`,`cardbank${database.suffix}`.`cards_pending`.`min_default_apr_used_rate_type` AS `min_default_apr_used_rate_type`,`cardbank${database.suffix}`.`cards_pending`.`max_default_apr` AS `max_default_apr`,`cardbank${database.suffix}`.`cards_pending`.`max_default_apr_used_rate_type` AS `max_default_apr_used_rate_type`,`cardbank${database.suffix}`.`cards_pending`.`min_grace_period` AS `min_grace_period`,`cardbank${database.suffix}`.`cards_pending`.`min_finance_charge` AS `min_finance_charge`,`cardbank${database.suffix}`.`cards_pending`.`min_fixed_rate_period` AS `min_fixed_rate_period`,`cardbank${database.suffix}`.`cards_pending`.`balance_compute_method` AS `balance_compute_method`,`cardbank${database.suffix}`.`cards_pending`.`min_payment_amount` AS `min_payment_amount`,`cardbank${database.suffix}`.`cards_pending`.`min_payment_percentage` AS `min_payment_percentage`,`cardbank${database.suffix}`.`cards_pending`.`credit_needed` AS `credit_needed`,`cardbank${database.suffix}`.`cards_pending`.`credit_needed_display_text` AS `credit_needed_display_text`,`cardbank${database.suffix}`.`cards_pending`.`min_credit_line` AS `min_credit_line`,`cardbank${database.suffix}`.`cards_pending`.`max_credit_line` AS `max_credit_line`,`cardbank${database.suffix}`.`cards_pending`.`min_income` AS `min_income`,`cardbank${database.suffix}`.`cards_pending`.`min_between_applications_period` AS `min_between_applications_period`,`cardbank${database.suffix}`.`cards_pending`.`interest_rate_type` AS `interest_rate_type`,`cardbank${database.suffix}`.`cards_pending`.`used_index_rate` AS `used_index_rate`,`cardbank${database.suffix}`.`cards_pending`.`index_rate_definition` AS `index_rate_definition`,`cardbank${database.suffix}`.`cards_pending`.`apply_payment` AS `apply_payment`,`cardbank${database.suffix}`.`cards_pending`.`foreign_exchange_min_fee` AS `foreign_exchange_min_fee`,`cardbank${database.suffix}`.`cards_pending`.`foreign_exchange_max_fee` AS `foreign_exchange_max_fee`,`cardbank${database.suffix}`.`cards_pending`.`foreign_exchange_fee_rate` AS `foreign_exchange_fee_rate`,`cardbank${database.suffix}`.`cards_pending`.`custom_prepaid_display_text` AS `custom_prepaid_display_text`,`cardbank${database.suffix}`.`cards_pending`.`modified_date` AS `modified_date`,`cardbank${database.suffix}`.`cards_pending`.`deleted` AS `deleted`,`cardbank${database.suffix}`.`cards_pending`.`marketable` AS `marketable`,`cardbank${database.suffix}`.`cards_pending`.`terms_page_url` AS `terms_page_url`,`cardbank${database.suffix}`.`cards_pending`.`bt_intro_apr_display_text` AS `bt_intro_apr_display_text`,`cardbank${database.suffix}`.`cards_pending`.`bt_intro_period_display_text` AS `bt_intro_period_display_text` from `cardbank${database.suffix}`.`cards_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_cash_advances">select `cardbank${database.suffix}`.`cash_advances_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`cash_advances_pending`.`intro_apr` AS `intro_apr`,`cardbank${database.suffix}`.`cash_advances_pending`.`intro_apr_used_rate_type` AS `intro_apr_used_rate_type`,`cardbank${database.suffix}`.`cash_advances_pending`.`min_intro_period` AS `min_intro_period`,`cardbank${database.suffix}`.`cash_advances_pending`.`max_intro_period` AS `max_intro_period`,`cardbank${database.suffix}`.`cash_advances_pending`.`intro_period_end_date` AS `intro_period_end_date`,`cardbank${database.suffix}`.`cash_advances_pending`.`min_ongoing_apr` AS `min_ongoing_apr`,`cardbank${database.suffix}`.`cash_advances_pending`.`min_ongoing_apr_used_rate_type` AS `min_ongoing_apr_used_rate_type`,`cardbank${database.suffix}`.`cash_advances_pending`.`max_ongoing_apr` AS `max_ongoing_apr`,`cardbank${database.suffix}`.`cash_advances_pending`.`max_ongoing_apr_used_rate_type` AS `max_ongoing_apr_used_rate_type`,`cardbank${database.suffix}`.`cash_advances_pending`.`min_default_apr` AS `min_default_apr`,`cardbank${database.suffix}`.`cash_advances_pending`.`min_default_apr_used_rate_type` AS `min_default_apr_used_rate_type`,`cardbank${database.suffix}`.`cash_advances_pending`.`max_default_apr` AS `max_default_apr`,`cardbank${database.suffix}`.`cash_advances_pending`.`max_default_apr_used_rate_type` AS `max_default_apr_used_rate_type`,`cardbank${database.suffix}`.`cash_advances_pending`.`min_grace_period` AS `min_grace_period`,`cardbank${database.suffix}`.`cash_advances_pending`.`min_finance_charge` AS `min_finance_charge`,`cardbank${database.suffix}`.`cash_advances_pending`.`min_fixed_rate_period` AS `min_fixed_rate_period`,`cardbank${database.suffix}`.`cash_advances_pending`.`min_fee` AS `min_fee`,`cardbank${database.suffix}`.`cash_advances_pending`.`max_fee` AS `max_fee`,`cardbank${database.suffix}`.`cash_advances_pending`.`fee_rate` AS `fee_rate`,`cardbank${database.suffix}`.`cash_advances_pending`.`max_convenience_check_fee` AS `max_convenience_check_fee`,`cardbank${database.suffix}`.`cash_advances_pending`.`min_payment_amount` AS `min_payment_amount`,`cardbank${database.suffix}`.`cash_advances_pending`.`min_payment_percentage` AS `min_payment_percentage`,`cardbank${database.suffix}`.`cash_advances_pending`.`cash_advance_limit` AS `cash_advance_limit` from `cardbank${database.suffix}`.`cash_advances_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_cash_back">select `cardbank${database.suffix}`.`cash_back_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`cash_back_pending`.`base_reward_amount` AS `base_reward_amount`,`cardbank${database.suffix}`.`cash_back_pending`.`special_reward_amount` AS `special_reward_amount`,`cardbank${database.suffix}`.`cash_back_pending`.`special_reward_description` AS `special_reward_description`,`cardbank${database.suffix}`.`cash_back_pending`.`first_round_bonus` AS `first_round_bonus`,`cardbank${database.suffix}`.`cash_back_pending`.`annual_bonus` AS `annual_bonus`,`cardbank${database.suffix}`.`cash_back_pending`.`other_bonus` AS `other_bonus`,`cardbank${database.suffix}`.`cash_back_pending`.`intro_reward_period` AS `intro_reward_period`,`cardbank${database.suffix}`.`cash_back_pending`.`intro_reward_amount` AS `intro_reward_amount`,`cardbank${database.suffix}`.`cash_back_pending`.`intro_special_reward_amount` AS `intro_special_reward_amount`,`cardbank${database.suffix}`.`cash_back_pending`.`max_annual_reward` AS `max_annual_reward` from `cardbank${database.suffix}`.`cash_back_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_commercial_features">select `cardbank${database.suffix}`.`commercial_features_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`commercial_features_pending`.`reporting_features` AS `reporting_features`,`cardbank${database.suffix}`.`commercial_features_pending`.`travel_expense_management` AS `travel_expense_management`,`cardbank${database.suffix}`.`commercial_features_pending`.`purchasing_expense_management` AS `purchasing_expense_management`,`cardbank${database.suffix}`.`commercial_features_pending`.`fleet_expense_management` AS `fleet_expense_management` from `cardbank${database.suffix}`.`commercial_features_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_frequent_flier">select `cardbank${database.suffix}`.`frequent_flier_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`frequent_flier_pending`.`base_reward_amount` AS `base_reward_amount`,`cardbank${database.suffix}`.`frequent_flier_pending`.`special_reward_amount` AS `special_reward_amount`,`cardbank${database.suffix}`.`frequent_flier_pending`.`special_reward_description` AS `special_reward_description`,`cardbank${database.suffix}`.`frequent_flier_pending`.`which_airlines` AS `which_airlines`,`cardbank${database.suffix}`.`frequent_flier_pending`.`subject_to_blackout_dates` AS `subject_to_blackout_dates`,`cardbank${database.suffix}`.`frequent_flier_pending`.`first_purchase_bonus` AS `first_purchase_bonus`,`cardbank${database.suffix}`.`frequent_flier_pending`.`other_bonus` AS `other_bonus`,`cardbank${database.suffix}`.`frequent_flier_pending`.`intro_reward_period` AS `intro_reward_period`,`cardbank${database.suffix}`.`frequent_flier_pending`.`intro_reward_amount` AS `intro_reward_amount`,`cardbank${database.suffix}`.`frequent_flier_pending`.`intro_special_reward_amount` AS `intro_special_reward_amount`,`cardbank${database.suffix}`.`frequent_flier_pending`.`max_annual_reward` AS `max_annual_reward` from `cardbank${database.suffix}`.`frequent_flier_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_other_benefits">select `cardbank${database.suffix}`.`other_benefits_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`other_benefits_pending`.`insurance` AS `insurance`,`cardbank${database.suffix}`.`other_benefits_pending`.`retail_discounts` AS `retail_discounts`,`cardbank${database.suffix}`.`other_benefits_pending`.`extended_warranties` AS `extended_warranties`,`cardbank${database.suffix}`.`other_benefits_pending`.`roadside_assistance` AS `roadside_assistance`,`cardbank${database.suffix}`.`other_benefits_pending`.`security_identity_solution` AS `security_identity_solution`,`cardbank${database.suffix}`.`other_benefits_pending`.`account_protection` AS `account_protection`,`cardbank${database.suffix}`.`other_benefits_pending`.`consierge_service` AS `consierge_service`,`cardbank${database.suffix}`.`other_benefits_pending`.`card_design` AS `card_design`,`cardbank${database.suffix}`.`other_benefits_pending`.`mini_card` AS `mini_card`,`cardbank${database.suffix}`.`other_benefits_pending`.`photo_security` AS `photo_security`,`cardbank${database.suffix}`.`other_benefits_pending`.`personalization` AS `personalization` from `cardbank${database.suffix}`.`other_benefits_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_point_rewards">select `cardbank${database.suffix}`.`point_rewards_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`point_rewards_pending`.`base_reward_amount` AS `base_reward_amount`,`cardbank${database.suffix}`.`point_rewards_pending`.`special_reward_amount` AS `special_reward_amount`,`cardbank${database.suffix}`.`point_rewards_pending`.`special_reward_description` AS `special_reward_description`,`cardbank${database.suffix}`.`point_rewards_pending`.`where_points_redeemed` AS `where_points_redeemed`,`cardbank${database.suffix}`.`point_rewards_pending`.`value_of_points` AS `value_of_points`,`cardbank${database.suffix}`.`point_rewards_pending`.`first_purchase_bonus` AS `first_purchase_bonus`,`cardbank${database.suffix}`.`point_rewards_pending`.`other_bonus` AS `other_bonus`,`cardbank${database.suffix}`.`point_rewards_pending`.`intro_reward_period` AS `intro_reward_period`,`cardbank${database.suffix}`.`point_rewards_pending`.`intro_reward_amount` AS `intro_reward_amount`,`cardbank${database.suffix}`.`point_rewards_pending`.`intro_special_reward_amount` AS `intro_special_reward_amount`,`cardbank${database.suffix}`.`point_rewards_pending`.`max_annual_reward` AS `max_annual_reward` from `cardbank${database.suffix}`.`point_rewards_pending`</createView>
+
+        <createView fullDefinition="false" viewName="stable_prepaid_card_fees">select `cardbank${database.suffix}`.`prepaid_card_fees_pending`.`card_id` AS `card_id`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`replacement_card_fee` AS `replacement_card_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`atm_fee` AS `atm_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`live_teller_withdrawal_fee` AS `live_teller_withdrawal_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`atm_balance_inquiry_fee` AS `atm_balance_inquiry_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`monthly_inactive_account_fee` AS `monthly_inactive_account_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`automated_telephone_inquiry_fee` AS `automated_telephone_inquiry_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`customer_service_live_call_fee` AS `customer_service_live_call_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`activation_fee` AS `activation_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`cancel_card_fee` AS `cancel_card_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`application_fee` AS `application_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`purchase_merchant_fee` AS `purchase_merchant_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`purchase_online_fee` AS `purchase_online_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`purchase_telephone_fee` AS `purchase_telephone_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`signature_transaction_fee` AS `signature_transaction_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`pin_transaction_fee` AS `pin_transaction_fee`,`cardbank${database.suffix}`.`prepaid_card_fees_pending`.`load_fee` AS `load_fee` from `cardbank${database.suffix}`.`prepaid_card_fees_pending`</createView>
+
+        <createView fullDefinition="false" viewName="user_issuer_map">select `cardbank${database.suffix}`.`user_issuer_map`.`user_id` AS `user_id`,`cardbank${database.suffix}`.`user_issuer_map`.`issuer_id` AS `issuer_id` from `cardbank${database.suffix}`.`user_issuer_map`</createView>
+
+        <createView fullDefinition="false" viewName="users">select `cardbank${database.suffix}`.`users`.`user_id` AS `user_id`,`cardbank${database.suffix}`.`users`.`username` AS `username`,`cardbank${database.suffix}`.`users`.`password` AS `password`,`cardbank${database.suffix}`.`users`.`role` AS `role`,`cardbank${database.suffix}`.`users`.`first_name` AS `first_name`,`cardbank${database.suffix}`.`users`.`last_name` AS `last_name`,`cardbank${database.suffix}`.`users`.`email` AS `email`,`cardbank${database.suffix}`.`users`.`issuer_id` AS `issuer_id`,`cardbank${database.suffix}`.`users`.`manager` AS `manager`,`cardbank${database.suffix}`.`users`.`time_inserted` AS `time_inserted`,`cardbank${database.suffix}`.`users`.`deleted` AS `deleted` from `cardbank${database.suffix}`.`users`</createView>
+
+        <createView fullDefinition="false" viewName="vw_issuers_to_affiliatewebsites">select `pcam`.`affiliate_id` AS `affiliate_id`,`c`.`issuer` AS `issuer`,`pa`.`company_name` AS `name`,`pw`.`website_id` AS `website_id`,`pw`.`name` AS `website_name` from (((((((((`cardbank${database.suffix}`.`cards` `c` join `cardbank${database.suffix}`.`ccx_cms_map` `map` on((`c`.`card_id` = `map`.`ccx_card_id`))) join `cccomus${database.suffix}`.`partner_card_affiliate_map` `pcam` on((`map`.`cms_card_id` = `pcam`.`card_id`))) join `cccomus${database.suffix}`.`partner_affiliates` `pa` on((`pcam`.`affiliate_id` = `pa`.`affiliate_id`))) left join `cccomus${database.suffix}`.`partner_websites` `pw` on((`pa`.`affiliate_id` = `pw`.`affiliate_id`))) join `cccomus${database.suffix}`.`cms_card_page_map` `ccpm` on((`map`.`cms_card_id` = `ccpm`.`cardId`))) join `cccomus${database.suffix}`.`cms_pages` `cp` on((`cp`.`cardpageId` = `ccpm`.`cardpageId`))) join `cccomus${database.suffix}`.`cms_page_site_map` `cpsm` on((`cpsm`.`cardpageId` = `cp`.`cardpageId`))) join `ccdata${database.suffix}`.`rt_cards` `rt_c` on((`map`.`cms_card_id` = `rt_c`.`cardId`))) left join `ccdata${database.suffix}`.`cs_pagecardexclusionmap` `cpcem` on(((`cpcem`.`siteid` = `cpsm`.`categoryId`) and (`cpcem`.`pageid` = `cpsm`.`cardpageId`) and (`cpcem`.`cardid` = `ccpm`.`cardId`)))) where (isnull(`cpcem`.`mapid`) and (`pa`.`deleted` = 0) and (`pa`.`status` = 'ACTIVE') and (`cpsm`.`categoryId` = 35) and (`c`.`deleted` = 0) and (`rt_c`.`deleted` = 0) and (`rt_c`.`active` = 1) and (`rt_c`.`site_code` = 'USEN') and (`cp`.`active` = 1) and (`cp`.`deleted` = 0))</createView>
+
+        <createView fullDefinition="false" viewName="vw_issuers_to_affiliatewebsites_nonulls">select `pcam`.`affiliate_id` AS `affiliate_id`,`c`.`issuer` AS `issuer`,`pa`.`company_name` AS `name`,`pw`.`website_id` AS `website_id`,`pw`.`name` AS `website_name` from (((((((((`cardbank${database.suffix}`.`cards` `c` join `cardbank${database.suffix}`.`ccx_cms_map` `map` on((`c`.`card_id` = `map`.`ccx_card_id`))) join `cccomus${database.suffix}`.`partner_card_affiliate_map` `pcam` on((`map`.`cms_card_id` = `pcam`.`card_id`))) join `cccomus${database.suffix}`.`partner_affiliates` `pa` on((`pcam`.`affiliate_id` = `pa`.`affiliate_id`))) join `cccomus${database.suffix}`.`partner_websites` `pw` on((`pa`.`affiliate_id` = `pw`.`affiliate_id`))) join `cccomus${database.suffix}`.`cms_card_page_map` `ccpm` on((`map`.`cms_card_id` = `ccpm`.`cardId`))) join `cccomus${database.suffix}`.`cms_pages` `cp` on((`cp`.`cardpageId` = `ccpm`.`cardpageId`))) join `cccomus${database.suffix}`.`cms_page_site_map` `cpsm` on((`cpsm`.`cardpageId` = `cp`.`cardpageId`))) join `ccdata${database.suffix}`.`rt_cards` `rt_c` on((`map`.`cms_card_id` = `rt_c`.`cardId`))) left join `ccdata${database.suffix}`.`cs_pagecardexclusionmap` `cpcem` on(((`cpcem`.`siteid` = `cpsm`.`categoryId`) and (`cpcem`.`pageid` = `cpsm`.`cardpageId`) and (`cpcem`.`cardid` = `ccpm`.`cardId`)))) where (isnull(`cpcem`.`mapid`) and (`pa`.`deleted` = 0) and (`pa`.`status` = 'ACTIVE') and (`cpsm`.`categoryId` = 35) and (`c`.`deleted` = 0) and (`rt_c`.`deleted` = 0) and (`rt_c`.`active` = 1) and (`rt_c`.`site_code` = 'USEN') and (`cp`.`active` = 1) and (`cp`.`deleted` = 0))</createView>
+    </changeSet>
+</databaseChangeLog>

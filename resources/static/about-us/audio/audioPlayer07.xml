@@ -1,0 +1,17 @@
+<root>
+<playerSettings autostart="no" continuousPlay="yes" loop="yes" shuffle="no" selectedColor="ffffff" rollOverColor="d0e2f5"/>
+	<playList>
+<FILE src="/about-us/audio/042210-BenRadioMarketPlace.mp3" artist="clip from MarketWatch" title="clip from Marketplace" album=" from Album 5" minutes="0" seconds="45"/>
+
+<FILE src="/about-us/audio/clipDonShelby.mp3" artist="clip from WCCO - Don Shelby Show" title="clip from WCCO - Don Shelby Show" album=" from Album 3" minutes="3" seconds="13"/>
+
+<FILE src="/about-us/audio/tavis.mp3" artist=" tavis.mp3" title="clip from TavisTalks" album=" from Album 1" minutes="1" seconds="03"/>
+
+<FILE src="/about-us/audio/Radio-RealLifeSurvivor.mp3" artist="clip from Real Life Survival Guide" title="clip from Real Life Survival Guide" album=" from Album 2" minutes="0" seconds="39"/>
+
+<FILE src="/about-us/audio/marketwatch-woolsey.mp3" artist="clip from MarketWatch" title="clip from MarketWatch" album=" from Album 4" minutes="0" seconds="44"/>
+
+
+
+</playList>
+</root>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions targetNamespace="http://com.americanexpress.edge.webservice.prescreen" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://com.americanexpress.edge.webservice.prescreen" xmlns:intf="http://com.americanexpress.edge.webservice.prescreen" xmlns:tns2="http://data.prescreen.webservice.edge.americanexpress.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://com.americanexpress.edge.webservice.prescreen" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://data.prescreen.webservice.edge.americanexpress.com"/>
+   <element name="getPreScreenOffers">
+    <complexType>
+     <sequence>
+      <element name="objaApplicantInfo" type="tns2:ApplicantInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPreScreenOffersResponse">
+    <complexType>
+     <sequence>
+      <element name="offersResponse" type="tns2:OffersResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns2_ErrorMessages">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:ErrorMessages"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_Offers">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:Offer"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_BannerInfo">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:BannerInfo"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_RatesInfo">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:RatesInfo"/>
+    </sequence>
+   </complexType>
+   <element name="acknowledgeOffer">
+    <complexType>
+     <sequence>
+      <element name="transactionId" type="xsd:string"/>
+      <element name="offerAcceptanceCode" type="xsd:string"/>
+      <element name="offerCommTimeStamp" type="xsd:dateTime"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="acknowledgeOfferResponse">
+    <complexType>
+     <sequence>
+      <element name="acknowledgeOfferResponse" type="tns2:AcknowledgeOfferResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://data.prescreen.webservice.edge.americanexpress.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://com.americanexpress.edge.webservice.prescreen"/>
+   <complexType name="ApplicantInfo">
+    <sequence>
+     <element name="businessAddressLine1" nillable="true" type="xsd:string"/>
+     <element name="businessAddressLine2" nillable="true" type="xsd:string"/>
+     <element name="businessCity" nillable="true" type="xsd:string"/>
+     <element name="businessName" nillable="true" type="xsd:string"/>
+     <element name="businessState" nillable="true" type="xsd:string"/>
+     <element name="businessZip" nillable="true" type="xsd:string"/>
+     <element name="channelId" nillable="true" type="xsd:string"/>
+     <element name="firstName" nillable="true" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="generationCode" nillable="true" type="xsd:string"/>
+     <element name="gnaVendorCode" nillable="true" type="xsd:string"/>
+     <element name="homeAddressLine1" nillable="true" type="xsd:string"/>
+     <element name="homeAddressLine2" nillable="true" type="xsd:string"/>
+     <element name="homeCity" nillable="true" type="xsd:string"/>
+     <element name="homeState" nillable="true" type="xsd:string"/>
+     <element name="homeZip" nillable="true" type="xsd:string"/>
+     <element name="last4SSN" nillable="true" type="xsd:string"/>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="leadOfferFlag" nillable="true" type="xsd:string"/>
+     <element name="middleName" nillable="true" type="xsd:string"/>
+     <element name="partnerRepId" nillable="true" type="xsd:string"/>
+     <element name="pmcVendorCode" nillable="true" type="xsd:string"/>
+     <element name="experienceId" nillable="true" type="xsd:string"/>
+     <element name="affId" nillable="true" type="xsd:string"/>
+     <element name="requestTimeStamp" nillable="true" type="xsd:dateTime"/>
+     <element name="vendorCustomerId" nillable="true" type="xsd:string"/>
+     <element name="tenure" nillable="true" type="xsd:string"/>
+     <element name="transactionCost" nillable="true" type="xsd:string"/>
+     <element name="paymentInd" nillable="true" type="xsd:string"/>
+     <element name="custLocationInd" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ErrorMessages">
+    <sequence>
+     <element name="errorCode" nillable="true" type="xsd:string"/>
+     <element name="errorResponse" nillable="true" type="xsd:string"/>
+     <element name="systemName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Offer">
+    <sequence>
+     <element name="sourceCode" nillable="true" type="xsd:string"/>
+     <element name="iaCode" nillable="true" type="xsd:string"/>
+     <element name="rsvpCode" nillable="true" type="xsd:string"/>
+     <element name="bannerInfo" nillable="true" type="impl:ArrayOf_tns2_BannerInfo"/>     
+     <element name="offerExpiry" nillable="true" type="xsd:string"/>
+     <element name="offerId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="BannerInfo">
+    <sequence>
+     <element name="cardArtURL" nillable="true" type="xsd:string"/>
+     <element name="cardName" nillable="true" type="xsd:string"/>
+     <element name="offerMarketingText" nillable="true" type="xsd:string"/>
+     <element name="ratesInfo" nillable="true" type="impl:ArrayOf_tns2_RatesInfo"/>
+     <element name="offerBannerURL" nillable="true" type="xsd:string"/>
+     <element name="offerDispPageInd" nillable="true" type="xsd:string"/>     
+    </sequence>
+   </complexType>
+   <complexType name="RatesInfo">
+    <sequence>
+     <element name="introAPR" nillable="true" type="xsd:string"/>
+     <element name="regAPR" nillable="true" type="xsd:string"/>
+     <element name="btIntroAPR" nillable="true" type="xsd:string"/>
+     <element name="btRegAPR" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="OffersResponse">
+    <sequence>
+     <element name="customerFlag" nillable="true" type="xsd:string"/>
+     <element name="leadOfferFlag" nillable="true" type="xsd:string"/>
+     <element name="leadOfferURL" nillable="true" type="xsd:string"/>
+     <element name="offerTypeFlag" nillable="true" type="xsd:string"/>
+     <element name="ErrorMessages" nillable="true" type="impl:ArrayOf_tns2_ErrorMessages"/>
+     <element name="Offer" nillable="true" type="impl:ArrayOf_tns2_Offers"/>
+     <element name="statusCode" nillable="true" type="xsd:string"/>
+     <element name="statusDescription" nillable="true" type="xsd:string"/>
+     <element name="transactionId" nillable="true" type="xsd:string"/>
+     <element name="pmcVendorCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AcknowledgeOfferResponse">
+    <sequence>
+     <element name="statusCode" nillable="true" type="xsd:string"/>
+     <element name="statusDescription" nillable="true" type="xsd:string"/>
+     <element name="transactionId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="acknowledgeOfferRequest">
+
+      <wsdl:part element="impl:acknowledgeOffer" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="acknowledgeOfferResponse">
+
+      <wsdl:part element="impl:acknowledgeOfferResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPreScreenOffersResponse">
+
+      <wsdl:part element="impl:getPreScreenOffersResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPreScreenOffersRequest">
+
+      <wsdl:part element="impl:getPreScreenOffers" name="parameters"/>
+
+   </wsdl:message>
+
+  <wsdl:portType name="IDAcqPreScreenWebService">
+
+      <wsdl:operation name="getPreScreenOffers">
+
+         <wsdl:input message="impl:getPreScreenOffersRequest" name="getPreScreenOffersRequest"/>
+
+         <wsdl:output message="impl:getPreScreenOffersResponse" name="getPreScreenOffersResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acknowledgeOffer">
+
+         <wsdl:input message="impl:acknowledgeOfferRequest" name="acknowledgeOfferRequest"/>
+
+         <wsdl:output message="impl:acknowledgeOfferResponse" name="acknowledgeOfferResponse"/>
+
+      </wsdl:operation>      
+
+   </wsdl:portType>
+
+   <wsdl:binding name="DAcqPreScreenWebServiceImplSoapBinding" type="impl:IDAcqPreScreenWebService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getPreScreenOffers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPreScreenOffersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPreScreenOffersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="acknowledgeOffer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="acknowledgeOfferRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="acknowledgeOfferResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding> 
+
+   <wsdl:service name="IDAcqPreScreenWebService">
+
+      <wsdl:port binding="impl:DAcqPreScreenWebServiceImplSoapBinding" name="DAcqPreScreenWebServiceImpl">
+
+         <wsdlsoap:address location="https://services.americanexpress.com/IDAcqPreScreenWebService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

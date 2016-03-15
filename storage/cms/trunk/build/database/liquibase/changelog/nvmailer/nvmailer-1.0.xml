@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="kenneth.skertchly" id="initial-setup">
+        <createTable tableName="1_adminStatistics">
+            <column defaultValueNumeric="0" name="idAdmin" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="idGroup" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="newSubscribers" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="minusSubscribers" type="MEDIUMINT"/>
+        </createTable>
+
+        <createTable tableName="1_admins">
+            <column autoIncrement="true" name="idAdmin" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="adminName" type="VARCHAR(120)"/>
+            <column name="adminPassword" type="VARCHAR(100)"/>
+            <column name="adminFullName" type="VARCHAR(150)"/>
+            <column name="adminEmail" type="VARCHAR(140)"/>
+            <column name="adminLastLogin" type="datetime"/>
+            <column defaultValueNumeric="-1" name="emailAlert" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="active" type="TINYINT"/>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="1_campaigns">
+            <column autoIncrement="true" name="idCampaign" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="campaignName" type="VARCHAR(400)"/>
+            <column name="ga_utm_source" type="VARCHAR(400)"/>
+            <column name="ga_utm_medium" type="VARCHAR(400)"/>
+            <column name="ga_utm_campaign" type="VARCHAR(400)"/>
+            <column name="ga_utm_term" type="VARCHAR(400)"/>
+            <column name="ga_utm_content" type="VARCHAR(400)"/>
+            <column name="idAdmin" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="joins" type="VARCHAR(5)"/>
+            <column defaultValueNumeric="0" name="idList" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="listName" type="VARCHAR(150)"/>
+            <column name="mLists" type="TEXT"/>
+            <column defaultValueNumeric="0" name="idHtmlNewsletter" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="idTextNewsletter" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="htmlNewsletterName" type="VARCHAR(255)"/>
+            <column name="textNewsletterName" type="VARCHAR(255)"/>
+            <column name="urlToSend" type="VARCHAR(255)"/>
+            <column name="emailSubject" type="VARCHAR(250)"/>
+            <column defaultValueNumeric="0" name="idStopEmail" type="MEDIUMINT"/>
+            <column name="dateCreated" type="datetime"/>
+            <column name="dateStarted" type="datetime"/>
+            <column name="dateCompleted" type="datetime"/>
+            <column name="mailError" type="TEXT"/>
+            <column defaultValueNumeric="0" name="mailCounter" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="notes" type="TEXT"/>
+            <column defaultValueNumeric="0" name="completed" type="TINYINT"/>
+            <column defaultValueNumeric="1" name="type" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="confirmed" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="prefers" type="TINYINT"/>
+            <column defaultValueNumeric="0" name="idSendFilter" type="MEDIUMINT"/>
+            <column name="sendFilterDesc" type="TEXT"/>
+            <column defaultValueNumeric="0.0" name="optedOut" type="DOUBLE"/>
+            <column defaultValueNumeric="0.0" name="forwarded" type="DOUBLE"/>
+            <column defaultValueNumeric="0.0" name="bounced" type="DOUBLE"/>
+        </createTable>
+
+        <createTable tableName="1_clickStats">
+            <column defaultValueNumeric="0" name="idEmail" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idCampaign" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idLink" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="linkUrl" type="VARCHAR(400)"/>
+            <column name="ipClicked" type="VARCHAR(150)"/>
+            <column name="dateClicked" type="datetime"/>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="1_countries">
+            <column autoIncrement="true" name="idCountry" type="MEDIUMINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="countryCode" type="VARCHAR(4)"/>
+            <column name="countryName" type="VARCHAR(90)"/>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="1_dataSources">
+            <column autoIncrement="true" name="idDataSource" type="MEDIUMINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="dataSourceFriendlyName" type="VARCHAR(150)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dbType" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dbName" type="VARCHAR(150)"/>
+            <column name="dbHost" type="VARCHAR(150)"/>
+            <column name="dsnName" type="VARCHAR(150)"/>
+            <column name="dbUserName" type="VARCHAR(150)"/>
+            <column name="dbPassword" type="VARCHAR(150)"/>
+            <column name="dbPort" type="MEDIUMINT"/>
+            <column name="tbName" type="VARCHAR(150)"/>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(150)"/>
+            <column name="name" type="VARCHAR(150)"/>
+            <column name="lastName" type="VARCHAR(150)"/>
+            <column name="subCompany" type="VARCHAR(200)"/>
+            <column name="address" type="VARCHAR(250)"/>
+            <column name="city" type="VARCHAR(150)"/>
+            <column name="state" type="VARCHAR(100)"/>
+            <column name="zip" type="VARCHAR(15)"/>
+            <column name="country" type="VARCHAR(150)"/>
+            <column name="subPhone1" type="VARCHAR(100)"/>
+            <column name="subPhone2" type="VARCHAR(100)"/>
+            <column name="subMobile" type="VARCHAR(100)"/>
+            <column defaultValue="1111" name="subPassword" type="VARCHAR(100)"/>
+            <column name="subBirthDay" type="VARCHAR(10)"/>
+            <column name="subBirthMonth" type="VARCHAR(10)"/>
+            <column name="subBirthYear" type="VARCHAR(10)"/>
+            <column name="customSQL" type="TEXT"/>
+            <column name="customSubField1" type="VARCHAR(150)"/>
+            <column name="customSubField2" type="VARCHAR(150)"/>
+            <column name="customSubField3" type="VARCHAR(150)"/>
+            <column name="customSubField4" type="VARCHAR(150)"/>
+            <column name="customSubField5" type="VARCHAR(150)"/>
+            <column name="confirmed" type="VARCHAR(150)"/>
+            <column name="prefersHtml" type="VARCHAR(150)"/>
+            <column name="idList" type="VARCHAR(600)"/>
+            <column name="excludeGlobalOpts" type="VARCHAR(5)"/>
+            <column name="excludeListOpts" type="VARCHAR(5)"/>
+            <column name="subUpdateDuplicates" type="VARCHAR(150)"/>
+        </createTable>
+
+        <createTable tableName="1_groupSettings">
+            <column autoIncrement="true" name="idGroup" type="MEDIUMINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="groupName" type="VARCHAR(250)"/>
+            <column name="groupLogo" type="VARCHAR(250)"/>
+            <column name="groupSenderEmail" type="VARCHAR(250)"/>
+            <column name="groupReplyToEmail" type="VARCHAR(250)"/>
+            <column name="groupContactEmail" type="VARCHAR(250)"/>
+            <column name="groupBounceToEmail" type="VARCHAR(250)"/>
+            <column name="groupSite" type="VARCHAR(250)"/>
+            <column name="groupScriptUrl" type="VARCHAR(250)"/>
+            <column name="groupSmtpServer" type="VARCHAR(250)"/>
+            <column name="groupSmtpUsername" type="VARCHAR(250)"/>
+            <column name="groupSmtpPassword" type="VARCHAR(250)"/>
+            <column name="groupSmtpPort" type="VARCHAR(250)"/>
+            <column name="groupEmailComponent" type="VARCHAR(250)"/>
+            <column defaultValueNumeric="-1" name="groupAuthRequired" type="TINYINT"/>
+            <column defaultValueNumeric="0" name="groupDebugSendMail" type="TINYINT"/>
+            <column name="groupEncryptionPassword" type="VARCHAR(250)"/>
+            <column defaultValueNumeric="100" name="groupNumPerPage" type="SMALLINT"/>
+            <column defaultValueNumeric="0" name="groupUseInlineImages" type="TINYINT"/>
+            <column defaultValueNumeric="0" name="groupTimeOffsetFromServer" type="TINYINT"/>
+            <column name="groupDateTimeFormat" type="VARCHAR(150)"/>
+            <column defaultValueNumeric="0" name="groupRequestOptOutReason" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="groupActiveLinkTrackingHtml" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="groupActiveLinkTrackingText" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="groupActiveViewsTracking" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="groupTrackMailTo" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="groupEnableBatchSending" type="TINYINT"/>
+            <column defaultValueNumeric="0" name="groupBatchSize" type="MEDIUMINT"/>
+            <column defaultValueNumeric="10" name="groupBatchInterval" type="MEDIUMINT"/>
+            <column defaultValueNumeric="-1" name="groupDoubleOptin" type="TINYINT"/>
+            <column name="groupCustomSubField1" type="VARCHAR(250)"/>
+            <column name="groupCustomSubField2" type="VARCHAR(250)"/>
+            <column name="groupCustomSubField3" type="VARCHAR(250)"/>
+            <column name="groupCustomSubField4" type="VARCHAR(250)"/>
+            <column name="groupCustomSubField5" type="VARCHAR(250)"/>
+            <column name="groupCustomSubField6" type="VARCHAR(250)"/>
+            <column name="groupCustomSubField7" type="VARCHAR(250)"/>
+            <column name="groupCustomSubField8" type="VARCHAR(250)"/>
+            <column name="groupCustomSubField9" type="VARCHAR(250)"/>
+            <column name="groupCustomSubField10" type="VARCHAR(250)"/>
+            <column name="groupPop3Server" type="VARCHAR(250)"/>
+            <column name="groupPop3Username" type="VARCHAR(250)"/>
+            <column name="groupPop3Password" type="VARCHAR(250)"/>
+            <column defaultValueNumeric="110" name="groupPop3Port" type="SMALLINT"/>
+            <column defaultValueNumeric="100" name="groupPop3Batch" type="SMALLINT"/>
+            <column defaultValueNumeric="100" name="groupAntiFloodBatch" type="SMALLINT"/>
+            <column defaultValueNumeric="1" name="groupAntiFloodPause" type="SMALLINT"/>
+            <column defaultValueNumeric="-1" name="groupDeleteAutoResponders" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="groupShowUniqueClicks" type="TINYINT"/>
+            <column defaultValueNumeric="0" name="groupIdWelcomeNewsletter" type="TINYINT"/>
+            <column name="groupGlobalCharset" type="VARCHAR(100)"/>
+            <column name="groupWelcomeEmailBody" type="LONGTEXT"/>
+            <column name="groupConfReqEmailBody" type="LONGTEXT"/>
+            <column name="groupGoodbyeEmailBody" type="LONGTEXT"/>
+            <column name="groupWelcomeEmailBodyT" type="LONGTEXT"/>
+            <column name="groupConfReqEmailBodyT" type="LONGTEXT"/>
+            <column name="groupGoodbyeEmailBodyT" type="LONGTEXT"/>
+            <column name="groupWelcomeEmailSubject" type="VARCHAR(250)"/>
+            <column name="groupConfReqEmailSubject" type="VARCHAR(250)"/>
+            <column name="groupGoodbyeEmailSubject" type="VARCHAR(250)"/>
+            <column name="groupWelcomeScreen" type="LONGTEXT"/>
+            <column name="groupConfReqScreen" type="LONGTEXT"/>
+            <column name="groupGoodbyeScreen" type="LONGTEXT"/>
+            <column name="groupAlreadyInScreen" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="groupAlreadyInAction" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="groupSendWelcomeEmail" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="groupShowWelcomeScreen" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="groupSendGoodbyeEmail" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="groupShowGoodbyeScreen" type="TINYINT"/>
+            <column defaultValueNumeric="-1" name="groupShowConfReqScreen" type="TINYINT"/>
+            <column name="groupWelcomeUrl" type="VARCHAR(250)"/>
+            <column name="groupGoodbyeUrl" type="VARCHAR(250)"/>
+            <column name="groupConfReqUrl" type="VARCHAR(250)"/>
+            <column name="groupAlreadyInUrl" type="VARCHAR(250)"/>
+        </createTable>
+
+        <createTable tableName="1_links">
+            <column autoIncrement="true" name="idLink" type="MEDIUMINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="linkUrl" type="VARCHAR(400)"/>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="1_listRecipients">
+            <column defaultValueNumeric="0" name="idList" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="idEmail" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="1_listRecipientsTemp">
+            <column defaultValueNumeric="0" name="idList" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="idEmail" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="1_lists">
+            <column autoIncrement="true" name="idList" type="MEDIUMINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="listName" type="VARCHAR(250)"/>
+            <column name="listDescription" type="TEXT"/>
+            <column defaultValueNumeric="0" name="isPublic" type="SMALLINT"/>
+            <column defaultValueNumeric="0" name="list_ins" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="list_outs" type="MEDIUMINT"/>
+            <column name="lastDateMailed" type="datetime"/>
+            <column name="dateCreated" type="datetime"/>
+            <column name="createdBy" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="1_newsletters">
+            <column autoIncrement="true" name="idNewsletter" type="MEDIUMINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(300)"/>
+            <column name="body" type="LONGTEXT"/>
+            <column defaultValueNumeric="-1" name="html" type="TINYINT"/>
+            <column defaultValueNumeric="0" name="sent" type="TINYINT"/>
+            <column name="dateCreated" type="datetime"/>
+            <column name="dateSent" type="datetime"/>
+            <column name="attachments" type="VARCHAR(300)"/>
+            <column defaultValueNumeric="0" name="isPublic" type="TINYINT"/>
+            <column name="inlineImages" type="TEXT"/>
+            <column name="createdBy" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="charset" type="VARCHAR(80)"/>
+            <column defaultValueNumeric="0" name="rate1" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="rate2" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="rate3" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="rate4" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="rate5" type="MEDIUMINT"/>
+        </createTable>
+
+        <createTable tableName="1_optOutReasons">
+            <column name="subscriberEmail" type="VARCHAR(200)"/>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="optOutReason" type="TEXT"/>
+            <column name="optOutType" type="VARCHAR(200)"/>
+            <column name="dateOptedOut" type="datetime"/>
+            <column name="idCampaign" type="MEDIUMINT"/>
+        </createTable>
+
+        <createTable tableName="1_privacyPage">
+            <column autoIncrement="true" name="idPrivacyPage" type="MEDIUMINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="details" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="timesVisited" type="MEDIUMINT"/>
+        </createTable>
+
+        <createTable tableName="1_sendFilters">
+            <column autoIncrement="true" name="idSendFilter" type="MEDIUMINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="sendFilterCode" type="TEXT"/>
+            <column name="sendFilterDesc" type="TEXT"/>
+            <column name="createdBy" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="1_states">
+            <column autoIncrement="true" name="idState" type="MEDIUMINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="stateCode" type="VARCHAR(4)"/>
+            <column name="stateName" type="VARCHAR(90)"/>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="1_subscribers">
+            <column autoIncrement="true" name="idEmail" type="MEDIUMINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(150)"/>
+            <column name="name" type="VARCHAR(150)"/>
+            <column name="lastName" type="VARCHAR(150)"/>
+            <column name="subCompany" type="VARCHAR(200)"/>
+            <column defaultValueNumeric="0" name="timesMailed" type="MEDIUMINT"/>
+            <column name="address" type="VARCHAR(250)"/>
+            <column name="city" type="VARCHAR(150)"/>
+            <column name="state" type="VARCHAR(100)"/>
+            <column name="zip" type="VARCHAR(15)"/>
+            <column name="country" type="VARCHAR(150)"/>
+            <column name="subPhone1" type="VARCHAR(100)"/>
+            <column name="subPhone2" type="VARCHAR(100)"/>
+            <column name="subMobile" type="VARCHAR(100)"/>
+            <column defaultValue="1111" name="subPassword" type="VARCHAR(100)"/>
+            <column defaultValueNumeric="-1" name="prefersHtml" type="MEDIUMINT"/>
+            <column defaultValueNumeric="-1" name="confirmed" type="MEDIUMINT"/>
+            <column name="dateSubscribed" type="datetime"/>
+            <column name="subBirthDay" type="VARCHAR(10)"/>
+            <column name="subBirthMonth" type="VARCHAR(10)"/>
+            <column name="subBirthYear" type="VARCHAR(10)"/>
+            <column name="dateLastUpdated" type="datetime"/>
+            <column defaultValueNumeric="0" name="soft_bounces" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="hard_bounces" type="MEDIUMINT"/>
+            <column name="optOutReason" type="VARCHAR(400)"/>
+            <column name="dateLastEmailed" type="datetime"/>
+            <column name="ipSubscribed" type="VARCHAR(150)"/>
+            <column name="internalMemo" type="VARCHAR(300)"/>
+            <column name="mailingError" type="VARCHAR(300)"/>
+            <column defaultValueNumeric="-1" name="emailIsValid" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="emailIsBanned" type="MEDIUMINT"/>
+            <column name="customSubField1" type="VARCHAR(150)"/>
+            <column name="customSubField2" type="VARCHAR(150)"/>
+            <column name="customSubField3" type="VARCHAR(150)"/>
+            <column name="customSubField4" type="VARCHAR(150)"/>
+            <column name="customSubField5" type="VARCHAR(150)"/>
+            <column name="customSubField6" type="VARCHAR(150)"/>
+            <column name="customSubField7" type="VARCHAR(150)"/>
+            <column name="customSubField8" type="VARCHAR(150)"/>
+            <column name="customSubField9" type="VARCHAR(150)"/>
+            <column name="customSubField10" type="VARCHAR(150)"/>
+        </createTable>
+
+        <createTable tableName="1_tasks">
+            <column autoIncrement="true" name="idTask" type="MEDIUMINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="idCampaign" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idAdmin" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateTaskCreated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activationDateTime" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="numberOfMessagesToSend" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="repeatEveryXseconds" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="taskCompleted" type="MEDIUMINT"/>
+            <column name="dateTaskCompleted" type="datetime"/>
+            <column name="lastExecutionFromScheduler" type="datetime"/>
+            <column name="repeatDetailsMemo" type="TEXT"/>
+            <column defaultValueNumeric="0" name="taskRecurring" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="reactivateAfterXSeconds" type="MEDIUMINT"/>
+            <column name="pLog" type="TEXT"/>
+            <column name="reactivateDetailsMemo" type="TEXT"/>
+            <column defaultValueNumeric="0" name="timesExecuted" type="MEDIUMINT"/>
+            <column defaultValueNumeric="0" name="taskCounter" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="1_viewStats">
+            <column defaultValueNumeric="0" name="idEmail" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idGroup" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="idCampaign" type="MEDIUMINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ipOpened" type="VARCHAR(150)"/>
+            <column name="dateOpened" type="datetime"/>
+        </createTable>
+
+        <createTable tableName="list_issuer_map">
+            <column name="merchantid" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nv_list_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="subscriber_affiliate_map">
+            <column name="affiliate_id" type="VARCHAR(150)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nv_email_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addUniqueConstraint columnNames="idList, idEmail, idGroup" constraintName="Index_1" deferrable="false" disabled="false" initiallyDeferred="false" tableName="1_listRecipients"/>
+        <addUniqueConstraint columnNames="subscriberEmail, idCampaign, idGroup, optOutType" constraintName="Index_1" deferrable="false" disabled="false" initiallyDeferred="false" tableName="1_optOutReasons"/>
+        <addUniqueConstraint columnNames="listName" constraintName="issuer_unique" deferrable="false" disabled="false" initiallyDeferred="false" tableName="1_lists"/>
+        <addUniqueConstraint columnNames="affiliate_id, nv_email_id" constraintName="map_unique" deferrable="false" disabled="false" initiallyDeferred="false" tableName="subscriber_affiliate_map"/>
+        <createIndex indexName="FK_1_listRecipients_1" tableName="1_listRecipients" unique="false">
+            <column name="idEmail"/>
+        </createIndex>
+        <createIndex indexName="idx_email" tableName="1_subscribers" unique="false">
+            <column name="email"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

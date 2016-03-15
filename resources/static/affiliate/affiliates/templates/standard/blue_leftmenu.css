@@ -1,0 +1,154 @@
+BODY {
+	background: url("images/leftBorder.gif") top left repeat-y;
+}
+
+A.aLeftMenuItem {
+	COLOR: #2C3C74;
+    FONT-FAMILY: Tahoma, Arial,Helvetica,sans-serif; 
+    FONT-SIZE: 11px; 
+    FONT-WEIGHT: normal
+}
+
+A.aleftMenuItem:hover {
+	color: #990000;
+}
+
+.aLeftRedMenuItem {
+	COLOR: #ff0000;
+    FONT-FAMILY: Tahoma, Arial,Helvetica,sans-serif; 
+    FONT-SIZE: 11px; 
+    FONT-WEIGHT: bold;
+}
+
+TD.leftMenuMain
+{
+    width: 172px;
+    height: 100%;
+    text-align: left;
+    vertical-align: top;
+}
+
+.leftMenu
+{
+	padding-left: 18px;
+    text-align: left;
+    vertical-align: top;
+    height: 100%;    
+/*    background-color: #E8EDFA; */
+}
+
+.leftMenuContent
+{
+    width: 178px;
+    height: 100%;
+    text-align: left;
+    vertical-align: top;
+/*    background-color: #E8EDFA; */
+}
+
+.leftMenuContentBorder
+{
+    width: 3px;
+    height: 100%;
+/*    background-color: #E8EDFA;  */
+}
+
+.leftMenuBorder
+{
+/*    BACKGROUND-IMAGE: url("images/blue_leftmenuborder.png"); */
+    BACKGROUND-REPEAT: repeat-y;
+    width: 7px;
+    height: 100%;
+}
+
+.leftMenuTableOpened
+{
+    width: 100%;
+	margin-top: 3px;
+	margin-bottom: 3px;
+/*    border: #5993AB 1px solid; */
+}
+
+.leftMenuTableClosed
+{
+    width: 100%;
+	margin-top: 3px;
+	margin-bottom: 3px;
+/*    border: #5993AB 1px solid; */
+}
+
+.leftMenuTableOpened .menuTree {
+	DISPLAY: block
+}
+.leftMenuTableClosed .menuTree {
+	DISPLAY: none
+}
+
+.leftMenuHeader
+{
+    background-color: #8298B9;
+    color: #FFFFFF;
+    height: 20px;
+    padding-left: 8px;
+	font: 11px Tahoma, Arial, Verdana, Helvetica, sans-serif;
+    font-weight: bold;
+    BACKGROUND: #FFFFFF url("images/cc-menuheader_center.gif") repeat-x top left; 
+	vertical-align: center;
+	letter-spacing: 1px;
+}
+
+.leftMenuHeaderCenter
+{
+	background: url("images/darrow.png") top right no-repeat;
+	height: 15px;
+	vertical-align: bottom;
+}
+
+.leftMenuHeaderLeft {
+    BACKGROUND: #FFFFFF url("images/cc-menuheader_left.gif") no-repeat top left; 
+	width: 7px;
+	height: 20px; 
+}
+
+.leftMenuHeaderRight {
+    BACKGROUND: #FFFFFF url("images/cc-menuheader_right.gif") no-repeat top right;
+	width: 7px;
+	height: 20px; 
+}
+
+.leftMenuItem
+{
+    background-image: url("images/blue_leftmenuitem.png");
+    BACKGROUND-REPEAT: no-repeat;
+    background-position: 10px;
+    color: #0056B6;
+    height: 17px;
+    padding-left: 25px;
+	font: 11px Tahoma, Arial, Verdana, Helvetica, sans-serif;
+    font-weight: normal;
+	border-left: #8298B9 1px solid;
+	border-right: #8298B9 1px solid;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	background-color: #FFFFFF;
+}
+.leftMenuTop
+{
+    height: 1px;
+	background-color: #8298B9;
+}
+.leftMenuBottom
+{
+    height: 1px;
+	background-color: #8298B9;
+}
+
+a.leftMenuItem {
+	color: #2C3C74;
+	text-decoration: none;
+}
+
+a.leftMenuItem:hover {
+	color: #D22525;
+	text-decoration: underline;
+}

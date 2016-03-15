@@ -1,0 +1,67 @@
+.tabSpacer
+{
+    BACKGROUND-IMAGE: url("images/blue_tabspacer.png"); 
+    BACKGROUND-REPEAT: repeat-x;
+    width: 5px;
+    height: 17px;
+}
+.tabLeftTab
+{
+    BACKGROUND-IMAGE: url("images/blue_tablefttab.png"); 
+    BACKGROUND-REPEAT: no-repeat;
+    width: 3px;
+    height: 17px;
+}
+.tabRightTab
+{
+    BACKGROUND-IMAGE: url("images/blue_tabrighttab.png"); 
+    BACKGROUND-REPEAT: no-repeat;
+    width: 3px;
+    height: 17px;
+}
+.tabContent
+{
+    border-top: #5993AB 1px solid;
+    background-color: #B3CED9;
+    min-width: 50px;
+    height: 17px;
+    text-align: center;
+    vertical-align: middle;
+    color: #333333;
+    font: 11px Tahoma, Arial, Verdana, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.tabLeftTabDisabled
+{
+    BACKGROUND-IMAGE: url("images/blue_tablefttab_dis.png"); 
+    BACKGROUND-REPEAT: no-repeat;
+    width: 3px;
+    height: 17px;
+}
+.tabRightTabDisabled
+{
+    BACKGROUND-IMAGE: url("images/blue_tabrighttab_dis.png"); 
+    BACKGROUND-REPEAT: no-repeat;
+    width: 3px;
+    height: 17px;
+}
+.tabContentDisabled
+{
+    border-top: #5993AB 1px solid;
+    background-color: #D6DFF5;    
+    min-width: 50px;
+    height: 17px;
+    text-align: center;
+    vertical-align: middle;
+    color: #666666;
+    font: 11px Tahoma, Arial, Verdana, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.tabLine
+{
+    width: 100px;
+    height: 5px;
+    background-color: #B3CED9;
+    BORDER-LEFT: #5993AB 1px solid;
+    BORDER-RIGHT: #5993AB 1px solid;    
+}

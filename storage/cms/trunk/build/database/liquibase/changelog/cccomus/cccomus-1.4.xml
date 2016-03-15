@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="GLADOS-244-sales-updates" author="cconey">
+        <addColumn tableName="transactions_sale_external">
+            <column name="website_url" type="varchar(255)" afterColumn="website_id"></column>
+            <column name="program_name" type="varchar(45)" afterColumn="program_id"></column>
+            <column name="issuer_id" type="int(11)" afterColumn="program_name"></column>
+            <column name="issuer_name" type="varchar(255)" afterColumn="issuer_id"></column>
+            <column name="category_fid_name" type="varchar(100)" afterColumn="program_name"/>
+            <column name="product_type_name" type="varchar(100)" afterColumn="product_id"></column>
+            <column name="adjustments" type="decimal(24,2)" afterColumn="commission"></column>
+            <column name="transaction_type_name" type="decimal(24,2)" afterColumn="transaction_type"></column>
+            <column name="payout_id" type="int(11)" afterColumn="click_date"></column>
+        </addColumn>
+    </changeSet>
+
+	<changeSet id="TRANS-37" author="kenneth.skertchly">
+		<addColumn tableName="transactions_click_outside">
+			<column type="int" name="device_type_id" />
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="TRANS-41" author="kenneth.skertchly">
+		<dropView viewName="cms_alternate_links" />
+	</changeSet>
+
+    <changeSet id="GLADOS-250" author="vlemay">
+        <addColumn tableName="summarized_clicks">
+            <column name="program_name" type="varchar(100)" afterColumn="program_id"></column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="SAT-41_create_table" author="david.cannon">
+        <createTable tableName="rev_slotting_apply_upload_history">
+            <column name="upload_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="filename" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_adjustments" type="int" />
+            <column name="total_successes" type="int" />
+            <column name="total_errors" type="int" />
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="SAT-41_alter_table" author="david.cannon">
+        <addColumn tableName="rev_slotting_apply">
+            <column name="estimated_cpa" type="decimal(10,2)" />
+        </addColumn>
+    </changeSet>
+
+	<changeSet id="OI-531_alter_table" author="david.cannon">
+		<addColumn tableName="rev_slotting_transactions">
+			<column name="sale_id" type="varchar(100)" afterColumn="transid"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="GLADOS-293" author="jason.flaherty">
+		<modifyDataType tableName="partner_payouts" columnName="status" newDataType="ENUM('approved','pending','void')" />
+	</changeSet>
+
+    <changeSet id="GLADOS-263" author="vlemay">
+        <createTable tableName="partner_faq">
+            <column name="partner_faq_id" type="int(11)" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column defaultValueNumeric="0" name="partner_faq_category_id" type="int(11)">
+                <constraints nullable="false" />
+            </column>
+            <column name="question" type="varchar(250)">
+                <constraints nullable="false" />
+            </column>
+            <column name="answer" type="text" />
+            <column defaultValueNumeric="0" name="sort_order" type="int(11)">
+                <constraints nullable="false" />
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="date_updated" type="timestamp">
+                <constraints nullable="false" />
+            </column>
+            <column name="date_deleted" type="datetime" />
+            <column name="active" type="bit(1)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted" type="bit(1)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createTable tableName="partner_faq_category">
+            <column name="partner_faq_category_id" type="int(11)" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="varchar(250)" />
+            <column name="sort_order" type="int(11)">
+                <constraints nullable="false" />
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="date_updated" type="timestamp">
+                <constraints nullable="false" />
+            </column>
+            <column name="date_deleted" type="datetime" />
+            <column name="active" type="bit(1)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted" type="bit(1)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="GLADOS-263" author="kenneths">
+		<modifyDataType tableName="partner_faq" columnName="active" newDataType="TINYINT"/>
+		<modifyDataType tableName="partner_faq" columnName="deleted" newDataType="TINYINT"/>
+		<modifyDataType tableName="partner_faq_category" columnName="active" newDataType="TINYINT"/>
+		<modifyDataType tableName="partner_faq_category" columnName="deleted" newDataType="TINYINT"/>
+
+		<addDefaultValue tableName="partner_faq" columnName="deleted" defaultValue="0"/>
+		<addDefaultValue tableName="partner_faq_category" columnName="deleted" defaultValue="0"/>
+	</changeSet>
+
+	<changeSet id="GLADOS-324" author="kenneths">
+		<addColumn tableName="transactions_sale_external">
+			<column type="decimal(24,2)" name="revenue" afterColumn="commission"/>
+		</addColumn>
+	</changeSet>
+	
+	<changeSet id="GLADOS-308" author="kenneths">
+		<createTable tableName="lap_users">
+			<column name="user_id" type="int(11)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="username" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="pass" type="varchar(32)">
+				<constraints nullable="false" />
+			</column>
+			<column name="first_name" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="last_name" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="email" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="issuer_id" type="int(11)">
+				<constraints nullable="false" />
+			</column>
+			<column name="role" type="varchar(255)" defaultValue="USER">
+				<constraints nullable="false" />
+			</column>
+			<column name="date_created" type="datetime">
+				<constraints nullable="false" />
+			</column>
+			<column name="date_updated" defaultValueComputed="CURRENT_TIMESTAMP" type="timestamp">
+				<constraints nullable="false" />
+			</column>
+			<column name="active" type="TINYINT" defaultValue="1">
+				<constraints nullable="false" />
+			</column>
+			<column name="deleted" type="TINYINT" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+			<column name="date_deleted" type="datetime">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="GLADOS-311" author="jason.flaherty">
+		<createTable tableName="summarized_issuer_performance">
+			<column name="summarized_issuer_performance_id" type="int(11)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="issuer_id" type="int(11)" defaultValue="NULL">
+				<constraints nullable="true" />
+			</column>
+			<column name="product_id" type="varchar(15)" defaultValue="NULL">
+				<constraints nullable="true" />
+			</column>
+			<column name="website_id" type="int(11)" defaultValue="NULL">
+				<constraints nullable="true" />
+			</column>
+			<column name="event_date" type="date" defaultValue="NULL">
+				<constraints nullable="true" />
+			</column>
+			<column name="click_count" type="int(11)" defaultValue="NULL">
+				<constraints nullable="true" />
+			</column>
+			<column name="application_count" type="int(11)" defaultValue="NULL">
+				<constraints nullable="true" />
+			</column>
+			<column name="approval_count" type="int(11)" defaultValue="NULL">
+				<constraints nullable="true" />
+			</column>
+			<column name="revenue" type="decimal(24,2)" defaultValue="NULL">
+				<constraints nullable="true" />
+			</column>
+			<column name="cross_sale_count" type="int(11)" defaultValue="NULL">
+				<constraints nullable="true" />
+			</column>
+			<column name="cross_sale_revenue" type="decimal(24,2)" defaultValue="NULL">
+				<constraints nullable="true" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="GLADOS-362" author="kenneth.skertchly">
+		<createTable tableName="published_data_provider_mappings">
+			<column name="published_data_provider_mapping_id" type="int(11)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="concept_id" type="int(11)" />
+			<column name="provider_id" type="int(11)" />
+			<column name="item_id" type="varchar(32)" />
+			<column name="created_at" type="timestamp" />
+			<column name="updated_at" type="timestamp" />
+		</createTable>
+
+		<createTable tableName="data_provider_mappings">
+			<column name="data_provider_mapping_id" type="int(11)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="provider_id" type="int(11)" />
+			<column name="concept_id" type="int(11)" />
+			<column name="our_id" type="varchar(32)" />
+			<column name="their_id" type="varchar(32)" />
+			<column name="created_at" type="timestamp" />
+			<column name="updated_at" type="timestamp" />
+		</createTable>
+	</changeSet>
+
+
+</databaseChangeLog>
+

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="ccdata_test">
+	<table_data name="ccdata_test.rt_cardpagemap">
+	<row>
+		<field name="cardcategorymapId">13052</field>
+		<field name="pageInsert">0</field>
+		<field name="cardpageId">1</field>
+		<field name="cardId">22124546</field>
+		<field name="rank">3</field>
+	</row>
+	<row>
+		<field name="cardcategorymapId">13053</field>
+		<field name="pageInsert">0</field>
+		<field name="cardpageId">1</field>
+		<field name="cardId">22184477</field>
+		<field name="rank">5</field>
+	</row>
+	<row>
+		<field name="cardcategorymapId">13054</field>
+		<field name="pageInsert">0</field>
+		<field name="cardpageId">1</field>
+		<field name="cardId">22034411</field>
+		<field name="rank">1</field>
+	</row>
+	<row>
+		<field name="cardcategorymapId">13055</field>
+		<field name="pageInsert">0</field>
+		<field name="cardpageId">1</field>
+		<field name="cardId">22144464</field>
+		<field name="rank">4</field>
+	</row>
+	<row>
+		<field name="cardcategorymapId">13056</field>
+		<field name="pageInsert">0</field>
+		<field name="cardpageId">1</field>
+		<field name="cardId">22264552</field>
+		<field name="rank">2</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

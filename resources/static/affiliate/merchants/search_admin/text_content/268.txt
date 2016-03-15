@@ -1,0 +1,41 @@
+Site Security Policy CreditCards.com realizes how important security is to
+you, so we've taken a number of steps to enhance the protection of
+personal or confidential information. First, we only list credit card
+offers on this site that link to Secure SSL Encrypted Credit Card
+Applications. About Secure SSL Technology Secure SSL technology encodes
+information as it is being sent over the Internet between your computer
+and the credit card application, helping to ensure that the transmitted
+information remains confidential. The use of SSL requires two components:
+an SSL-compatible browser and a Web server to perform the key-exchange
+that establishes a secure connection to American Express Web server
+systems.  The technological requirements needed to benefit from SSL Technology: 1. A
+Compliant Browser You will need a browser with SSL capabilities. Examples
+of SSL browsers include Netscape 2.0 and above, Microsoft's Internet
+Explorer 2.0 and above, and the Web browser for America Online version 3.0
+for Windows and above. Note that some older versions of browsers will not
+support SSL sessions . In order to securely access your personal or
+confidential information via the Internet, we recommend you use the latest
+browser versions available. Accessing secure online areas with Netscape
+versions before 1.12 Mac or Unix or 1.22 Windows is prohibited due to
+security concerns. 2. A Compliant Internet Service Provider Nearly all
+Internet Service Providers ISPs automatically enable the SSL session
+described above. If you use your company's internal connection to access
+the Internet and you find you cannot access the secure application pages
+with an SSL browser described above, your company may be blocking access
+via a firewall. Please speak to your firm's Internet access systems
+administrator for further details on your network's Internet access.  3. Enabled Cookies You also must have enabled cookies on your browser in
+order to access confidential information. If you have chosen to disable
+cookies on your browser, you will not be able to access confidential
+information. In order to bring you the many online products and services
+offered by CreditCards.com, we work with carefully selected vendors and
+business partners. If we have to share any information with these
+companies in order to provide a product or service to you, we first
+conduct a careful evaluation of their information and security systems and
+practices to ensure the security and confidentiality of your information.
+You should be aware that other Internet sites that you link to from
+CreditCards.com may contain privacy provisions that differ from the
+provisions of our Privacy Statement. To ensure your privacy is protected,
+we recommend that you review the privacy statements of other Internet
+sites you visit.  SSL Security - CreditCards.com  SSL Security - CreditCards.com  SSL
+Security - CreditCards.com  SSL Security - CreditCards.com  SSL Security -
+CreditCards.com    
